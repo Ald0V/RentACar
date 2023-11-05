@@ -13,7 +13,7 @@
 }
 
 .button2{
-	-fx-background-color: #393351;
+	-fx-background-color: #2F2843;
 	-fx-background-radius: 20
 }
 .button2:hover{
@@ -23,4 +23,8 @@
 .button2:pressed{
 	-fx-background-color: #2F2B43;
 	-fx-background-radius: 20
+}
+
+.label{
+	-fx-text-fill: #ffffff;
 }
