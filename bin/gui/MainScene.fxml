@@ -33,6 +33,18 @@
                         <Insets left="15.0" />
                      </padding>
                   </Button>
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Modificar..." textFill="WHITE">
+                     <graphic>
+                        <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:/D:/Universidad/2do%20semestre/Base%20de%20datos/Curso%20CUJAE%202023-2024/Trabajo/Final%20Project%20Repository/src/resources/icons8_edit_file_50px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Button>
                   <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Eliminar..." textFill="WHITE">
                      <graphic>
                         <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
@@ -85,12 +97,12 @@
       <Pane layoutX="262.0" prefHeight="573.0" prefWidth="532.0">
          <children>
             <Pane layoutX="-40.0" layoutY="-181.0" prefHeight="294.0" prefWidth="480.0" rotate="41.3" style="-fx-background-color: #FA2C56; -fx-background-radius: 70;" />
-            <Button layoutX="62.0" layoutY="95.0" mnemonicParsing="false" opacity="0.46" prefHeight="157.0" prefWidth="168.0" styleClass="button2" stylesheets="@application.css">
+            <Button layoutX="63.0" layoutY="312.0" mnemonicParsing="false" opacity="0.46" prefHeight="157.0" prefWidth="168.0" styleClass="button2" stylesheets="@application.css">
                <effect>
                   <DropShadow />
                </effect>
             </Button>
-            <Circle disable="true" layoutX="146.0" layoutY="163.0" radius="50.0" stroke="BLACK" strokeType="INSIDE">
+            <Circle disable="true" layoutX="147.0" layoutY="380.0" radius="50.0" stroke="BLACK" strokeType="INSIDE">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -108,37 +120,13 @@
                   </LinearGradient>
                </fill>
             </Circle>
-            <Label disable="true" layoutX="120.0" layoutY="218.0" text="Contratos" textFill="WHITE" />
+            <Label disable="true" layoutX="121.0" layoutY="435.0" text="Contratos" textFill="WHITE" />
             <Button layoutX="294.0" layoutY="95.0" mnemonicParsing="false" opacity="0.46" prefHeight="157.0" prefWidth="168.0" styleClass="button2" stylesheets="@application.css">
                <effect>
                   <DropShadow />
                </effect>
             </Button>
             <Circle disable="true" layoutX="378.0" layoutY="163.0" radius="50.0" stroke="BLACK" strokeType="INSIDE">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.9100000262260437" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="1.0" blue="0.5833333134651184" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Circle>
-            <Label disable="true" layoutX="357.0" layoutY="218.0" text="Turistas" textFill="WHITE" />
-            <Button layoutX="62.0" layoutY="312.0" mnemonicParsing="false" opacity="0.46" prefHeight="157.0" prefWidth="168.0" styleClass="button2" stylesheets="@application.css">
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Button>
-            <Circle disable="true" layoutX="146.0" layoutY="380.0" radius="50.0" stroke="BLACK" strokeType="INSIDE">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -156,7 +144,7 @@
                   </LinearGradient>
                </fill>
             </Circle>
-            <Label disable="true" layoutX="128.0" layoutY="435.0" text="Carros" textFill="WHITE" />
+            <Label disable="true" layoutX="360.0" layoutY="218.0" text="Carros" textFill="WHITE" />
             <Button layoutX="294.0" layoutY="312.0" mnemonicParsing="false" opacity="0.46" prefHeight="157.0" prefWidth="168.0" styleClass="button2" stylesheets="@application.css">
                <effect>
                   <DropShadow />
@@ -181,17 +169,12 @@
                </fill>
             </Circle>
             <Label disable="true" layoutX="355.0" layoutY="435.0" text="Chóferes" textFill="WHITE" />
-            <ImageView disable="true" fitHeight="47.0" fitWidth="41.0" layoutX="358.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="file:/D:/Universidad/2do%20semestre/Base%20de%20datos/Curso%20CUJAE%202023-2024/Trabajo/Final%20Project%20Repository/src/resources/icons8_tourist_guide_50px.png" />
-               </image>
-            </ImageView>
-            <ImageView disable="true" fitHeight="47.0" fitWidth="41.0" layoutX="125.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView disable="true" fitHeight="47.0" fitWidth="41.0" layoutX="126.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="file:/D:/Universidad/2do%20semestre/Base%20de%20datos/Curso%20CUJAE%202023-2024/Trabajo/Final%20Project%20Repository/src/resources/icons8_car_rental_50px.png" />
                </image>
             </ImageView>
-            <ImageView disable="true" fitHeight="47.0" fitWidth="41.0" layoutX="126.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView disable="true" fitHeight="47.0" fitWidth="41.0" layoutX="358.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="file:/D:/Universidad/2do%20semestre/Base%20de%20datos/Curso%20CUJAE%202023-2024/Trabajo/Final%20Project%20Repository/src/resources/icons8_car_50px.png" />
                </image>
@@ -199,6 +182,35 @@
             <ImageView disable="true" fitHeight="47.0" fitWidth="41.0" layoutX="357.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="file:/D:/Universidad/2do%20semestre/Base%20de%20datos/Curso%20CUJAE%202023-2024/Trabajo/Final%20Project%20Repository/src/resources/icons8_driver_50px.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="63.0" layoutY="95.0" mnemonicParsing="false" opacity="0.46" prefHeight="157.0" prefWidth="168.0" styleClass="button2" stylesheets="@application.css">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Circle disable="true" layoutX="147.0" layoutY="163.0" radius="50.0" stroke="BLACK" strokeType="INSIDE">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.9100000262260437" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" blue="0.5833333134651184" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Circle>
+            <Label disable="true" layoutX="126.0" layoutY="218.0" text="Turistas" textFill="WHITE" />
+            <ImageView disable="true" fitHeight="47.0" fitWidth="41.0" layoutX="127.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/D:/Universidad/2do%20semestre/Base%20de%20datos/Curso%20CUJAE%202023-2024/Trabajo/Final%20Project%20Repository/src/resources/icons8_tourist_guide_50px.png" />
                </image>
             </ImageView>
          </children>
