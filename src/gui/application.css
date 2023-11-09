@@ -28,3 +28,17 @@
 .label{
 	-fx-text-fill: #ffffff;
 }
+
+.border{
+	-fx-border-color: #20120F;
+	-fx-border-width: 3
+}
+
+.right-side-border{
+	-fx-border-color: #20120F;
+	-fx-border-width: 0 3 0 0
+}
+
+.transparent{
+	-fx-background-color: rgba(0,0,0,0);
+}
