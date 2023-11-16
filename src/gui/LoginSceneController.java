@@ -60,7 +60,7 @@ public class LoginSceneController {
 
 			scene = new Scene(root);
 			stageMain.setScene(scene);
-			stageMain.initStyle(StageStyle.DECORATED);
+			stageMain.initStyle(StageStyle.UNDECORATED);
 			stageMain.setResizable(false);
 			stageMain.show();
 		}
