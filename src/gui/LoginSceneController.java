@@ -47,6 +47,11 @@ public class LoginSceneController {
 	public void login(ActionEvent event) throws IOException {
 		
 		errorMessage = "";
+		
+		/*Lo de abajo es temporal para acceder a lo visual mas rapido*/
+		txtUsername.setText(USERNAME);
+		pfPassword.setText(PASSWORD);
+		/*Lo de arriba es temporal para acceder a lo visual mas rapido*/
 
 		if(isFieldFilled() && isValid()) {
 			((Node) event.getSource()).getScene().getWindow().hide();
@@ -118,5 +123,4 @@ public class LoginSceneController {
 		
 		return valid;
 	}
-
 }
