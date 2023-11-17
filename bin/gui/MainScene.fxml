@@ -21,42 +21,6 @@
          <children>
             <VBox layoutY="165.0" prefHeight="402.0" prefWidth="258.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="165.0">
                <children>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Nuevo..." textFill="WHITE">
-                     <graphic>
-                        <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="file:/D:/Universidad/2do%20semestre/Base%20de%20datos/Curso%20CUJAE%202023-2024/Trabajo/Final%20Project%20Repository/src/resources/icons8_add_50px.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <padding>
-                        <Insets left="15.0" />
-                     </padding>
-                  </Button>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Modificar..." textFill="WHITE">
-                     <graphic>
-                        <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="file:/D:/Universidad/2do%20semestre/Base%20de%20datos/Curso%20CUJAE%202023-2024/Trabajo/Final%20Project%20Repository/src/resources/icons8_edit_file_50px.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <padding>
-                        <Insets left="15.0" />
-                     </padding>
-                  </Button>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Eliminar..." textFill="WHITE">
-                     <graphic>
-                        <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="file:/D:/Universidad/2do%20semestre/Base%20de%20datos/Curso%20CUJAE%202023-2024/Trabajo/Final%20Project%20Repository/src/resources/icons8_trash_50px.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <padding>
-                        <Insets left="15.0" />
-                     </padding>
-                  </Button>
                   <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Estadísiticas generales" textFill="WHITE">
                      <graphic>
                         <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">

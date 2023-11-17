@@ -17,6 +17,8 @@ public class MainSceneController {
 	@FXML
 	private AnchorPane mainScenePane;
 	
+	
+	
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
@@ -31,6 +33,9 @@ public class MainSceneController {
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableScene.fxml"));
 		root = loader.load();
+		
+		DataTableSceneController dataTableSceneController = loader.getController();
+		dataTableSceneController.displayName("Turista");
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
@@ -41,6 +46,9 @@ public class MainSceneController {
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableScene.fxml"));
 		root = loader.load();
+		
+		DataTableSceneController dataTableSceneController = loader.getController();
+		dataTableSceneController.displayName("Carros");
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
@@ -51,6 +59,9 @@ public class MainSceneController {
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableScene.fxml"));
 		root = loader.load();
+		
+		DataTableSceneController dataTableSceneController = loader.getController();
+		dataTableSceneController.displayName("Contratos");
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
@@ -61,16 +72,9 @@ public class MainSceneController {
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableScene.fxml"));
 		root = loader.load();
-				
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-	}
-	
-	public void backMain(ActionEvent event) throws IOException{
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("MainScene.fxml"));
-		root = loader.load();
+		DataTableSceneController dataTableSceneController = loader.getController();
+		dataTableSceneController.displayName("Chofers");
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);

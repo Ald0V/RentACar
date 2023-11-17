@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainScenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="567.0" prefWidth="1018.0" style="-fx-background-color: #2F2843;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainSceneController">
+<AnchorPane fx:id="mainScenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="567.0" prefWidth="1018.0" style="-fx-background-color: #2F2843;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DataTableSceneController">
    <children>
       <AnchorPane prefHeight="567.0" prefWidth="258.0" style="-fx-background-color: #393051;" AnchorPane.bottomAnchor="-0.20000000000004547" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-0.20000000000004547">
          <children>
@@ -80,7 +80,7 @@
             </VBox>
             <Pane layoutY="92.0" prefHeight="70.0" prefWidth="262.0" style="-fx-background-color: #FA2C56; -fx-background-radius: 5;">
                <children>
-                  <Label layoutX="27.0" layoutY="22.0" text="&quot;&quot;" textFill="WHITE">
+                  <Label fx:id="lblName" layoutX="27.0" layoutY="22.0" text="Texto" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
