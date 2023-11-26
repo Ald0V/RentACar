@@ -47,6 +47,7 @@ public class Main extends Application {
 			primaryStage.initStyle(StageStyle.TRANSPARENT);
 			primaryStage.setResizable(false);
 			primaryStage.setScene(scene);
+			primaryStage.centerOnScreen();
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

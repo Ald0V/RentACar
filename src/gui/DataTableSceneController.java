@@ -58,6 +58,7 @@ public class DataTableSceneController {
 		
 		scene = new Scene(root);
 		stage.setScene(scene);
+		stage.centerOnScreen();
 	}
 	
 	public void displayName(String table) {

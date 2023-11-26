@@ -58,6 +58,7 @@ public class MainSceneController {
 		});
 		
 		stage.setScene(scene);
+		stage.centerOnScreen();
 	}
 
 	public void openCars(ActionEvent event) throws IOException{
@@ -88,6 +89,7 @@ public class MainSceneController {
 		});
 		
 		stage.setScene(scene);
+		stage.centerOnScreen();
 	}
 	
 	public void openContracts(ActionEvent event) throws IOException{
@@ -118,6 +120,7 @@ public class MainSceneController {
 		});
 		
 		stage.setScene(scene);
+		stage.centerOnScreen();
 	}
 	
 	public void openChofers(ActionEvent event) throws IOException{
@@ -148,5 +151,6 @@ public class MainSceneController {
 		});
 		
 		stage.setScene(scene);
+		stage.centerOnScreen();
 	}
 }

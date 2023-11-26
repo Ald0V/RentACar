@@ -87,6 +87,7 @@ public class LoginSceneController {
 			});
 			
 			stageMain.setScene(scene);
+			stageMain.centerOnScreen();
 			stageMain.initStyle(StageStyle.UNDECORATED);
 			stageMain.setResizable(false);
 			stageMain.show();
