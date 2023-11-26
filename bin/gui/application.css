@@ -42,3 +42,12 @@
 .transparent{
 	-fx-background-color: rgba(0,0,0,0);
 }
+
+.white-bg{
+	-fx-background-color: #fff;
+	-fx-background-radius: 8px;
+}
+
+.shadow{
+	-fx-effect:dropshadow(three-pass-box, rgba(255,0,0,0), 6,0,0,0); 
+}
