@@ -17,7 +17,8 @@ public class MainSceneController {
 	@FXML
 	private AnchorPane mainScenePane;
 	
-	
+	private double x = 0;
+	private double y = 0;
 	
 	private Stage stage;
 	private Scene scene;
@@ -35,10 +36,27 @@ public class MainSceneController {
 		root = loader.load();
 		
 		DataTableSceneController dataTableSceneController = loader.getController();
-		dataTableSceneController.displayName("Turista");
+		dataTableSceneController.displayName("Turistas");
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
+		
+		root.setOnMousePressed((MouseEvent e) ->{
+			x = e.getSceneX();
+			y = e.getSceneY();
+		});
+		
+		root.setOnMouseDragged((MouseEvent e) ->{
+			stage.setX(e.getScreenX() - x);
+			stage.setY(e.getScreenY() - y);
+			
+			stage.setOpacity(.9);
+		});
+		
+		root.setOnMouseReleased((MouseEvent e) ->{
+			stage.setOpacity(1);
+		});
+		
 		stage.setScene(scene);
 	}
 
@@ -52,6 +70,23 @@ public class MainSceneController {
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
+		
+		root.setOnMousePressed((MouseEvent e) ->{
+			x = e.getSceneX();
+			y = e.getSceneY();
+		});
+		
+		root.setOnMouseDragged((MouseEvent e) ->{
+			stage.setX(e.getScreenX() - x);
+			stage.setY(e.getScreenY() - y);
+			
+			stage.setOpacity(.9);
+		});
+		
+		root.setOnMouseReleased((MouseEvent e) ->{
+			stage.setOpacity(1);
+		});
+		
 		stage.setScene(scene);
 	}
 	
@@ -65,6 +100,23 @@ public class MainSceneController {
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
+		
+		root.setOnMousePressed((MouseEvent e) ->{
+			x = e.getSceneX();
+			y = e.getSceneY();
+		});
+		
+		root.setOnMouseDragged((MouseEvent e) ->{
+			stage.setX(e.getScreenX() - x);
+			stage.setY(e.getScreenY() - y);
+			
+			stage.setOpacity(.9);
+		});
+		
+		root.setOnMouseReleased((MouseEvent e) ->{
+			stage.setOpacity(1);
+		});
+		
 		stage.setScene(scene);
 	}
 	
@@ -78,6 +130,23 @@ public class MainSceneController {
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
+		
+		root.setOnMousePressed((MouseEvent e) ->{
+			x = e.getSceneX();
+			y = e.getSceneY();
+		});
+		
+		root.setOnMouseDragged((MouseEvent e) ->{
+			stage.setX(e.getScreenX() - x);
+			stage.setY(e.getScreenY() - y);
+			
+			stage.setOpacity(.9);
+		});
+		
+		root.setOnMouseReleased((MouseEvent e) ->{
+			stage.setOpacity(1);
+		});
+		
 		stage.setScene(scene);
 	}
 }

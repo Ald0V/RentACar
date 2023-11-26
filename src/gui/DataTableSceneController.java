@@ -9,10 +9,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class DataTableSceneController {
+	
+	private double x = 0;
+	private double y = 0;
 	
 	@FXML
 	private AnchorPane mainScenePane;
@@ -35,11 +39,28 @@ public class DataTableSceneController {
 		root = loader.load();
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+		root.setOnMousePressed((MouseEvent e) ->{
+			x = e.getSceneX();
+			y = e.getSceneY();
+		});
+		
+		root.setOnMouseDragged((MouseEvent e) ->{
+			stage.setX(e.getScreenX() - x);
+			stage.setY(e.getScreenY() - y);
+			
+			stage.setOpacity(.9);
+		});
+		
+		root.setOnMouseReleased((MouseEvent e) ->{
+			stage.setOpacity(1);
+		});
+		
 		scene = new Scene(root);
 		stage.setScene(scene);
 	}
 	
 	public void displayName(String table) {
-		lblName.setText("Tabla de " + table);
+		lblName.setText(table);
 	}
 }

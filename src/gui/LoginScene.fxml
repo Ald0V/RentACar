@@ -20,7 +20,7 @@
       </ImageView>
       <AnchorPane layoutX="368.0" layoutY="54.0" opacity="0.98" prefHeight="404.0" prefWidth="322.0" style="-fx-background-color: #393051; -fx-background-radius: 5;">
          <children>
-            <Button layoutX="27.0" layoutY="323.0" mnemonicParsing="false" onAction="#login" prefHeight="30.0" prefWidth="270.0" styleClass="button2" stylesheets="@application.css" text="Iniciar" textFill="WHITE">
+            <Button layoutX="26.0" layoutY="350.0" mnemonicParsing="false" onAction="#login" prefHeight="30.0" prefWidth="270.0" styleClass="button2" stylesheets="@application.css" text="Iniciar" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font></Button>

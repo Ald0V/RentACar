@@ -21,6 +21,9 @@ public class LoginSceneController {
 	public static final String USERNAME = "Admin";
 	public static final String PASSWORD = "123456";
 	
+	private double x = 0;
+	private double y = 0;
+	
 	@FXML
 	private AnchorPane loginScenePane;
 	
@@ -60,10 +63,29 @@ public class LoginSceneController {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("MainScene.fxml"));
 			root = loader.load();		
 
+			
 			//		root = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
 			Stage stageMain = new Stage();
+			
 
 			scene = new Scene(root);
+			
+			root.setOnMousePressed((MouseEvent e) ->{
+				x = e.getSceneX();
+				y = e.getSceneY();
+			});
+			
+			root.setOnMouseDragged((MouseEvent e) ->{
+				stageMain.setX(e.getScreenX() - x);
+				stageMain.setY(e.getScreenY() - y);
+				
+				stageMain.setOpacity(.9);
+			});
+			
+			root.setOnMouseReleased((MouseEvent e) ->{
+				stageMain.setOpacity(1);
+			});
+			
 			stageMain.setScene(scene);
 			stageMain.initStyle(StageStyle.UNDECORATED);
 			stageMain.setResizable(false);
