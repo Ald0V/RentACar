@@ -1,7 +1,8 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 .button{
 	-fx-background-color: #393351;
-	-fx-background-radius: 30 0 0 30
+	-fx-background-radius: 30 0 0 30;
+	-fx-cursor:hand;
 }
 .button:hover{
 	-fx-background-color: #524A7B;
@@ -14,7 +15,8 @@
 
 .button2{
 	-fx-background-color: #2F2843;
-	-fx-background-radius: 20
+	-fx-background-radius: 20;
+	-fx-cursor:hand;
 }
 .button2:hover{
 	-fx-background-color: #524A7B;
@@ -44,10 +46,66 @@
 }
 
 .white-bg{
-	-fx-background-color: #fff;
+	-fx-background-color:  #393051;
 	-fx-background-radius: 8px;
 }
 
 .shadow{
-	-fx-effect:dropshadow(three-pass-box, rgba(255,0,0,0), 6,0,0,0); 
+	-fx-effect:dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0); 
+}
+
+.table-view{
+	-fx-background-color:transparent;
+	/*-fx-border-color: linear-gradient(to bottom right, #ffffffe8, #ff0095);*/
+	-fx-border-color: #FA2C56;
+	-fx-border-radius: 8px;
+	-fx-padding: 0px;
+}
+
+.table-view .table-column{
+	-fx-alignment:CENTER;
+}
+
+.table-view .column-header-background{
+	-fx-background-color:  #FA2C56;
+	-fx-background-insets: 0 0 0 0;
+	-fx-background-radius: 8px 8px 0px 0px;
+}
+
+.table-view .column-header, .filter{
+	-fx-background-color: transparent;
+	-fx-size: 40px;
+}
+
+.table-view .column-header .label{
+	-fx-text-fill: #fff;
+	-fx-font-family: "Arial";
+}
+
+.buttonAccept{
+	-fx-background-color: #008000;
+	-fx-background-radius: 30 30 30 30;
+	-fx-cursor:hand;
+}
+.buttonAccept:hover{
+	-fx-background-color: #32CD32;
+	-fx-background-radius: 30 30 30 30;
+}
+.buttonAccept:pressed{
+	-fx-background-color: #006400;
+	-fx-background-radius: 30 30 30 30;
+}
+
+.buttonCancel{
+	-fx-background-color: #CC0000;
+	-fx-background-radius: 30 30 30 30;
+	-fx-cursor:hand;
+}
+.buttonCancel:hover{
+	-fx-background-color: #FF6347;
+	-fx-background-radius: 30 30 30 30;
+}
+.buttonCancel:pressed{
+	-fx-background-color: #8B0000;
+	-fx-background-radius: 30 30 30 30;
 }
