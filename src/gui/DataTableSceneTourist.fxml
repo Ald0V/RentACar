@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainScenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1316.0" style="-fx-background-color: #2F2843;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DataTableSceneController">
+<AnchorPane fx:id="mainScenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1316.0" style="-fx-background-color: #2F2843;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DataTableSceneTouristController">
    <children>
       <AnchorPane prefHeight="567.0" prefWidth="258.0" style="-fx-background-color: #393051;" AnchorPane.bottomAnchor="-0.20000000000004547" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-0.20000000000004547">
          <children>
@@ -96,7 +96,7 @@
       </AnchorPane>
       <AnchorPane layoutX="263.0" prefHeight="651.0" prefWidth="1053.0">
          <children>
-            <AnchorPane layoutX="15.0" layoutY="15.0" prefHeight="624.0" prefWidth="1013.0" stylesheets="@application.css">
+            <AnchorPane layoutX="15.0" layoutY="15.0" prefHeight="624.0" prefWidth="1013.0" stylesheets="@application.css" visible="false">
                <children>
                   <AnchorPane layoutY="-1.0" prefHeight="382.0" prefWidth="1022.0" stylesheets="@application.css">
                      <styleClass>
@@ -176,13 +176,13 @@
                         <String fx:value="buttonCancel" />
                      </styleClass>
                   </Button>
-                  <Button layoutX="871.0" layoutY="562.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Aceptar" textFill="WHITE">
+                  <Button layoutX="871.0" layoutY="562.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Crear" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <styleClass>
                         <String fx:value="shadow" />
-                        <String fx:value="buttonAccept" />
+                        <String fx:value="buttonAdd" />
                      </styleClass>
                   </Button>
                </children>
@@ -190,6 +190,104 @@
                   <String fx:value="white-bg" />
                   <String fx:value="shadow" />
                </styleClass>
+            </AnchorPane>
+            <AnchorPane layoutX="76.0" layoutY="80.0" prefHeight="651.2" prefWidth="1053.6" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane layoutX="21.0" layoutY="24.0" prefHeight="602.0" prefWidth="321.0" stylesheets="@application.css">
+                     <styleClass>
+                        <String fx:value="shadow" />
+                        <String fx:value="white-bg" />
+                     </styleClass>
+                     <children>
+                        <Button layoutX="17.0" layoutY="540.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Cancelar" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="buttonCancel" />
+                           </styleClass>
+                        </Button>
+                        <Button layoutX="181.0" layoutY="540.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Actualizar" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="buttonAdd" />
+                           </styleClass>
+                        </Button>
+                        <Label layoutX="61.0" layoutY="51.0" prefHeight="27.0" prefWidth="65.0" text="Pasaporte:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="131.0" layoutY="52.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="71.0" layoutY="106.0" prefHeight="27.0" prefWidth="56.0" text="Nombre:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="131.0" layoutY="107.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="28.0" layoutY="165.0" prefHeight="27.0" prefWidth="98.0" text="Primer apellido:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="131.0" layoutY="166.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="14.0" layoutY="223.0" prefHeight="27.0" prefWidth="114.0" text="Segundo apellido:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="131.0" layoutY="224.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="89.0" layoutY="278.0" prefHeight="27.0" prefWidth="42.0" text="Edad:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="131.0" layoutY="279.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="65.0" layoutY="336.0" prefHeight="27.0" prefWidth="66.0" text="Teléfono:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="131.0" layoutY="337.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="74.0" layoutY="394.0" prefHeight="27.0" prefWidth="56.0" text="Género:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ComboBox layoutX="130.0" layoutY="395.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="92.0" layoutY="448.0" prefHeight="27.0" prefWidth="32.0" text="País:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ComboBox layoutX="129.0" layoutY="449.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="370.0" layoutY="24.0" prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css">
+                     <styleClass>
+                        <String fx:value="shadow" />
+                        <String fx:value="white-bg" />
+                     </styleClass>
+                     <children>
+                        <TableView prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css">
+                           <columns>
+                              <TableColumn prefWidth="83.99993896484375" text="Pasaporte" />
+                              <TableColumn prefWidth="79.20001220703125" text="Nombre" />
+                              <TableColumn minWidth="0.0" prefWidth="101.5999755859375" text="Primer apellido" />
+                              <TableColumn minWidth="0.0" prefWidth="138.4000244140625" text="Segundo apellido" />
+                              <TableColumn minWidth="0.0" prefWidth="37.5999755859375" text="Edad" />
+                              <TableColumn prefWidth="52.0" text="Género" />
+                              <TableColumn prefWidth="88.0" text="Teléfono" />
+                              <TableColumn prefWidth="80.800048828125" text="País" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </children>
             </AnchorPane>
          </children>
       </AnchorPane>

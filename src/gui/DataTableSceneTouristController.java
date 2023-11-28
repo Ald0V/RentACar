@@ -13,7 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class DataTableSceneController {
+public class DataTableSceneTouristController {
 	
 	private double x = 0;
 	private double y = 0;

@@ -32,10 +32,10 @@ public class MainSceneController {
 	
 	public void openTourist(ActionEvent event) throws IOException{
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableScene.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneTourist.fxml"));
 		root = loader.load();
 		
-		DataTableSceneController dataTableSceneController = loader.getController();
+		DataTableSceneTouristController dataTableSceneController = loader.getController();
 		dataTableSceneController.displayName("Turistas");
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -63,10 +63,10 @@ public class MainSceneController {
 
 	public void openCars(ActionEvent event) throws IOException{
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableScene.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneTourist.fxml"));
 		root = loader.load();
 		
-		DataTableSceneController dataTableSceneController = loader.getController();
+		DataTableSceneTouristController dataTableSceneController = loader.getController();
 		dataTableSceneController.displayName("Carros");
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -94,10 +94,10 @@ public class MainSceneController {
 	
 	public void openContracts(ActionEvent event) throws IOException{
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableScene.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneTourist.fxml"));
 		root = loader.load();
 		
-		DataTableSceneController dataTableSceneController = loader.getController();
+		DataTableSceneTouristController dataTableSceneController = loader.getController();
 		dataTableSceneController.displayName("Contratos");
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -125,10 +125,10 @@ public class MainSceneController {
 	
 	public void openChofers(ActionEvent event) throws IOException{
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableScene.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneTourist.fxml"));
 		root = loader.load();
 		
-		DataTableSceneController dataTableSceneController = loader.getController();
+		DataTableSceneTouristController dataTableSceneController = loader.getController();
 		dataTableSceneController.displayName("Chofers");
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();

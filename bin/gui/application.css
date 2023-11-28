@@ -82,16 +82,16 @@
 	-fx-font-family: "Arial";
 }
 
-.buttonAccept{
+.buttonAdd{
 	-fx-background-color: #008000;
 	-fx-background-radius: 30 30 30 30;
 	-fx-cursor:hand;
 }
-.buttonAccept:hover{
+.buttonAdd:hover{
 	-fx-background-color: #32CD32;
 	-fx-background-radius: 30 30 30 30;
 }
-.buttonAccept:pressed{
+.buttonAdd:pressed{
 	-fx-background-color: #006400;
 	-fx-background-radius: 30 30 30 30;
 }
