@@ -125,10 +125,10 @@ public class MainSceneController {
 	
 	public void openChofers(ActionEvent event) throws IOException{
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneTourist.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneDriver.fxml"));
 		root = loader.load();
 		
-		DataTableSceneTouristController dataTableSceneController = loader.getController();
+		DataTableSceneDriverController dataTableSceneController = loader.getController();
 		dataTableSceneController.displayName("Chofers");
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
