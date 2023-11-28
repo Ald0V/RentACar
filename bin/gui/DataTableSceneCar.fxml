@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainScenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1316.0" style="-fx-background-color: #2F2843;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DataTableSceneTouristController">
+<AnchorPane fx:id="mainScenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1316.0" style="-fx-background-color: #2F2843;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DataTableSceneCarController">
    <children>
       <AnchorPane prefHeight="567.0" prefWidth="258.0" style="-fx-background-color: #393051;" AnchorPane.bottomAnchor="-0.20000000000004547" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-0.20000000000004547">
          <children>
@@ -106,67 +106,42 @@
                      <children>
                         <TableView layoutX="12.0" layoutY="67.0" prefHeight="286.0" prefWidth="998.0">
                           <columns>
-                            <TableColumn prefWidth="135.20001220703125" text="Pasaporte" />
-                            <TableColumn prefWidth="176.80001831054688" text="Nombre" />
-                              <TableColumn minWidth="0.0" prefWidth="156.79998779296875" text="Primer apellido" />
-                              <TableColumn prefWidth="160.800048828125" text="Segundo apellido" />
-                              <TableColumn minWidth="0.0" prefWidth="43.2000732421875" text="Edad" />
-                              <TableColumn prefWidth="62.4000244140625" text="Género" />
-                              <TableColumn minWidth="0.0" prefWidth="118.39990234375" text="Teléfono" />
-                              <TableColumn prefWidth="142.39999999999998" text="País" />
+                            <TableColumn prefWidth="135.20001220703125" text="Placa" />
+                            <TableColumn prefWidth="176.80001831054688" text="Marca" />
+                              <TableColumn minWidth="0.0" prefWidth="156.79998779296875" text="Modelo" />
+                              <TableColumn prefWidth="160.800048828125" text="Color" />
+                              <TableColumn minWidth="0.0" prefWidth="155.199951171875" text="Kilómetros recorridos" />
+                              <TableColumn prefWidth="210.4000244140625" text="Estado del coche" />
                           </columns>
                         </TableView>
                         <TextField layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
                      </children>
                   </AnchorPane>
-                  <Label layoutX="62.0" layoutY="410.0" prefHeight="27.0" prefWidth="65.0" text="Pasaporte:" textFill="WHITE">
+                  <Label layoutX="89.0" layoutY="410.0" prefHeight="27.0" prefWidth="42.0" text="Placa:" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
                   <TextField layoutX="132.0" layoutY="411.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                  <Label layoutX="72.0" layoutY="465.0" prefHeight="27.0" prefWidth="56.0" text="Nombre:" textFill="WHITE">
+                  <Label layoutX="371.0" layoutY="410.0" prefHeight="27.0" prefWidth="42.0" text="Color:" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="132.0" layoutY="466.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                  <Label layoutX="29.0" layoutY="524.0" prefHeight="27.0" prefWidth="98.0" text="Primer apellido:" textFill="WHITE">
+                  <TextField layoutX="414.0" layoutY="411.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                  <TextField layoutX="792.0" layoutY="411.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                  <Label layoutX="83.0" layoutY="505.0" prefHeight="27.0" prefWidth="48.0" text="Marca:" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="132.0" layoutY="525.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                  <Label layoutX="367.0" layoutY="410.0" prefHeight="27.0" prefWidth="114.0" text="Segundo apellido:" textFill="WHITE">
+                  <ComboBox layoutX="132.0" layoutY="506.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                  <Label layoutX="357.0" layoutY="505.0" prefHeight="27.0" prefWidth="56.0" text="Modelo:" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="484.0" layoutY="411.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                  <Label layoutX="442.0" layoutY="465.0" prefHeight="27.0" prefWidth="42.0" text="Edad:" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField layoutX="484.0" layoutY="466.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                  <Label layoutX="748.0" layoutY="438.0" prefHeight="27.0" prefWidth="56.0" text="Género:" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <ComboBox layoutX="804.0" layoutY="439.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                  <Label layoutX="418.0" layoutY="523.0" prefHeight="27.0" prefWidth="66.0" text="Teléfono:" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField layoutX="484.0" layoutY="524.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                  <Label layoutX="766.0" layoutY="492.0" prefHeight="27.0" prefWidth="32.0" text="País:" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <ComboBox layoutX="803.0" layoutY="493.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                  <ComboBox layoutX="414.0" layoutY="506.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                   <Button layoutX="719.0" layoutY="562.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Cancelar" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
@@ -185,6 +160,17 @@
                         <String fx:value="buttonAdd" />
                      </styleClass>
                   </Button>
+                  <Label layoutX="677.0" layoutY="505.0" prefHeight="27.0" prefWidth="114.0" text="Estado del coche:" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ComboBox layoutX="792.0" layoutY="506.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                  <Label layoutX="652.0" layoutY="410.0" prefHeight="27.0" prefWidth="140.0" text="Kilómetros recorridos:" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                </children>
                <styleClass>
                   <String fx:value="white-bg" />
@@ -217,54 +203,42 @@
                               <String fx:value="buttonAdd" />
                            </styleClass>
                         </Button>
-                        <Label layoutX="61.0" layoutY="51.0" prefHeight="27.0" prefWidth="65.0" text="Pasaporte:" textFill="WHITE">
+                        <Label layoutX="85.0" layoutY="59.0" prefHeight="27.0" prefWidth="42.0" text="Placa:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="131.0" layoutY="52.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="71.0" layoutY="106.0" prefHeight="27.0" prefWidth="56.0" text="Nombre:" textFill="WHITE">
+                        <TextField layoutX="128.0" layoutY="60.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="85.0" layoutY="129.0" prefHeight="27.0" prefWidth="42.0" text="Color:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="131.0" layoutY="107.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="28.0" layoutY="165.0" prefHeight="27.0" prefWidth="98.0" text="Primer apellido:" textFill="WHITE">
+                        <TextField layoutX="128.0" layoutY="130.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <TextField layoutX="128.0" layoutY="204.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="29.0" layoutY="203.0" prefHeight="27.0" prefWidth="93.0" text="Km recorridos:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="131.0" layoutY="166.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="14.0" layoutY="223.0" prefHeight="27.0" prefWidth="114.0" text="Segundo apellido:" textFill="WHITE">
+                        <Label layoutX="81.0" layoutY="278.0" prefHeight="27.0" prefWidth="48.0" text="Marca:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="131.0" layoutY="224.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="89.0" layoutY="278.0" prefHeight="27.0" prefWidth="42.0" text="Edad:" textFill="WHITE">
+                        <ComboBox layoutX="130.0" layoutY="279.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="72.0" layoutY="357.0" prefHeight="27.0" prefWidth="56.0" text="Modelo:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="131.0" layoutY="279.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="65.0" layoutY="336.0" prefHeight="27.0" prefWidth="66.0" text="Teléfono:" textFill="WHITE">
+                        <ComboBox layoutX="129.0" layoutY="358.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="14.0" layoutY="436.0" prefHeight="27.0" prefWidth="114.0" text="Estado del coche:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="131.0" layoutY="337.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="74.0" layoutY="394.0" prefHeight="27.0" prefWidth="56.0" text="Género:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <ComboBox layoutX="130.0" layoutY="395.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="92.0" layoutY="448.0" prefHeight="27.0" prefWidth="32.0" text="País:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <ComboBox layoutX="129.0" layoutY="449.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <ComboBox layoutX="129.0" layoutY="437.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="370.0" layoutY="24.0" prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css">
@@ -273,16 +247,14 @@
                         <String fx:value="white-bg" />
                      </styleClass>
                      <children>
-                        <TableView prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css">
+                        <TableView layoutX="-1.0" layoutY="-1.0" prefHeight="602.0" prefWidth="658.0">
                            <columns>
-                              <TableColumn prefWidth="83.99993896484375" text="Pasaporte" />
-                              <TableColumn prefWidth="79.20001220703125" text="Nombre" />
-                              <TableColumn minWidth="0.0" prefWidth="101.5999755859375" text="Primer apellido" />
-                              <TableColumn minWidth="0.0" prefWidth="138.4000244140625" text="Segundo apellido" />
-                              <TableColumn minWidth="0.0" prefWidth="37.5999755859375" text="Edad" />
-                              <TableColumn prefWidth="52.0" text="Género" />
-                              <TableColumn prefWidth="88.0" text="Teléfono" />
-                              <TableColumn prefWidth="80.800048828125" text="País" />
+                              <TableColumn prefWidth="86.39996337890625" text="Placa" />
+                              <TableColumn prefWidth="108.0" text="Marca" />
+                              <TableColumn minWidth="0.0" prefWidth="67.99993896484375" text="Modelo" />
+                              <TableColumn minWidth="2.39996337890625" prefWidth="85.60003662109375" text="Color" />
+                              <TableColumn prefWidth="140.0" text="Km recorridos" />
+                              <TableColumn prefWidth="170.4000244140625" text="Estado del coche" />
                            </columns>
                         </TableView>
                      </children>

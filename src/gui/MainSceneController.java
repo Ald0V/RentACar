@@ -63,10 +63,10 @@ public class MainSceneController {
 
 	public void openCars(ActionEvent event) throws IOException{
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneTourist.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneCar.fxml"));
 		root = loader.load();
 		
-		DataTableSceneTouristController dataTableSceneController = loader.getController();
+		DataTableSceneCarController dataTableSceneController = loader.getController();
 		dataTableSceneController.displayName("Carros");
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
