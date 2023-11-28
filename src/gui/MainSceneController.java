@@ -94,10 +94,10 @@ public class MainSceneController {
 	
 	public void openContracts(ActionEvent event) throws IOException{
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneTourist.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneContract.fxml"));
 		root = loader.load();
 		
-		DataTableSceneTouristController dataTableSceneController = loader.getController();
+		DataTableSceneContractController dataTableSceneController = loader.getController();
 		dataTableSceneController.displayName("Contratos");
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
