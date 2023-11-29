@@ -33,7 +33,7 @@ public class DataTableSceneTouristController {
     private AnchorPane tableScenePane;
     
     @FXML
-    private AnchorPane AddParametersScenePane;
+    private AnchorPane addParametersScenePane;
     
     @FXML
     private TableView<?> touristTable;
@@ -95,14 +95,13 @@ public class DataTableSceneTouristController {
 			addScenePane.setVisible(false);
 		}else if(event.getSource() == bttnAdd){
 			addScenePane.setVisible(true);
-			AddParametersScenePane.setVisible(true);
+			addParametersScenePane.setVisible(true);
 			tableScenePane.setVisible(true);
 			
 			tableScenePane.setMaxHeight(382);
 			touristTable.setMaxHeight(286);
 			
 			modifyScenePane.setVisible(false);
-		}
-			
+		}		
 	}
 }

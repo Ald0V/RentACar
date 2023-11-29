@@ -21,7 +21,7 @@
          <children>
             <VBox layoutY="165.0" prefHeight="402.0" prefWidth="258.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="165.0">
                <children>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Nuevo..." textFill="WHITE">
+                  <Button fx:id="bttnAdd" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Nuevo..." textFill="WHITE">
                      <graphic>
                         <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -33,7 +33,7 @@
                         <Insets left="15.0" />
                      </padding>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Modificar..." textFill="WHITE">
+                  <Button fx:id="bttnModify" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Modificar..." textFill="WHITE">
                      <graphic>
                         <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -96,15 +96,15 @@
       </AnchorPane>
       <AnchorPane layoutX="263.0" prefHeight="651.0" prefWidth="1053.0">
          <children>
-            <AnchorPane layoutX="15.0" layoutY="15.0" prefHeight="624.0" prefWidth="1013.0" stylesheets="@application.css">
+            <AnchorPane fx:id="addScenePane" layoutX="15.0" layoutY="15.0" prefHeight="626.0" prefWidth="1030.0" stylesheets="@application.css">
                <children>
-                  <AnchorPane layoutY="-1.0" prefHeight="382.0" prefWidth="1022.0" stylesheets="@application.css">
+                  <AnchorPane fx:id="tableScenePane" layoutY="-1.0" prefHeight="382.0" prefWidth="1030.0" stylesheets="@application.css">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
                      </styleClass>
                      <children>
-                        <TableView layoutX="12.0" layoutY="67.0" prefHeight="286.0" prefWidth="998.0">
+                        <TableView fx:id="carTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
                           <columns>
                             <TableColumn prefWidth="135.20001220703125" text="Placa" />
                             <TableColumn prefWidth="176.80001831054688" text="Marca" />
@@ -117,67 +117,75 @@
                         <TextField layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
                      </children>
                   </AnchorPane>
-                  <Label layoutX="89.0" layoutY="410.0" prefHeight="27.0" prefWidth="42.0" text="Placa:" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField layoutX="132.0" layoutY="411.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                  <Label layoutX="371.0" layoutY="410.0" prefHeight="27.0" prefWidth="42.0" text="Color:" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField layoutX="414.0" layoutY="411.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                  <TextField layoutX="792.0" layoutY="411.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                  <Label layoutX="83.0" layoutY="505.0" prefHeight="27.0" prefWidth="48.0" text="Marca:" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <ComboBox layoutX="132.0" layoutY="506.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                  <Label layoutX="357.0" layoutY="505.0" prefHeight="27.0" prefWidth="56.0" text="Modelo:" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <ComboBox layoutX="414.0" layoutY="506.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                  <Button layoutX="719.0" layoutY="562.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Cancelar" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
+                  <AnchorPane fx:id="addParametersScenePane" layoutY="406.0" prefHeight="220.0" prefWidth="1030.0" stylesheets="@application.css" visible="false">
                      <styleClass>
+                        <String fx:value="white-bg" />
                         <String fx:value="shadow" />
-                        <String fx:value="buttonCancel" />
                      </styleClass>
-                  </Button>
-                  <Button layoutX="871.0" layoutY="562.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Crear" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <styleClass>
-                        <String fx:value="shadow" />
-                        <String fx:value="buttonAdd" />
-                     </styleClass>
-                  </Button>
-                  <Label layoutX="677.0" layoutY="505.0" prefHeight="27.0" prefWidth="114.0" text="Estado del coche:" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <ComboBox layoutX="792.0" layoutY="506.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                  <Label layoutX="652.0" layoutY="410.0" prefHeight="27.0" prefWidth="140.0" text="Kilómetros recorridos:" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
+                     <children>
+                        <Button layoutX="740.0" layoutY="158.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Cancelar" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="buttonCancel" />
+                           </styleClass>
+                        </Button>
+                        <Button layoutX="892.0" layoutY="158.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Crear" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="buttonAdd" />
+                           </styleClass>
+                        </Button>
+                        <Label layoutX="78.0" layoutY="28.0" prefHeight="27.0" prefWidth="42.0" text="Placa:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="121.0" layoutY="29.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="360.0" layoutY="28.0" prefHeight="27.0" prefWidth="42.0" text="Color:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="403.0" layoutY="29.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <TextField layoutX="781.0" layoutY="29.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="641.0" layoutY="28.0" prefHeight="27.0" prefWidth="140.0" text="Kilómetros recorridos:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="72.0" layoutY="96.0" prefHeight="27.0" prefWidth="48.0" text="Marca:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ComboBox layoutX="121.0" layoutY="97.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="346.0" layoutY="96.0" prefHeight="27.0" prefWidth="56.0" text="Modelo:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ComboBox layoutX="403.0" layoutY="97.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="666.0" layoutY="96.0" prefHeight="27.0" prefWidth="114.0" text="Estado del coche:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ComboBox layoutX="781.0" layoutY="97.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                     </children>
+                  </AnchorPane>
                </children>
                <styleClass>
                   <String fx:value="white-bg" />
                   <String fx:value="shadow" />
                </styleClass>
             </AnchorPane>
-            <AnchorPane layoutX="76.0" layoutY="80.0" prefHeight="651.2" prefWidth="1053.6" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="modifyScenePane" layoutX="76.0" layoutY="80.0" prefHeight="651.2" prefWidth="1053.6" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane layoutX="21.0" layoutY="24.0" prefHeight="602.0" prefWidth="321.0" stylesheets="@application.css">
                      <styleClass>
