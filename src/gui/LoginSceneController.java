@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.Node;
@@ -31,17 +32,56 @@ public class LoginSceneController {
 	private Scene scene;
 	private Parent root;
 	
-	@FXML
-	private TextField txtUsername;
+    @FXML
+    private AnchorPane AnchorPaneData;
     
-	@FXML
+    @FXML
+    private AnchorPane AnchorPaneData1;
+	
+    @FXML
+    private TextField txtEmail;
+
+    @FXML
+    private TextField txtUsername;
+
+    @FXML
+    private TextField txtUsername1;
+    
+    @FXML
+    private PasswordField pfCheckPassword1;
+
+    @FXML
     private PasswordField pfPassword;
+
+    @FXML
+    private PasswordField pfPassword1;
     
     @FXML
     private Label lblUserError;  
     
     @FXML
+    private Label lblUserError1;
+    
+    @FXML
     private Label lblPasswordError;
+    
+    @FXML
+    private Label lblNewAcount;
+    
+    @FXML
+    private Pane switchLoginPane;
+    
+    @FXML
+    private Pane switchLoginPane1;
+    
+    @FXML
+    private Label lblSwitchNewAccount;
+    
+    @FXML
+    private Label lblSwitchSignIn;
+
+    @FXML
+    private Label lblSignIn;
     
     private String errorMessage = "";
 
@@ -146,4 +186,26 @@ public class LoginSceneController {
 		
 		return valid;
 	}
+	
+	@FXML
+    void switchForm(MouseEvent event) {
+    	
+    	if(event.getSource() == lblSwitchNewAccount) {
+    		lblNewAcount.setVisible(true);
+    		switchLoginPane1.setVisible(true);
+    		AnchorPaneData1.setVisible(true);
+    		lblSignIn.setVisible(false);
+    		switchLoginPane.setVisible(false);
+    		AnchorPaneData.setVisible(false);		
+    	}else
+    		if(event.getSource() == lblSwitchSignIn) {
+        		lblSignIn.setVisible(true);
+        		switchLoginPane.setVisible(true);
+        		AnchorPaneData.setVisible(true);
+        		lblNewAcount.setVisible(false);
+        		switchLoginPane1.setVisible(false);
+        		AnchorPaneData1.setVisible(false);
+    		}
+
+    }
 }

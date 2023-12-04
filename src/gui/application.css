@@ -109,3 +109,14 @@
 	-fx-background-color: #8B0000;
 	-fx-background-radius: 30 30 30 30;
 }
+.labelSwitchLogin{
+	-fx-text-fill: #FA2C56
+}
+
+.labelSwitchLogin:hover{
+	-fx-text-fill: #FF6347
+}
+
+.labelSwitchLogin:pressed{
+	-fx-text-fill: #8B0000
+}
