@@ -46,7 +46,7 @@
                         <Insets left="15.0" />
                      </padding>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Eliminar..." textFill="WHITE">
+                  <Button fx:id="bttnDelete" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Eliminar..." textFill="WHITE">
                      <graphic>
                         <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -126,7 +126,7 @@
                         <String fx:value="shadow" />
                      </styleClass>
                      <children>
-                        <Button layoutX="740.0" layoutY="158.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Cancelar" textFill="WHITE">
+                        <Button layoutX="740.0" layoutY="158.0" mnemonicParsing="false" onAction="#cancelAdd" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Cancelar" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -202,7 +202,7 @@
                         <String fx:value="white-bg" />
                      </styleClass>
                      <children>
-                        <Button layoutX="17.0" layoutY="540.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Cancelar" textFill="WHITE">
+                        <Button layoutX="17.0" layoutY="540.0" mnemonicParsing="false" onAction="#cancelModify" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Cancelar" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>

@@ -207,7 +207,7 @@
                         <String fx:value="white-bg" />
                      </styleClass>
                      <children>
-                        <Button fx:id="bttnCancelModify" layoutX="17.0" layoutY="540.0" mnemonicParsing="false" onAction="#cancelModify" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Cancelar" textFill="WHITE">
+                        <Button layoutX="17.0" layoutY="540.0" mnemonicParsing="false" onAction="#cancelModify" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Cancelar" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>

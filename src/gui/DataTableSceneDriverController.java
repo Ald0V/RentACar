@@ -46,6 +46,9 @@ public class DataTableSceneDriverController {
     
     @FXML
     private Button bttnAdd;
+    
+    @FXML
+    private Button bttnDelete;
 	
 	private Stage stage;
 	private Scene scene;
@@ -91,9 +94,18 @@ public class DataTableSceneDriverController {
 	public void switchForm(ActionEvent event) {
 		
 		if(event.getSource() == bttnModify) {
+			
+			bttnAdd.setDisable(true);
+			bttnModify.setDisable(true);
+			bttnDelete.setDisable(true);
 			modifyScenePane.setVisible(true);
 			addScenePane.setVisible(false);
+			
 		}else if(event.getSource() == bttnAdd){
+			
+			bttnAdd.setDisable(true);
+			bttnModify.setDisable(true);
+			bttnDelete.setDisable(true);
 			addScenePane.setVisible(true);
 			addParametersScenePane.setVisible(true);
 			tableScenePane.setVisible(true);
@@ -103,6 +115,24 @@ public class DataTableSceneDriverController {
 			
 			modifyScenePane.setVisible(false);
 		}		
+	}
+	
+	public void cancelModify(ActionEvent event) {
+		modifyScenePane.setVisible(false);
+		bttnAdd.setDisable(false);
+		bttnModify.setDisable(false);
+		bttnDelete.setDisable(false);
+		addScenePane.setVisible(true);
+	}
+	
+	public void cancelAdd(ActionEvent event) {
+		addParametersScenePane.setVisible(false);
+		bttnAdd.setDisable(false);
+		bttnModify.setDisable(false);
+		bttnDelete.setDisable(false);
+		addScenePane.setVisible(true);
+		tableScenePane.setMaxHeight(626);
+		driverTable.setMaxHeight(554);
 	}
 
 

@@ -52,9 +52,6 @@ public class DataTableSceneTouristController {
 
     @FXML
     private Button bttnModify;
-    
-    @FXML
-    private Button bttnCancelModify;
 	
 	private Stage stage;
 	private Scene scene;
@@ -106,10 +103,6 @@ public class DataTableSceneTouristController {
 			bttnDelete.setDisable(true);
 			modifyScenePane.setVisible(true);
 			addScenePane.setVisible(false);
-//			if(event.getSource() == bttnCancelModify) {
-//				
-//
-//			}
 			
 		}else if(event.getSource() == bttnAdd){
 			
