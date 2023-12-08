@@ -1,4 +1,4 @@
-package gui;
+package cu.edu.cujae.visuals;
 
 import java.io.IOException;
 
@@ -15,7 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class DataTableSceneTouristController {
+public class DataTableSceneCarController {
 	
 	private double x = 0;
 	private double y = 0;
@@ -36,22 +36,19 @@ public class DataTableSceneTouristController {
     private AnchorPane addParametersScenePane;
     
     @FXML
-    private TableView<?> touristTable;
+    private TableView<?> carTable;
 	
     @FXML
     private Label lblName;
     
     @FXML
-    private Button bttnAdd;
-
+    private Button bttnModify;
+    
     @FXML
-    private Button bttnBack;
-
+    private Button bttnAdd;
+    
     @FXML
     private Button bttnDelete;
-
-    @FXML
-    private Button bttnModify;
 	
 	private Stage stage;
 	private Scene scene;
@@ -97,7 +94,6 @@ public class DataTableSceneTouristController {
 	public void switchForm(ActionEvent event) {
 		
 		if(event.getSource() == bttnModify) {
-			
 			bttnAdd.setDisable(true);
 			bttnModify.setDisable(true);
 			bttnDelete.setDisable(true);
@@ -105,7 +101,6 @@ public class DataTableSceneTouristController {
 			addScenePane.setVisible(false);
 			
 		}else if(event.getSource() == bttnAdd){
-			
 			bttnAdd.setDisable(true);
 			bttnModify.setDisable(true);
 			bttnDelete.setDisable(true);
@@ -114,11 +109,10 @@ public class DataTableSceneTouristController {
 			tableScenePane.setVisible(true);
 			
 			tableScenePane.setMaxHeight(382);
-			touristTable.setMaxHeight(286);
+			carTable.setMaxHeight(286);
 			
 			modifyScenePane.setVisible(false);
-		}	
-		
+		}		
 	}
 	
 	public void cancelModify(ActionEvent event) {
@@ -136,6 +130,7 @@ public class DataTableSceneTouristController {
 		bttnDelete.setDisable(false);
 		addScenePane.setVisible(true);
 		tableScenePane.setMaxHeight(626);
-		touristTable.setMaxHeight(554);
+		carTable.setMaxHeight(554);
 	}
 }
+

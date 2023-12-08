@@ -1,4 +1,4 @@
-package gui;
+package cu.edu.cujae.visuals;
 
 import java.io.IOException;
 

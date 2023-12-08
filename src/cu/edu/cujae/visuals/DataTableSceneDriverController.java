@@ -1,4 +1,4 @@
-package gui;
+package cu.edu.cujae.visuals;
 
 import java.io.IOException;
 
@@ -15,7 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class DataTableSceneCarController {
+public class DataTableSceneDriverController {
 	
 	private double x = 0;
 	private double y = 0;
@@ -36,7 +36,7 @@ public class DataTableSceneCarController {
     private AnchorPane addParametersScenePane;
     
     @FXML
-    private TableView<?> carTable;
+    private TableView<?> driverTable;
 	
     @FXML
     private Label lblName;
@@ -94,6 +94,7 @@ public class DataTableSceneCarController {
 	public void switchForm(ActionEvent event) {
 		
 		if(event.getSource() == bttnModify) {
+			
 			bttnAdd.setDisable(true);
 			bttnModify.setDisable(true);
 			bttnDelete.setDisable(true);
@@ -101,6 +102,7 @@ public class DataTableSceneCarController {
 			addScenePane.setVisible(false);
 			
 		}else if(event.getSource() == bttnAdd){
+			
 			bttnAdd.setDisable(true);
 			bttnModify.setDisable(true);
 			bttnDelete.setDisable(true);
@@ -109,7 +111,7 @@ public class DataTableSceneCarController {
 			tableScenePane.setVisible(true);
 			
 			tableScenePane.setMaxHeight(382);
-			carTable.setMaxHeight(286);
+			driverTable.setMaxHeight(286);
 			
 			modifyScenePane.setVisible(false);
 		}		
@@ -130,7 +132,8 @@ public class DataTableSceneCarController {
 		bttnDelete.setDisable(false);
 		addScenePane.setVisible(true);
 		tableScenePane.setMaxHeight(626);
-		carTable.setMaxHeight(554);
+		driverTable.setMaxHeight(554);
 	}
-}
 
+
+}

@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainScenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1316.0" style="-fx-background-color: #2F2843;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DataTableSceneTouristController">
+<AnchorPane fx:id="mainScenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1316.0" style="-fx-background-color: #2F2843;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.visuals.DataTableSceneTouristController">
    <children>
       <AnchorPane prefHeight="567.0" prefWidth="258.0" style="-fx-background-color: #393051;" AnchorPane.bottomAnchor="-0.20000000000004547" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-0.20000000000004547">
          <children>
@@ -61,7 +61,7 @@
                      <graphic>
                         <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../resources/icons8_back_50px.png" />
+                              <Image url="@../../../../resources/icons8_back_50px.png" />
                            </image>
                         </ImageView>
                      </graphic>

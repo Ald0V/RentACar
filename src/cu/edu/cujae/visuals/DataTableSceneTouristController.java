@@ -1,4 +1,4 @@
-package gui;
+package cu.edu.cujae.visuals;
 
 import java.io.IOException;
 
@@ -15,7 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class DataTableSceneDriverController {
+public class DataTableSceneTouristController {
 	
 	private double x = 0;
 	private double y = 0;
@@ -36,19 +36,22 @@ public class DataTableSceneDriverController {
     private AnchorPane addParametersScenePane;
     
     @FXML
-    private TableView<?> driverTable;
+    private TableView<?> touristTable;
 	
     @FXML
     private Label lblName;
     
     @FXML
-    private Button bttnModify;
-    
-    @FXML
     private Button bttnAdd;
-    
+
+    @FXML
+    private Button bttnBack;
+
     @FXML
     private Button bttnDelete;
+
+    @FXML
+    private Button bttnModify;
 	
 	private Stage stage;
 	private Scene scene;
@@ -111,10 +114,11 @@ public class DataTableSceneDriverController {
 			tableScenePane.setVisible(true);
 			
 			tableScenePane.setMaxHeight(382);
-			driverTable.setMaxHeight(286);
+			touristTable.setMaxHeight(286);
 			
 			modifyScenePane.setVisible(false);
-		}		
+		}	
+		
 	}
 	
 	public void cancelModify(ActionEvent event) {
@@ -132,8 +136,6 @@ public class DataTableSceneDriverController {
 		bttnDelete.setDisable(false);
 		addScenePane.setVisible(true);
 		tableScenePane.setMaxHeight(626);
-		driverTable.setMaxHeight(554);
+		touristTable.setMaxHeight(554);
 	}
-
-
 }

@@ -4,7 +4,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -16,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainScenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1316.0" style="-fx-background-color: #2F2843;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DataTableSceneContractController">
+<AnchorPane fx:id="mainScenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1316.0" style="-fx-background-color: #2F2843;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.visuals.DataTableSceneDriverController">
    <children>
       <AnchorPane prefHeight="567.0" prefWidth="258.0" style="-fx-background-color: #393051;" AnchorPane.bottomAnchor="-0.20000000000004547" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-0.20000000000004547">
          <children>
@@ -62,7 +61,7 @@
                      <graphic>
                         <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../resources/icons8_back_50px.png" />
+                              <Image url="@../../../../resources/icons8_back_50px.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -105,22 +104,20 @@
                         <String fx:value="shadow" />
                      </styleClass>
                      <children>
-                        <TableView fx:id="contractTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
+                        <TableView fx:id="driverTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
                           <columns>
-                            <TableColumn prefWidth="135.20001220703125" text="Fecha de inicio" />
-                            <TableColumn prefWidth="184.79998779296875" text="Turista" />
-                              <TableColumn minWidth="0.0" prefWidth="110.4000244140625" text="Carro" />
-                              <TableColumn prefWidth="105.60003662109375" text="Días de prórroga" />
-                              <TableColumn minWidth="0.0" prefWidth="91.20001220703125" text="Importe total" />
-                              <TableColumn prefWidth="111.99993896484375" text="Fecha de entrega" />
-                              <TableColumn minWidth="0.0" prefWidth="118.39990234375" text="Método de pago" />
-                              <TableColumn prefWidth="142.39999999999998" text="Fin del contrato" />
+                            <TableColumn prefWidth="135.20001220703125" text="Carnét de identidad" />
+                            <TableColumn prefWidth="176.80001831054688" text="Nombre" />
+                              <TableColumn minWidth="0.0" prefWidth="156.79998779296875" text="Primer apellido" />
+                              <TableColumn prefWidth="160.800048828125" text="Segundo apellido" />
+                              <TableColumn minWidth="0.0" prefWidth="220.0001220703125" text="Dirección" />
+                              <TableColumn prefWidth="146.39996337890625" text="Tipo de licencia" />
                           </columns>
                         </TableView>
                         <TextField layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="addParametersScenePane" layoutY="406.0" prefHeight="220.0" prefWidth="1030.0" stylesheets="@application.css" visible="false">
+                  <AnchorPane fx:id="addParametersScenePane" layoutY="415.0" prefHeight="220.0" prefWidth="1030.0" stylesheets="@application.css" visible="false">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
@@ -144,48 +141,42 @@
                               <String fx:value="buttonAdd" />
                            </styleClass>
                         </Button>
-                        <Label layoutX="48.0" layoutY="33.0" prefHeight="27.0" prefWidth="98.0" text="Fecha de inicio:" textFill="WHITE">
+                        <Label layoutX="34.0" layoutY="40.0" prefHeight="27.0" prefWidth="126.0" text="Carnét de identidad:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="394.0" layoutY="33.0" prefHeight="27.0" prefWidth="114.0" text="Fecha de entrega:" textFill="WHITE">
+                        <TextField layoutX="164.0" layoutY="41.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="403.0" layoutY="41.0" prefHeight="27.0" prefWidth="98.0" text="Primer apellido:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <DatePicker layoutX="147.0" layoutY="35.0" />
-                        <DatePicker layoutX="507.0" layoutY="34.0" />
-                        <Label layoutX="397.0" layoutY="82.0" prefHeight="27.0" prefWidth="108.0" text="Días de prórroga:" textFill="WHITE">
+                        <TextField layoutX="506.0" layoutY="42.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="758.0" layoutY="40.0" prefHeight="27.0" prefWidth="66.0" text="Dirección:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="509.0" layoutY="83.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="97.0" layoutY="82.0" prefHeight="27.0" prefWidth="48.0" text="Turista:" textFill="WHITE">
+                        <TextField layoutX="824.0" layoutY="41.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="105.0" layoutY="95.0" prefHeight="27.0" prefWidth="56.0" text="Nombre:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="147.0" layoutY="82.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="726.0" layoutY="82.0" prefHeight="27.0" prefWidth="108.0" text="Método de pago:" textFill="WHITE">
+                        <TextField layoutX="165.0" layoutY="96.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="390.0" layoutY="96.0" prefHeight="27.0" prefWidth="114.0" text="Segundo apellido:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="841.0" layoutY="83.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="419.0" layoutY="130.0" prefHeight="27.0" prefWidth="86.0" text="Importe total:" textFill="WHITE">
+                        <TextField layoutX="507.0" layoutY="97.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="721.0" layoutY="95.0" prefHeight="27.0" prefWidth="105.0" text="Tipo de licencia:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="509.0" layoutY="131.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="104.0" layoutY="130.0" prefHeight="27.0" prefWidth="42.0" text="Carro:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <ComboBox layoutX="146.0" layoutY="131.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <ComboBox layoutX="825.0" layoutY="96.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                      </children>
                   </AnchorPane>
                </children>
@@ -220,48 +211,42 @@
                               <String fx:value="buttonAdd" />
                            </styleClass>
                         </Button>
-                        <Label layoutX="32.0" layoutY="62.0" prefHeight="27.0" prefWidth="98.0" text="Fecha de inicio:" textFill="WHITE">
+                        <Label layoutX="3.0" layoutY="118.0" prefHeight="27.0" prefWidth="126.0" text="Carnét de identidad:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <DatePicker layoutX="131.0" layoutY="64.0" />
-                        <Label layoutX="14.0" layoutY="119.0" prefHeight="27.0" prefWidth="114.0" text="Fecha de entrega:" textFill="WHITE">
+                        <TextField layoutX="133.0" layoutY="119.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="73.0" layoutY="178.0" prefHeight="27.0" prefWidth="56.0" text="Nombre:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <DatePicker layoutX="129.0" layoutY="120.0" />
-                        <Label layoutX="82.0" layoutY="174.0" prefHeight="27.0" prefWidth="55.0" text="Turista:" textFill="WHITE">
+                        <TextField layoutX="133.0" layoutY="179.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="30.0" layoutY="237.0" prefHeight="27.0" prefWidth="98.0" text="Primer apellido:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="131.0" layoutY="175.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="89.0" layoutY="232.0" prefHeight="27.0" prefWidth="42.0" text="Carro:" textFill="WHITE">
+                        <TextField layoutX="133.0" layoutY="238.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="16.0" layoutY="295.0" prefHeight="27.0" prefWidth="114.0" text="Segundo apellido:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="131.0" layoutY="233.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="16.0" layoutY="294.0" prefHeight="27.0" prefWidth="108.0" text="Método de pago:" textFill="WHITE">
+                        <TextField layoutX="133.0" layoutY="296.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="67.0" layoutY="350.0" prefHeight="27.0" prefWidth="66.0" text="Dirección:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="131.0" layoutY="295.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="20.0" layoutY="353.0" prefHeight="27.0" prefWidth="108.0" text="Días de prórroga:" textFill="WHITE">
+                        <TextField layoutX="133.0" layoutY="351.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="30.0" layoutY="410.0" prefHeight="27.0" prefWidth="106.0" text="Tipo de licencia:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="132.0" layoutY="354.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="42.0" layoutY="411.0" prefHeight="27.0" prefWidth="86.0" text="Importe total:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField layoutX="132.0" layoutY="412.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <ComboBox layoutX="135.0" layoutY="411.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="370.0" layoutY="24.0" prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css">
@@ -270,16 +255,14 @@
                         <String fx:value="white-bg" />
                      </styleClass>
                      <children>
-                        <TableView prefHeight="602.0" prefWidth="658.0">
+                        <TableView layoutX="1.0" layoutY="-1.0" prefHeight="606.0" prefWidth="658.0">
                            <columns>
-                              <TableColumn prefWidth="95.20001220703125" text="Fecha de inicio" />
-                              <TableColumn prefWidth="48.79998779296875" text="Turista" />
-                              <TableColumn minWidth="0.0" prefWidth="42.39996337890625" text="Carro" />
-                              <TableColumn prefWidth="102.39996337890625" text="Días de prórroga" />
-                              <TableColumn minWidth="0.0" text="Importe total" />
-                              <TableColumn prefWidth="106.39990234375" text="Fecha de entrega" />
-                              <TableColumn prefWidth="60.0" text="Método de pago" />
-                              <TableColumn prefWidth="121.60007324218748" text="Fin del contrato" />
+                              <TableColumn prefWidth="135.20001220703125" text="Carnét de identidad" />
+                              <TableColumn prefWidth="81.60003662109375" text="Nombre" />
+                              <TableColumn minWidth="0.0" prefWidth="121.5999755859375" text="Primer apellido" />
+                              <TableColumn prefWidth="117.60009765625" text="Segundo apellido" />
+                              <TableColumn minWidth="0.0" prefWidth="83.2000732421875" text="Dirección" />
+                              <TableColumn prefWidth="118.4000244140625" text="Tipo de licencia" />
                            </columns>
                         </TableView>
                      </children>
