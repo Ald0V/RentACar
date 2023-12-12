@@ -80,11 +80,11 @@
                         <Insets left="15.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="bttnBack" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#backMain" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Atrás" textFill="WHITE">
+                  <Button fx:id="bttnBack" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#backMain" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Menú principal" textFill="WHITE">
                      <graphic>
                         <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../resources/icons8_back_50px.png" />
+                              <Image url="@../../../../resources/icons8_home_50px.png" />
                            </image>
                         </ImageView>
                      </graphic>

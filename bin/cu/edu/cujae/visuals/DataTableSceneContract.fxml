@@ -107,14 +107,14 @@
                      <children>
                         <TableView fx:id="contractTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
                           <columns>
-                            <TableColumn prefWidth="135.20001220703125" text="Fecha de inicio" />
-                            <TableColumn prefWidth="184.79998779296875" text="Turista" />
-                              <TableColumn minWidth="0.0" prefWidth="110.4000244140625" text="Carro" />
-                              <TableColumn prefWidth="105.60003662109375" text="Días de prórroga" />
-                              <TableColumn minWidth="0.0" prefWidth="91.20001220703125" text="Importe total" />
-                              <TableColumn prefWidth="111.99993896484375" text="Fecha de entrega" />
-                              <TableColumn minWidth="0.0" prefWidth="118.39990234375" text="Método de pago" />
-                              <TableColumn prefWidth="142.39999999999998" text="Fin del contrato" />
+                            <TableColumn prefWidth="150.39999389648438" text="Turista" />
+                            <TableColumn prefWidth="100.79998779296875" text="Fecha de inicio" />
+                              <TableColumn minWidth="0.0" prefWidth="104.0" text="Fin del contrato" />
+                              <TableColumn prefWidth="151.199951171875" text="Carro" />
+                              <TableColumn minWidth="0.0" prefWidth="124.0" text="Método de pago" />
+                              <TableColumn text="Prórroga" />
+                              <TableColumn minWidth="0.0" prefWidth="150.39996337890625" text="Alquiler del chófer" />
+                              <TableColumn minWidth="0.0" prefWidth="136.80002441406248" text="Importe total" />
                           </columns>
                         </TableView>
                         <TextField layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />

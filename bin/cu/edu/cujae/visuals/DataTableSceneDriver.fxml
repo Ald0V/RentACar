@@ -107,11 +107,12 @@
                         <TableView fx:id="driverTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
                           <columns>
                             <TableColumn prefWidth="135.20001220703125" text="Carnét de identidad" />
-                            <TableColumn prefWidth="176.80001831054688" text="Nombre" />
-                              <TableColumn minWidth="0.0" prefWidth="156.79998779296875" text="Primer apellido" />
-                              <TableColumn prefWidth="160.800048828125" text="Segundo apellido" />
-                              <TableColumn minWidth="0.0" prefWidth="220.0001220703125" text="Dirección" />
-                              <TableColumn prefWidth="146.39996337890625" text="Tipo de licencia" />
+                            <TableColumn prefWidth="140.800048828125" text="Nombre" />
+                              <TableColumn minWidth="0.0" prefWidth="125.5999755859375" text="Primer apellido" />
+                              <TableColumn prefWidth="124.79998779296875" text="Segundo apellido" />
+                              <TableColumn minWidth="0.0" prefWidth="161.5999755859375" text="Dirección" />
+                              <TableColumn minWidth="0.0" prefWidth="132.7999267578125" text="Tipo de licencia" />
+                              <TableColumn minWidth="0.0" prefWidth="176.0001220703125" text="Número de carros manejados" />
                           </columns>
                         </TableView>
                         <TextField layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />

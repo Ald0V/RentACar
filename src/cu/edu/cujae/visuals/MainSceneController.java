@@ -378,17 +378,32 @@ public class MainSceneController {
 			
 	}
 	
-//	public void disableButton(DataTableSceneReportsController reportsController, ActionEvent event) {
-//		if(event.getSource() == bttnTourists) {
-//			reportsController.getBttnTourists().setDisable(true);
-//		} else if(event.getSource() == bttnCarSituation) {
-//			reportsController.getBttnCarSituation().setDisable(true);
-//		} else if(event.getSource() == bttnModelBrand) {
-//			reportsController.getBttnModelBrand().setDisable(true);
-//		} else if(event.getSource() == bttnCountry) {
-//			reportsController.getBttnCountry().setDisable(true);
-//		} else if(event.getSource() == bttnImport) {
-//			reportsController.getBttnImports().setDisable(true);
-//		}
-//	}
+	public void closeCurrentSession(ActionEvent event) throws IOException{
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginScene.fxml"));
+		root = loader.load();
+				
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		
+		root.setOnMousePressed((MouseEvent e) ->{
+			x = e.getSceneX();
+			y = e.getSceneY();
+		});
+		
+		root.setOnMouseDragged((MouseEvent e) ->{
+			stage.setX(e.getScreenX() - x);
+			stage.setY(e.getScreenY() - y);
+			
+			stage.setOpacity(.9);
+		});
+		
+		root.setOnMouseReleased((MouseEvent e) ->{
+			stage.setOpacity(1);
+		});
+		
+		stage.setScene(scene);
+		stage.centerOnScreen();
+	}
+
 }

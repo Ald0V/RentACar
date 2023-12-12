@@ -107,13 +107,12 @@
                         <TableView fx:id="touristTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
                           <columns>
                             <TableColumn prefWidth="135.20001220703125" text="Pasaporte" />
-                            <TableColumn prefWidth="176.80001831054688" text="Nombre" />
-                              <TableColumn minWidth="0.0" prefWidth="156.79998779296875" text="Primer apellido" />
-                              <TableColumn prefWidth="160.800048828125" text="Segundo apellido" />
-                              <TableColumn minWidth="0.0" prefWidth="43.2000732421875" text="Edad" />
-                              <TableColumn prefWidth="62.4000244140625" text="Género" />
-                              <TableColumn minWidth="0.0" prefWidth="118.39990234375" text="Teléfono" />
-                              <TableColumn prefWidth="142.39999999999998" text="País" />
+                            <TableColumn prefWidth="128.0" text="Nombre" />
+                              <TableColumn minWidth="0.0" prefWidth="139.20001220703125" text="Primer apellido" />
+                              <TableColumn prefWidth="132.79998779296875" text="Segundo apellido" />
+                              <TableColumn minWidth="0.0" prefWidth="180.7999267578125" text="Cantidad de carros rentados" />
+                              <TableColumn minWidth="0.0" prefWidth="152.80010986328125" text="Valor total de alquileres" />
+                              <TableColumn prefWidth="132.0" text="País" />
                           </columns>
                         </TableView>
                         <TextField layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
