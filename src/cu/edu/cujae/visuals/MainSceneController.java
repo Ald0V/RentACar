@@ -34,6 +34,21 @@ public class MainSceneController {
     private Button bttnReports;
     
     @FXML
+    private Button bttnTourists;
+
+    @FXML
+    private Button bttnCarSituation;
+
+    @FXML
+    private Button bttnModelBrand;
+
+    @FXML
+    private Button bttnCountry;
+    
+    @FXML
+    private Button bttnImport;
+    
+    @FXML
     private Label lblReports;
     
     @FXML
@@ -201,8 +216,179 @@ public class MainSceneController {
     			secondaryVBox.setVisible(false);
     			lblReports.setVisible(false);
     		}
-
     }
 	
+	public void openReportTourist(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneReports.fxml"));
+		root = loader.load();
+		
+		DataTableSceneReportsController reportsController = loader.getController();
+		
+		reportsController.getBttnTourists().setDisable(true);
+
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		
+		root.setOnMousePressed((MouseEvent e) ->{
+			x = e.getSceneX();
+			y = e.getSceneY();
+		});
+		
+		root.setOnMouseDragged((MouseEvent e) ->{
+			stage.setX(e.getScreenX() - x);
+			stage.setY(e.getScreenY() - y);
+			
+			stage.setOpacity(.9);
+		});
+		
+		root.setOnMouseReleased((MouseEvent e) ->{
+			stage.setOpacity(1);
+		});
+		
+		stage.setScene(scene);
+		stage.centerOnScreen();
+			
+	}
 	
+	public void openReportCar(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneReports.fxml"));
+		root = loader.load();
+		
+		DataTableSceneReportsController reportsController = loader.getController();
+		
+		reportsController.getBttnCarSituation().setDisable(true);
+
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		
+		root.setOnMousePressed((MouseEvent e) ->{
+			x = e.getSceneX();
+			y = e.getSceneY();
+		});
+		
+		root.setOnMouseDragged((MouseEvent e) ->{
+			stage.setX(e.getScreenX() - x);
+			stage.setY(e.getScreenY() - y);
+			
+			stage.setOpacity(.9);
+		});
+		
+		root.setOnMouseReleased((MouseEvent e) ->{
+			stage.setOpacity(1);
+		});
+		
+		stage.setScene(scene);
+		stage.centerOnScreen();
+			
+	}
+	
+	public void openReportModelBrand(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneReports.fxml"));
+		root = loader.load();
+		
+		DataTableSceneReportsController reportsController = loader.getController();
+		
+		reportsController.getBttnModelBrand().setDisable(true);
+
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		
+		root.setOnMousePressed((MouseEvent e) ->{
+			x = e.getSceneX();
+			y = e.getSceneY();
+		});
+		
+		root.setOnMouseDragged((MouseEvent e) ->{
+			stage.setX(e.getScreenX() - x);
+			stage.setY(e.getScreenY() - y);
+			
+			stage.setOpacity(.9);
+		});
+		
+		root.setOnMouseReleased((MouseEvent e) ->{
+			stage.setOpacity(1);
+		});
+		
+		stage.setScene(scene);
+		stage.centerOnScreen();
+			
+	}
+	
+	public void openReportCountry(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneReports.fxml"));
+		root = loader.load();
+		
+		DataTableSceneReportsController reportsController = loader.getController();
+		
+		reportsController.getBttnCountry().setDisable(true);
+
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		
+		root.setOnMousePressed((MouseEvent e) ->{
+			x = e.getSceneX();
+			y = e.getSceneY();
+		});
+		
+		root.setOnMouseDragged((MouseEvent e) ->{
+			stage.setX(e.getScreenX() - x);
+			stage.setY(e.getScreenY() - y);
+			
+			stage.setOpacity(.9);
+		});
+		
+		root.setOnMouseReleased((MouseEvent e) ->{
+			stage.setOpacity(1);
+		});
+		
+		stage.setScene(scene);
+		stage.centerOnScreen();
+			
+	}
+	
+	public void openReportImports(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneReports.fxml"));
+		root = loader.load();
+		
+		DataTableSceneReportsController reportsController = loader.getController();
+		
+		reportsController.getBttnImports().setDisable(true);
+
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		
+		root.setOnMousePressed((MouseEvent e) ->{
+			x = e.getSceneX();
+			y = e.getSceneY();
+		});
+		
+		root.setOnMouseDragged((MouseEvent e) ->{
+			stage.setX(e.getScreenX() - x);
+			stage.setY(e.getScreenY() - y);
+			
+			stage.setOpacity(.9);
+		});
+		
+		root.setOnMouseReleased((MouseEvent e) ->{
+			stage.setOpacity(1);
+		});
+		
+		stage.setScene(scene);
+		stage.centerOnScreen();
+			
+	}
+	
+//	public void disableButton(DataTableSceneReportsController reportsController, ActionEvent event) {
+//		if(event.getSource() == bttnTourists) {
+//			reportsController.getBttnTourists().setDisable(true);
+//		} else if(event.getSource() == bttnCarSituation) {
+//			reportsController.getBttnCarSituation().setDisable(true);
+//		} else if(event.getSource() == bttnModelBrand) {
+//			reportsController.getBttnModelBrand().setDisable(true);
+//		} else if(event.getSource() == bttnCountry) {
+//			reportsController.getBttnCountry().setDisable(true);
+//		} else if(event.getSource() == bttnImport) {
+//			reportsController.getBttnImports().setDisable(true);
+//		}
+//	}
 }

@@ -91,7 +91,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <Pane fx:id="mainPane" layoutX="262.0" prefHeight="574.0" prefWidth="755.0">
+      <Pane fx:id="mainPane" layoutX="262.0" prefHeight="574.0" prefWidth="755.0" visible="false">
          <children>
             <Pane layoutX="54.0" layoutY="-178.0" prefHeight="294.0" prefWidth="480.0" rotate="41.3" style="-fx-background-color: #FA2C56; -fx-background-radius: 70;" />
             <Button layoutX="132.0" layoutY="322.0" mnemonicParsing="false" onAction="#openContracts" opacity="0.46" prefHeight="157.0" prefWidth="168.0" styleClass="button2" stylesheets="@application.css">
@@ -212,9 +212,9 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="secondaryPane" layoutX="262.0" prefHeight="567.0" prefWidth="755.0" visible="false">
+      <Pane fx:id="secondaryPane" layoutX="262.0" prefHeight="567.0" prefWidth="755.0">
          <children>
-            <Button layoutX="39.0" layoutY="232.0" mnemonicParsing="false" opacity="0.46" prefHeight="100.0" prefWidth="678.0" styleClass="buttonReports" stylesheets="@application.css">
+            <Button layoutX="39.0" layoutY="232.0" mnemonicParsing="false" onAction="#openReportModelBrand" opacity="0.46" prefHeight="100.0" prefWidth="678.0" styleClass="buttonReports" stylesheets="@application.css">
                <effect>
                   <DropShadow />
                </effect>
@@ -242,7 +242,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button layoutX="39.0" layoutY="123.0" mnemonicParsing="false" opacity="0.46" prefHeight="100.0" prefWidth="678.0" styleClass="buttonReports" stylesheets="@application.css">
+            <Button layoutX="39.0" layoutY="123.0" mnemonicParsing="false" onAction="#openReportCar" opacity="0.46" prefHeight="100.0" prefWidth="678.0" styleClass="buttonReports" stylesheets="@application.css">
                <effect>
                   <DropShadow />
                </effect>
@@ -270,7 +270,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button layoutX="38.0" layoutY="452.0" mnemonicParsing="false" opacity="0.46" prefHeight="100.0" prefWidth="678.0" styleClass="buttonReports" stylesheets="@application.css">
+            <Button layoutX="38.0" layoutY="452.0" mnemonicParsing="false" onAction="#openReportImports" opacity="0.46" prefHeight="100.0" prefWidth="678.0" styleClass="buttonReports" stylesheets="@application.css">
                <effect>
                   <DropShadow />
                </effect>
@@ -313,7 +313,7 @@
                   <Image url="@../../../../resources/icons8_money_50px.png" />
                </image>
             </ImageView>
-            <Button layoutX="38.0" layoutY="15.0" mnemonicParsing="false" opacity="0.46" prefHeight="100.0" prefWidth="678.0" styleClass="buttonReports" stylesheets="@application.css">
+            <Button layoutX="38.0" layoutY="15.0" mnemonicParsing="false" onAction="#openReportTourist" opacity="0.46" prefHeight="100.0" prefWidth="678.0" styleClass="buttonReports" stylesheets="@application.css">
                <effect>
                   <DropShadow />
                </effect>
@@ -346,7 +346,7 @@
                   <Image url="file:/D:/Universidad/2do%20semestre/Base%20de%20datos/Curso%20CUJAE%202023-2024/Trabajo/Final%20Project%20Repository/src/resources/icons8_tourist_guide_50px.png" />
                </image>
             </ImageView>
-            <Button layoutX="38.0" layoutY="342.0" mnemonicParsing="false" opacity="0.46" prefHeight="100.0" prefWidth="678.0" styleClass="buttonReports" stylesheets="@application.css">
+            <Button layoutX="38.0" layoutY="342.0" mnemonicParsing="false" onAction="#openReportCountry" opacity="0.46" prefHeight="100.0" prefWidth="678.0" styleClass="buttonReports" stylesheets="@application.css">
                <effect>
                   <DropShadow />
                </effect>
