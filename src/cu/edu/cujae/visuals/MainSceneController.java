@@ -8,14 +8,42 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class MainSceneController {
 	
 	@FXML
 	private AnchorPane mainScenePane;
+	
+	@FXML
+	private Pane mainPane;
+	
+	@FXML
+	private Pane secondaryPane;
+
+    @FXML
+    private Button bttnGoBack;
+
+    @FXML
+    private Button bttnReports;
+    
+    @FXML
+    private Label lblReports;
+    
+    @FXML
+    private Label lblMainMenu;
+    
+    @FXML
+    private VBox mainVBox;
+    
+    @FXML
+    private VBox secondaryVBox;
 	
 	private double x = 0;
 	private double y = 0;
@@ -153,4 +181,28 @@ public class MainSceneController {
 		stage.setScene(scene);
 		stage.centerOnScreen();
 	}
+	
+	@FXML
+    void switchForm(ActionEvent event) {
+    	
+    	if(event.getSource() == bttnReports) {
+    		secondaryPane.setVisible(true);
+    		secondaryVBox.setVisible(true);
+    		lblReports.setVisible(true);
+    		mainPane.setVisible(false);
+    		mainVBox.setVisible(false);
+    		lblMainMenu.setVisible(false);
+    	}else
+    		if(event.getSource() == bttnGoBack) {
+    			mainPane.setVisible(true);
+    			mainVBox.setVisible(true);
+    			lblMainMenu.setVisible(true);
+    			secondaryPane.setVisible(false);
+    			secondaryVBox.setVisible(false);
+    			lblReports.setVisible(false);
+    		}
+
+    }
+	
+	
 }
