@@ -14,6 +14,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.control.ComboBox;
 
 public class DataTableSceneTouristController {
 	
@@ -52,6 +55,81 @@ public class DataTableSceneTouristController {
 
     @FXML
     private Button bttnModify;
+    
+    @FXML
+    private Button bttnAddNewCountry;
+    
+    @FXML
+    private Button bttnModifyNewCountry;
+    
+//*****************    
+//*   ADD PANE    *
+//*****************    
+    
+    @FXML
+    private ComboBox<?> cmboxCountryAdd;
+
+    @FXML
+    private ComboBox<?> cmboxSexAdd;
+    
+    @FXML
+    private TextField txtAgeAdd;
+
+    @FXML
+    private TextField txtCountryAdd;
+
+    @FXML
+    private TextField txtLastName1Add;
+
+    @FXML
+    private TextField txtLastName2Add;
+
+    @FXML
+    private TextField txtNameAdd;
+
+    @FXML
+    private TextField txtPassportAdd;
+
+    @FXML
+    private TextField txtPhoneAdd;
+    
+    @FXML
+    private ImageView imgCountryAdd;
+
+//********************   
+//*   MODIFY PANE    *
+//******************** 
+    
+    @FXML
+    private ComboBox<?> cmboxCountryModify;
+
+    @FXML
+    private ComboBox<?> cmboxSexModify;
+    
+    @FXML
+    private TextField txtAgeModify;
+
+    @FXML
+    private TextField txtCountryModify;
+
+    @FXML
+    private TextField txtLastName1Modify;
+
+    @FXML
+    private TextField txtLastName2Modify;
+
+    @FXML
+    private TextField txtNameModify;
+
+    @FXML
+    private TextField txtPassportModify;
+
+    @FXML
+    private TextField txtPhoneModify;
+    
+    @FXML
+    private ImageView imgCountryModify;
+    
 	
 	private Stage stage;
 	private Scene scene;
@@ -122,20 +200,49 @@ public class DataTableSceneTouristController {
 	}
 	
 	public void cancelModify(ActionEvent event) {
+		addScenePane.setVisible(true);
 		modifyScenePane.setVisible(false);
 		bttnAdd.setDisable(false);
 		bttnModify.setDisable(false);
 		bttnDelete.setDisable(false);
-		addScenePane.setVisible(true);
+		
+		cmboxCountryModify.setVisible(true);
+		imgCountryModify.setVisible(true);
+		bttnModifyNewCountry.setDisable(false);
+		txtCountryModify.setVisible(false);
 	}
 	
 	public void cancelAdd(ActionEvent event) {
+		addScenePane.setVisible(true);
 		addParametersScenePane.setVisible(false);
 		bttnAdd.setDisable(false);
 		bttnModify.setDisable(false);
 		bttnDelete.setDisable(false);
-		addScenePane.setVisible(true);
+		
+		cmboxCountryAdd.setVisible(true);
+		imgCountryAdd.setVisible(true);
+		bttnAddNewCountry.setDisable(false);
+		txtCountryAdd.setVisible(false);
+		
 		tableScenePane.setMaxHeight(626);
 		touristTable.setMaxHeight(554);
+	}
+	
+	public void newTouristModorAdd(ActionEvent event) {
+		
+		if(event.getSource() == bttnAddNewCountry) {
+			
+			txtCountryAdd.setVisible(true);
+			bttnAddNewCountry.setDisable(true);
+			cmboxCountryAdd.setVisible(false);
+			imgCountryAdd.setVisible(false);
+			
+		}else if(event.getSource() == bttnModifyNewCountry) {
+			
+			txtCountryModify.setVisible(true);
+			bttnModifyNewCountry.setDisable(true);
+			cmboxCountryModify.setVisible(false);
+			imgCountryModify.setVisible(false);
+		}
 	}
 }
