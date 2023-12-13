@@ -121,7 +121,7 @@
          <children>
             <AnchorPane fx:id="addScenePane" layoutX="15.0" layoutY="15.0" prefHeight="624.0" prefWidth="986.0" stylesheets="@application.css">
                <children>
-                  <AnchorPane fx:id="tableScenePane" layoutY="-1.0" prefHeight="626.0" prefWidth="1030.0" stylesheets="@application.css">
+                  <AnchorPane fx:id="tableTouristsPane" layoutY="-1.0" prefHeight="626.0" prefWidth="1030.0" stylesheets="@application.css" visible="false">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
@@ -129,17 +129,118 @@
                      <children>
                         <TableView fx:id="touristTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
                           <columns>
-                            <TableColumn prefWidth="135.20001220703125" text="Pasaporte" />
+                            <TableColumn prefWidth="135.20001220703125" text="Fecha" />
                             <TableColumn prefWidth="176.80001831054688" text="Nombre" />
                               <TableColumn minWidth="0.0" prefWidth="156.79998779296875" text="Primer apellido" />
                               <TableColumn prefWidth="160.800048828125" text="Segundo apellido" />
-                              <TableColumn minWidth="0.0" prefWidth="43.2000732421875" text="Edad" />
-                              <TableColumn prefWidth="62.4000244140625" text="Género" />
-                              <TableColumn minWidth="0.0" prefWidth="118.39990234375" text="Teléfono" />
-                              <TableColumn prefWidth="142.39999999999998" text="País" />
+                              <TableColumn minWidth="0.0" prefWidth="159.199951171875" text="Fin del contrato" />
+                              <TableColumn minWidth="0.0" prefWidth="206.4000244140625" text="Fecha de entrega del carro" />
                           </columns>
                         </TableView>
                         <TextField layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="tableCarSituationPane" layoutY="14.0" prefHeight="640.8" prefWidth="1030.4" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <styleClass>
+                        <String fx:value="white-bg" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <TableView fx:id="carTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
+                           <columns>
+                              <TableColumn prefWidth="192.79998779296875" text="Fecha" />
+                              <TableColumn prefWidth="252.79998779296875" text="Marca" />
+                              <TableColumn minWidth="0.0" prefWidth="261.60003662109375" text="Situación" />
+                              <TableColumn minWidth="0.0" prefWidth="291.9998779296875" text="Fin del contrato" />
+                           </columns>
+                        </TableView>
+                        <TextField layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="tableModelBrandPane" layoutX="10.0" layoutY="9.0" prefHeight="636.0" prefWidth="1040.8" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <styleClass>
+                        <String fx:value="white-bg" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <TableView fx:id="modelBrandTable" layoutX="12.0" layoutY="67.0" prefHeight="294.0" prefWidth="998.0">
+                           <columns>
+                              <TableColumn prefWidth="103.20001220703125" text="Fecha" />
+                              <TableColumn prefWidth="136.00003051757812" text="Marca" />
+                              <TableColumn minWidth="0.0" prefWidth="138.39996337890625" text="Modelo" />
+                              <TableColumn prefWidth="167.199951171875" text="Cantidad de días alquilados" />
+                              <TableColumn minWidth="0.0" prefWidth="182.39996337890625" text="Ingresos por tarjeta de crédito" />
+                              <TableColumn minWidth="0.0" prefWidth="131.2000732421875" text="Ingresos por cheques" />
+                              <TableColumn minWidth="0.0" prefWidth="142.4000244140625" text="Ingresos por efectivo" />
+                           </columns>
+                        </TableView>
+                        <TextField layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
+                        <TableView fx:id="importsBrandTable" layoutX="12.0" layoutY="369.0" prefHeight="242.0" prefWidth="499.0">
+                           <columns>
+                              <TableColumn prefWidth="246.39993286132812" text="Marca" />
+                              <TableColumn minWidth="0.0" prefWidth="252.800048828125" text="Total de ingresos" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="571.0" layoutY="369.0" text="Total general de ingresos:" textFill="WHITE">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutX="662.0" layoutY="438.0" prefHeight="122.0" prefWidth="226.0" style="-fx-background-color: #FA2C56; -fx-background-radius: 8;">
+                           <children>
+                              <Label fx:id="lblTotalImport" layoutX="45.0" layoutY="35.0" text="Dinero $" textFill="WHITE">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="tableCountryPane" layoutX="10.0" layoutY="9.0" prefHeight="636.0" prefWidth="1040.8" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <styleClass>
+                        <String fx:value="white-bg" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <TableView fx:id="countryTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
+                           <columns>
+                              <TableColumn prefWidth="102.39999389648438" text="Fecha" />
+                              <TableColumn prefWidth="151.20004272460938" text="País" />
+                              <TableColumn minWidth="0.0" prefWidth="124.800048828125" text="Marca" />
+                              <TableColumn prefWidth="143.199951171875" text="Modelo" />
+                              <TableColumn minWidth="0.0" prefWidth="168.7999267578125" text="Cantidad de días alquilados" />
+                              <TableColumn minWidth="0.0" prefWidth="58.39990234375" text="Prórroga" />
+                              <TableColumn minWidth="0.0" prefWidth="128.800048828125" text="Total en efectivo" />
+                              <TableColumn minWidth="0.0" prefWidth="124.800048828125" text="Total general" />
+                           </columns>
+                        </TableView>
+                        <TextField layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="tableImportsPane" layoutX="10.0" layoutY="9.0" prefHeight="636.0" prefWidth="1040.8" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <styleClass>
+                        <String fx:value="white-bg" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <TableView fx:id="importsTable" layoutX="12.0" layoutY="67.0" prefHeight="185.0" prefWidth="998.0">
+                           <columns>
+                              <TableColumn prefWidth="529.6000366210938" text="Fecha" />
+                              <TableColumn prefWidth="468.7999267578125" text="Ingreso total anual" />
+                           </columns>
+                        </TableView>
+                        <TableView fx:id="importsMonthTable" layoutX="12.0" layoutY="375.0" prefHeight="185.0" prefWidth="998.0">
+                           <columns>
+                              <TableColumn prefWidth="529.6000366210938" text="Fecha" />
+                              <TableColumn prefWidth="468.7999267578125" text="Ingreso total anual" />
+                           </columns>
+                        </TableView>
+                        <Label fx:id="lblYearImport" layoutX="14.0" layoutY="313.0" prefHeight="54.0" prefWidth="238.0" text="Año:" textFill="WHITE">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </children>
