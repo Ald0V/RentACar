@@ -153,12 +153,6 @@
                            </font>
                         </Label>
                         <TextField layoutX="403.0" layoutY="29.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <TextField layoutX="781.0" layoutY="29.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="641.0" layoutY="28.0" prefHeight="27.0" prefWidth="140.0" text="Kilómetros recorridos:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
                         <Label layoutX="72.0" layoutY="96.0" prefHeight="27.0" prefWidth="48.0" text="Marca:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
@@ -171,12 +165,12 @@
                            </font>
                         </Label>
                         <ComboBox layoutX="403.0" layoutY="97.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="666.0" layoutY="96.0" prefHeight="27.0" prefWidth="114.0" text="Estado del coche:" textFill="WHITE">
+                        <Label layoutX="670.0" layoutY="28.0" prefHeight="27.0" prefWidth="114.0" text="Estado del coche:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="781.0" layoutY="97.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <ComboBox layoutX="785.0" layoutY="29.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                      </children>
                   </AnchorPane>
                </children>
@@ -241,12 +235,6 @@
                            </font>
                         </Label>
                         <ComboBox layoutX="129.0" layoutY="358.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="14.0" layoutY="436.0" prefHeight="27.0" prefWidth="114.0" text="Estado del coche:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <ComboBox layoutX="129.0" layoutY="437.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="370.0" layoutY="24.0" prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css">

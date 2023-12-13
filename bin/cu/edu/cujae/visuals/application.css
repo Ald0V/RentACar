@@ -144,3 +144,18 @@
 .labelSwitchLogin:pressed{
 	-fx-text-fill: #8B0000
 }
+
+.buttonNew{
+	-fx-background-color: #393351;
+	-fx-background-radius: 5;
+	-fx-cursor:hand;
+}
+
+.buttonNew:hover{
+	-fx-background-color: #524A7B;
+	-fx-background-radius: 5
+}
+.buttonNew:pressed{
+	-fx-background-color: #2F2B43;
+	-fx-background-radius: 5
+}

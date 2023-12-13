@@ -34,6 +34,24 @@ public class DataTableSceneContractController {
     
     @FXML
     private AnchorPane addParametersScenePane;
+
+    @FXML
+    private AnchorPane addNewTourist;
+    
+    @FXML
+    private AnchorPane addNewCar;
+    
+    @FXML
+    private Button bttnAddNewTourist;
+    
+    @FXML
+    private Button bttnAddNewCar;
+    
+    @FXML
+    private Button bttnModifyNewTourist;
+    
+    @FXML
+    private Button bttnModifyNewCar;
     
     @FXML
     private TableView<?> contractTable;
@@ -113,7 +131,24 @@ public class DataTableSceneContractController {
 			contractTable.setMaxHeight(286);
 			
 			modifyScenePane.setVisible(false);
-		}		
+		}			
+	}
+	
+	public void switchNewTouristOrCar(ActionEvent event) {
+		
+		if(event.getSource() == bttnAddNewTourist) {
+			addNewTourist.setVisible(true);
+		}else if(event.getSource() == bttnAddNewCar) {
+			addNewCar.setVisible(true);
+		}else if(event.getSource() == bttnModifyNewTourist) {
+			addNewTourist.setVisible(true);
+			bttnModifyNewTourist.setDisable(true);
+			bttnModifyNewCar.setDisable(true);
+		}else if(event.getSource() == bttnModifyNewCar) {
+			addNewCar.setVisible(true);
+			bttnModifyNewTourist.setDisable(true);
+			bttnModifyNewCar.setDisable(true);
+		}
 	}
 	
 	public void cancelModify(ActionEvent event) {
@@ -133,5 +168,29 @@ public class DataTableSceneContractController {
 		tableScenePane.setMaxHeight(626);
 		contractTable.setMaxHeight(554);
 	}
+	
+	public void cancelNewTourist(ActionEvent event) {
+		addNewTourist.setVisible(false);
+		bttnModifyNewTourist.setDisable(false);
+		bttnModifyNewCar.setDisable(false);
+	}
+	
+	public void cancelNewCar(ActionEvent event) {
+		addNewCar.setVisible(false);
+		bttnModifyNewTourist.setDisable(false);
+		bttnModifyNewCar.setDisable(false);
+	}
+	
+//	public void cancelModifyNewTourist(ActionEvent event) {
+//		addNewTourist.setVisible(false);
+//		bttnModifyNewTourist.setDisable(false);
+//		bttnModifyNewCar.setDisable(false);
+//	}
+//	
+//	public void cancelModifyNewCar(ActionEvent event) {
+//		addNewCar.setVisible(false);
+//		bttnModifyNewTourist.setDisable(false);
+//		bttnModifyNewCar.setDisable(false);
+//	} 
 
 }
