@@ -34,6 +34,12 @@ public class MainSceneController {
     private Button bttnReports;
     
     @FXML
+    private Button bttnReportsAdmin;
+    
+    @FXML
+    private Button bttnManageUser;
+    
+    @FXML
     private Button bttnTourists;
 
     @FXML
@@ -59,6 +65,11 @@ public class MainSceneController {
     
     @FXML
     private VBox secondaryVBox;
+    
+    @FXML
+    private VBox adminVBox;
+    
+    private Button lastButtonPressed;
 	
 	private double x = 0;
 	private double y = 0;
@@ -201,22 +212,49 @@ public class MainSceneController {
     void switchForm(ActionEvent event) {
     	
     	if(event.getSource() == bttnReports) {
+    		lastButtonPressed = bttnReports;
+    		
     		secondaryPane.setVisible(true);
     		secondaryVBox.setVisible(true);
     		lblReports.setVisible(true);
     		mainPane.setVisible(false);
     		mainVBox.setVisible(false);
     		lblMainMenu.setVisible(false);
-    	}else
-    		if(event.getSource() == bttnGoBack) {
-    			mainPane.setVisible(true);
-    			mainVBox.setVisible(true);
-    			lblMainMenu.setVisible(true);
-    			secondaryPane.setVisible(false);
-    			secondaryVBox.setVisible(false);
-    			lblReports.setVisible(false);
-    		}
+    	}else if(event.getSource() == bttnReportsAdmin) {
+			lastButtonPressed = bttnReportsAdmin;
+			
+    		secondaryPane.setVisible(true);
+    		secondaryVBox.setVisible(true);
+    		lblReports.setVisible(true);
+    		
+    		mainPane.setVisible(false);
+    		adminVBox.setVisible(false);
+    		lblMainMenu.setVisible(false);
+    	}
     }
+		
+	
+    public void backToAdmin_OR_User(ActionEvent event) {
+    	if (lastButtonPressed == bttnReportsAdmin && event.getSource() == bttnGoBack) {
+    		mainPane.setVisible(true);
+			adminVBox.setVisible(true);
+			lblMainMenu.setVisible(true);
+			
+			secondaryPane.setVisible(false);
+			secondaryVBox.setVisible(false);
+			lblReports.setVisible(false);
+    	}else {
+    		mainPane.setVisible(true);
+    		mainVBox.setVisible(true);
+    		lblMainMenu.setVisible(true);
+
+    		secondaryPane.setVisible(false);
+    		secondaryVBox.setVisible(false);
+    		lblReports.setVisible(false);
+    	}
+	}
+    
+    
 	
 	public void openReportTourist(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneReports.fxml"));
@@ -409,6 +447,10 @@ public class MainSceneController {
 		
 		stage.setScene(scene);
 		stage.centerOnScreen();
+	}
+	
+	public void manageAppUser(ActionEvent event) throws IOException{
+		
 	}
 
 }

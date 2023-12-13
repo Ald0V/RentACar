@@ -19,7 +19,7 @@
    <children>
       <AnchorPane prefHeight="567.0" prefWidth="258.0" style="-fx-background-color: #393051;" AnchorPane.bottomAnchor="-0.20000000000004547" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-0.20000000000004547">
          <children>
-            <VBox fx:id="mainVBox" layoutX="4.0" layoutY="165.0" prefHeight="402.0" prefWidth="258.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="165.0">
+            <VBox fx:id="mainVBox" layoutX="4.0" layoutY="165.0" prefHeight="402.0" prefWidth="258.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="165.0">
                <children>
                   <Button fx:id="bttnReports" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Reportes" textFill="WHITE">
                      <graphic>
@@ -73,13 +73,65 @@
                   </Label>
                </children>
             </Pane>
-            <VBox fx:id="secondaryVBox" layoutX="3.0" layoutY="164.0" prefHeight="402.0" prefWidth="258.0" visible="false">
+            <VBox fx:id="secondaryVBox" layoutX="4.0" layoutY="165.0" prefHeight="402.0" prefWidth="258.0" visible="false">
                <children>
-                  <Button fx:id="bttnGoBack" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Atrás" textFill="WHITE">
+                  <Button fx:id="bttnGoBack" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#backToAdmin_OR_User" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Atrás" textFill="WHITE">
                      <graphic>
                         <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../resources/icons8_back_50px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#logout" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Salir" textFill="WHITE">
+                     <graphic>
+                        <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:/D:/Universidad/2do%20semestre/Base%20de%20datos/Curso%20CUJAE%202023-2024/Trabajo/Final%20Project%20Repository/src/resources/icons8_shutdown_50px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox fx:id="adminVBox" layoutX="4.0" layoutY="165.0" prefHeight="402.0" prefWidth="258.0">
+               <children>
+                  <Button fx:id="bttnManageUser" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#manageAppUser" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Gestionar usuarios" textFill="WHITE">
+                     <graphic>
+                        <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../resources/icons8_customer_50px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="bttnReportsAdmin" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Reportes" textFill="WHITE">
+                     <graphic>
+                        <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:/D:/Universidad/2do%20semestre/Base%20de%20datos/Curso%20CUJAE%202023-2024/Trabajo/Final%20Project%20Repository/src/resources/icons8_view_details_50px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#closeCurrentSession" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Cerrar sesión" textFill="WHITE">
+                     <graphic>
+                        <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../resources/icons8_exit_50px.png" />
                            </image>
                         </ImageView>
                      </graphic>
