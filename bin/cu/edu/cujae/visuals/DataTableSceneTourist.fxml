@@ -19,7 +19,7 @@
    <children>
       <AnchorPane prefHeight="567.0" prefWidth="258.0" style="-fx-background-color: #393051;" AnchorPane.bottomAnchor="-0.20000000000004547" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-0.20000000000004547">
          <children>
-            <VBox layoutY="165.0" prefHeight="402.0" prefWidth="258.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="165.0">
+            <VBox fx:id="notVisitorVBox" layoutY="165.0" prefHeight="402.0" prefWidth="258.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="165.0">
                <children>
                   <Button fx:id="bttnAdd" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Nuevo..." textFill="WHITE">
                      <graphic>
@@ -92,6 +92,34 @@
                   </Label>
                </children>
             </Pane>
+            <VBox fx:id="visitorVBox" layoutY="165.0" prefHeight="402.0" prefWidth="258.0" visible="false">
+               <children>
+                  <Button fx:id="bttnBack1" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#backMain" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Atrás" textFill="WHITE">
+                     <graphic>
+                        <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../resources/icons8_back_50px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#logout" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Salir" textFill="WHITE">
+                     <graphic>
+                        <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:/D:/Universidad/2do%20semestre/Base%20de%20datos/Curso%20CUJAE%202023-2024/Trabajo/Final%20Project%20Repository/src/resources/icons8_shutdown_50px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="263.0" prefHeight="651.0" prefWidth="1053.0">

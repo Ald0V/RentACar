@@ -16,6 +16,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class DataTableSceneContractController {
@@ -108,6 +109,12 @@ public class DataTableSceneContractController {
     
     @FXML
     private TextField txtTotalImportModify;
+    
+    @FXML
+    private VBox notVisitorVBox;
+    
+    @FXML
+    private VBox visitorVBox;
 	
 	private Stage stage;
 	private Scene scene;

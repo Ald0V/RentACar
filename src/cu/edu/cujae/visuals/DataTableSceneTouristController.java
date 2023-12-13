@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.scene.control.ComboBox;
 
 public class DataTableSceneTouristController {
@@ -49,6 +50,9 @@ public class DataTableSceneTouristController {
 
     @FXML
     private Button bttnBack;
+    
+    @FXML
+    private Button bttnBack1;
 
     @FXML
     private Button bttnDelete;
@@ -61,6 +65,12 @@ public class DataTableSceneTouristController {
     
     @FXML
     private Button bttnModifyNewCountry;
+    
+    @FXML
+    private VBox notVisitorVBox;
+    
+    @FXML
+    private VBox visitorVBox;
     
 //*****************    
 //*   ADD PANE    *
