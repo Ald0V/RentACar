@@ -146,31 +146,31 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="121.0" layoutY="29.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <TextField fx:id="txtPlateAdd" layoutX="121.0" layoutY="29.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="360.0" layoutY="28.0" prefHeight="27.0" prefWidth="42.0" text="Color:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="403.0" layoutY="29.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <TextField fx:id="txtColorAdd" layoutX="403.0" layoutY="29.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="72.0" layoutY="96.0" prefHeight="27.0" prefWidth="48.0" text="Marca:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="121.0" layoutY="97.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <ComboBox fx:id="cmboxBrandAdd" layoutX="121.0" layoutY="97.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="346.0" layoutY="96.0" prefHeight="27.0" prefWidth="56.0" text="Modelo:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="403.0" layoutY="97.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <ComboBox fx:id="cmboxModelAdd" layoutX="403.0" layoutY="97.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="670.0" layoutY="28.0" prefHeight="27.0" prefWidth="114.0" text="Estado del coche:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="785.0" layoutY="29.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <ComboBox fx:id="cmboxCarStatusAdd" layoutX="785.0" layoutY="29.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                      </children>
                   </AnchorPane>
                </children>
@@ -205,36 +205,36 @@
                               <String fx:value="buttonAdd" />
                            </styleClass>
                         </Button>
-                        <Label layoutX="85.0" layoutY="59.0" prefHeight="27.0" prefWidth="42.0" text="Placa:" textFill="WHITE">
+                        <Label layoutX="89.0" layoutY="85.0" prefHeight="27.0" prefWidth="42.0" text="Placa:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="128.0" layoutY="60.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="85.0" layoutY="129.0" prefHeight="27.0" prefWidth="42.0" text="Color:" textFill="WHITE">
+                        <TextField fx:id="txtPlateModify" layoutX="132.0" layoutY="86.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="89.0" layoutY="155.0" prefHeight="27.0" prefWidth="42.0" text="Color:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="128.0" layoutY="130.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <TextField layoutX="128.0" layoutY="204.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="29.0" layoutY="203.0" prefHeight="27.0" prefWidth="93.0" text="Km recorridos:" textFill="WHITE">
+                        <TextField fx:id="txtColorModify" layoutX="132.0" layoutY="156.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="83.0" layoutY="231.0" prefHeight="27.0" prefWidth="48.0" text="Marca:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="81.0" layoutY="278.0" prefHeight="27.0" prefWidth="48.0" text="Marca:" textFill="WHITE">
+                        <ComboBox fx:id="cmboxBrandModify" layoutX="132.0" layoutY="232.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="74.0" layoutY="310.0" prefHeight="27.0" prefWidth="56.0" text="Modelo:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="130.0" layoutY="279.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="72.0" layoutY="357.0" prefHeight="27.0" prefWidth="56.0" text="Modelo:" textFill="WHITE">
+                        <ComboBox fx:id="cmboxModelModify" layoutX="131.0" layoutY="311.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <Label layoutX="17.0" layoutY="400.0" prefHeight="27.0" prefWidth="114.0" text="Estado del coche:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="129.0" layoutY="358.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <ComboBox fx:id="cmboxCarStatusModify" layoutX="132.0" layoutY="401.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="370.0" layoutY="24.0" prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css">

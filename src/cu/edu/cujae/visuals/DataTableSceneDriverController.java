@@ -14,6 +14,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ComboBox;
 
 public class DataTableSceneDriverController {
 	
@@ -49,6 +51,50 @@ public class DataTableSceneDriverController {
     
     @FXML
     private Button bttnDelete;
+ 
+//*****************    
+//*   ADD PANE    *
+//***************** 
+    
+    @FXML
+    private ComboBox<?> cmboxLicenseAdd;
+    
+    @FXML
+    private TextField txtAddressAdd;
+
+    @FXML
+    private TextField txtIDAdd;
+
+    @FXML
+    private TextField txtLastName1Add;
+
+    @FXML
+    private TextField txtLastName2Add;
+
+    @FXML
+    private TextField txtNameAdd;
+    
+//********************   
+//*   MODIFY PANE    *
+//******************** 
+    
+    @FXML
+    private ComboBox<?> cmboxLicenseModify;
+    
+    @FXML
+    private TextField txtAddressModify;
+
+    @FXML
+    private TextField txtIDModify;
+
+    @FXML
+    private TextField txtLastName1Modify;
+
+    @FXML
+    private TextField txtLastName2Modify;
+
+    @FXML
+    private TextField txtNameModify;
 	
 	private Stage stage;
 	private Scene scene;

@@ -9,8 +9,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -49,6 +51,44 @@ public class DataTableSceneCarController {
     
     @FXML
     private Button bttnDelete;
+    
+//*****************    
+//*   ADD PANE    *
+//*****************  
+    
+    @FXML
+    private ComboBox<?> cmboxBrandAdd;
+
+    @FXML
+    private ComboBox<?> cmboxCarStatusAdd;
+
+    @FXML
+    private ComboBox<?> cmboxModelAdd;
+    
+    @FXML
+    private TextField txtColorAdd;
+
+    @FXML
+    private TextField txtPlateAdd;
+    
+//********************   
+//*   MODIFY PANE    *
+//******************** 
+    
+    @FXML
+    private ComboBox<?> cmboxBrandModify;
+
+    @FXML
+    private ComboBox<?> cmboxCarStatusModify;
+
+    @FXML
+    private ComboBox<?> cmboxModelModify;
+    
+    @FXML
+    private TextField txtColorModify;
+
+    @FXML
+    private TextField txtPlateModify;
 	
 	private Stage stage;
 	private Scene scene;

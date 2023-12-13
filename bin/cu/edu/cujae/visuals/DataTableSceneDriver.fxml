@@ -147,37 +147,37 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="164.0" layoutY="41.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <TextField fx:id="txtIDAdd" layoutX="164.0" layoutY="41.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="403.0" layoutY="41.0" prefHeight="27.0" prefWidth="98.0" text="Primer apellido:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="506.0" layoutY="42.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <TextField fx:id="txtLastName1Add" layoutX="506.0" layoutY="42.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="758.0" layoutY="40.0" prefHeight="27.0" prefWidth="66.0" text="Dirección:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="824.0" layoutY="41.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <TextField fx:id="txtAddressAdd" layoutX="824.0" layoutY="41.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="105.0" layoutY="95.0" prefHeight="27.0" prefWidth="56.0" text="Nombre:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="165.0" layoutY="96.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <TextField fx:id="txtNameAdd" layoutX="165.0" layoutY="96.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="390.0" layoutY="96.0" prefHeight="27.0" prefWidth="114.0" text="Segundo apellido:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="507.0" layoutY="97.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <TextField fx:id="txtLastName2Add" layoutX="507.0" layoutY="97.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="721.0" layoutY="95.0" prefHeight="27.0" prefWidth="105.0" text="Tipo de licencia:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="825.0" layoutY="96.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <ComboBox fx:id="cmboxLicenseAdd" layoutX="825.0" layoutY="96.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                      </children>
                   </AnchorPane>
                </children>
@@ -217,37 +217,37 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="133.0" layoutY="119.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <TextField fx:id="txtIDModify" layoutX="133.0" layoutY="119.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="73.0" layoutY="178.0" prefHeight="27.0" prefWidth="56.0" text="Nombre:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="133.0" layoutY="179.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <TextField fx:id="txtNameModify" layoutX="133.0" layoutY="179.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="30.0" layoutY="237.0" prefHeight="27.0" prefWidth="98.0" text="Primer apellido:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="133.0" layoutY="238.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <TextField fx:id="txtLastName1Modify" layoutX="133.0" layoutY="238.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="16.0" layoutY="295.0" prefHeight="27.0" prefWidth="114.0" text="Segundo apellido:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="133.0" layoutY="296.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <TextField fx:id="txtLastName2Modify" layoutX="133.0" layoutY="296.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="67.0" layoutY="350.0" prefHeight="27.0" prefWidth="66.0" text="Dirección:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="133.0" layoutY="351.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <TextField fx:id="txtAddressModify" layoutX="133.0" layoutY="351.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="30.0" layoutY="410.0" prefHeight="27.0" prefWidth="106.0" text="Tipo de licencia:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="135.0" layoutY="411.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <ComboBox fx:id="cmboxLicenseModify" layoutX="135.0" layoutY="411.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="370.0" layoutY="24.0" prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css">

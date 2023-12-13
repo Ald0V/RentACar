@@ -149,31 +149,31 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <DatePicker layoutX="147.0" layoutY="35.0" />
+                        <DatePicker fx:id="pickdateStartAdd" layoutX="147.0" layoutY="35.0" />
                         <Label layoutX="97.0" layoutY="116.0" prefHeight="27.0" prefWidth="48.0" text="Turista:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="147.0" layoutY="116.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <ComboBox fx:id="cmboxTouristAdd" layoutX="147.0" layoutY="116.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="726.0" layoutY="34.0" prefHeight="27.0" prefWidth="108.0" text="Método de pago:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="841.0" layoutY="35.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <ComboBox fx:id="cmboxPayMethodAdd" layoutX="841.0" layoutY="35.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="411.0" layoutY="116.0" prefHeight="27.0" prefWidth="86.0" text="Importe total:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="501.0" layoutY="117.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <TextField fx:id="txtTotalImportAdd" layoutX="501.0" layoutY="117.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="460.0" layoutY="34.0" prefHeight="27.0" prefWidth="42.0" text="Carro:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="502.0" layoutY="35.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <ComboBox fx:id="cmboxCarAdd" layoutX="502.0" layoutY="35.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                         <Button fx:id="bttnAddNewTourist" layoutX="296.0" layoutY="114.0" mnemonicParsing="false" onAction="#switchNewTouristOrCar" prefHeight="30.0" prefWidth="32.0" styleClass="buttonNew" stylesheets="@application.css" textFill="WHITE">
                            <font>
                               <Font name="System Bold Italic" size="12.0" />
@@ -233,31 +233,31 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <DatePicker layoutX="131.0" layoutY="121.0" />
+                        <DatePicker fx:id="pickdateStartModify" layoutX="131.0" layoutY="121.0" />
                         <Label layoutX="82.0" layoutY="174.0" prefHeight="27.0" prefWidth="55.0" text="Turista:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="131.0" layoutY="175.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <ComboBox fx:id="cmboxTouristModify" layoutX="131.0" layoutY="175.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="89.0" layoutY="232.0" prefHeight="27.0" prefWidth="42.0" text="Carro:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="131.0" layoutY="233.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <ComboBox fx:id="cmboxCarModify" layoutX="131.0" layoutY="233.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="16.0" layoutY="294.0" prefHeight="27.0" prefWidth="108.0" text="Método de pago:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="131.0" layoutY="295.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <ComboBox fx:id="cmboxPayMethodModify" layoutX="131.0" layoutY="295.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="44.0" layoutY="358.0" prefHeight="27.0" prefWidth="86.0" text="Importe total:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="134.0" layoutY="359.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+                        <TextField fx:id="txtTotalImportModify" layoutX="134.0" layoutY="359.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
                         <Button fx:id="bttnModifyNewTourist" layoutX="281.0" layoutY="172.0" mnemonicParsing="false" onAction="#switchNewTouristOrCar" prefHeight="30.0" prefWidth="30.0" styleClass="buttonNew" stylesheets="@application.css" textFill="WHITE">
                            <font>
                               <Font name="System Bold Italic" size="12.0" />

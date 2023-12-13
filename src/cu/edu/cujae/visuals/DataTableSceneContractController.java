@@ -9,8 +9,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -67,6 +70,44 @@ public class DataTableSceneContractController {
     
     @FXML
     private Button bttnDelete;
+    
+//*****************    
+//*   ADD PANE    *
+//*****************  
+    
+    @FXML
+    private ComboBox<?> cmboxCarAdd;
+
+    @FXML
+    private ComboBox<?> cmboxPayMethodAdd;
+
+    @FXML
+    private ComboBox<?> cmboxTouristAdd;
+    
+    @FXML
+    private DatePicker pickdateStartAdd;
+    
+    @FXML
+    private TextField txtTotalImportAdd;
+    
+//********************   
+//*   MODIFY PANE    *
+//******************** 
+    
+    @FXML
+    private ComboBox<?> cmboxCarModify;
+
+    @FXML
+    private ComboBox<?> cmboxPayMethodModify;
+
+    @FXML
+    private ComboBox<?> cmboxTouristModify;
+    
+    @FXML
+    private DatePicker pickdateStartModify;
+    
+    @FXML
+    private TextField txtTotalImportModify;
 	
 	private Stage stage;
 	private Scene scene;
