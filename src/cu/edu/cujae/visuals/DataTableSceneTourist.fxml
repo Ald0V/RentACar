@@ -229,6 +229,26 @@
                               <Image url="@../../../../resources/icons8_plus_math_32px.png" />
                            </image>
                         </ImageView>
+                        <Label fx:id="lblErrorEmpty" alignment="CENTER" layoutX="212.0" layoutY="173.0" prefHeight="38.0" prefWidth="418.0" text="Todos los campos son obligatorios" textAlignment="CENTER" textFill="RED" visible="false">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblErrorPassport" alignment="CENTER" layoutX="212.0" layoutY="173.0" prefHeight="38.0" prefWidth="418.0" text="El campo pasaporte no es válido" textAlignment="CENTER" textFill="RED" visible="false">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblErrorAge" alignment="CENTER" layoutX="212.0" layoutY="173.0" prefHeight="38.0" prefWidth="418.0" text="El campo edad no es válido" textAlignment="CENTER" textFill="RED" visible="false">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblErrorPhone" alignment="CENTER" layoutX="212.0" layoutY="173.0" prefHeight="38.0" prefWidth="418.0" text="El campo teléfono no es válido" textAlignment="CENTER" textFill="RED" visible="false">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </children>
@@ -245,6 +265,26 @@
                         <String fx:value="white-bg" />
                      </styleClass>
                      <children>
+                        <Label fx:id="lblErrorEmpty1" alignment="CENTER" layoutX="5.0" layoutY="494.0" prefHeight="38.0" prefWidth="310.0" text="Todos los campos son obligatorios" textAlignment="CENTER" textFill="RED" visible="false">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblErrorPassport1" alignment="CENTER" layoutX="5.0" layoutY="494.0" prefHeight="38.0" prefWidth="310.0" text="El campo pasaporte no es válido" textAlignment="CENTER" textFill="RED" visible="false">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblErrorAge1" alignment="CENTER" layoutX="5.0" layoutY="494.0" prefHeight="38.0" prefWidth="310.0" text="El campo edad no es válido" textAlignment="CENTER" textFill="RED" visible="false">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblErrorPhone1" alignment="CENTER" layoutX="5.0" layoutY="494.0" prefHeight="38.0" prefWidth="310.0" text="El campo teléfono no es válido" textAlignment="CENTER" textFill="RED" visible="false">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
                         <Button layoutX="17.0" layoutY="540.0" mnemonicParsing="false" onAction="#cancelModify" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Cancelar" textFill="WHITE">
                            <font>
                               <Font size="18.0" />

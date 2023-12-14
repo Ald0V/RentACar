@@ -45,6 +45,18 @@ public class DataTableSceneCarController {
     private Label lblName;
     
     @FXML
+    private Label lblErrorEmpty;
+
+    @FXML
+    private Label lblErrorEmpty1;
+    
+    @FXML
+    private Label lblErrorPlate;
+
+    @FXML
+    private Label lblErrorPlate1;
+    
+    @FXML
     private Button bttnModify;
     
     @FXML
@@ -52,6 +64,14 @@ public class DataTableSceneCarController {
     
     @FXML
     private Button bttnDelete;
+    
+//0ºººººººººººººººº0    
+//0   ADD TABLE    0
+//0ºººººººººººººººº0 
+      
+//0ººººººººººººººººººº0  
+//0   MODIFY TABLE    0
+//0ººººººººººººººººººº0
     
 //*****************    
 //*   ADD PANE    *

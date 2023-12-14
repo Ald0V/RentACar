@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -222,6 +223,17 @@
                               <Image url="@../../../../resources/icons8_plus_math_32px.png" />
                            </image>
                         </ImageView>
+                        <Label fx:id="lblErrorEmpty" alignment="CENTER" layoutX="212.0" layoutY="173.0" prefHeight="38.0" prefWidth="418.0" text="Todos los campos son obligatorios" textAlignment="CENTER" textFill="RED" visible="false">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="726.0" layoutY="116.0" prefHeight="27.0" prefWidth="126.0" text="Alquiler del chófer:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <CheckBox fx:id="checkDriverRentalAdd" layoutX="852.0" layoutY="120.0" mnemonicParsing="false" />
                      </children>
                   </AnchorPane>
                </children>
@@ -306,6 +318,17 @@
                               <Image url="@../../../../resources/icons8_plus_math_32px.png" />
                            </image>
                         </ImageView>
+                        <Label fx:id="lblErrorEmpty1" alignment="CENTER" layoutX="5.0" layoutY="477.0" prefHeight="38.0" prefWidth="310.0" text="Todos los campos son obligatorios" textAlignment="CENTER" textFill="RED" visible="false">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="13.0" layoutY="404.0" prefHeight="27.0" prefWidth="114.0" text="Alquiler del chófer" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <CheckBox fx:id="checkDriverRentalModify" layoutX="135.0" layoutY="409.0" mnemonicParsing="false" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="370.0" layoutY="24.0" prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css">
@@ -343,49 +366,49 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="154.0" layoutY="20.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+            <TextField fx:id="txtPassportAdd" layoutX="154.0" layoutY="20.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
             <Label layoutX="94.0" layoutY="74.0" prefHeight="27.0" prefWidth="56.0" text="Nombre:" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="154.0" layoutY="75.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+            <TextField fx:id="txtNameAdd" layoutX="154.0" layoutY="75.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
             <Label layoutX="51.0" layoutY="133.0" prefHeight="27.0" prefWidth="98.0" text="Primer apellido:" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="154.0" layoutY="134.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+            <TextField fx:id="txtLastName1Add" layoutX="154.0" layoutY="134.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
             <Label layoutX="353.0" layoutY="18.0" prefHeight="27.0" prefWidth="114.0" text="Segundo apellido:" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="470.0" layoutY="19.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+            <TextField fx:id="txtLastName2Add" layoutX="470.0" layoutY="19.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
             <Label layoutX="428.0" layoutY="73.0" prefHeight="27.0" prefWidth="42.0" text="Edad:" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="470.0" layoutY="74.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+            <TextField fx:id="txtAgeAdd" layoutX="470.0" layoutY="74.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
             <Label layoutX="404.0" layoutY="131.0" prefHeight="27.0" prefWidth="66.0" text="Teléfono:" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="470.0" layoutY="132.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+            <TextField fx:id="txtPhoneAdd" layoutX="470.0" layoutY="132.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
             <Label layoutX="673.0" layoutY="47.0" prefHeight="27.0" prefWidth="56.0" text="Género:" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <ComboBox layoutX="729.0" layoutY="48.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+            <ComboBox fx:id="cmboxSexAdd" layoutX="729.0" layoutY="48.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
             <Label layoutX="691.0" layoutY="101.0" prefHeight="27.0" prefWidth="32.0" text="País:" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <ComboBox layoutX="728.0" layoutY="102.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+            <ComboBox fx:id="cmboxCountryAdd" layoutX="728.0" layoutY="102.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
             <Button layoutX="740.0" layoutY="158.0" mnemonicParsing="false" onAction="#cancelNewTourist" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Cancelar" textFill="WHITE">
                <font>
                   <Font size="18.0" />
@@ -404,6 +427,37 @@
                   <String fx:value="buttonAdd" />
                </styleClass>
             </Button>
+            <Label fx:id="lblErrorEmptyTourist" alignment="CENTER" layoutX="212.0" layoutY="173.0" prefHeight="38.0" prefWidth="418.0" text="Todos los campos son obligatorios" textAlignment="CENTER" textFill="RED" visible="false">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblErrorPassport" alignment="CENTER" layoutX="212.0" layoutY="173.0" prefHeight="38.0" prefWidth="418.0" text="El campo pasaporte no es válido" textAlignment="CENTER" textFill="RED" visible="false">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblErrorAge" alignment="CENTER" layoutX="212.0" layoutY="173.0" prefHeight="38.0" prefWidth="418.0" text="El campo edad no es válido" textAlignment="CENTER" textFill="RED" visible="false">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblErrorPhone" alignment="CENTER" layoutX="212.0" layoutY="173.0" prefHeight="38.0" prefWidth="418.0" text="El campo teléfono no es válido" textAlignment="CENTER" textFill="RED" visible="false">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtCountryAdd" layoutX="728.0" layoutY="102.0" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" visible="false" />
+            <Button fx:id="bttnAddNewCountry" layoutX="877.0" layoutY="99.0" mnemonicParsing="false" onAction="#newTouristAdd" prefHeight="30.0" prefWidth="30.0" styleClass="buttonNew" stylesheets="@application.css" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="imgCountryAdd" disable="true" fitHeight="30.0" fitWidth="32.0" layoutX="877.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../resources/icons8_plus_math_32px.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="addNewCar" layoutX="278.0" layoutY="421.0" prefHeight="220.0" prefWidth="1030.0" stylesheets="@application.css" visible="false">
@@ -435,31 +489,41 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="121.0" layoutY="29.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+            <TextField fx:id="txtPlateAdd" layoutX="121.0" layoutY="29.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
             <Label layoutX="360.0" layoutY="28.0" prefHeight="27.0" prefWidth="42.0" text="Color:" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="403.0" layoutY="29.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+            <TextField fx:id="txtColorAdd" layoutX="403.0" layoutY="29.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
             <Label layoutX="72.0" layoutY="96.0" prefHeight="27.0" prefWidth="48.0" text="Marca:" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <ComboBox layoutX="121.0" layoutY="97.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+            <ComboBox fx:id="cmboxBrandAdd" layoutX="121.0" layoutY="97.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
             <Label layoutX="346.0" layoutY="96.0" prefHeight="27.0" prefWidth="56.0" text="Modelo:" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <ComboBox layoutX="403.0" layoutY="97.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+            <ComboBox fx:id="cmboxModelAdd" layoutX="403.0" layoutY="97.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
             <Label layoutX="670.0" layoutY="28.0" prefHeight="27.0" prefWidth="114.0" text="Estado del coche:" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <ComboBox layoutX="785.0" layoutY="29.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+            <ComboBox fx:id="cmboxCarStatusAdd" layoutX="785.0" layoutY="29.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+            <Label fx:id="lblErrorEmptyCar" alignment="CENTER" layoutX="212.0" layoutY="173.0" prefHeight="38.0" prefWidth="418.0" text="Todos los campos son obligatorios" textAlignment="CENTER" textFill="RED" visible="false">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblErrorPlate" alignment="CENTER" layoutX="212.0" layoutY="173.0" prefHeight="38.0" prefWidth="418.0" text="El campo placa no es válido" textAlignment="CENTER" textFill="RED" visible="false">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

@@ -206,6 +206,16 @@
                            </font>
                         </Label>
                         <ComboBox fx:id="cmboxLicenseAdd" layoutX="825.0" layoutY="96.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <Label fx:id="lblErrorEmpty" alignment="CENTER" layoutX="212.0" layoutY="173.0" prefHeight="38.0" prefWidth="418.0" text="Todos los campos son obligatorios" textAlignment="CENTER" textFill="RED" visible="false">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblErrorCI" alignment="CENTER" layoutX="212.0" layoutY="173.0" prefHeight="38.0" prefWidth="418.0" text="El campo carnét no es válido" textAlignment="CENTER" textFill="RED" visible="false">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </children>
@@ -276,6 +286,16 @@
                            </font>
                         </Label>
                         <ComboBox fx:id="cmboxLicenseModify" layoutX="135.0" layoutY="411.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <Label fx:id="lblErrorEmpty1" alignment="CENTER" layoutX="5.0" layoutY="477.0" prefHeight="38.0" prefWidth="310.0" text="Todos los campos son obligatorios" textAlignment="CENTER" textFill="RED" visible="false">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblErrorCI1" alignment="CENTER" layoutX="5.0" layoutY="477.0" prefHeight="38.0" prefWidth="310.0" text="El campo carnét no es válido" textAlignment="CENTER" textFill="RED" visible="false">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="370.0" layoutY="24.0" prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css">

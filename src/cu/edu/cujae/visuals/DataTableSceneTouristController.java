@@ -45,6 +45,31 @@ public class DataTableSceneTouristController {
     @FXML
     private Label lblName;
     
+
+    @FXML
+    private Label lblErrorAge;
+
+    @FXML
+    private Label lblErrorAge1;
+
+    @FXML
+    private Label lblErrorEmpty;
+
+    @FXML
+    private Label lblErrorEmpty1;
+
+    @FXML
+    private Label lblErrorPassport;
+
+    @FXML
+    private Label lblErrorPassport1;
+
+    @FXML
+    private Label lblErrorPhone;
+
+    @FXML
+    private Label lblErrorPhone1;
+    
     @FXML
     private Button bttnAdd;
 
@@ -71,6 +96,14 @@ public class DataTableSceneTouristController {
     
     @FXML
     private VBox visitorVBox;
+    
+//0ºººººººººººººººº0    
+//0   ADD TABLE    0
+//0ºººººººººººººººº0 
+      
+//0ººººººººººººººººººº0  
+//0   MODIFY TABLE    0
+//0ººººººººººººººººººº0
     
 //*****************    
 //*   ADD PANE    *

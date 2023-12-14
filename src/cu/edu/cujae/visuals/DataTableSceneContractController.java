@@ -9,11 +9,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -64,6 +66,30 @@ public class DataTableSceneContractController {
     private Label lblName;
     
     @FXML
+    private Label lblErrorEmpty;
+
+    @FXML
+    private Label lblErrorEmpty1;
+    
+    @FXML
+    private Label lblErrorEmptyTourist;
+    
+    @FXML
+    private Label lblErrorEmptyCar;
+    
+    @FXML
+    private Label lblErrorAge;
+    
+    @FXML
+    private Label lblErrorPassport;
+    
+    @FXML
+    private Label lblErrorPhone;
+    
+    @FXML
+    private Label lblErrorPlate;
+    
+    @FXML
     private Button bttnModify;
     
     @FXML
@@ -71,6 +97,9 @@ public class DataTableSceneContractController {
     
     @FXML
     private Button bttnDelete;
+    
+    @FXML
+    private Button bttnAddNewCountry;
     
 //*****************    
 //*   ADD PANE    *
@@ -91,6 +120,17 @@ public class DataTableSceneContractController {
     @FXML
     private TextField txtTotalImportAdd;
     
+    @FXML
+    private CheckBox checkDriverRentalAdd;
+    
+//0ºººººººººººººººº0    
+//0   ADD TABLE    0
+//0ºººººººººººººººº0 
+      
+//0ººººººººººººººººººº0  
+//0   MODIFY TABLE    0
+//0ººººººººººººººººººº0
+    
 //********************   
 //*   MODIFY PANE    *
 //******************** 
@@ -109,6 +149,63 @@ public class DataTableSceneContractController {
     
     @FXML
     private TextField txtTotalImportModify;
+    
+    @FXML
+    private CheckBox checkDriverRentalModify;
+    
+//*************************    
+//*   TOURIST ADD PANE    *
+//*************************  
+    
+    @FXML
+    private ComboBox<?> cmboxCountryAdd;
+
+    @FXML
+    private ComboBox<?> cmboxSexAdd;
+    
+    @FXML
+    private TextField txtAgeAdd;
+
+    @FXML
+    private TextField txtCountryAdd;
+
+    @FXML
+    private TextField txtLastName1Add;
+
+    @FXML
+    private TextField txtLastName2Add;
+
+    @FXML
+    private TextField txtNameAdd;
+
+    @FXML
+    private TextField txtPassportAdd;
+
+    @FXML
+    private TextField txtPhoneAdd;
+    
+    @FXML
+    private ImageView imgCountryAdd;
+    
+//*********************    
+//*   CAR ADD PANE    *
+//*********************
+    
+    @FXML
+    private ComboBox<?> cmboxBrandAdd;
+
+    @FXML
+    private ComboBox<?> cmboxCarStatusAdd;
+
+    @FXML
+    private ComboBox<?> cmboxModelAdd;
+    
+    @FXML
+    private TextField txtColorAdd;
+
+    @FXML
+    private TextField txtPlateAdd;
+    
     
     @FXML
     private VBox notVisitorVBox;
@@ -221,6 +318,11 @@ public class DataTableSceneContractController {
 		addNewTourist.setVisible(false);
 		bttnModifyNewTourist.setDisable(false);
 		bttnModifyNewCar.setDisable(false);
+		
+		cmboxCountryAdd.setVisible(true);
+		imgCountryAdd.setVisible(true);
+		bttnAddNewCountry.setDisable(false);
+		txtCountryAdd.setVisible(false);
 	}
 	
 	public void cancelNewCar(ActionEvent event) {
@@ -240,5 +342,14 @@ public class DataTableSceneContractController {
 //		bttnModifyNewTourist.setDisable(false);
 //		bttnModifyNewCar.setDisable(false);
 //	} 
+	
+	public void newTouristAdd(ActionEvent event) {
+				
+		txtCountryAdd.setVisible(true);
+		bttnAddNewCountry.setDisable(true);
+		cmboxCountryAdd.setVisible(false);
+		imgCountryAdd.setVisible(false);
+
+	}
 
 }

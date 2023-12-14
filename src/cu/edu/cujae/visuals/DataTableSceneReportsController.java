@@ -86,6 +86,36 @@ public class DataTableSceneReportsController {
     @FXML
     private Label lblYearImport;
     
+  //0ºººººººººººººººººººº0    
+  //0   TOURIST TABLE    0
+  //0ºººººººººººººººººººº0 
+    
+  //0ºººººººººººººººº0    
+  //0   CAR TABLE    0
+  //0ºººººººººººººººº0
+      
+  //0ºººººººººººººººººººººººº0  
+  //0   BRAND/MODEL TABLE    0
+  //0ºººººººººººººººººººººººº0
+    
+  //0ºººººººººººººººººººººººººº0    
+  //0   IMPORTS_BRAND TABLE    0
+  //0ºººººººººººººººººººººººººº0 
+      
+  //0ººººººººººººººººººººº0  
+  //0   COUNTRY TABLE     0
+  //0ººººººººººººººººººººº0
+    
+  //0ºººººººººººººººººººººººººº0    
+  //0   MONTH IMPORTS TABLE    0
+  //0ºººººººººººººººººººººººººº0 
+      
+  //0ºººººººººººººººººººººººººº0  
+  //0   TOTAL IMPORTS TABLE    0
+  //0ºººººººººººººººººººººººººº0  
+    
+    
+    
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
