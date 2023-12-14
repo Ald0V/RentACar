@@ -134,16 +134,16 @@
                      <children>
                         <TableView fx:id="touristTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
                           <columns>
-                            <TableColumn prefWidth="135.20001220703125" text="Pasaporte" />
-                            <TableColumn prefWidth="128.0" text="Nombre" />
-                              <TableColumn minWidth="0.0" prefWidth="139.20001220703125" text="Primer apellido" />
-                              <TableColumn prefWidth="132.79998779296875" text="Segundo apellido" />
-                              <TableColumn minWidth="0.0" prefWidth="180.7999267578125" text="Cantidad de carros rentados" />
-                              <TableColumn minWidth="0.0" prefWidth="152.80010986328125" text="Valor total de alquileres" />
-                              <TableColumn prefWidth="132.0" text="País" />
+                            <TableColumn fx:id="colAddPassport" prefWidth="135.20001220703125" text="Pasaporte" />
+                            <TableColumn fx:id="colAddName" prefWidth="128.0" text="Nombre" />
+                              <TableColumn fx:id="colAddLastName1" minWidth="0.0" prefWidth="139.20001220703125" text="Primer apellido" />
+                              <TableColumn fx:id="colAddLastName2" prefWidth="132.79998779296875" text="Segundo apellido" />
+                              <TableColumn fx:id="colAddCantRentalCars" minWidth="0.0" prefWidth="180.7999267578125" text="Cantidad de carros rentados" />
+                              <TableColumn fx:id="colAddRentalTotalValue" minWidth="0.0" prefWidth="152.80010986328125" text="Valor total de alquileres" />
+                              <TableColumn fx:id="colAddCountry" prefWidth="132.0" text="País" />
                           </columns>
                         </TableView>
-                        <TextField layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
+                        <TextField fx:id="search" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="addParametersScenePane" layoutY="406.0" prefHeight="220.0" prefWidth="1030.0" stylesheets="@application.css" visible="false">
@@ -372,14 +372,13 @@
                      <children>
                         <TableView prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css">
                            <columns>
-                              <TableColumn prefWidth="83.99993896484375" text="Pasaporte" />
-                              <TableColumn prefWidth="79.20001220703125" text="Nombre" />
-                              <TableColumn minWidth="0.0" prefWidth="101.5999755859375" text="Primer apellido" />
-                              <TableColumn minWidth="0.0" prefWidth="138.4000244140625" text="Segundo apellido" />
-                              <TableColumn minWidth="0.0" prefWidth="37.5999755859375" text="Edad" />
-                              <TableColumn prefWidth="52.0" text="Género" />
-                              <TableColumn prefWidth="88.0" text="Teléfono" />
-                              <TableColumn prefWidth="80.800048828125" text="País" />
+                              <TableColumn fx:id="colModifyPassport" prefWidth="83.99993896484375" text="Pasaporte" />
+                              <TableColumn fx:id="colModifyName" prefWidth="79.20001220703125" text="Nombre" />
+                              <TableColumn fx:id="colModifyLastName1" minWidth="0.0" prefWidth="101.5999755859375" text="Primer apellido" />
+                              <TableColumn fx:id="colModifyLastName2" minWidth="0.0" prefWidth="138.4000244140625" text="Segundo apellido" />
+                              <TableColumn fx:id="colModifyCantRentalCars" minWidth="0.0" prefWidth="126.4000244140625" text="Cantidad de carros alquilados" />
+                              <TableColumn fx:id="colModifyRentalTotalValue" minWidth="0.0" prefWidth="77.5999755859375" text="Valor total de alquileres" />
+                              <TableColumn fx:id="colModifyCountry" prefWidth="50.4000244140625" text="País" />
                            </columns>
                         </TableView>
                      </children>

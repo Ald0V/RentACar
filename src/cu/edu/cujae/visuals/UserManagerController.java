@@ -10,7 +10,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -35,11 +37,22 @@ public class UserManagerController {
     @FXML
     private TableView<?> usersTable;
     
+    @FXML
+    private TextField search;
+    
 //0ººººººººººººººººº0    
 //0   USER TABLE    0
 //0ººººººººººººººººº0 
+    
+    @FXML
+    private TableColumn<?, ?> colDate;
 
-	
+    @FXML
+    private TableColumn<?, ?> colEmail;
+
+    @FXML
+    private TableColumn<?, ?> colUsername;
+
 	private Stage stage;
 	private Scene scene;
 	private Parent root;

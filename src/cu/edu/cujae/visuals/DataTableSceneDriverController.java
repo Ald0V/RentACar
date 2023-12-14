@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -40,6 +41,9 @@ public class DataTableSceneDriverController {
     
     @FXML
     private TableView<?> driverTable;
+    
+    @FXML
+    private TextField search;
 	
     @FXML
     private Label lblName;
@@ -69,9 +73,51 @@ public class DataTableSceneDriverController {
 //0   ADD TABLE    0
 //0ºººººººººººººººº0 
     
+    @FXML
+    private TableColumn<?, ?> colAddAddress;
+
+    @FXML
+    private TableColumn<?, ?> colAddID;
+
+    @FXML
+    private TableColumn<?, ?> colAddLastName1;
+
+    @FXML
+    private TableColumn<?, ?> colAddLastName2;
+
+    @FXML
+    private TableColumn<?, ?> colAddLicense;
+
+    @FXML
+    private TableColumn<?, ?> colAddName;
+
+    @FXML
+    private TableColumn<?, ?> colAddNumerOfCars;
+    
 //0ººººººººººººººººººº0  
 //0   MODIFY TABLE    0
 //0ººººººººººººººººººº0
+    
+    @FXML
+    private TableColumn<?, ?> colModifyAddress;
+
+    @FXML
+    private TableColumn<?, ?> colModifyID;
+
+    @FXML
+    private TableColumn<?, ?> colModifyLastName1;
+
+    @FXML
+    private TableColumn<?, ?> colModifyLastName2;
+
+    @FXML
+    private TableColumn<?, ?> colModifyLicense;
+
+    @FXML
+    private TableColumn<?, ?> colModifyName;
+
+    @FXML
+    private TableColumn<?, ?> colModifyNumerOfCars;
  
 //*****************    
 //*   ADD PANE    *

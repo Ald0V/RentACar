@@ -13,6 +13,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -61,6 +62,9 @@ public class DataTableSceneContractController {
     
     @FXML
     private TableView<?> contractTable;
+    
+    @FXML
+    private TextField search;
 	
     @FXML
     private Label lblName;
@@ -126,10 +130,58 @@ public class DataTableSceneContractController {
 //0ºººººººººººººººº0    
 //0   ADD TABLE    0
 //0ºººººººººººººººº0 
+    
+    @FXML
+    private TableColumn<?, ?> colAddCar;
+
+    @FXML
+    private TableColumn<?, ?> colAddDriverRental;
+
+    @FXML
+    private TableColumn<?, ?> colAddEndDate;
+
+    @FXML
+    private TableColumn<?, ?> colAddPayMethod;
+
+    @FXML
+    private TableColumn<?, ?> colAddProrroga;
+
+    @FXML
+    private TableColumn<?, ?> colAddTotalImport;
+
+    @FXML
+    private TableColumn<?, ?> colAddTourist;
+
+    @FXML
+    private TableColumn<?, ?> colAddstartDate;
       
 //0ººººººººººººººººººº0  
 //0   MODIFY TABLE    0
 //0ººººººººººººººººººº0
+    
+    @FXML
+    private TableColumn<?, ?> colModifyCar;
+
+    @FXML
+    private TableColumn<?, ?> colModifyDriverRental;
+
+    @FXML
+    private TableColumn<?, ?> colModifyEndDate;
+
+    @FXML
+    private TableColumn<?, ?> colModifyPayMethod;
+
+    @FXML
+    private TableColumn<?, ?> colModifyProrroga;
+
+    @FXML
+    private TableColumn<?, ?> colModifyTotalImport;
+
+    @FXML
+    private TableColumn<?, ?> colModifyTourist;
+
+    @FXML
+    private TableColumn<?, ?> colModifystartDate;
     
 //********************   
 //*   MODIFY PANE    *

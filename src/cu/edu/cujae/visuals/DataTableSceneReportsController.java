@@ -10,7 +10,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -79,40 +81,136 @@ public class DataTableSceneReportsController {
     
     @FXML
     private TableView<?> importsMonthTable;
-    
-    @FXML
-    private Label lblTotalImport;
-    
-    @FXML
-    private Label lblYearImport;
+       
     
   //0ºººººººººººººººººººº0    
   //0   TOURIST TABLE    0
   //0ºººººººººººººººººººº0 
     
+    @FXML
+    private TextField touristSearch;
+    
+    @FXML
+    private TableColumn<?, ?> colTouristDate;
+
+    @FXML
+    private TableColumn<?, ?> colTouristDateCar;
+
+    @FXML
+    private TableColumn<?, ?> colTouristEndDate;
+
+    @FXML
+    private TableColumn<?, ?> colTouristLastName1;
+
+    @FXML
+    private TableColumn<?, ?> colTouristLastName2;
+
+    
   //0ºººººººººººººººº0    
   //0   CAR TABLE    0
   //0ºººººººººººººººº0
+    
+    @FXML
+    private TextField carSSearch;
+    
+    @FXML
+    private TableColumn<?, ?> colCarS;
+
+    @FXML
+    private TableColumn<?, ?> colCarSBrand;
+
+    @FXML
+    private TableColumn<?, ?> colCarSEndDate;
+
+    @FXML
+    private TableColumn<?, ?> colCarSSituation;
       
   //0ºººººººººººººººººººººººº0  
   //0   BRAND/MODEL TABLE    0
   //0ºººººººººººººººººººººººº0
     
-  //0ºººººººººººººººººººººººººº0    
-  //0   IMPORTS_BRAND TABLE    0
-  //0ºººººººººººººººººººººººººº0 
+    @FXML
+    private TextField brandModelSearch;
+    
+    @FXML
+    private TableColumn<?, ?> colBrand$Cheque;
+
+    @FXML
+    private TableColumn<?, ?> colBrand$CreditCard;
+
+    @FXML
+    private TableColumn<?, ?> colBrand$Paper;
+
+    @FXML
+    private TableColumn<?, ?> colBrandBrand;
+
+    @FXML
+    private TableColumn<?, ?> colBrandCantRentalDays;
+
+    @FXML
+    private TableColumn<?, ?> colBrandDate;
+
+    @FXML
+    private TableColumn<?, ?> colBrandImportBrand;
+
+    @FXML
+    private TableColumn<?, ?> colBrandModel;
+
+    @FXML
+    private TableColumn<?, ?> colBrandTotalImport;
+    
+    @FXML
+    private Label lblTotalImport;
       
   //0ººººººººººººººººººººº0  
   //0   COUNTRY TABLE     0
   //0ººººººººººººººººººººº0
     
+    @FXML
+    private TextField countrySearch;
+    
+    @FXML
+    private TableColumn<?, ?> colCountry$PaperTotal;
+
+    @FXML
+    private TableColumn<?, ?> colCountryBrand;
+
+    @FXML
+    private TableColumn<?, ?> colCountryCantRentalDays;
+
+    @FXML
+    private TableColumn<?, ?> colCountryCountry;
+
+    @FXML
+    private TableColumn<?, ?> colCountryDate;
+
+    @FXML
+    private TableColumn<?, ?> colCountryModel;
+
+    @FXML
+    private TableColumn<?, ?> colCountryProrroga;
+
+    @FXML
+    private TableColumn<?, ?> colCountryTotal;
+    
   //0ºººººººººººººººººººººººººº0    
-  //0   MONTH IMPORTS TABLE    0
+  //0   TOTAL IMPORTS TABLE    0
   //0ºººººººººººººººººººººººººº0 
       
-  //0ºººººººººººººººººººººººººº0  
-  //0   TOTAL IMPORTS TABLE    0
-  //0ºººººººººººººººººººººººººº0  
+    @FXML
+    private TableColumn<?, ?> colImports$Month;
+
+    @FXML
+    private TableColumn<?, ?> colImports$Year;
+
+    @FXML
+    private TableColumn<?, ?> colImportsDate;
+
+    @FXML
+    private TableColumn<?, ?> colImportsDateMonth;
+    
+    @FXML
+    private Label lblYearImport;
     
     
     

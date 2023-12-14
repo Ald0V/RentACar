@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -40,6 +41,9 @@ public class DataTableSceneCarController {
     
     @FXML
     private TableView<?> carTable;
+    
+    @FXML
+    private TextField search;
 	
     @FXML
     private Label lblName;
@@ -68,11 +72,47 @@ public class DataTableSceneCarController {
 //0ºººººººººººººººº0    
 //0   ADD TABLE    0
 //0ºººººººººººººººº0 
-      
+    
+    @FXML
+    private TableColumn<?, ?> colAddBrand;
+
+    @FXML
+    private TableColumn<?, ?> colAddCarSituation;
+
+    @FXML
+    private TableColumn<?, ?> colAddColor;
+
+    @FXML
+    private TableColumn<?, ?> colAddKM;
+
+    @FXML
+    private TableColumn<?, ?> colAddModel;
+
+    @FXML
+    private TableColumn<?, ?> colAddPlate;
+
 //0ººººººººººººººººººº0  
 //0   MODIFY TABLE    0
 //0ººººººººººººººººººº0
     
+    @FXML
+    private TableColumn<?, ?> colModifyBrand;
+
+    @FXML
+    private TableColumn<?, ?> colModifyCarSituation;
+
+    @FXML
+    private TableColumn<?, ?> colModifyColor;
+
+    @FXML
+    private TableColumn<?, ?> colModifyKM;
+
+    @FXML
+    private TableColumn<?, ?> colModifyModel;
+
+    @FXML
+    private TableColumn<?, ?> colModifyPlate;
+ 
 //*****************    
 //*   ADD PANE    *
 //*****************  

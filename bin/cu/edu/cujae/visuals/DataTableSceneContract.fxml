@@ -136,17 +136,17 @@
                      <children>
                         <TableView fx:id="contractTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
                           <columns>
-                            <TableColumn prefWidth="150.39999389648438" text="Turista" />
-                            <TableColumn prefWidth="100.79998779296875" text="Fecha de inicio" />
-                              <TableColumn minWidth="0.0" prefWidth="104.0" text="Fin del contrato" />
-                              <TableColumn prefWidth="151.199951171875" text="Carro" />
-                              <TableColumn minWidth="0.0" prefWidth="124.0" text="Método de pago" />
-                              <TableColumn text="Prórroga" />
-                              <TableColumn minWidth="0.0" prefWidth="150.39996337890625" text="Alquiler del chófer" />
-                              <TableColumn minWidth="0.0" prefWidth="136.80002441406248" text="Importe total" />
+                            <TableColumn fx:id="colAddTourist" prefWidth="150.39999389648438" text="Turista" />
+                            <TableColumn fx:id="colAddstartDate" prefWidth="100.79998779296875" text="Fecha de inicio" />
+                              <TableColumn fx:id="colAddEndDate" minWidth="0.0" prefWidth="104.0" text="Fin del contrato" />
+                              <TableColumn fx:id="colAddCar" prefWidth="151.199951171875" text="Carro" />
+                              <TableColumn fx:id="colAddPayMethod" minWidth="0.0" prefWidth="124.0" text="Método de pago" />
+                              <TableColumn fx:id="colAddProrroga" text="Prórroga" />
+                              <TableColumn fx:id="colAddDriverRental" minWidth="0.0" prefWidth="150.39996337890625" text="Alquiler del chófer" />
+                              <TableColumn fx:id="colAddTotalImport" minWidth="0.0" prefWidth="136.80002441406248" text="Importe total" />
                           </columns>
                         </TableView>
-                        <TextField layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
+                        <TextField fx:id="search" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="addParametersScenePane" layoutY="406.0" prefHeight="220.0" prefWidth="1030.0" stylesheets="@application.css" visible="false">
@@ -339,14 +339,14 @@
                      <children>
                         <TableView prefHeight="602.0" prefWidth="658.0">
                            <columns>
-                              <TableColumn prefWidth="95.20001220703125" text="Fecha de inicio" />
-                              <TableColumn prefWidth="48.79998779296875" text="Turista" />
-                              <TableColumn minWidth="0.0" prefWidth="42.39996337890625" text="Carro" />
-                              <TableColumn prefWidth="102.39996337890625" text="Días de prórroga" />
-                              <TableColumn minWidth="0.0" text="Importe total" />
-                              <TableColumn prefWidth="106.39990234375" text="Fecha de entrega" />
-                              <TableColumn prefWidth="60.0" text="Método de pago" />
-                              <TableColumn prefWidth="121.60007324218748" text="Fin del contrato" />
+                              <TableColumn fx:id="colModifyTourist" prefWidth="52.0" text="Turista" />
+                              <TableColumn fx:id="colModifystartDate" prefWidth="92.79998779296875" text="Fecha de inicio" />
+                              <TableColumn fx:id="colModifyEndDate" minWidth="0.0" prefWidth="95.99993896484375" text="Fin del contrato" />
+                              <TableColumn fx:id="colModifyCar" prefWidth="77.60003662109375" text="Carro" />
+                              <TableColumn fx:id="colModifyPayMethod" minWidth="0.0" prefWidth="100.0" text="Método de pago" />
+                              <TableColumn fx:id="colModifyProrroga" prefWidth="58.4000244140625" text="Prórroga" />
+                              <TableColumn fx:id="colModifyDriverRental" prefWidth="97.5999755859375" text="Alquiler del chófer" />
+                              <TableColumn fx:id="colModifyTotalImport" prefWidth="85.5999755859375" text="Importe total" />
                            </columns>
                         </TableView>
                      </children>

@@ -134,15 +134,15 @@
                      <children>
                         <TableView fx:id="carTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
                           <columns>
-                            <TableColumn prefWidth="135.20001220703125" text="Placa" />
-                            <TableColumn prefWidth="176.80001831054688" text="Marca" />
-                              <TableColumn minWidth="0.0" prefWidth="156.79998779296875" text="Modelo" />
-                              <TableColumn prefWidth="160.800048828125" text="Color" />
-                              <TableColumn minWidth="0.0" prefWidth="155.199951171875" text="Kilómetros recorridos" />
-                              <TableColumn prefWidth="210.4000244140625" text="Estado del coche" />
+                            <TableColumn fx:id="colAddPlate" prefWidth="135.20001220703125" text="Placa" />
+                            <TableColumn fx:id="colAddBrand" prefWidth="176.80001831054688" text="Marca" />
+                              <TableColumn fx:id="colAddModel" minWidth="0.0" prefWidth="156.79998779296875" text="Modelo" />
+                              <TableColumn fx:id="colAddColor" prefWidth="160.800048828125" text="Color" />
+                              <TableColumn fx:id="colAddKM" minWidth="0.0" prefWidth="155.199951171875" text="Kilómetros recorridos" />
+                              <TableColumn fx:id="colAddCarSituation" prefWidth="210.4000244140625" text="Estado del coche" />
                           </columns>
                         </TableView>
-                        <TextField layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
+                        <TextField fx:id="search" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="addParametersScenePane" layoutY="406.0" prefHeight="220.0" prefWidth="1030.0" stylesheets="@application.css" visible="false">
@@ -293,12 +293,12 @@
                      <children>
                         <TableView layoutX="-1.0" layoutY="-1.0" prefHeight="602.0" prefWidth="658.0">
                            <columns>
-                              <TableColumn prefWidth="86.39996337890625" text="Placa" />
-                              <TableColumn prefWidth="108.0" text="Marca" />
-                              <TableColumn minWidth="0.0" prefWidth="67.99993896484375" text="Modelo" />
-                              <TableColumn minWidth="2.39996337890625" prefWidth="85.60003662109375" text="Color" />
-                              <TableColumn prefWidth="140.0" text="Km recorridos" />
-                              <TableColumn prefWidth="170.4000244140625" text="Estado del coche" />
+                              <TableColumn fx:id="colModifyPlate" prefWidth="86.39996337890625" text="Placa" />
+                              <TableColumn fx:id="colModifyBrand" prefWidth="108.0" text="Marca" />
+                              <TableColumn fx:id="colModifyModel" minWidth="0.0" prefWidth="67.99993896484375" text="Modelo" />
+                              <TableColumn fx:id="colModifyColor" minWidth="2.39996337890625" prefWidth="85.60003662109375" text="Color" />
+                              <TableColumn fx:id="colModifyKM" prefWidth="140.0" text="Km recorridos" />
+                              <TableColumn fx:id="colModifyCarSituation" prefWidth="170.4000244140625" text="Estado del coche" />
                            </columns>
                         </TableView>
                      </children>

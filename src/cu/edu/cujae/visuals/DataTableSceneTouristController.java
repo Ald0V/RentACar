@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -40,11 +41,13 @@ public class DataTableSceneTouristController {
     private AnchorPane addParametersScenePane;
     
     @FXML
+    private TextField search;
+    
+    @FXML
     private TableView<?> touristTable;
 	
     @FXML
     private Label lblName;
-    
 
     @FXML
     private Label lblErrorAge;
@@ -100,10 +103,53 @@ public class DataTableSceneTouristController {
 //0ºººººººººººººººº0    
 //0   ADD TABLE    0
 //0ºººººººººººººººº0 
+    
+    @FXML
+    private TableColumn<?, ?> colAddCantRentalCars;
+
+    @FXML
+    private TableColumn<?, ?> colAddCountry;
+
+    @FXML
+    private TableColumn<?, ?> colAddLastName1;
+
+    @FXML
+    private TableColumn<?, ?> colAddLastName2;
+
+    @FXML
+    private TableColumn<?, ?> colAddName;
+
+    @FXML
+    private TableColumn<?, ?> colAddPassport;
+
+    @FXML
+    private TableColumn<?, ?> colAddRentalTotalValue;
+
       
 //0ººººººººººººººººººº0  
 //0   MODIFY TABLE    0
 //0ººººººººººººººººººº0
+    
+    @FXML
+    private TableColumn<?, ?> colModifyCantRentalCars;
+
+    @FXML
+    private TableColumn<?, ?> colModifyCountry;
+
+    @FXML
+    private TableColumn<?, ?> colModifyLastName1;
+
+    @FXML
+    private TableColumn<?, ?> colModifyLastName2;
+
+    @FXML
+    private TableColumn<?, ?> colModifyName;
+
+    @FXML
+    private TableColumn<?, ?> colModifyPassport;
+
+    @FXML
+    private TableColumn<?, ?> colModifyRentalTotalValue;
     
 //*****************    
 //*   ADD PANE    *
