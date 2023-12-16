@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -111,6 +112,10 @@ public class MainSceneController {
 			stage.setOpacity(1);
 		});
 		
+		Image image = new Image("/resources/Rental_car_login.png");
+	    
+		stage.getIcons().add(image);
+		
 		stage.setScene(scene);
 		stage.centerOnScreen();
 	}
@@ -141,6 +146,10 @@ public class MainSceneController {
 		root.setOnMouseReleased((MouseEvent e) ->{
 			stage.setOpacity(1);
 		});
+		
+		Image image = new Image("/resources/Rental_car_login.png");
+	    
+		stage.getIcons().add(image);
 		
 		stage.setScene(scene);
 		stage.centerOnScreen();
@@ -173,6 +182,10 @@ public class MainSceneController {
 			stage.setOpacity(1);
 		});
 		
+		Image image = new Image("/resources/Rental_car_login.png");
+	    
+		stage.getIcons().add(image);
+		
 		stage.setScene(scene);
 		stage.centerOnScreen();
 	}
@@ -203,6 +216,10 @@ public class MainSceneController {
 		root.setOnMouseReleased((MouseEvent e) ->{
 			stage.setOpacity(1);
 		});
+		
+		Image image = new Image("/resources/Rental_car_login.png");
+	    
+		stage.getIcons().add(image);
 		
 		stage.setScene(scene);
 		stage.centerOnScreen();
@@ -284,6 +301,10 @@ public class MainSceneController {
 			stage.setOpacity(1);
 		});
 		
+		Image image = new Image("/resources/Rental_car_login.png");
+	    
+		stage.getIcons().add(image);
+		
 		stage.setScene(scene);
 		stage.centerOnScreen();
 			
@@ -316,6 +337,10 @@ public class MainSceneController {
 		root.setOnMouseReleased((MouseEvent e) ->{
 			stage.setOpacity(1);
 		});
+		
+		Image image = new Image("/resources/Rental_car_login.png");
+	    
+		stage.getIcons().add(image);
 		
 		stage.setScene(scene);
 		stage.centerOnScreen();
@@ -350,6 +375,10 @@ public class MainSceneController {
 			stage.setOpacity(1);
 		});
 		
+		Image image = new Image("/resources/Rental_car_login.png");
+	    
+		stage.getIcons().add(image);
+		
 		stage.setScene(scene);
 		stage.centerOnScreen();
 			
@@ -382,6 +411,10 @@ public class MainSceneController {
 		root.setOnMouseReleased((MouseEvent e) ->{
 			stage.setOpacity(1);
 		});
+		
+		Image image = new Image("/resources/Rental_car_login.png");
+	    
+		stage.getIcons().add(image);
 		
 		stage.setScene(scene);
 		stage.centerOnScreen();
@@ -416,6 +449,10 @@ public class MainSceneController {
 			stage.setOpacity(1);
 		});
 		
+		Image image = new Image("/resources/Rental_car_login.png");
+	    
+		stage.getIcons().add(image);
+		
 		stage.setScene(scene);
 		stage.centerOnScreen();
 			
@@ -445,6 +482,10 @@ public class MainSceneController {
 			stage.setOpacity(1);
 		});
 		
+		Image image = new Image("/resources/Rental_car_login.png");
+	    
+		stage.getIcons().add(image);
+		
 		stage.setScene(scene);
 		stage.centerOnScreen();
 	}
@@ -472,6 +513,10 @@ public class MainSceneController {
 		root.setOnMouseReleased((MouseEvent e) ->{
 			stage.setOpacity(1);
 		});
+		
+		Image image = new Image("/resources/Rental_car_login.png");
+	    
+		stage.getIcons().add(image);
 		
 		stage.setScene(scene);
 		stage.centerOnScreen();

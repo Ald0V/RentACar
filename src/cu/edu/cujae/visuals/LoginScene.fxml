@@ -15,7 +15,7 @@
    <children>
       <ImageView disable="true" fitHeight="314.0" fitWidth="305.0" layoutX="31.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../resources/Rental%20car%20login.png" />
+            <Image url="@../../../../resources/Rental_car_login.png" />
          </image>
       </ImageView>
       <AnchorPane fx:id="AnchorPaneData" layoutX="368.0" layoutY="54.0" opacity="0.98" prefHeight="404.0" prefWidth="322.0" style="-fx-background-color: #393051; -fx-background-radius: 5;">

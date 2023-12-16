@@ -40,7 +40,7 @@ public class Main extends Application {
 			});
 			
 			
-			Image image = new Image("/resources/icons8_car_rental_50px_black.png");
+			Image image = new Image("/resources/Rental_car_login.png");
 		    
 			primaryStage.getIcons().add(image);
 			primaryStage.initStyle(StageStyle.UNDECORATED);

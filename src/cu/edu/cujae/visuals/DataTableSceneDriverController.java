@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.control.ComboBox;
 
 public class DataTableSceneDriverController {
@@ -200,6 +201,10 @@ public class DataTableSceneDriverController {
 		root.setOnMouseReleased((MouseEvent e) ->{
 			stage.setOpacity(1);
 		});
+		
+		Image image = new Image("/resources/Rental_car_login.png");
+	    
+		stage.getIcons().add(image);
 		
 		scene = new Scene(root);
 		stage.setScene(scene);

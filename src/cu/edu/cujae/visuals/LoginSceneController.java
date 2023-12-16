@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 
 public class LoginSceneController {
@@ -125,6 +126,10 @@ public class LoginSceneController {
 			root.setOnMouseReleased((MouseEvent e) ->{
 				stageMain.setOpacity(1);
 			});
+			
+			Image image = new Image("/resources/Rental_car_login.png");
+		    
+			stageMain.getIcons().add(image);
 			
 			stageMain.setScene(scene);
 			stageMain.centerOnScreen();
