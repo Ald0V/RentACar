@@ -1,7 +1,18 @@
 package cu.edu.cujae.visuals;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
+import cu.edu.cujae.dto.AuxiliaryDTO;
+import cu.edu.cujae.utils.TouristAux;
+
+import cu.edu.cujae.dto.TouristDTO;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +27,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -45,7 +57,7 @@ public class DataTableSceneTouristController {
     private TextField search;
     
     @FXML
-    private TableView<?> touristTable;
+    private TableView<TouristAux> touristTable;
 	
     @FXML
     private Label lblName;
@@ -105,26 +117,28 @@ public class DataTableSceneTouristController {
 //0   ADD TABLE    0
 //0ºººººººººººººººº0 
     
+    
+    
     @FXML
-    private TableColumn<?, ?> colAddCantRentalCars;
+    private TableColumn<TouristAux, Integer> colAddCantRentalCars;
 
     @FXML
-    private TableColumn<?, ?> colAddCountry;
+    private TableColumn<TouristAux, String> colAddCountry;
 
     @FXML
-    private TableColumn<?, ?> colAddLastName1;
+    private TableColumn<TouristAux, String> colAddLastName1;
 
     @FXML
-    private TableColumn<?, ?> colAddLastName2;
+    private TableColumn<TouristAux, String> colAddLastName2;
 
     @FXML
-    private TableColumn<?, ?> colAddName;
+    private TableColumn<TouristAux, String> colAddName;
 
     @FXML
-    private TableColumn<?, ?> colAddPassport;
+    private TableColumn<TouristAux, String> colAddPassport;
 
     @FXML
-    private TableColumn<?, ?> colAddRentalTotalValue;
+    private TableColumn<TouristAux, Float> colAddRentalTotalValue;
 
       
 //0ººººººººººººººººººº0  
@@ -157,10 +171,10 @@ public class DataTableSceneTouristController {
 //*****************    
     
     @FXML
-    private ComboBox<?> cmboxCountryAdd;
+    private ComboBox<String> cmboxCountryAdd;
 
     @FXML
-    private ComboBox<?> cmboxSexAdd;
+    private ComboBox<String> cmboxSexAdd;
     
     @FXML
     private TextField txtAgeAdd;
@@ -225,6 +239,52 @@ public class DataTableSceneTouristController {
 	private Scene scene;
 	private Parent root;
 	
+    public void initializeComboBoxSex() {
+
+    }
+	
+	@SuppressWarnings("unchecked")
+	private void touristTableChargeData() throws ClassNotFoundException, SQLException {	
+	    // Configurar cellValueFactory para cada columna
+	    colAddCantRentalCars.setCellValueFactory(new PropertyValueFactory<>("CantRentalCars"));
+	    colAddCountry.setCellValueFactory(new PropertyValueFactory<>("Country"));
+	    colAddLastName1.setCellValueFactory(new PropertyValueFactory<>("LastName1"));
+	    colAddLastName2.setCellValueFactory(new PropertyValueFactory<>("LastName2"));
+	    colAddName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+	    colAddPassport.setCellValueFactory(new PropertyValueFactory<>("Passport"));
+	    colAddRentalTotalValue.setCellValueFactory(new PropertyValueFactory<>("RentalTotalValue"));
+
+	    // Obtener la lista de turistas
+//	    ArrayList<TouristAux> list = ServiceLocator.getInstance().getTourists();		
+//	    ObservableList<TouristAux> touristList = FXCollections.observableArrayList();
+//	    touristList.addAll(list);
+//	    
+//	    // Establecer los elementos de la tabla
+//	    touristTable.setItems(touristList);
+	    
+	    // Añadir un listener a la propiedad selectedItemProperty
+	    touristTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+	        if (newValue != null) {
+//	            iTidTextField=(String.valueOf(newValue.getpassport()));
+//	            iTnameTextField.setText(newValue.getName());	 
+//	            iTprovinceChoiceBox.setValue(newValue.getCountry());
+//	            iTPCHamountTextField.setText(String.valueOf(newValue.getCantRentalCars()));
+//	            iTWCHamountTextField.setText(String.valueOf(newValue.getRentalTotalValue()));
+//	            iTmascotTextField.setText(newValue.getLastName1());
+//	            iTcolorTextField.setText(newValue.getLastName2());
+	        }
+	    });
+	}
+	
+	public void initializeTouristTable() {
+		try {
+	        // Llama al método touristTableChargeData() aquí
+	        touristTableChargeData();
+	    } catch (ClassNotFoundException | SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
+	
 	public void logout(ActionEvent event) {
 		stage = (Stage)mainScenePane.getScene().getWindow(); 
 		stage.close();
@@ -275,6 +335,8 @@ public class DataTableSceneTouristController {
 			bttnDelete.setDisable(true);
 			modifyScenePane.setVisible(true);
 			addScenePane.setVisible(false);
+	        ObservableList<String> list = FXCollections.observableArrayList("Hombre", "Mujer");
+	        cmboxSexAdd.setItems(list);
 			
 		}else if(event.getSource() == bttnAdd){
 			
@@ -284,6 +346,8 @@ public class DataTableSceneTouristController {
 			addScenePane.setVisible(true);
 			addParametersScenePane.setVisible(true);
 			tableScenePane.setVisible(true);
+	        ObservableList<String> list = FXCollections.observableArrayList("Hombre", "Mujer");
+	        cmboxSexAdd.setItems(list);
 			
 			tableScenePane.setMaxHeight(382);
 			touristTable.setMaxHeight(286);
@@ -344,8 +408,66 @@ public class DataTableSceneTouristController {
 		}
 	}
 	
-	public void insertTourist(ActionEvent event) {
+	public static boolean isAgeCorrect(int edad) {
+		return edad >= 18 && edad <= 60;
+	}
+	
+    public static boolean isPassportCorrect(String str) {
+        return str.matches("\\d{11}");
+    }
+	
+    public static boolean isPhoneCorrect(String str) {
+        return str.matches("[\\d+\\-\\)\\(]{1,15}");
+    }
+	
+	public void insertTourist(ActionEvent event) throws ClassNotFoundException, SQLException {
 		
+		if(txtAgeAdd.getText() != "" && txtLastName1Add.getText() != "" && txtLastName2Add.getText() != "" && txtNameAdd.getText() != "" && txtPassportAdd.getText() != "" && txtPhoneAdd.getText() != "" && cmboxCountryAdd.getValue() != "" && cmboxSexAdd.getValue() != "") { 
+			if(isAgeCorrect(Integer.parseInt(txtAgeAdd.getText())) ) {
+				if(isPassportCorrect(txtPassportAdd.getText()) && isPhoneCorrect(txtPhoneAdd.getText())) {
+
+					String name = txtNameAdd.getText();
+					String lastName1 = txtLastName1Add.getText();
+					String lastName2 = txtLastName2Add.getText();
+					String passport = txtPassportAdd.getText();
+					String sex = (String) cmboxSexAdd.getValue();
+					String contact = txtPhoneAdd.getText();
+					String country = (String) cmboxCountryAdd.getValue();
+					int age = Integer.parseInt(txtAgeAdd.getText());
+
+					try {;
+						AuxiliaryDTO aux = new AuxiliaryDTO(-1, country);
+						TouristDTO tourist = new TouristDTO(passport, name, lastName1, lastName2, age, sex, contact, aux);
+						
+//						serviceLocator.insertTourist(tourist);
+
+						txtNameAdd.setText("");
+						txtLastName1Add.setText("");
+						txtLastName2Add.setText("");
+						txtPassportAdd.setText("");
+						cmboxSexAdd.setValue("");
+						txtPhoneAdd.setText("");
+						cmboxCountryAdd.setValue("");
+						txtAgeAdd.setText("");
+
+						try {
+							touristTableChargeData();
+						} catch (ClassNotFoundException | SQLException e) {
+							e.printStackTrace();
+						}
+					}
+					catch(Exception e) {
+						JOptionPane.showMessageDialog(null, e.getMessage());
+					}
+
+				}else if(isPassportCorrect(txtPassportAdd.getText()) != false) {
+					lblErrorPassport.setVisible(true);
+				}else
+					lblErrorPhone.setVisible(true);		
+			}else
+				lblErrorAge.setVisible(true);			
+		}else
+			lblErrorEmpty.setVisible(true);
 		
 	}
 	

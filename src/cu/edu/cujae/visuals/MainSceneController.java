@@ -92,6 +92,8 @@ public class MainSceneController {
 		
 		DataTableSceneTouristController dataTableSceneController = loader.getController();
 		dataTableSceneController.displayName("Turistas");
+		
+	    dataTableSceneController.initializeTouristTable();
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
