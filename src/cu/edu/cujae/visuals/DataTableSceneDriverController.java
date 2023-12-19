@@ -238,7 +238,10 @@ public class DataTableSceneDriverController {
 			driverTable.setMaxHeight(286);
 			
 			modifyScenePane.setVisible(false);
-		}		
+			
+		}else if(event.getSource() == bttnDelete) {
+			
+		}
 	}
 	
 	public void cancelModify(ActionEvent event) {
@@ -260,4 +263,13 @@ public class DataTableSceneDriverController {
 	}
 
 
+	public void insertDriver(ActionEvent event) {
+		
+		
+	}
+	
+    public void modifyDriver(ActionEvent event) {
+		
+		
+	}
 }

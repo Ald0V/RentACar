@@ -224,7 +224,10 @@ public class DataTableSceneCarController {
 			carTable.setMaxHeight(286);
 			
 			modifyScenePane.setVisible(false);
-		}		
+			
+		}else if(event.getSource() == bttnDelete) {
+			
+		}
 	}
 	
 	public void cancelModify(ActionEvent event) {
@@ -243,6 +246,16 @@ public class DataTableSceneCarController {
 		addScenePane.setVisible(true);
 		tableScenePane.setMaxHeight(626);
 		carTable.setMaxHeight(554);
+	}
+	
+    public void insertCar(ActionEvent event) {
+		
+		
+	}
+	
+    public void modifyCar(ActionEvent event) {
+		
+		
 	}
 }
 

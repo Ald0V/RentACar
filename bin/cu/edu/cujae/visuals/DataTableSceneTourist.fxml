@@ -209,7 +209,7 @@
                               <String fx:value="buttonCancel" />
                            </styleClass>
                         </Button>
-                        <Button layoutX="892.0" layoutY="158.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Crear" textFill="WHITE">
+                        <Button layoutX="892.0" layoutY="158.0" mnemonicParsing="false" onAction="#insertTourist" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Crear" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -294,7 +294,7 @@
                               <String fx:value="buttonCancel" />
                            </styleClass>
                         </Button>
-                        <Button layoutX="181.0" layoutY="540.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Actualizar" textFill="WHITE">
+                        <Button layoutX="181.0" layoutY="540.0" mnemonicParsing="false" onAction="#modifyTourist" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Actualizar" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>

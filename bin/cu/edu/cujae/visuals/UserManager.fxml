@@ -84,7 +84,7 @@
                         <String fx:value="shadow" />
                      </styleClass>
                      <children>
-                        <Button fx:id="bttnDelete" layoutX="376.0" layoutY="109.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Eliminar" textFill="WHITE">
+                        <Button fx:id="bttnDelete" layoutX="376.0" layoutY="109.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Eliminar" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -93,7 +93,7 @@
                               <String fx:value="buttonCancel" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="bttnModify" layoutX="528.0" layoutY="109.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Modificar" textFill="WHITE">
+                        <Button fx:id="bttnModify" layoutX="528.0" layoutY="109.0" mnemonicParsing="false" onAction="#modifyUser" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Modificar" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>

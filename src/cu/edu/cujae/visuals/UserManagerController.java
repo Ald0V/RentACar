@@ -94,4 +94,14 @@ public class UserManagerController {
 		stage = (Stage)mainScenePane.getScene().getWindow(); 
 		stage.close();
 	}
+	
+	public void deleteUser(ActionEvent event) {
+		
+		
+	}
+	
+    public void modifyUser(ActionEvent event) {
+		
+		
+	}
 }

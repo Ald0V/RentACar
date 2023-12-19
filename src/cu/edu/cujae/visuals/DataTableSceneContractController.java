@@ -333,8 +333,13 @@ public class DataTableSceneContractController {
 			contractTable.setMaxHeight(286);
 			
 			modifyScenePane.setVisible(false);
-		}			
+			
+		}else if(event.getSource() == bttnDelete) {
+			
+		}
 	}
+		
+	
 	
 	public void switchNewTouristOrCar(ActionEvent event) {
 		
@@ -388,18 +393,6 @@ public class DataTableSceneContractController {
 		bttnModifyNewCar.setDisable(false);
 	}
 	
-//	public void cancelModifyNewTourist(ActionEvent event) {
-//		addNewTourist.setVisible(false);
-//		bttnModifyNewTourist.setDisable(false);
-//		bttnModifyNewCar.setDisable(false);
-//	}
-//	
-//	public void cancelModifyNewCar(ActionEvent event) {
-//		addNewCar.setVisible(false);
-//		bttnModifyNewTourist.setDisable(false);
-//		bttnModifyNewCar.setDisable(false);
-//	} 
-	
 	public void newTouristAdd(ActionEvent event) {
 				
 		txtCountryAdd.setVisible(true);
@@ -407,6 +400,26 @@ public class DataTableSceneContractController {
 		cmboxCountryAdd.setVisible(false);
 		imgCountryAdd.setVisible(false);
 
+	}
+	
+    public void insertContract(ActionEvent event) {
+		
+		
+	}
+	
+    public void modifyContract(ActionEvent event) {
+		
+		
+	}
+    
+    public void insertTourist(ActionEvent event) {
+		
+		
+	}
+    
+    public void insertCar(ActionEvent event) {
+		
+		
 	}
 
 }

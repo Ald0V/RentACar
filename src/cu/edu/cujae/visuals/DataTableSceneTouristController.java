@@ -289,7 +289,11 @@ public class DataTableSceneTouristController {
 			touristTable.setMaxHeight(286);
 			
 			modifyScenePane.setVisible(false);
-		}	
+			
+		}else if(event.getSource() == bttnDelete){
+			
+			
+		}
 		
 	}
 	
@@ -339,4 +343,17 @@ public class DataTableSceneTouristController {
 			imgCountryModify.setVisible(false);
 		}
 	}
+	
+	public void insertTourist(ActionEvent event) {
+		
+		
+	}
+	
+    public void modifyTourist(ActionEvent event) {
+		
+		
+	}
+    
+    
+    
 }
