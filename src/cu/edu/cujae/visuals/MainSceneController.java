@@ -166,6 +166,8 @@ public class MainSceneController {
 		
 		DataTableSceneContractController dataTableSceneController = loader.getController();
 		dataTableSceneController.displayName("Contratos");
+		
+		dataTableSceneController.initializeContractTable();
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);

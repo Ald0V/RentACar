@@ -47,7 +47,7 @@
                         <Insets left="15.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="bttnDelete" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Eliminar..." textFill="WHITE">
+                  <Button fx:id="bttnDelete" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#deleteContract" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Eliminar..." textFill="WHITE">
                      <graphic>
                         <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -191,12 +191,6 @@
                            </font>
                         </Label>
                         <ComboBox fx:id="cmboxPayMethodAdd" layoutX="841.0" layoutY="35.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="411.0" layoutY="116.0" prefHeight="27.0" prefWidth="86.0" text="Importe total:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtTotalImportAdd" layoutX="501.0" layoutY="117.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="460.0" layoutY="34.0" prefHeight="27.0" prefWidth="42.0" text="Carro:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
@@ -292,12 +286,6 @@
                            </font>
                         </Label>
                         <ComboBox fx:id="cmboxPayMethodModify" layoutX="131.0" layoutY="295.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="44.0" layoutY="358.0" prefHeight="27.0" prefWidth="86.0" text="Importe total:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtTotalImportModify" layoutX="134.0" layoutY="359.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
                         <Button fx:id="bttnModifyNewTourist" layoutX="281.0" layoutY="172.0" mnemonicParsing="false" onAction="#switchNewTouristOrCar" prefHeight="30.0" prefWidth="30.0" styleClass="buttonNew" stylesheets="@application.css" textFill="WHITE">
                            <font>
                               <Font name="System Bold Italic" size="12.0" />
@@ -323,15 +311,15 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label layoutX="13.0" layoutY="404.0" prefHeight="27.0" prefWidth="114.0" text="Alquiler del chófer" textFill="WHITE">
+                        <Label layoutX="11.0" layoutY="353.0" prefHeight="27.0" prefWidth="114.0" text="Alquiler del chófer" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <CheckBox fx:id="checkDriverRentalModify" layoutX="135.0" layoutY="409.0" mnemonicParsing="false" />
+                        <CheckBox fx:id="checkDriverRentalModify" layoutX="133.0" layoutY="358.0" mnemonicParsing="false" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="370.0" layoutY="24.0" prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css">
+                  <AnchorPane layoutX="370.0" layoutY="24.0" prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css" visible="false">
                      <styleClass>
                         <String fx:value="shadow" />
                         <String fx:value="white-bg" />

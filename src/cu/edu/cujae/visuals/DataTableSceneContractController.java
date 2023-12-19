@@ -1,7 +1,14 @@
 package cu.edu.cujae.visuals;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.time.LocalDate;
 
+import javax.swing.JOptionPane;
+
+import cu.edu.cujae.dto.DriverDTO;
+import cu.edu.cujae.utils.ContractAux;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +23,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -62,7 +70,7 @@ public class DataTableSceneContractController {
     private Button bttnModifyNewCar;
     
     @FXML
-    private TableView<?> contractTable;
+    private TableView<ContractAux> contractTable;
     
     @FXML
     private TextField search;
@@ -111,19 +119,16 @@ public class DataTableSceneContractController {
 //*****************  
     
     @FXML
-    private ComboBox<?> cmboxCarAdd;
+    private ComboBox<String> cmboxCarAdd;
 
     @FXML
-    private ComboBox<?> cmboxPayMethodAdd;
+    private ComboBox<String> cmboxPayMethodAdd;
 
     @FXML
-    private ComboBox<?> cmboxTouristAdd;
+    private ComboBox<String> cmboxTouristAdd;
     
     @FXML
     private DatePicker pickdateStartAdd;
-    
-    @FXML
-    private TextField txtTotalImportAdd;
     
     @FXML
     private CheckBox checkDriverRentalAdd;
@@ -133,28 +138,28 @@ public class DataTableSceneContractController {
 //0ºººººººººººººººº0 
     
     @FXML
-    private TableColumn<?, ?> colAddCar;
+    private TableColumn<ContractAux, String> colAddCar;
 
     @FXML
-    private TableColumn<?, ?> colAddDriverRental;
+    private TableColumn<ContractAux, Float> colAddDriverRental;
 
     @FXML
-    private TableColumn<?, ?> colAddEndDate;
+    private TableColumn<ContractAux, LocalDate> colAddEndDate;
 
     @FXML
-    private TableColumn<?, ?> colAddPayMethod;
+    private TableColumn<ContractAux, String> colAddPayMethod;
 
     @FXML
-    private TableColumn<?, ?> colAddProrroga;
+    private TableColumn<ContractAux, Integer> colAddProrroga;
 
     @FXML
-    private TableColumn<?, ?> colAddTotalImport;
+    private TableColumn<ContractAux, Float> colAddTotalImport;
 
     @FXML
-    private TableColumn<?, ?> colAddTourist;
+    private TableColumn<ContractAux, String> colAddTourist;
 
     @FXML
-    private TableColumn<?, ?> colAddstartDate;
+    private TableColumn<ContractAux, LocalDate>  colAddstartDate;
       
 //0ººººººººººººººººººº0  
 //0   MODIFY TABLE    0
@@ -189,19 +194,16 @@ public class DataTableSceneContractController {
 //******************** 
     
     @FXML
-    private ComboBox<?> cmboxCarModify;
+    private ComboBox<String> cmboxCarModify;
 
     @FXML
-    private ComboBox<?> cmboxPayMethodModify;
+    private ComboBox<String> cmboxPayMethodModify;
 
     @FXML
-    private ComboBox<?> cmboxTouristModify;
+    private ComboBox<String> cmboxTouristModify;
     
     @FXML
     private DatePicker pickdateStartModify;
-    
-    @FXML
-    private TextField txtTotalImportModify;
     
     @FXML
     private CheckBox checkDriverRentalModify;
@@ -270,6 +272,51 @@ public class DataTableSceneContractController {
 	private Scene scene;
 	private Parent root;
 	
+	@SuppressWarnings("unchecked")
+	private void contractTableChargeData()throws ClassNotFoundException, SQLException {
+		 // Configurar cellValueFactory para cada columna
+		
+		colAddCar.setCellValueFactory(new PropertyValueFactory<>("Car"));
+	    colAddDriverRental.setCellValueFactory(new PropertyValueFactory<>("DriverRental"));
+	    colAddEndDate.setCellValueFactory(new PropertyValueFactory<>("ContractEnd"));
+	    colAddPayMethod.setCellValueFactory(new PropertyValueFactory<>("PayMethod"));
+	    colAddProrroga.setCellValueFactory(new PropertyValueFactory<>("Prorroga"));
+	    colAddstartDate.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+	    colAddTotalImport.setCellValueFactory(new PropertyValueFactory<>("TotalImport"));
+	    colAddTourist.setCellValueFactory(new PropertyValueFactory<>("Tourist"));
+
+	    // Obtener la lista de turistas
+//	    ArrayList<ContractAux> list = ServiceLocator.getInstance().getContracts();		
+//	    ObservableList<ContractAux> contractList = FXCollections.observableArrayList();
+//	    contractList.addAll(list);
+//	    
+//	    // Establecer los elementos de la tabla
+//	    contractTable.setItems(contractList);
+   
+	    
+	    // Añadir un listener a la propiedad selectedItemProperty
+	    contractTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+	        if (newValue != null) {
+//	            iTidTextField=(String.valueOf(newValue.getpassport()));
+//	            iTnameTextField.setText(newValue.getName());	 
+//	            iTprovinceChoiceBox.setValue(newValue.getCountry());
+//	            iTPCHamountTextField.setText(String.valueOf(newValue.getCantRentalCars()));
+//	            iTWCHamountTextField.setText(String.valueOf(newValue.getRentalTotalValue()));
+//	            iTmascotTextField.setText(newValue.getLastName1());
+//	            iTcolorTextField.setText(newValue.getLastName2());
+	        }
+	    });
+	}
+	
+	public void initializeContractTable() {
+		try {
+	        // Llama al método touristTableChargeData() aquí
+	        contractTableChargeData();
+	    } catch (ClassNotFoundException | SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
+	
 	public void logout(ActionEvent event) {
 		stage = (Stage)mainScenePane.getScene().getWindow(); 
 		stage.close();
@@ -334,9 +381,9 @@ public class DataTableSceneContractController {
 			
 			modifyScenePane.setVisible(false);
 			
-		}else if(event.getSource() == bttnDelete) {
-			
 		}
+			
+		
 	}
 		
 	
@@ -406,20 +453,26 @@ public class DataTableSceneContractController {
 		
 		
 	}
-	
-    public void modifyContract(ActionEvent event) {
-		
-		
-	}
     
-    public void insertTourist(ActionEvent event) {
+	public void modifyContract(ActionEvent event) {
 		
 		
 	}
+    	
+
+
     
-    public void insertCar(ActionEvent event) {
-		
-		
-	}
+    
+    public void deleteContract(ActionEvent event) throws ClassNotFoundException, SQLException {
+        ObservableList<ContractAux> allContracts, singleContract;
+        allContracts = contractTable.getItems();
+        singleContract = contractTable.getSelectionModel().getSelectedItems();
+
+        if (singleContract.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Primero se debe seleccionar un item");
+        } else {
+            singleContract.forEach(allContracts::remove);
+        }
+    }
 
 }
