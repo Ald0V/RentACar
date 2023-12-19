@@ -1,8 +1,16 @@
 package cu.edu.cujae.visuals;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
+import cu.edu.cujae.dto.AuxiliaryDTO;
 import cu.edu.cujae.dto.CarDTO;
+import cu.edu.cujae.dto.ModelDTO;
+import cu.edu.cujae.utils.TouristAux;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +23,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -120,13 +129,13 @@ public class DataTableSceneCarController {
 //*****************  
     
     @FXML
-    private ComboBox<?> cmboxBrandAdd;
+    private ComboBox<String> cmboxBrandAdd;
 
     @FXML
-    private ComboBox<?> cmboxCarStatusAdd;
+    private ComboBox<String> cmboxCarStatusAdd;
 
     @FXML
-    private ComboBox<?> cmboxModelAdd;
+    private ComboBox<String> cmboxModelAdd;
     
     @FXML
     private TextField txtColorAdd;
@@ -139,13 +148,13 @@ public class DataTableSceneCarController {
 //******************** 
     
     @FXML
-    private ComboBox<?> cmboxBrandModify;
+    private ComboBox<String> cmboxBrandModify;
 
     @FXML
-    private ComboBox<?> cmboxCarStatusModify;
+    private ComboBox<String> cmboxCarStatusModify;
 
     @FXML
-    private ComboBox<?> cmboxModelModify;
+    private ComboBox<String> cmboxModelModify;
     
     @FXML
     private TextField txtColorModify;
@@ -162,6 +171,40 @@ public class DataTableSceneCarController {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+
+	@SuppressWarnings("unchecked")
+	private void carTableChargeData() throws ClassNotFoundException, SQLException {	
+	    // Configurar cellValueFactory para cada columna
+		colAddBrand.setCellValueFactory(new PropertyValueFactory<>("CarsBrand"));
+		colAddCarSituation.setCellValueFactory(new PropertyValueFactory<>("Situation"));
+		colAddColor.setCellValueFactory(new PropertyValueFactory<>("Color"));
+		colAddKM.setCellValueFactory(new PropertyValueFactory<>("KM"));
+		colAddModel.setCellValueFactory(new PropertyValueFactory<>("Model"));
+		colAddPlate.setCellValueFactory(new PropertyValueFactory<>("Plate"));	   
+
+	    // Obtener la lista de turistas
+//	    ArrayList<CarDTO> list = ServiceLocator.getInstance().getCars();		
+//	    ObservableList<CarDTO> carList = FXCollections.observableArrayList();
+//	    carList.addAll(list);
+//	    
+//	    // Establecer los elementos de la tabla
+//	    carTable.setItems(carList);
+
+	    
+	    
+	    // Añadir un listener a la propiedad selectedItemProperty
+		carTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+	        if (newValue != null) {
+//	            iTidTextField=(String.valueOf(newValue.getpassport()));
+//	            iTnameTextField.setText(newValue.getName());	 
+//	            iTprovinceChoiceBox.setValue(newValue.getCountry());
+//	            iTPCHamountTextField.setText(String.valueOf(newValue.getCantRentalCars()));
+//	            iTWCHamountTextField.setText(String.valueOf(newValue.getRentalTotalValue()));
+//	            iTmascotTextField.setText(newValue.getLastName1());
+//	            iTcolorTextField.setText(newValue.getLastName2());
+	        }
+	    });
+	} 
 	
 	public void logout(ActionEvent event) {
 		stage = (Stage)mainScenePane.getScene().getWindow(); 
@@ -212,6 +255,8 @@ public class DataTableSceneCarController {
 			bttnDelete.setDisable(true);
 			modifyScenePane.setVisible(true);
 			addScenePane.setVisible(false);
+			ObservableList<String> list = FXCollections.observableArrayList("En taller", "Alquilado", "Disponible");
+			cmboxCarStatusModify.setItems(list);
 			
 		}else if(event.getSource() == bttnAdd){
 			bttnAdd.setDisable(true);
@@ -223,10 +268,10 @@ public class DataTableSceneCarController {
 			
 			tableScenePane.setMaxHeight(382);
 			carTable.setMaxHeight(286);
+			ObservableList<String> list = FXCollections.observableArrayList("En taller", "Alquilado", "Disponible");
+			cmboxCarStatusAdd.setItems(list);
 			
 			modifyScenePane.setVisible(false);
-			
-		}else if(event.getSource() == bttnDelete) {
 			
 		}
 	}
@@ -250,13 +295,89 @@ public class DataTableSceneCarController {
 	}
 	
     public void insertCar(ActionEvent event) {
-		
+		if(txtColorAdd.getText() != "" && txtPlateAdd.getText() != "" && cmboxBrandAdd.getValue() != "" && cmboxCarStatusAdd.getValue() != "" && cmboxModelAdd.getValue() != "" ) {
+			
+			String color = txtColorAdd.getText();
+			String plate = txtPlateAdd.getText();
+			String brand = cmboxBrandAdd.getValue();
+			String situation = cmboxCarStatusAdd.getValue();
+			String model = cmboxModelAdd.getValue();
+			
+			try {
+				AuxiliaryDTO brandAux = new AuxiliaryDTO(-1 ,brand);
+				ModelDTO carAux = new ModelDTO(-1, model, brandAux);
+				AuxiliaryDTO carAux2 = new AuxiliaryDTO(-1 ,situation);
+				CarDTO car = new CarDTO(plate, carAux, 0, color, carAux2);
+				
+//				serviceLocator.createCar(car);
+
+				txtColorAdd.setText("");
+				txtPlateAdd.setText("");
+				cmboxBrandAdd.setValue("");
+				cmboxCarStatusAdd.setValue("");
+				cmboxModelAdd.getValue();
+
+				try {
+					carTableChargeData();
+				} catch (ClassNotFoundException | SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			catch(Exception e) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+			}
+		}else
+			lblErrorEmpty.setVisible(true);
 		
 	}
 	
     public void modifyCar(ActionEvent event) {
 		
-		
+if(txtColorAdd.getText() != "" && txtPlateAdd.getText() != "" && cmboxBrandAdd.getValue() != "" && cmboxCarStatusAdd.getValue() != "" && cmboxModelAdd.getValue() != "" ) {
+			
+			String color = txtColorAdd.getText();
+			String plate = txtPlateAdd.getText();
+			String brand = cmboxBrandAdd.getValue();
+			String situation = cmboxCarStatusAdd.getValue();
+			String model = cmboxModelAdd.getValue();
+			
+			try {
+				AuxiliaryDTO brandAux = new AuxiliaryDTO(-1 ,brand);
+				ModelDTO carAux = new ModelDTO(-1, model, brandAux);
+				AuxiliaryDTO carAux2 = new AuxiliaryDTO(-1 ,situation);
+				CarDTO car = new CarDTO(plate, carAux, 0, color, carAux2);
+				
+//				serviceLocator.updateCar(car);
+
+				txtColorAdd.setText("");
+				txtPlateAdd.setText("");
+				cmboxBrandAdd.setValue("");
+				cmboxCarStatusAdd.setValue("");
+				cmboxModelAdd.getValue();
+
+				try {
+					carTableChargeData();
+				} catch (ClassNotFoundException | SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			catch(Exception e) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+			}
+		}else
+			lblErrorEmpty.setVisible(true);
 	}
+    
+    public void deleteCar(ActionEvent event) throws ClassNotFoundException, SQLException {
+        ObservableList<CarDTO> allCarss, singleCar;
+        allCarss = carTable.getItems();
+        singleCar = carTable.getSelectionModel().getSelectedItems();
+
+        if (singleCar.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Primero se debe seleccionar un item");
+        } else {
+            singleCar.forEach(allCarss::remove);
+        }
+    }
 }
 

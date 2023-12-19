@@ -243,10 +243,6 @@ public class DataTableSceneTouristController {
 	private Scene scene;
 	private Parent root;
 	
-    public void initializeComboBoxSex() {
-
-    }
-	
 	@SuppressWarnings("unchecked")
 	private void touristTableChargeData() throws ClassNotFoundException, SQLException {	
 	    // Configurar cellValueFactory para cada columna
@@ -342,7 +338,7 @@ public class DataTableSceneTouristController {
 			modifyScenePane.setVisible(true);
 			addScenePane.setVisible(false);
 	        ObservableList<String> list = FXCollections.observableArrayList("Hombre", "Mujer");
-	        cmboxSexAdd.setItems(list);
+	        cmboxSexModify.setItems(list);
 			
 		}else if(event.getSource() == bttnAdd){
 			
@@ -480,14 +476,14 @@ public class DataTableSceneTouristController {
 			if(isAgeCorrect(Integer.parseInt(txtAgeAdd.getText())) ) {
 				if(isPassportCorrect(txtPassportAdd.getText()) && isPhoneCorrect(txtPhoneAdd.getText())) {
 
-					String name = txtNameAdd.getText();
-					String lastName1 = txtLastName1Add.getText();
-					String lastName2 = txtLastName2Add.getText();
-					String passport = txtPassportAdd.getText();
-					String sex = (String) cmboxSexAdd.getValue();
-					String contact = txtPhoneAdd.getText();
-					String country = (String) cmboxCountryAdd.getValue();
-					int age = Integer.parseInt(txtAgeAdd.getText());
+					String name = txtNameModify.getText();
+					String lastName1 = txtLastName1Modify.getText();
+					String lastName2 = txtLastName2Modify.getText();
+					String passport = txtPassportModify.getText();
+					String sex = (String) cmboxSexModify.getValue();
+					String contact = txtPhoneModify.getText();
+					String country = (String) cmboxCountryModify.getValue();
+					int age = Integer.parseInt(txtAgeModify.getText());
 
 					try {
 						AuxiliaryDTO aux = new AuxiliaryDTO(-1 ,country);
@@ -495,14 +491,14 @@ public class DataTableSceneTouristController {
 						
 //						serviceLocator.updateTourist(tourist);
 
-						txtNameAdd.setText("");
-						txtLastName1Add.setText("");
-						txtLastName2Add.setText("");
-						txtPassportAdd.setText("");
-						cmboxSexAdd.setValue("");
-						txtPhoneAdd.setText("");
-						cmboxCountryAdd.setValue("");
-						txtAgeAdd.setText("");
+						txtNameModify.setText("");
+						txtLastName1Modify.setText("");
+						txtLastName2Modify.setText("");
+						txtPassportModify.setText("");
+						cmboxSexModify.setValue("");
+						txtPhoneModify.setText("");
+						cmboxCountryModify.setValue("");
+						txtAgeModify.setText("");
 
 						try {
 							touristTableChargeData();
@@ -514,7 +510,7 @@ public class DataTableSceneTouristController {
 						JOptionPane.showMessageDialog(null, e.getMessage());
 					}
 
-				}else if(isPassportCorrect(txtPassportAdd.getText()) != false) {
+				}else if(isPassportCorrect(txtPassportModify.getText()) != false) {
 					lblErrorPassport.setVisible(true);
 				}else
 					lblErrorPhone.setVisible(true);		
