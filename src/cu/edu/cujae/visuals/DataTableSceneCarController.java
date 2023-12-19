@@ -206,6 +206,15 @@ public class DataTableSceneCarController {
 	    });
 	} 
 	
+	public void initializeCarTable() {
+		try {
+	        // Llama al método touristTableChargeData() aquí
+	        carTableChargeData();
+	    } catch (ClassNotFoundException | SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
+	
 	public void logout(ActionEvent event) {
 		stage = (Stage)mainScenePane.getScene().getWindow(); 
 		stage.close();

@@ -1,7 +1,16 @@
 package cu.edu.cujae.visuals;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
+import cu.edu.cujae.dto.AuxiliaryDTO;
+import cu.edu.cujae.dto.DriverDTO;
+import cu.edu.cujae.dto.TouristDTO;
+import cu.edu.cujae.utils.TouristAux;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +26,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.control.ComboBox;
 
@@ -41,7 +51,7 @@ public class DataTableSceneDriverController {
     private AnchorPane addParametersScenePane;
     
     @FXML
-    private TableView<?> driverTable;
+    private TableView<DriverDTO> driverTable;
     
     @FXML
     private TextField search;
@@ -75,25 +85,25 @@ public class DataTableSceneDriverController {
 //0ºººººººººººººººº0 
     
     @FXML
-    private TableColumn<?, ?> colAddAddress;
+    private TableColumn<DriverDTO, String> colAddAddress;
 
     @FXML
-    private TableColumn<?, ?> colAddID;
+    private TableColumn<DriverDTO, String> colAddID;
 
     @FXML
-    private TableColumn<?, ?> colAddLastName1;
+    private TableColumn<DriverDTO, String> colAddLastName1;
 
     @FXML
-    private TableColumn<?, ?> colAddLastName2;
+    private TableColumn<DriverDTO, String> colAddLastName2;
 
     @FXML
-    private TableColumn<?, ?> colAddLicense;
+    private TableColumn<DriverDTO, String> colAddLicense;
 
     @FXML
-    private TableColumn<?, ?> colAddName;
+    private TableColumn<DriverDTO, String> colAddName;
 
     @FXML
-    private TableColumn<?, ?> colAddNumerOfCars;
+    private TableColumn<DriverDTO, Integer> colAddNumerOfCars;
     
 //0ººººººººººººººººººº0  
 //0   MODIFY TABLE    0
@@ -125,7 +135,7 @@ public class DataTableSceneDriverController {
 //***************** 
     
     @FXML
-    private ComboBox<?> cmboxLicenseAdd;
+    private ComboBox<String> cmboxLicenseAdd;
     
     @FXML
     private TextField txtAddressAdd;
@@ -147,7 +157,7 @@ public class DataTableSceneDriverController {
 //******************** 
     
     @FXML
-    private ComboBox<?> cmboxLicenseModify;
+    private ComboBox<String> cmboxLicenseModify;
     
     @FXML
     private TextField txtAddressModify;
@@ -173,6 +183,51 @@ public class DataTableSceneDriverController {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+	
+	
+	@SuppressWarnings("unchecked")
+	public void driverTableChargeData()throws ClassNotFoundException, SQLException {
+		// Configurar cellValueFactory para cada columna
+	    colAddAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
+	    colAddID.setCellValueFactory(new PropertyValueFactory<>("ID"));
+	    colAddLastName1.setCellValueFactory(new PropertyValueFactory<>("LastName1"));
+	    colAddLastName2.setCellValueFactory(new PropertyValueFactory<>("LastName2"));
+	    colAddLicense.setCellValueFactory(new PropertyValueFactory<>("Passport"));
+	    colAddName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+	    colAddNumerOfCars.setCellValueFactory(new PropertyValueFactory<>("NumberofCars"));
+
+	    // Obtener la lista de conductores
+//	    ArrayList<DriverDTO> list = ServiceLocator.getInstance().getDrivers();		
+//	    ObservableList<DriverDTO> driversList = FXCollections.observableArrayList();
+//	    driversList.addAll(list);
+//	    
+//	    // Establecer los elementos de la tabla
+//	    driverTable.setItems(driversList);
+
+	    
+	    
+	    // Añadir un listener a la propiedad selectedItemProperty
+	    driverTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+	        if (newValue != null) {
+//	            iTidTextField=(String.valueOf(newValue.getpassport()));
+//	            iTnameTextField.setText(newValue.getName());	 
+//	            iTprovinceChoiceBox.setValue(newValue.getCountry());
+//	            iTPCHamountTextField.setText(String.valueOf(newValue.getCantRentalCars()));
+//	            iTWCHamountTextField.setText(String.valueOf(newValue.getRentalTotalValue()));
+//	            iTmascotTextField.setText(newValue.getLastName1());
+//	            iTcolorTextField.setText(newValue.getLastName2());
+	        }
+	    });
+	}
+	
+	public void initializeDriverTable() {
+		try {
+	        // Llama al método touristTableChargeData() aquí
+	        driverTableChargeData();
+	    } catch (ClassNotFoundException | SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
 	
 	public void logout(ActionEvent event) {
 		stage = (Stage)mainScenePane.getScene().getWindow(); 
@@ -225,6 +280,9 @@ public class DataTableSceneDriverController {
 			modifyScenePane.setVisible(true);
 			addScenePane.setVisible(false);
 			
+			ObservableList<String> list = FXCollections.observableArrayList("B", "C", "D", "E");
+	        cmboxLicenseModify.setItems(list);
+			
 		}else if(event.getSource() == bttnAdd){
 			
 			bttnAdd.setDisable(true);
@@ -239,7 +297,8 @@ public class DataTableSceneDriverController {
 			
 			modifyScenePane.setVisible(false);
 			
-		}else if(event.getSource() == bttnDelete) {
+			ObservableList<String> list = FXCollections.observableArrayList("B", "C", "D", "E");
+	        cmboxLicenseAdd.setItems(list);
 			
 		}
 	}
@@ -264,12 +323,89 @@ public class DataTableSceneDriverController {
 
 
 	public void insertDriver(ActionEvent event) {
-		
-		
+		if(txtAddressAdd.getText() != "" && txtIDAdd.getText() != "" && txtLastName1Add.getText() != "" && txtLastName2Add.getText() != "" && txtNameAdd.getText() != "" && cmboxLicenseAdd.getValue() != "") {
+			String name = txtNameAdd.getText();
+			String lastName1 = txtLastName1Add.getText();
+			String lastName2 = txtLastName2Add.getText();
+			String id = txtIDAdd.getText();
+			String address = txtAddressAdd.getText();
+			String license = cmboxLicenseAdd.getValue();
+			
+			try {
+				AuxiliaryDTO aux = new AuxiliaryDTO(-1, license);
+				DriverDTO tourist = new DriverDTO(id, name, lastName1, lastName2, aux, address);
+				
+//				serviceLocator.insertDriver(driver);
+
+			     txtNameAdd.setText("");
+			     txtLastName1Add.setText("");
+			     txtLastName2Add.setText("");
+			     txtIDAdd.setText("");
+			     txtAddressAdd.setText("");
+			     cmboxLicenseAdd.setValue("");
+
+
+				try {
+					driverTableChargeData();
+				} catch (ClassNotFoundException | SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			catch(Exception e) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+			}
+		}else
+			lblErrorEmpty.setVisible(true);
+
 	}
 	
     public void modifyDriver(ActionEvent event) {
-		
-		
+		if(txtAddressAdd.getText() != "" && txtIDAdd.getText() != "" && txtLastName1Add.getText() != "" && txtLastName2Add.getText() != "" && txtNameAdd.getText() != "" && cmboxLicenseAdd.getValue() != "") {
+			String name = txtNameModify.getText();
+			String lastName1 = txtLastName1Modify.getText();
+			String lastName2 = txtLastName2Modify.getText();
+			String id = txtIDModify.getText();
+			String address = txtAddressModify.getText();
+			String license = cmboxLicenseModify.getValue();
+			
+			try {
+				AuxiliaryDTO aux = new AuxiliaryDTO(-1, license);
+				DriverDTO tourist = new DriverDTO(id, name, lastName1, lastName2, aux, address);
+				
+//				serviceLocator.updateDriver(driver);
+
+				txtNameModify.setText("");
+				txtLastName1Modify.setText("");
+				txtLastName2Modify.setText("");
+				txtIDModify.setText("");
+				txtAddressModify.setText("");
+				cmboxLicenseModify.setValue("");
+
+
+				try {
+					driverTableChargeData();
+				} catch (ClassNotFoundException | SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			catch(Exception e) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+			}
+		}else
+			lblErrorEmpty.setVisible(true);
+
 	}
+	
+    
+    public void deleteDriver(ActionEvent event) throws ClassNotFoundException, SQLException {
+        ObservableList<DriverDTO> allDrivers, singleDriver;
+        allDrivers = driverTable.getItems();
+        singleDriver = driverTable.getSelectionModel().getSelectedItems();
+
+        if (singleDriver.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Primero se debe seleccionar un item");
+        } else {
+            singleDriver.forEach(allDrivers::remove);
+        }
+    }
 }

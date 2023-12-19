@@ -129,6 +129,8 @@ public class MainSceneController {
 		
 		DataTableSceneCarController dataTableSceneController = loader.getController();
 		dataTableSceneController.displayName("Carros");
+		
+		dataTableSceneController.initializeCarTable();
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
@@ -199,6 +201,8 @@ public class MainSceneController {
 		
 		DataTableSceneDriverController dataTableSceneController = loader.getController();
 		dataTableSceneController.displayName("Chofers");
+		
+		dataTableSceneController.initializeDriverTable();
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
