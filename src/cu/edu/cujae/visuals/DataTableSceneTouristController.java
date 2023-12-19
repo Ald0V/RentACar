@@ -58,6 +58,10 @@ public class DataTableSceneTouristController {
     
     @FXML
     private TableView<TouristAux> touristTable;
+    
+
+    @FXML
+    private TableView<TouristAux> tableTouristsMod;
 	
     @FXML
     private Label lblName;
@@ -146,25 +150,25 @@ public class DataTableSceneTouristController {
 //0ººººººººººººººººººº0
     
     @FXML
-    private TableColumn<?, ?> colModifyCantRentalCars;
+    private TableColumn<TouristAux, Integer> colModifyCantRentalCars;
 
     @FXML
-    private TableColumn<?, ?> colModifyCountry;
+    private TableColumn<TouristAux, String> colModifyCountry;
 
     @FXML
-    private TableColumn<?, ?> colModifyLastName1;
+    private TableColumn<TouristAux, String> colModifyLastName1;
 
     @FXML
-    private TableColumn<?, ?> colModifyLastName2;
+    private TableColumn<TouristAux, String> colModifyLastName2;
 
     @FXML
-    private TableColumn<?, ?> colModifyName;
+    private TableColumn<TouristAux, String> colModifyName;
 
     @FXML
-    private TableColumn<?, ?> colModifyPassport;
+    private TableColumn<TouristAux, String> colModifyPassport;
 
     @FXML
-    private TableColumn<?, ?> colModifyRentalTotalValue;
+    private TableColumn<TouristAux, Float> colModifyRentalTotalValue;
     
 //*****************    
 //*   ADD PANE    *
@@ -205,10 +209,10 @@ public class DataTableSceneTouristController {
 //******************** 
     
     @FXML
-    private ComboBox<?> cmboxCountryModify;
+    private ComboBox<String> cmboxCountryModify;
 
     @FXML
-    private ComboBox<?> cmboxSexModify;
+    private ComboBox<String> cmboxSexModify;
     
     @FXML
     private TextField txtAgeModify;
@@ -261,6 +265,8 @@ public class DataTableSceneTouristController {
 //	    
 //	    // Establecer los elementos de la tabla
 //	    touristTable.setItems(touristList);
+
+	    
 	    
 	    // Añadir un listener a la propiedad selectedItemProperty
 	    touristTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -353,10 +359,7 @@ public class DataTableSceneTouristController {
 			touristTable.setMaxHeight(286);
 			
 			modifyScenePane.setVisible(false);
-			
-		}else if(event.getSource() == bttnDelete){
-			
-			
+				
 		}
 		
 	}
@@ -435,7 +438,7 @@ public class DataTableSceneTouristController {
 					String country = (String) cmboxCountryAdd.getValue();
 					int age = Integer.parseInt(txtAgeAdd.getText());
 
-					try {;
+					try {
 						AuxiliaryDTO aux = new AuxiliaryDTO(-1, country);
 						TouristDTO tourist = new TouristDTO(passport, name, lastName1, lastName2, age, sex, contact, aux);
 						
@@ -471,11 +474,67 @@ public class DataTableSceneTouristController {
 		
 	}
 	
-    public void modifyTourist(ActionEvent event) {
+    public void modifyTourist(ActionEvent event)throws ClassNotFoundException, SQLException {
 		
-		
+    	if(txtAgeAdd.getText() != "" && txtLastName1Add.getText() != "" && txtLastName2Add.getText() != "" && txtNameAdd.getText() != "" && txtPassportAdd.getText() != "" && txtPhoneAdd.getText() != "" && cmboxCountryAdd.getValue() != "" && cmboxSexAdd.getValue() != "") { 
+			if(isAgeCorrect(Integer.parseInt(txtAgeAdd.getText())) ) {
+				if(isPassportCorrect(txtPassportAdd.getText()) && isPhoneCorrect(txtPhoneAdd.getText())) {
+
+					String name = txtNameAdd.getText();
+					String lastName1 = txtLastName1Add.getText();
+					String lastName2 = txtLastName2Add.getText();
+					String passport = txtPassportAdd.getText();
+					String sex = (String) cmboxSexAdd.getValue();
+					String contact = txtPhoneAdd.getText();
+					String country = (String) cmboxCountryAdd.getValue();
+					int age = Integer.parseInt(txtAgeAdd.getText());
+
+					try {
+						AuxiliaryDTO aux = new AuxiliaryDTO(-1 ,country);
+						TouristDTO tourist = new TouristDTO(passport, name, lastName1, lastName2, age, sex, contact, aux);
+						
+//						serviceLocator.updateTourist(tourist);
+
+						txtNameAdd.setText("");
+						txtLastName1Add.setText("");
+						txtLastName2Add.setText("");
+						txtPassportAdd.setText("");
+						cmboxSexAdd.setValue("");
+						txtPhoneAdd.setText("");
+						cmboxCountryAdd.setValue("");
+						txtAgeAdd.setText("");
+
+						try {
+							touristTableChargeData();
+						} catch (ClassNotFoundException | SQLException e) {
+							e.printStackTrace();
+						}
+					}
+					catch(Exception e) {
+						JOptionPane.showMessageDialog(null, e.getMessage());
+					}
+
+				}else if(isPassportCorrect(txtPassportAdd.getText()) != false) {
+					lblErrorPassport.setVisible(true);
+				}else
+					lblErrorPhone.setVisible(true);		
+			}else
+				lblErrorAge.setVisible(true);			
+		}else
+			lblErrorEmpty.setVisible(true);
 	}
     
-    
+    public void deleteTourist(ActionEvent event) throws ClassNotFoundException, SQLException {
+        ObservableList<TouristAux> allTourists, singleTourist;
+        allTourists = touristTable.getItems();
+        singleTourist = touristTable.getSelectionModel().getSelectedItems();
+
+        if (singleTourist.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Primero se debe seleccionar un item");
+        } else {
+            singleTourist.forEach(allTourists::remove);
+        }
+    }
+
     
 }

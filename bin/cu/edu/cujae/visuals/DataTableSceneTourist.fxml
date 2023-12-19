@@ -45,7 +45,7 @@
                         <Insets left="15.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="bttnDelete" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Eliminar..." textFill="WHITE">
+                  <Button fx:id="bttnDelete" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#deleteTourist" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Eliminar..." textFill="WHITE">
                      <graphic>
                         <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -364,13 +364,13 @@
                         <TextField fx:id="txtCountryModify" layoutX="129.0" layoutY="448.0" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" visible="false" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="370.0" layoutY="24.0" prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css">
+                  <AnchorPane layoutX="370.0" layoutY="24.0" prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css" visible="false">
                      <styleClass>
                         <String fx:value="shadow" />
                         <String fx:value="white-bg" />
                      </styleClass>
                      <children>
-                        <TableView prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css">
+                        <TableView fx:id="tableTouristsMod" prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css">
                            <columns>
                               <TableColumn fx:id="colModifyPassport" prefWidth="83.99993896484375" text="Pasaporte" />
                               <TableColumn fx:id="colModifyName" prefWidth="79.20001220703125" text="Nombre" />

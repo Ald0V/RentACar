@@ -2,6 +2,7 @@ package cu.edu.cujae.visuals;
 
 import java.io.IOException;
 
+import cu.edu.cujae.dto.CarDTO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,7 +42,7 @@ public class DataTableSceneCarController {
     private AnchorPane addParametersScenePane;
     
     @FXML
-    private TableView<?> carTable;
+    private TableView<CarDTO> carTable;
     
     @FXML
     private TextField search;
@@ -75,22 +76,22 @@ public class DataTableSceneCarController {
 //0ºººººººººººººººº0 
     
     @FXML
-    private TableColumn<?, ?> colAddBrand;
+    private TableColumn<CarDTO, String> colAddBrand;
 
     @FXML
-    private TableColumn<?, ?> colAddCarSituation;
+    private TableColumn<CarDTO, String> colAddCarSituation;
 
     @FXML
-    private TableColumn<?, ?> colAddColor;
+    private TableColumn<CarDTO, String> colAddColor;
 
     @FXML
-    private TableColumn<?, ?> colAddKM;
+    private TableColumn<CarDTO, Integer> colAddKM;
 
     @FXML
-    private TableColumn<?, ?> colAddModel;
+    private TableColumn<CarDTO, String> colAddModel;
 
     @FXML
-    private TableColumn<?, ?> colAddPlate;
+    private TableColumn<CarDTO, String> colAddPlate;
 
 //0ººººººººººººººººººº0  
 //0   MODIFY TABLE    0
