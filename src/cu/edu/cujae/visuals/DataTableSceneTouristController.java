@@ -44,9 +44,6 @@ public class DataTableSceneTouristController {
 	@FXML
 	private AnchorPane addScenePane;
 	
-	@FXML
-	private AnchorPane modifyScenePane;
-	
     @FXML
     private AnchorPane tableScenePane;
     
@@ -58,10 +55,6 @@ public class DataTableSceneTouristController {
     
     @FXML
     private TableView<TouristAux> touristTable;
-    
-
-    @FXML
-    private TableView<TouristAux> tableTouristsMod;
 	
     @FXML
     private Label lblName;
@@ -70,25 +63,13 @@ public class DataTableSceneTouristController {
     private Label lblErrorAge;
 
     @FXML
-    private Label lblErrorAge1;
-
-    @FXML
     private Label lblErrorEmpty;
-
-    @FXML
-    private Label lblErrorEmpty1;
 
     @FXML
     private Label lblErrorPassport;
 
     @FXML
-    private Label lblErrorPassport1;
-
-    @FXML
     private Label lblErrorPhone;
-
-    @FXML
-    private Label lblErrorPhone1;
     
     @FXML
     private Button bttnAdd;
@@ -109,13 +90,16 @@ public class DataTableSceneTouristController {
     private Button bttnAddNewCountry;
     
     @FXML
-    private Button bttnModifyNewCountry;
-    
-    @FXML
     private VBox notVisitorVBox;
     
     @FXML
     private VBox visitorVBox;
+    
+    @FXML
+    private Button bttnAddTourist;
+    
+    @FXML
+    private Button bttnModifyTourist;
     
 //0ºººººººººººººººº0    
 //0   ADD TABLE    0
@@ -124,25 +108,28 @@ public class DataTableSceneTouristController {
     
     
     @FXML
-    private TableColumn<TouristAux, Integer> colAddCantRentalCars;
+    private TableColumn<TouristDTO, Integer> colAddAge;
 
     @FXML
-    private TableColumn<TouristAux, String> colAddCountry;
+    private TableColumn<TouristDTO, String> colAddCountry;
 
     @FXML
-    private TableColumn<TouristAux, String> colAddLastName1;
+    private TableColumn<TouristDTO, String> colAddLastName1;
 
     @FXML
-    private TableColumn<TouristAux, String> colAddLastName2;
+    private TableColumn<TouristDTO, String> colAddLastName2;
 
     @FXML
-    private TableColumn<TouristAux, String> colAddName;
+    private TableColumn<TouristDTO, String> colAddName;
 
     @FXML
-    private TableColumn<TouristAux, String> colAddPassport;
+    private TableColumn<TouristDTO, String> colAddPassport;
 
     @FXML
-    private TableColumn<TouristAux, Float> colAddRentalTotalValue;
+    private TableColumn<TouristDTO, String> colAddSex;
+    
+    @FXML
+    private TableColumn<TouristDTO, String> colAddPhone;
   
 //*****************    
 //*   ADD PANE    *
@@ -177,41 +164,6 @@ public class DataTableSceneTouristController {
     
     @FXML
     private ImageView imgCountryAdd;
-
-//********************   
-//*   MODIFY PANE    *
-//******************** 
-    
-    @FXML
-    private ComboBox<String> cmboxCountryModify;
-
-    @FXML
-    private ComboBox<String> cmboxSexModify;
-    
-    @FXML
-    private TextField txtAgeModify;
-
-    @FXML
-    private TextField txtCountryModify;
-
-    @FXML
-    private TextField txtLastName1Modify;
-
-    @FXML
-    private TextField txtLastName2Modify;
-
-    @FXML
-    private TextField txtNameModify;
-
-    @FXML
-    private TextField txtPassportModify;
-
-    @FXML
-    private TextField txtPhoneModify;
-    
-    @FXML
-    private ImageView imgCountryModify;
-    
 	
 	private Stage stage;
 	private Scene scene;
@@ -220,13 +172,14 @@ public class DataTableSceneTouristController {
 	@SuppressWarnings("unchecked")
 	private void touristTableChargeData() throws ClassNotFoundException, SQLException {	
 	    // Configurar cellValueFactory para cada columna
-	    colAddCantRentalCars.setCellValueFactory(new PropertyValueFactory<>("CantRentalCars"));
-	    colAddCountry.setCellValueFactory(new PropertyValueFactory<>("Country"));
-	    colAddLastName1.setCellValueFactory(new PropertyValueFactory<>("LastName1"));
-	    colAddLastName2.setCellValueFactory(new PropertyValueFactory<>("LastName2"));
-	    colAddName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-	    colAddPassport.setCellValueFactory(new PropertyValueFactory<>("Passport"));
-	    colAddRentalTotalValue.setCellValueFactory(new PropertyValueFactory<>("RentalTotalValue"));
+		colAddAge.setCellValueFactory(new PropertyValueFactory<>("Edad"));
+	    colAddCountry.setCellValueFactory(new PropertyValueFactory<>("País"));
+	    colAddLastName1.setCellValueFactory(new PropertyValueFactory<>("Primer apellido"));
+	    colAddLastName2.setCellValueFactory(new PropertyValueFactory<>("Segundo apellido"));
+	    colAddName.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
+	    colAddPassport.setCellValueFactory(new PropertyValueFactory<>("Pasaporte"));
+	    colAddSex.setCellValueFactory(new PropertyValueFactory<>("RentalTotalValue"));
+	    colAddPhone.setCellValueFactory(new PropertyValueFactory<>("RentalTotalValue"));
 
 	    // Obtener la lista de turistas
 //	    ArrayList<TouristAux> list = ServiceLocator.getInstance().getTourists();		
@@ -309,10 +262,17 @@ public class DataTableSceneTouristController {
 			bttnAdd.setDisable(true);
 			bttnModify.setDisable(true);
 			bttnDelete.setDisable(true);
-			modifyScenePane.setVisible(true);
-			addScenePane.setVisible(false);
+			addScenePane.setVisible(true);
+			addParametersScenePane.setVisible(true);
+			tableScenePane.setVisible(true);
 	        ObservableList<String> list = FXCollections.observableArrayList("Hombre", "Mujer");
-	        cmboxSexModify.setItems(list);
+	        cmboxSexAdd.setItems(list);
+	        
+	        bttnAddTourist.setVisible(false);
+			bttnModifyTourist.setVisible(true);
+	        
+			tableScenePane.setMaxHeight(382);
+			touristTable.setMaxHeight(286);
 			
 		}else if(event.getSource() == bttnAdd){
 			
@@ -322,13 +282,15 @@ public class DataTableSceneTouristController {
 			addScenePane.setVisible(true);
 			addParametersScenePane.setVisible(true);
 			tableScenePane.setVisible(true);
+			
+			bttnAddTourist.setVisible(true);
+			bttnModifyTourist.setVisible(false);
+			
 	        ObservableList<String> list = FXCollections.observableArrayList("Hombre", "Mujer");
 	        cmboxSexAdd.setItems(list);
 			
 			tableScenePane.setMaxHeight(382);
 			touristTable.setMaxHeight(286);
-			
-			modifyScenePane.setVisible(false);
 				
 		}
 		
@@ -336,15 +298,18 @@ public class DataTableSceneTouristController {
 	
 	public void cancelModify(ActionEvent event) {
 		addScenePane.setVisible(true);
-		modifyScenePane.setVisible(false);
+		addParametersScenePane.setVisible(false);
 		bttnAdd.setDisable(false);
 		bttnModify.setDisable(false);
 		bttnDelete.setDisable(false);
 		
-		cmboxCountryModify.setVisible(true);
-		imgCountryModify.setVisible(true);
-		bttnModifyNewCountry.setDisable(false);
-		txtCountryModify.setVisible(false);
+		cmboxCountryAdd.setVisible(true);
+		imgCountryAdd.setVisible(true);
+		bttnAddNewCountry.setDisable(false);
+		txtCountryAdd.setVisible(false);
+		
+		tableScenePane.setMaxHeight(626);
+		touristTable.setMaxHeight(554);
 	}
 	
 	public void cancelAdd(ActionEvent event) {
@@ -372,12 +337,6 @@ public class DataTableSceneTouristController {
 			cmboxCountryAdd.setVisible(false);
 			imgCountryAdd.setVisible(false);
 			
-		}else if(event.getSource() == bttnModifyNewCountry) {
-			
-			txtCountryModify.setVisible(true);
-			bttnModifyNewCountry.setDisable(true);
-			cmboxCountryModify.setVisible(false);
-			imgCountryModify.setVisible(false);
 		}
 	}
 	

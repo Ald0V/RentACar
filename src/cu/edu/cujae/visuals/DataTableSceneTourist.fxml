@@ -138,9 +138,10 @@
                             <TableColumn fx:id="colAddName" prefWidth="128.0" text="Nombre" />
                               <TableColumn fx:id="colAddLastName1" minWidth="0.0" prefWidth="139.20001220703125" text="Primer apellido" />
                               <TableColumn fx:id="colAddLastName2" prefWidth="132.79998779296875" text="Segundo apellido" />
-                              <TableColumn fx:id="colAddCantRentalCars" minWidth="0.0" prefWidth="180.7999267578125" text="Cantidad de carros rentados" />
-                              <TableColumn fx:id="colAddRentalTotalValue" minWidth="0.0" prefWidth="152.80010986328125" text="Valor total de alquileres" />
-                              <TableColumn fx:id="colAddCountry" prefWidth="132.0" text="País" />
+                              <TableColumn fx:id="colAddAge" minWidth="0.0" prefWidth="90.4000244140625" text="Edad" />
+                              <TableColumn fx:id="colAddSex" minWidth="0.0" prefWidth="66.39996337890625" text="Género" />
+                              <TableColumn fx:id="colAddCountry" minWidth="0.0" prefWidth="166.4000244140625" text="País" />
+                              <TableColumn fx:id="colAddPhone" prefWidth="136.80002441406248" text="Teléfono" />
                           </columns>
                         </TableView>
                         <TextField fx:id="search" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
@@ -209,7 +210,7 @@
                               <String fx:value="buttonCancel" />
                            </styleClass>
                         </Button>
-                        <Button layoutX="892.0" layoutY="158.0" mnemonicParsing="false" onAction="#insertTourist" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Crear" textFill="WHITE">
+                        <Button fx:id="bttnAddTourist" layoutX="892.0" layoutY="158.0" mnemonicParsing="false" onAction="#insertTourist" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Crear" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -249,52 +250,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                     </children>
-                  </AnchorPane>
-               </children>
-               <styleClass>
-                  <String fx:value="white-bg" />
-                  <String fx:value="shadow" />
-               </styleClass>
-            </AnchorPane>
-            <AnchorPane fx:id="modifyScenePane" layoutX="76.0" layoutY="80.0" prefHeight="651.2" prefWidth="1053.6" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <AnchorPane layoutX="21.0" layoutY="24.0" prefHeight="602.0" prefWidth="321.0" stylesheets="@application.css">
-                     <styleClass>
-                        <String fx:value="shadow" />
-                        <String fx:value="white-bg" />
-                     </styleClass>
-                     <children>
-                        <Label fx:id="lblErrorEmpty1" alignment="CENTER" layoutX="5.0" layoutY="494.0" prefHeight="38.0" prefWidth="310.0" text="Todos los campos son obligatorios" textAlignment="CENTER" textFill="RED" visible="false">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lblErrorPassport1" alignment="CENTER" layoutX="5.0" layoutY="494.0" prefHeight="38.0" prefWidth="310.0" text="El campo pasaporte no es válido" textAlignment="CENTER" textFill="RED" visible="false">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lblErrorAge1" alignment="CENTER" layoutX="5.0" layoutY="494.0" prefHeight="38.0" prefWidth="310.0" text="El campo edad no es válido" textAlignment="CENTER" textFill="RED" visible="false">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lblErrorPhone1" alignment="CENTER" layoutX="5.0" layoutY="494.0" prefHeight="38.0" prefWidth="310.0" text="El campo teléfono no es válido" textAlignment="CENTER" textFill="RED" visible="false">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <Button layoutX="17.0" layoutY="540.0" mnemonicParsing="false" onAction="#cancelModify" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Cancelar" textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                           <styleClass>
-                              <String fx:value="shadow" />
-                              <String fx:value="buttonCancel" />
-                           </styleClass>
-                        </Button>
-                        <Button layoutX="181.0" layoutY="540.0" mnemonicParsing="false" onAction="#modifyTourist" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Actualizar" textFill="WHITE">
+                        <Button fx:id="bttnModifyTourist" layoutX="892.0" layoutY="158.0" mnemonicParsing="false" onAction="#modifyTourist" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Actualizar" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -303,68 +259,13 @@
                               <String fx:value="buttonAdd" />
                            </styleClass>
                         </Button>
-                        <Label layoutX="61.0" layoutY="51.0" prefHeight="27.0" prefWidth="65.0" text="Pasaporte:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtPassportModify" layoutX="131.0" layoutY="52.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="71.0" layoutY="106.0" prefHeight="27.0" prefWidth="56.0" text="Nombre:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtNameModify" layoutX="131.0" layoutY="107.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="28.0" layoutY="165.0" prefHeight="27.0" prefWidth="98.0" text="Primer apellido:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtLastName1Modify" layoutX="131.0" layoutY="166.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="14.0" layoutY="223.0" prefHeight="27.0" prefWidth="114.0" text="Segundo apellido:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtLastName2Modify" layoutX="131.0" layoutY="224.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="89.0" layoutY="278.0" prefHeight="27.0" prefWidth="42.0" text="Edad:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtAgeModify" layoutX="131.0" layoutY="279.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="65.0" layoutY="336.0" prefHeight="27.0" prefWidth="66.0" text="Teléfono:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtPhoneModify" layoutX="131.0" layoutY="337.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="74.0" layoutY="394.0" prefHeight="27.0" prefWidth="56.0" text="Género:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="cmboxSexModify" layoutX="130.0" layoutY="395.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="92.0" layoutY="448.0" prefHeight="27.0" prefWidth="32.0" text="País:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="cmboxCountryModify" layoutX="129.0" layoutY="449.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Button fx:id="bttnModifyNewCountry" layoutX="279.0" layoutY="446.0" mnemonicParsing="false" onAction="#newTouristModorAdd" prefHeight="30.0" prefWidth="30.0" styleClass="buttonNew" stylesheets="@application.css" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold Italic" size="12.0" />
-                           </font>
-                        </Button>
-                        <ImageView fx:id="imgCountryModify" disable="true" fitHeight="30.0" fitWidth="32.0" layoutX="279.0" layoutY="447.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../resources/icons8_plus_math_32px.png" />
-                           </image>
-                        </ImageView>
-                        <TextField fx:id="txtCountryModify" layoutX="129.0" layoutY="448.0" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" visible="false" />
                      </children>
                   </AnchorPane>
                </children>
+               <styleClass>
+                  <String fx:value="white-bg" />
+                  <String fx:value="shadow" />
+               </styleClass>
             </AnchorPane>
          </children>
       </AnchorPane>
