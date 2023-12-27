@@ -336,12 +336,12 @@ public class DataTableSceneDriverController {
 	
     public void modifyDriver(ActionEvent event) {
 		if(txtAddressAdd.getText() != "" && txtIDAdd.getText() != "" && txtLastName1Add.getText() != "" && txtLastName2Add.getText() != "" && txtNameAdd.getText() != "" && cmboxLicenseAdd.getValue() != "") {
-			String name = txtNameModify.getText();
-			String lastName1 = txtLastName1Modify.getText();
-			String lastName2 = txtLastName2Modify.getText();
-			String id = txtIDModify.getText();
-			String address = txtAddressModify.getText();
-			String license = cmboxLicenseModify.getValue();
+			String name = txtNameAdd.getText();
+			String lastName1 = txtLastName1Add.getText();
+			String lastName2 = txtLastName2Add.getText();
+			String id = txtIDAdd.getText();
+			String address = txtAddressAdd.getText();
+			String license = cmboxLicenseAdd.getValue();
 			
 			try {
 				AuxiliaryDTO aux = new AuxiliaryDTO(-1, license);
@@ -349,12 +349,12 @@ public class DataTableSceneDriverController {
 				
 //				serviceLocator.updateDriver(driver);
 
-				txtNameModify.setText("");
-				txtLastName1Modify.setText("");
-				txtLastName2Modify.setText("");
-				txtIDModify.setText("");
-				txtAddressModify.setText("");
-				cmboxLicenseModify.setValue("");
+				txtNameAdd.setText("");
+				txtLastName1Add.setText("");
+				txtLastName2Add.setText("");
+				txtIDAdd.setText("");
+				txtAddressAdd.setText("");
+				cmboxLicenseAdd.setValue("");
 
 
 				try {

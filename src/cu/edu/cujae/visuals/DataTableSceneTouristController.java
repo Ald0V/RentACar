@@ -450,14 +450,14 @@ public class DataTableSceneTouristController {
 			if(isAgeCorrect(Integer.parseInt(txtAgeAdd.getText())) ) {
 				if(isPassportCorrect(txtPassportAdd.getText()) && isPhoneCorrect(txtPhoneAdd.getText())) {
 
-					String name = txtNameModify.getText();
-					String lastName1 = txtLastName1Modify.getText();
-					String lastName2 = txtLastName2Modify.getText();
-					String passport = txtPassportModify.getText();
-					String sex = (String) cmboxSexModify.getValue();
-					String contact = txtPhoneModify.getText();
-					String country = (String) cmboxCountryModify.getValue();
-					int age = Integer.parseInt(txtAgeModify.getText());
+					String name = txtNameAdd.getText();
+					String lastName1 = txtLastName1Add.getText();
+					String lastName2 = txtLastName2Add.getText();
+					String passport = txtPassportAdd.getText();
+					String sex = (String) cmboxSexAdd.getValue();
+					String contact = txtPhoneAdd.getText();
+					String country = (String) cmboxCountryAdd.getValue();
+					int age = Integer.parseInt(txtAgeAdd.getText());
 
 					try {
 						AuxiliaryDTO aux = new AuxiliaryDTO(-1 ,country);
@@ -465,14 +465,14 @@ public class DataTableSceneTouristController {
 						
 //						serviceLocator.updateTourist(tourist);
 
-						txtNameModify.setText("");
-						txtLastName1Modify.setText("");
-						txtLastName2Modify.setText("");
-						txtPassportModify.setText("");
-						cmboxSexModify.setValue("");
-						txtPhoneModify.setText("");
-						cmboxCountryModify.setValue("");
-						txtAgeModify.setText("");
+						txtNameAdd.setText("");
+						txtLastName1Add.setText("");
+						txtLastName2Add.setText("");
+						txtPassportAdd.setText("");
+						cmboxSexAdd.setValue("");
+						txtPhoneAdd.setText("");
+						cmboxCountryAdd.setValue("");
+						txtAgeAdd.setText("");
 
 						try {
 							touristTableChargeData();
@@ -484,7 +484,7 @@ public class DataTableSceneTouristController {
 						JOptionPane.showMessageDialog(null, e.getMessage());
 					}
 
-				}else if(isPassportCorrect(txtPassportModify.getText()) != false) {
+				}else if(isPassportCorrect(txtPassportAdd.getText()) != false) {
 					lblErrorPassport.setVisible(true);
 				}else
 					lblErrorPhone.setVisible(true);		

@@ -184,10 +184,10 @@ public class DataTableSceneContractController {
 //*************************  
     
     @FXML
-    private ComboBox<?> cmboxCountryAdd;
+    private ComboBox<String> cmboxCountryAdd;
 
     @FXML
-    private ComboBox<?> cmboxSexAdd;
+    private ComboBox<String> cmboxSexAdd;
     
     @FXML
     private TextField txtAgeAdd;
@@ -218,20 +218,19 @@ public class DataTableSceneContractController {
 //*********************
     
     @FXML
-    private ComboBox<?> cmboxBrandAdd;
+    private ComboBox<String> cmboxBrandAdd;
 
     @FXML
-    private ComboBox<?> cmboxCarStatusAdd;
+    private ComboBox<String> cmboxCarStatusAdd;
 
     @FXML
-    private ComboBox<?> cmboxModelAdd;
+    private ComboBox<String> cmboxModelAdd;
     
     @FXML
     private TextField txtColorAdd;
 
     @FXML
-    private TextField txtPlateAdd;
-    
+    private TextField txtPlateAdd;   
     
     @FXML
     private VBox notVisitorVBox;

@@ -322,11 +322,11 @@ public class DataTableSceneCarController {
 		
 if(txtColorAdd.getText() != "" && txtPlateAdd.getText() != "" && cmboxBrandAdd.getValue() != "" && cmboxCarStatusAdd.getValue() != "" && cmboxModelAdd.getValue() != "" ) {
 			
-			String color = txtColorModify.getText();
-			String plate = txtPlateModify.getText();
-			String brand = cmboxBrandModify.getValue();
-			String situation = cmboxCarStatusModify.getValue();
-			String model = cmboxModelModify.getValue();
+			String color = txtColorAdd.getText();
+			String plate = txtPlateAdd.getText();
+			String brand = cmboxBrandAdd.getValue();
+			String situation = cmboxCarStatusAdd.getValue();
+			String model = cmboxModelAdd.getValue();
 			
 			try {
 				AuxiliaryDTO brandAux = new AuxiliaryDTO(-1 ,brand);
@@ -336,11 +336,11 @@ if(txtColorAdd.getText() != "" && txtPlateAdd.getText() != "" && cmboxBrandAdd.g
 				
 //				serviceLocator.updateCar(car);
 
-				txtColorModify.setText("");
-				txtPlateModify.setText("");
-				cmboxBrandModify.setValue("");
-				cmboxCarStatusModify.setValue("");
-				cmboxModelModify.getValue();
+				txtColorAdd.setText("");
+				txtPlateAdd.setText("");
+				cmboxBrandAdd.setValue("");
+				cmboxCarStatusAdd.setValue("");
+				cmboxModelAdd.getValue();
 
 				try {
 					carTableChargeData();
