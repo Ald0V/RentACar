@@ -6,7 +6,6 @@ import java.time.LocalDate;
 
 import javax.swing.JOptionPane;
 
-import cu.edu.cujae.dto.DriverDTO;
 import cu.edu.cujae.utils.ContractAux;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -159,35 +158,7 @@ public class DataTableSceneContractController {
     private TableColumn<ContractAux, String> colAddTourist;
 
     @FXML
-    private TableColumn<ContractAux, LocalDate>  colAddstartDate;
-      
-//0ººººººººººººººººººº0  
-//0   MODIFY TABLE    0
-//0ººººººººººººººººººº0
-    
-    @FXML
-    private TableColumn<?, ?> colModifyCar;
-
-    @FXML
-    private TableColumn<?, ?> colModifyDriverRental;
-
-    @FXML
-    private TableColumn<?, ?> colModifyEndDate;
-
-    @FXML
-    private TableColumn<?, ?> colModifyPayMethod;
-
-    @FXML
-    private TableColumn<?, ?> colModifyProrroga;
-
-    @FXML
-    private TableColumn<?, ?> colModifyTotalImport;
-
-    @FXML
-    private TableColumn<?, ?> colModifyTourist;
-
-    @FXML
-    private TableColumn<?, ?> colModifystartDate;
+    private TableColumn<ContractAux, LocalDate>  colAddstartDate;    
     
 //********************   
 //*   MODIFY PANE    *

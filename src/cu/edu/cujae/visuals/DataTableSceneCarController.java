@@ -101,28 +101,6 @@ public class DataTableSceneCarController {
 
     @FXML
     private TableColumn<CarDTO, String> colAddPlate;
-
-//0ººººººººººººººººººº0  
-//0   MODIFY TABLE    0
-//0ººººººººººººººººººº0
-    
-    @FXML
-    private TableColumn<?, ?> colModifyBrand;
-
-    @FXML
-    private TableColumn<?, ?> colModifyCarSituation;
-
-    @FXML
-    private TableColumn<?, ?> colModifyColor;
-
-    @FXML
-    private TableColumn<?, ?> colModifyKM;
-
-    @FXML
-    private TableColumn<?, ?> colModifyModel;
-
-    @FXML
-    private TableColumn<?, ?> colModifyPlate;
  
 //*****************    
 //*   ADD PANE    *

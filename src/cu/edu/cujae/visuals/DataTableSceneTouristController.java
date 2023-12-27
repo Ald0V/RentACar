@@ -143,33 +143,7 @@ public class DataTableSceneTouristController {
 
     @FXML
     private TableColumn<TouristAux, Float> colAddRentalTotalValue;
-
-      
-//0ººººººººººººººººººº0  
-//0   MODIFY TABLE    0
-//0ººººººººººººººººººº0
-    
-    @FXML
-    private TableColumn<TouristAux, Integer> colModifyCantRentalCars;
-
-    @FXML
-    private TableColumn<TouristAux, String> colModifyCountry;
-
-    @FXML
-    private TableColumn<TouristAux, String> colModifyLastName1;
-
-    @FXML
-    private TableColumn<TouristAux, String> colModifyLastName2;
-
-    @FXML
-    private TableColumn<TouristAux, String> colModifyName;
-
-    @FXML
-    private TableColumn<TouristAux, String> colModifyPassport;
-
-    @FXML
-    private TableColumn<TouristAux, Float> colModifyRentalTotalValue;
-    
+  
 //*****************    
 //*   ADD PANE    *
 //*****************    

@@ -104,31 +104,6 @@ public class DataTableSceneDriverController {
 
     @FXML
     private TableColumn<DriverDTO, Integer> colAddNumerOfCars;
-    
-//0ººººººººººººººººººº0  
-//0   MODIFY TABLE    0
-//0ººººººººººººººººººº0
-    
-    @FXML
-    private TableColumn<?, ?> colModifyAddress;
-
-    @FXML
-    private TableColumn<?, ?> colModifyID;
-
-    @FXML
-    private TableColumn<?, ?> colModifyLastName1;
-
-    @FXML
-    private TableColumn<?, ?> colModifyLastName2;
-
-    @FXML
-    private TableColumn<?, ?> colModifyLicense;
-
-    @FXML
-    private TableColumn<?, ?> colModifyName;
-
-    @FXML
-    private TableColumn<?, ?> colModifyNumerOfCars;
  
 //*****************    
 //*   ADD PANE    *

@@ -319,26 +319,6 @@
                         <CheckBox fx:id="checkDriverRentalModify" layoutX="133.0" layoutY="358.0" mnemonicParsing="false" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="370.0" layoutY="24.0" prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css" visible="false">
-                     <styleClass>
-                        <String fx:value="shadow" />
-                        <String fx:value="white-bg" />
-                     </styleClass>
-                     <children>
-                        <TableView prefHeight="602.0" prefWidth="658.0">
-                           <columns>
-                              <TableColumn fx:id="colModifyTourist" prefWidth="52.0" text="Turista" />
-                              <TableColumn fx:id="colModifystartDate" prefWidth="92.79998779296875" text="Fecha de inicio" />
-                              <TableColumn fx:id="colModifyEndDate" minWidth="0.0" prefWidth="95.99993896484375" text="Fin del contrato" />
-                              <TableColumn fx:id="colModifyCar" prefWidth="77.60003662109375" text="Carro" />
-                              <TableColumn fx:id="colModifyPayMethod" minWidth="0.0" prefWidth="100.0" text="Método de pago" />
-                              <TableColumn fx:id="colModifyProrroga" prefWidth="58.4000244140625" text="Prórroga" />
-                              <TableColumn fx:id="colModifyDriverRental" prefWidth="97.5999755859375" text="Alquiler del chófer" />
-                              <TableColumn fx:id="colModifyTotalImport" prefWidth="85.5999755859375" text="Importe total" />
-                           </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>
@@ -406,7 +386,7 @@
                   <String fx:value="buttonCancel" />
                </styleClass>
             </Button>
-            <Button layoutX="892.0" layoutY="158.0" mnemonicParsing="false" onAction="#insertTourist" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Crear" textFill="WHITE">
+            <Button layoutX="892.0" layoutY="158.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Crear" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -463,7 +443,7 @@
                   <String fx:value="buttonCancel" />
                </styleClass>
             </Button>
-            <Button layoutX="892.0" layoutY="158.0" mnemonicParsing="false" onAction="#insertCar" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Crear" textFill="WHITE">
+            <Button layoutX="892.0" layoutY="158.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Crear" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

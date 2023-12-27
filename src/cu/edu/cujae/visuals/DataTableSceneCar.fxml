@@ -285,24 +285,6 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="370.0" layoutY="24.0" prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css" visible="false">
-                     <styleClass>
-                        <String fx:value="shadow" />
-                        <String fx:value="white-bg" />
-                     </styleClass>
-                     <children>
-                        <TableView layoutX="-1.0" layoutY="-1.0" prefHeight="602.0" prefWidth="658.0">
-                           <columns>
-                              <TableColumn fx:id="colModifyPlate" prefWidth="86.39996337890625" text="Placa" />
-                              <TableColumn fx:id="colModifyBrand" prefWidth="108.0" text="Marca" />
-                              <TableColumn fx:id="colModifyModel" minWidth="0.0" prefWidth="67.99993896484375" text="Modelo" />
-                              <TableColumn fx:id="colModifyColor" minWidth="2.39996337890625" prefWidth="85.60003662109375" text="Color" />
-                              <TableColumn fx:id="colModifyKM" prefWidth="140.0" text="Km recorridos" />
-                              <TableColumn fx:id="colModifyCarSituation" prefWidth="170.4000244140625" text="Estado del coche" />
-                           </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>

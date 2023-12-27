@@ -364,25 +364,6 @@
                         <TextField fx:id="txtCountryModify" layoutX="129.0" layoutY="448.0" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" visible="false" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="370.0" layoutY="24.0" prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css" visible="false">
-                     <styleClass>
-                        <String fx:value="shadow" />
-                        <String fx:value="white-bg" />
-                     </styleClass>
-                     <children>
-                        <TableView fx:id="tableTouristsMod" prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css">
-                           <columns>
-                              <TableColumn fx:id="colModifyPassport" prefWidth="83.99993896484375" text="Pasaporte" />
-                              <TableColumn fx:id="colModifyName" prefWidth="79.20001220703125" text="Nombre" />
-                              <TableColumn fx:id="colModifyLastName1" minWidth="0.0" prefWidth="101.5999755859375" text="Primer apellido" />
-                              <TableColumn fx:id="colModifyLastName2" minWidth="0.0" prefWidth="138.4000244140625" text="Segundo apellido" />
-                              <TableColumn fx:id="colModifyCantRentalCars" minWidth="0.0" prefWidth="126.4000244140625" text="Cantidad de carros alquilados" />
-                              <TableColumn fx:id="colModifyRentalTotalValue" minWidth="0.0" prefWidth="77.5999755859375" text="Valor total de alquileres" />
-                              <TableColumn fx:id="colModifyCountry" prefWidth="50.4000244140625" text="País" />
-                           </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>

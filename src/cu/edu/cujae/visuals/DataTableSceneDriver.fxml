@@ -298,25 +298,6 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="370.0" layoutY="24.0" prefHeight="602.0" prefWidth="658.0" stylesheets="@application.css" visible="false">
-                     <styleClass>
-                        <String fx:value="shadow" />
-                        <String fx:value="white-bg" />
-                     </styleClass>
-                     <children>
-                        <TableView layoutX="1.0" layoutY="-1.0" prefHeight="606.0" prefWidth="658.0">
-                           <columns>
-                              <TableColumn fx:id="colModifyID" prefWidth="135.20001220703125" text="Carnét de identidad" />
-                              <TableColumn fx:id="colModifyName" prefWidth="81.60003662109375" text="Nombre" />
-                              <TableColumn fx:id="colModifyLastName1" minWidth="0.0" prefWidth="96.79998779296875" text="Primer apellido" />
-                              <TableColumn fx:id="colModifyLastName2" prefWidth="110.4000244140625" text="Segundo apellido" />
-                              <TableColumn fx:id="colModifyAddress" minWidth="0.0" prefWidth="68.0" text="Dirección" />
-                              <TableColumn fx:id="colModifyLicense" prefWidth="98.39990234375" text="Tipo de licencia" />
-                              <TableColumn fx:id="colModifyNumerOfCars" prefWidth="68.800048828125" text="Cant de carros " />
-                           </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>
