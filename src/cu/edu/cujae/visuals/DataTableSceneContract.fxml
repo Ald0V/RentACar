@@ -164,7 +164,7 @@
                               <String fx:value="buttonCancel" />
                            </styleClass>
                         </Button>
-                        <Button layoutX="892.0" layoutY="158.0" mnemonicParsing="false" onAction="#insertContract" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Crear" textFill="WHITE">
+                        <Button fx:id="bttnAddContract" layoutX="892.0" layoutY="158.0" mnemonicParsing="false" onAction="#insertContract" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Crear" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -228,32 +228,7 @@
                            </font>
                         </Label>
                         <CheckBox fx:id="checkDriverRentalAdd" layoutX="852.0" layoutY="120.0" mnemonicParsing="false" />
-                     </children>
-                  </AnchorPane>
-               </children>
-               <styleClass>
-                  <String fx:value="white-bg" />
-                  <String fx:value="shadow" />
-               </styleClass>
-            </AnchorPane>
-            <AnchorPane fx:id="modifyScenePane" layoutX="76.0" layoutY="80.0" prefHeight="651.2" prefWidth="1053.6" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <AnchorPane layoutX="21.0" layoutY="24.0" prefHeight="602.0" prefWidth="321.0" stylesheets="@application.css">
-                     <styleClass>
-                        <String fx:value="shadow" />
-                        <String fx:value="white-bg" />
-                     </styleClass>
-                     <children>
-                        <Button layoutX="17.0" layoutY="540.0" mnemonicParsing="false" onAction="#cancelModify" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Cancelar" textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                           <styleClass>
-                              <String fx:value="shadow" />
-                              <String fx:value="buttonCancel" />
-                           </styleClass>
-                        </Button>
-                        <Button layoutX="181.0" layoutY="540.0" mnemonicParsing="false" onAction="#modifyContract" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Actualizar" textFill="WHITE">
+                        <Button fx:id="bttnModifyContract" layoutX="892.0" layoutY="158.0" mnemonicParsing="false" onAction="#modifyContract" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Actualizar" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -262,64 +237,13 @@
                               <String fx:value="buttonAdd" />
                            </styleClass>
                         </Button>
-                        <Label layoutX="32.0" layoutY="119.0" prefHeight="27.0" prefWidth="98.0" text="Fecha de inicio:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <DatePicker fx:id="pickdateStartModify" layoutX="131.0" layoutY="121.0" />
-                        <Label layoutX="82.0" layoutY="174.0" prefHeight="27.0" prefWidth="55.0" text="Turista:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="cmboxTouristModify" layoutX="131.0" layoutY="175.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="89.0" layoutY="232.0" prefHeight="27.0" prefWidth="42.0" text="Carro:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="cmboxCarModify" layoutX="131.0" layoutY="233.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="16.0" layoutY="294.0" prefHeight="27.0" prefWidth="108.0" text="Método de pago:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="cmboxPayMethodModify" layoutX="131.0" layoutY="295.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Button fx:id="bttnModifyNewTourist" layoutX="281.0" layoutY="172.0" mnemonicParsing="false" onAction="#switchNewTouristOrCar" prefHeight="30.0" prefWidth="30.0" styleClass="buttonNew" stylesheets="@application.css" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold Italic" size="12.0" />
-                           </font>
-                        </Button>
-                        <ImageView disable="true" fitHeight="30.0" fitWidth="32.0" layoutX="281.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../resources/icons8_plus_math_32px.png" />
-                           </image>
-                        </ImageView>
-                        <Button fx:id="bttnModifyNewCar" layoutX="281.0" layoutY="230.0" mnemonicParsing="false" onAction="#switchNewTouristOrCar" prefHeight="30.0" prefWidth="30.0" styleClass="buttonNew" stylesheets="@application.css" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold Italic" size="12.0" />
-                           </font>
-                        </Button>
-                        <ImageView disable="true" fitHeight="30.0" fitWidth="32.0" layoutX="281.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../resources/icons8_plus_math_32px.png" />
-                           </image>
-                        </ImageView>
-                        <Label fx:id="lblErrorEmpty1" alignment="CENTER" layoutX="5.0" layoutY="477.0" prefHeight="38.0" prefWidth="310.0" text="Todos los campos son obligatorios" textAlignment="CENTER" textFill="RED" visible="false">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="11.0" layoutY="353.0" prefHeight="27.0" prefWidth="114.0" text="Alquiler del chófer" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <CheckBox fx:id="checkDriverRentalModify" layoutX="133.0" layoutY="358.0" mnemonicParsing="false" />
                      </children>
                   </AnchorPane>
                </children>
+               <styleClass>
+                  <String fx:value="white-bg" />
+                  <String fx:value="shadow" />
+               </styleClass>
             </AnchorPane>
          </children>
       </AnchorPane>

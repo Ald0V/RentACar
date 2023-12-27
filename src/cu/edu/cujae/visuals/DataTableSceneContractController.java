@@ -41,9 +41,6 @@ public class DataTableSceneContractController {
 	@FXML
 	private AnchorPane addScenePane;
 	
-	@FXML
-	private AnchorPane modifyScenePane;
-	
     @FXML
     private AnchorPane tableScenePane;
     
@@ -63,12 +60,6 @@ public class DataTableSceneContractController {
     private Button bttnAddNewCar;
     
     @FXML
-    private Button bttnModifyNewTourist;
-    
-    @FXML
-    private Button bttnModifyNewCar;
-    
-    @FXML
     private TableView<ContractAux> contractTable;
     
     @FXML
@@ -79,9 +70,6 @@ public class DataTableSceneContractController {
     
     @FXML
     private Label lblErrorEmpty;
-
-    @FXML
-    private Label lblErrorEmpty1;
     
     @FXML
     private Label lblErrorEmptyTourist;
@@ -131,6 +119,12 @@ public class DataTableSceneContractController {
     
     @FXML
     private CheckBox checkDriverRentalAdd;
+     
+    @FXML
+    private Button bttnAddContract;
+    
+    @FXML
+    private Button bttnModifyContract;
     
 //0ºººººººººººººººº0    
 //0   ADD TABLE    0
@@ -159,25 +153,6 @@ public class DataTableSceneContractController {
 
     @FXML
     private TableColumn<ContractAux, LocalDate>  colAddstartDate;    
-    
-//********************   
-//*   MODIFY PANE    *
-//******************** 
-    
-    @FXML
-    private ComboBox<String> cmboxCarModify;
-
-    @FXML
-    private ComboBox<String> cmboxPayMethodModify;
-
-    @FXML
-    private ComboBox<String> cmboxTouristModify;
-    
-    @FXML
-    private DatePicker pickdateStartModify;
-    
-    @FXML
-    private CheckBox checkDriverRentalModify;
     
 //*************************    
 //*   TOURIST ADD PANE    *
@@ -246,7 +221,7 @@ public class DataTableSceneContractController {
 	private void contractTableChargeData()throws ClassNotFoundException, SQLException {
 		 // Configurar cellValueFactory para cada columna
 		
-		colAddCar.setCellValueFactory(new PropertyValueFactory<>("Car"));
+		colAddCar.setCellValueFactory(new PropertyValueFactory<>("Carro"));
 	    colAddDriverRental.setCellValueFactory(new PropertyValueFactory<>("DriverRental"));
 	    colAddEndDate.setCellValueFactory(new PropertyValueFactory<>("ContractEnd"));
 	    colAddPayMethod.setCellValueFactory(new PropertyValueFactory<>("PayMethod"));
@@ -335,8 +310,16 @@ public class DataTableSceneContractController {
 			bttnAdd.setDisable(true);
 			bttnModify.setDisable(true);
 			bttnDelete.setDisable(true);
-			modifyScenePane.setVisible(true);
-			addScenePane.setVisible(false);
+			addScenePane.setVisible(true);
+			addParametersScenePane.setVisible(true);
+			tableScenePane.setVisible(true);
+			
+			bttnAddContract.setVisible(false);
+			bttnModifyContract.setVisible(true);
+			
+			tableScenePane.setMaxHeight(382);
+			contractTable.setMaxHeight(286);
+			
 		}else if(event.getSource() == bttnAdd){
 			
 			bttnAdd.setDisable(true);
@@ -346,10 +329,11 @@ public class DataTableSceneContractController {
 			addParametersScenePane.setVisible(true);
 			tableScenePane.setVisible(true);
 			
+			bttnAddContract.setVisible(true);
+			bttnModifyContract.setVisible(false);
+			
 			tableScenePane.setMaxHeight(382);
 			contractTable.setMaxHeight(286);
-			
-			modifyScenePane.setVisible(false);
 			
 		}
 			
@@ -364,23 +348,17 @@ public class DataTableSceneContractController {
 			addNewTourist.setVisible(true);
 		}else if(event.getSource() == bttnAddNewCar) {
 			addNewCar.setVisible(true);
-		}else if(event.getSource() == bttnModifyNewTourist) {
-			addNewTourist.setVisible(true);
-			bttnModifyNewTourist.setDisable(true);
-			bttnModifyNewCar.setDisable(true);
-		}else if(event.getSource() == bttnModifyNewCar) {
-			addNewCar.setVisible(true);
-			bttnModifyNewTourist.setDisable(true);
-			bttnModifyNewCar.setDisable(true);
 		}
 	}
 	
 	public void cancelModify(ActionEvent event) {
-		modifyScenePane.setVisible(false);
+		addParametersScenePane.setVisible(false);
 		bttnAdd.setDisable(false);
 		bttnModify.setDisable(false);
 		bttnDelete.setDisable(false);
 		addScenePane.setVisible(true);
+		tableScenePane.setMaxHeight(626);
+		contractTable.setMaxHeight(554);
 	}
 	
 	public void cancelAdd(ActionEvent event) {
@@ -395,8 +373,6 @@ public class DataTableSceneContractController {
 	
 	public void cancelNewTourist(ActionEvent event) {
 		addNewTourist.setVisible(false);
-		bttnModifyNewTourist.setDisable(false);
-		bttnModifyNewCar.setDisable(false);
 		
 		cmboxCountryAdd.setVisible(true);
 		imgCountryAdd.setVisible(true);
@@ -406,8 +382,6 @@ public class DataTableSceneContractController {
 	
 	public void cancelNewCar(ActionEvent event) {
 		addNewCar.setVisible(false);
-		bttnModifyNewTourist.setDisable(false);
-		bttnModifyNewCar.setDisable(false);
 	}
 	
 	public void newTouristAdd(ActionEvent event) {
