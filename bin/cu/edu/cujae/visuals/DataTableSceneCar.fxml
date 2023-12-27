@@ -136,10 +136,9 @@
                           <columns>
                             <TableColumn fx:id="colAddPlate" prefWidth="135.20001220703125" text="Placa" />
                             <TableColumn fx:id="colAddBrand" prefWidth="176.80001831054688" text="Marca" />
-                              <TableColumn fx:id="colAddModel" minWidth="0.0" prefWidth="156.79998779296875" text="Modelo" />
-                              <TableColumn fx:id="colAddColor" prefWidth="160.800048828125" text="Color" />
-                              <TableColumn fx:id="colAddKM" minWidth="0.0" prefWidth="155.199951171875" text="Kilómetros recorridos" />
-                              <TableColumn fx:id="colAddCarSituation" prefWidth="210.4000244140625" text="Estado del coche" />
+                              <TableColumn fx:id="colAddModel" minWidth="0.0" prefWidth="249.5999755859375" text="Modelo" />
+                              <TableColumn fx:id="colAddColor" prefWidth="144.0" text="Color" />
+                              <TableColumn fx:id="colAddCarSituation" prefWidth="291.2000732421875" text="Estado del coche" />
                           </columns>
                         </TableView>
                         <TextField fx:id="search" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
@@ -160,7 +159,7 @@
                               <String fx:value="buttonCancel" />
                            </styleClass>
                         </Button>
-                        <Button layoutX="892.0" layoutY="158.0" mnemonicParsing="false" onAction="#insertCar" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Crear" textFill="WHITE">
+                        <Button fx:id="bttnAddCar" layoutX="892.0" layoutY="158.0" mnemonicParsing="false" onAction="#insertCar" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Crear" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -209,32 +208,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                     </children>
-                  </AnchorPane>
-               </children>
-               <styleClass>
-                  <String fx:value="white-bg" />
-                  <String fx:value="shadow" />
-               </styleClass>
-            </AnchorPane>
-            <AnchorPane fx:id="modifyScenePane" layoutX="76.0" layoutY="80.0" prefHeight="651.2" prefWidth="1053.6" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <AnchorPane layoutX="21.0" layoutY="24.0" prefHeight="602.0" prefWidth="321.0" stylesheets="@application.css">
-                     <styleClass>
-                        <String fx:value="shadow" />
-                        <String fx:value="white-bg" />
-                     </styleClass>
-                     <children>
-                        <Button layoutX="17.0" layoutY="540.0" mnemonicParsing="false" onAction="#cancelModify" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Cancelar" textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                           <styleClass>
-                              <String fx:value="shadow" />
-                              <String fx:value="buttonCancel" />
-                           </styleClass>
-                        </Button>
-                        <Button layoutX="181.0" layoutY="540.0" mnemonicParsing="false" onAction="#modifyCar" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Actualizar" textFill="WHITE">
+                        <Button fx:id="bttnModifyCar" layoutX="892.0" layoutY="158.0" mnemonicParsing="false" onAction="#modifyCar" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Actualizar" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -243,49 +217,13 @@
                               <String fx:value="buttonAdd" />
                            </styleClass>
                         </Button>
-                        <Label layoutX="89.0" layoutY="85.0" prefHeight="27.0" prefWidth="42.0" text="Placa:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtPlateModify" layoutX="132.0" layoutY="86.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="89.0" layoutY="155.0" prefHeight="27.0" prefWidth="42.0" text="Color:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtColorModify" layoutX="132.0" layoutY="156.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="83.0" layoutY="231.0" prefHeight="27.0" prefWidth="48.0" text="Marca:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="cmboxBrandModify" layoutX="132.0" layoutY="232.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="74.0" layoutY="310.0" prefHeight="27.0" prefWidth="56.0" text="Modelo:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="cmboxModelModify" layoutX="131.0" layoutY="311.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="17.0" layoutY="400.0" prefHeight="27.0" prefWidth="114.0" text="Estado del coche:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="cmboxCarStatusModify" layoutX="132.0" layoutY="401.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Label fx:id="lblErrorEmpty1" alignment="CENTER" layoutX="5.0" layoutY="477.0" prefHeight="38.0" prefWidth="310.0" text="Todos los campos son obligatorios" textAlignment="CENTER" textFill="RED" visible="false">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lblErrorPlate1" alignment="CENTER" layoutX="5.0" layoutY="477.0" prefHeight="38.0" prefWidth="310.0" text="El campo placa no es válido" textAlignment="CENTER" textFill="RED" visible="false">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
                      </children>
                   </AnchorPane>
                </children>
+               <styleClass>
+                  <String fx:value="white-bg" />
+                  <String fx:value="shadow" />
+               </styleClass>
             </AnchorPane>
          </children>
       </AnchorPane>

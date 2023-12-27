@@ -40,10 +40,7 @@ public class DataTableSceneCarController {
 	
 	@FXML
 	private AnchorPane addScenePane;
-	
-	@FXML
-	private AnchorPane modifyScenePane;
-	
+
     @FXML
     private AnchorPane tableScenePane;
     
@@ -61,15 +58,9 @@ public class DataTableSceneCarController {
     
     @FXML
     private Label lblErrorEmpty;
-
-    @FXML
-    private Label lblErrorEmpty1;
     
     @FXML
     private Label lblErrorPlate;
-
-    @FXML
-    private Label lblErrorPlate1;
     
     @FXML
     private Button bttnModify;
@@ -121,24 +112,11 @@ public class DataTableSceneCarController {
     @FXML
     private TextField txtPlateAdd;
     
-//********************   
-//*   MODIFY PANE    *
-//******************** 
+    @FXML
+    private Button bttnAddCar;
     
     @FXML
-    private ComboBox<String> cmboxBrandModify;
-
-    @FXML
-    private ComboBox<String> cmboxCarStatusModify;
-
-    @FXML
-    private ComboBox<String> cmboxModelModify;
-    
-    @FXML
-    private TextField txtColorModify;
-
-    @FXML
-    private TextField txtPlateModify;
+    private Button bttnModifyCar;
     
     @FXML
     private VBox notVisitorVBox;
@@ -156,7 +134,6 @@ public class DataTableSceneCarController {
 		colAddBrand.setCellValueFactory(new PropertyValueFactory<>("CarsBrand"));
 		colAddCarSituation.setCellValueFactory(new PropertyValueFactory<>("Situation"));
 		colAddColor.setCellValueFactory(new PropertyValueFactory<>("Color"));
-		colAddKM.setCellValueFactory(new PropertyValueFactory<>("KM"));
 		colAddModel.setCellValueFactory(new PropertyValueFactory<>("Model"));
 		colAddPlate.setCellValueFactory(new PropertyValueFactory<>("Plate"));	   
 
@@ -240,10 +217,17 @@ public class DataTableSceneCarController {
 			bttnAdd.setDisable(true);
 			bttnModify.setDisable(true);
 			bttnDelete.setDisable(true);
-			modifyScenePane.setVisible(true);
-			addScenePane.setVisible(false);
+			addScenePane.setVisible(true);
+			addParametersScenePane.setVisible(true);
+			tableScenePane.setVisible(true);
+			
+			bttnAddCar.setVisible(false);
+			bttnModifyCar.setVisible(true);
+			
+			tableScenePane.setMaxHeight(382);
+			carTable.setMaxHeight(286);
 			ObservableList<String> list = FXCollections.observableArrayList("En taller", "Alquilado", "Disponible");
-			cmboxCarStatusModify.setItems(list);
+			cmboxCarStatusAdd.setItems(list);
 			
 		}else if(event.getSource() == bttnAdd){
 			bttnAdd.setDisable(true);
@@ -253,22 +237,25 @@ public class DataTableSceneCarController {
 			addParametersScenePane.setVisible(true);
 			tableScenePane.setVisible(true);
 			
+			bttnAddCar.setVisible(true);
+			bttnModifyCar.setVisible(false);
+			
 			tableScenePane.setMaxHeight(382);
 			carTable.setMaxHeight(286);
 			ObservableList<String> list = FXCollections.observableArrayList("En taller", "Alquilado", "Disponible");
 			cmboxCarStatusAdd.setItems(list);
 			
-			modifyScenePane.setVisible(false);
-			
 		}
 	}
 	
 	public void cancelModify(ActionEvent event) {
-		modifyScenePane.setVisible(false);
+		addParametersScenePane.setVisible(false);
 		bttnAdd.setDisable(false);
 		bttnModify.setDisable(false);
 		bttnDelete.setDisable(false);
 		addScenePane.setVisible(true);
+		tableScenePane.setMaxHeight(626);
+		carTable.setMaxHeight(554);
 	}
 	
 	public void cancelAdd(ActionEvent event) {

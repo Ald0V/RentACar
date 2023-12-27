@@ -58,15 +58,9 @@ public class DataTableSceneDriverController {
     
     @FXML
     private Label lblErrorEmpty;
-
-    @FXML
-    private Label lblErrorEmpty1;
     
     @FXML
     private Label lblErrorCI;
-
-    @FXML
-    private Label lblErrorCI1;
     
     @FXML
     private Button bttnModify;
@@ -136,7 +130,6 @@ public class DataTableSceneDriverController {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
-	
 	
 	@SuppressWarnings("unchecked")
 	public void driverTableChargeData()throws ClassNotFoundException, SQLException {
