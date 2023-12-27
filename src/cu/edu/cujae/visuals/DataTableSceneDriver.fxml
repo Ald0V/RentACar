@@ -136,11 +136,10 @@
                           <columns>
                             <TableColumn fx:id="colAddID" prefWidth="135.20001220703125" text="Carnét de identidad" />
                             <TableColumn fx:id="colAddName" prefWidth="140.800048828125" text="Nombre" />
-                              <TableColumn fx:id="colAddLastName1" minWidth="0.0" prefWidth="125.5999755859375" text="Primer apellido" />
-                              <TableColumn fx:id="colAddLastName2" prefWidth="124.79998779296875" text="Segundo apellido" />
-                              <TableColumn fx:id="colAddAddress" minWidth="0.0" prefWidth="161.5999755859375" text="Dirección" />
-                              <TableColumn fx:id="colAddLicense" minWidth="0.0" prefWidth="132.7999267578125" text="Tipo de licencia" />
-                              <TableColumn fx:id="colAddNumerOfCars" minWidth="0.0" prefWidth="176.0001220703125" text="Número de carros manejados" />
+                              <TableColumn fx:id="colAddLastName1" minWidth="0.0" prefWidth="149.5999755859375" text="Primer apellido" />
+                              <TableColumn fx:id="colAddLastName2" prefWidth="178.4000244140625" text="Segundo apellido" />
+                              <TableColumn fx:id="colAddAddress" minWidth="0.0" prefWidth="185.59991455078125" text="Dirección" />
+                              <TableColumn fx:id="colAddLicense" minWidth="0.0" prefWidth="207.2000732421875" text="Tipo de licencia" />
                           </columns>
                         </TableView>
                         <TextField fx:id="search" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
@@ -161,7 +160,7 @@
                               <String fx:value="buttonCancel" />
                            </styleClass>
                         </Button>
-                        <Button layoutX="892.0" layoutY="158.0" mnemonicParsing="false" onAction="#insertDriver" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Crear" textFill="WHITE">
+                        <Button fx:id="bttnAddDriver" layoutX="892.0" layoutY="158.0" mnemonicParsing="false" onAction="#insertDriver" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Crear" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -216,32 +215,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                     </children>
-                  </AnchorPane>
-               </children>
-               <styleClass>
-                  <String fx:value="white-bg" />
-                  <String fx:value="shadow" />
-               </styleClass>
-            </AnchorPane>
-            <AnchorPane fx:id="modifyScenePane" layoutX="76.0" layoutY="80.0" prefHeight="651.2" prefWidth="1053.6" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <AnchorPane layoutX="21.0" layoutY="24.0" prefHeight="602.0" prefWidth="321.0" stylesheets="@application.css">
-                     <styleClass>
-                        <String fx:value="shadow" />
-                        <String fx:value="white-bg" />
-                     </styleClass>
-                     <children>
-                        <Button layoutX="17.0" layoutY="540.0" mnemonicParsing="false" onAction="#cancelModify" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Cancelar" textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                           <styleClass>
-                              <String fx:value="shadow" />
-                              <String fx:value="buttonCancel" />
-                           </styleClass>
-                        </Button>
-                        <Button layoutX="181.0" layoutY="540.0" mnemonicParsing="false" onAction="#modifyDriver" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Actualizar" textFill="WHITE">
+                        <Button fx:id="bttnModifyDriver" layoutX="892.0" layoutY="158.0" mnemonicParsing="false" onAction="#modifyDriver" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Actualizar" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -250,55 +224,13 @@
                               <String fx:value="buttonAdd" />
                            </styleClass>
                         </Button>
-                        <Label layoutX="3.0" layoutY="118.0" prefHeight="27.0" prefWidth="126.0" text="Carnét de identidad:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtIDModify" layoutX="133.0" layoutY="119.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="73.0" layoutY="178.0" prefHeight="27.0" prefWidth="56.0" text="Nombre:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtNameModify" layoutX="133.0" layoutY="179.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="30.0" layoutY="237.0" prefHeight="27.0" prefWidth="98.0" text="Primer apellido:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtLastName1Modify" layoutX="133.0" layoutY="238.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="16.0" layoutY="295.0" prefHeight="27.0" prefWidth="114.0" text="Segundo apellido:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtLastName2Modify" layoutX="133.0" layoutY="296.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="67.0" layoutY="350.0" prefHeight="27.0" prefWidth="66.0" text="Dirección:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtAddressModify" layoutX="133.0" layoutY="351.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="30.0" layoutY="410.0" prefHeight="27.0" prefWidth="106.0" text="Tipo de licencia:" textFill="WHITE">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="cmboxLicenseModify" layoutX="135.0" layoutY="411.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Label fx:id="lblErrorEmpty1" alignment="CENTER" layoutX="5.0" layoutY="477.0" prefHeight="38.0" prefWidth="310.0" text="Todos los campos son obligatorios" textAlignment="CENTER" textFill="RED" visible="false">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lblErrorCI1" alignment="CENTER" layoutX="5.0" layoutY="477.0" prefHeight="38.0" prefWidth="310.0" text="El campo carnét no es válido" textAlignment="CENTER" textFill="RED" visible="false">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
                      </children>
                   </AnchorPane>
                </children>
+               <styleClass>
+                  <String fx:value="white-bg" />
+                  <String fx:value="shadow" />
+               </styleClass>
             </AnchorPane>
          </children>
       </AnchorPane>

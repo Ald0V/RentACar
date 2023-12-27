@@ -41,9 +41,6 @@ public class DataTableSceneDriverController {
 	@FXML
 	private AnchorPane addScenePane;
 	
-	@FXML
-	private AnchorPane modifyScenePane;
-	
     @FXML
     private AnchorPane tableScenePane;
     
@@ -101,9 +98,6 @@ public class DataTableSceneDriverController {
 
     @FXML
     private TableColumn<DriverDTO, String> colAddName;
-
-    @FXML
-    private TableColumn<DriverDTO, Integer> colAddNumerOfCars;
  
 //*****************    
 //*   ADD PANE    *
@@ -127,27 +121,11 @@ public class DataTableSceneDriverController {
     @FXML
     private TextField txtNameAdd;
     
-//********************   
-//*   MODIFY PANE    *
-//******************** 
+    @FXML
+    private Button bttnAddDriver;
     
     @FXML
-    private ComboBox<String> cmboxLicenseModify;
-    
-    @FXML
-    private TextField txtAddressModify;
-
-    @FXML
-    private TextField txtIDModify;
-
-    @FXML
-    private TextField txtLastName1Modify;
-
-    @FXML
-    private TextField txtLastName2Modify;
-
-    @FXML
-    private TextField txtNameModify;
+    private Button bttnModifyDriver;
     
     @FXML
     private VBox notVisitorVBox;
@@ -163,13 +141,12 @@ public class DataTableSceneDriverController {
 	@SuppressWarnings("unchecked")
 	public void driverTableChargeData()throws ClassNotFoundException, SQLException {
 		// Configurar cellValueFactory para cada columna
-	    colAddAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
-	    colAddID.setCellValueFactory(new PropertyValueFactory<>("ID"));
-	    colAddLastName1.setCellValueFactory(new PropertyValueFactory<>("LastName1"));
-	    colAddLastName2.setCellValueFactory(new PropertyValueFactory<>("LastName2"));
-	    colAddLicense.setCellValueFactory(new PropertyValueFactory<>("Passport"));
-	    colAddName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-	    colAddNumerOfCars.setCellValueFactory(new PropertyValueFactory<>("NumberofCars"));
+	    colAddAddress.setCellValueFactory(new PropertyValueFactory<>("Dirección"));
+	    colAddID.setCellValueFactory(new PropertyValueFactory<>("Carnét de identidad"));
+	    colAddLastName1.setCellValueFactory(new PropertyValueFactory<>("Primer apellido"));
+	    colAddLastName2.setCellValueFactory(new PropertyValueFactory<>("Segundo apellido"));
+	    colAddLicense.setCellValueFactory(new PropertyValueFactory<>("Tipo de licencia"));
+	    colAddName.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
 
 	    // Obtener la lista de conductores
 //	    ArrayList<DriverDTO> list = ServiceLocator.getInstance().getDrivers();		
@@ -252,11 +229,18 @@ public class DataTableSceneDriverController {
 			bttnAdd.setDisable(true);
 			bttnModify.setDisable(true);
 			bttnDelete.setDisable(true);
-			modifyScenePane.setVisible(true);
-			addScenePane.setVisible(false);
+			addScenePane.setVisible(true);
+			addParametersScenePane.setVisible(true);
+			tableScenePane.setVisible(true);
+			
+			bttnAddDriver.setVisible(false);
+			bttnModifyDriver.setVisible(true);
+			
+			tableScenePane.setMaxHeight(382);
+			driverTable.setMaxHeight(286);
 			
 			ObservableList<String> list = FXCollections.observableArrayList("B", "C", "D", "E");
-	        cmboxLicenseModify.setItems(list);
+	        cmboxLicenseAdd.setItems(list);
 			
 		}else if(event.getSource() == bttnAdd){
 			
@@ -267,10 +251,11 @@ public class DataTableSceneDriverController {
 			addParametersScenePane.setVisible(true);
 			tableScenePane.setVisible(true);
 			
+			bttnAddDriver.setVisible(true);
+			bttnModifyDriver.setVisible(false);
+			
 			tableScenePane.setMaxHeight(382);
 			driverTable.setMaxHeight(286);
-			
-			modifyScenePane.setVisible(false);
 			
 			ObservableList<String> list = FXCollections.observableArrayList("B", "C", "D", "E");
 	        cmboxLicenseAdd.setItems(list);
@@ -279,11 +264,13 @@ public class DataTableSceneDriverController {
 	}
 	
 	public void cancelModify(ActionEvent event) {
-		modifyScenePane.setVisible(false);
+		addParametersScenePane.setVisible(false);
 		bttnAdd.setDisable(false);
 		bttnModify.setDisable(false);
 		bttnDelete.setDisable(false);
 		addScenePane.setVisible(true);
+		tableScenePane.setMaxHeight(626);
+		driverTable.setMaxHeight(554);
 	}
 	
 	public void cancelAdd(ActionEvent event) {

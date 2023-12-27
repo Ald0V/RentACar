@@ -95,12 +95,6 @@ public class DataTableSceneTouristController {
     @FXML
     private VBox visitorVBox;
     
-    @FXML
-    private Button bttnAddTourist;
-    
-    @FXML
-    private Button bttnModifyTourist;
-    
 //0ºººººººººººººººº0    
 //0   ADD TABLE    0
 //0ºººººººººººººººº0 
@@ -164,6 +158,12 @@ public class DataTableSceneTouristController {
     
     @FXML
     private ImageView imgCountryAdd;
+    
+    @FXML
+    private Button bttnAddTourist;
+    
+    @FXML
+    private Button bttnModifyTourist;
 	
 	private Stage stage;
 	private Scene scene;
@@ -182,8 +182,8 @@ public class DataTableSceneTouristController {
 	    colAddPhone.setCellValueFactory(new PropertyValueFactory<>("RentalTotalValue"));
 
 	    // Obtener la lista de turistas
-//	    ArrayList<TouristAux> list = ServiceLocator.getInstance().getTourists();		
-//	    ObservableList<TouristAux> touristList = FXCollections.observableArrayList();
+//	    ArrayList<TouristDTO> list = ServiceLocator.getInstance().getTourists();		
+//	    ObservableList<TouristDTO> touristList = FXCollections.observableArrayList();
 //	    touristList.addAll(list);
 //	    
 //	    // Establecer los elementos de la tabla
