@@ -12,14 +12,64 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="mainScenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1316.0" style="-fx-background-color: #2F2843;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cu.edu.cujae.visuals.DataTableSceneReportsController">
    <children>
       <AnchorPane prefHeight="567.0" prefWidth="258.0" style="-fx-background-color: #393051;" AnchorPane.bottomAnchor="-0.20000000000004547" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-0.20000000000004547">
          <children>
-            <VBox layoutY="165.0" prefHeight="402.0" prefWidth="258.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="165.0">
+            <VBox layoutY="54.4" prefHeight="593.0" prefWidth="258.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="54.0">
                <children>
+                  <Button fx:id="bttnReportTourists" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Reporte Turistas" textFill="WHITE">
+                     <graphic>
+                        <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../resources/icons8_tourist_guide_50px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="bttnReportCar" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Reporte Carros" textFill="WHITE">
+                     <graphic>
+                        <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../resources/icons8_car_50px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="bttnReportContract" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Reporte Contratos" textFill="WHITE">
+                     <graphic>
+                        <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../resources/icons8_terms_and_conditions_50px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="bttnReportDrivers" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Reporte Chófers" textFill="WHITE">
+                     <graphic>
+                        <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../resources/icons8_driver_50px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Button>
+                  <Line endX="149.89292907714844" endY="-0.6213386058807373" startX="-107.81423950195312" startY="-0.6213798522949219" stroke="#fa2c56" style="-fx-background-radius: 5;" />
                   <Button fx:id="bttnTourists" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Turistas incumplidores" textFill="WHITE">
                      <graphic>
                         <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
@@ -80,6 +130,7 @@
                         <Insets left="15.0" />
                      </padding>
                   </Button>
+                  <Line endX="149.89292907714844" endY="-0.6213386058807373" startX="-107.81423950195312" startY="-0.6213798522949219" stroke="#fa2c56" style="-fx-background-radius: 5;" />
                   <Button fx:id="bttnBack" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#backMain" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Menú principal" textFill="WHITE">
                      <graphic>
                         <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
@@ -106,9 +157,9 @@
                   </Button>
                </children>
             </VBox>
-            <Pane layoutY="92.0" prefHeight="70.0" prefWidth="262.0" style="-fx-background-color: #FA2C56; -fx-background-radius: 5;">
+            <Pane layoutX="1.0" prefHeight="54.0" prefWidth="262.0" style="-fx-background-color: #FA2C56; -fx-background-radius: 5;">
                <children>
-                  <Label layoutX="27.0" layoutY="22.0" text="Reportes" textFill="WHITE">
+                  <Label layoutX="26.0" layoutY="14.0" text="Reportes" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -117,7 +168,7 @@
             </Pane>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="263.0" prefHeight="651.0" prefWidth="1053.0">
+      <AnchorPane fx:id="reportsScenePane" layoutX="263.0" prefHeight="651.0" prefWidth="1053.0">
          <children>
             <AnchorPane fx:id="addScenePane" layoutX="15.0" layoutY="15.0" prefHeight="624.0" prefWidth="986.0" stylesheets="@application.css">
                <children>
@@ -241,6 +292,85 @@
                               <Font size="36.0" />
                            </font>
                         </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="tableReportsTouristsPane" layoutX="10.0" layoutY="9.0" prefHeight="636.0" prefWidth="1040.8" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <styleClass>
+                        <String fx:value="white-bg" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <TableView fx:id="reportTouristTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
+                           <columns>
+                              <TableColumn fx:id="colReportTouristName" prefWidth="176.80001831054688" text="Nombre" />
+                              <TableColumn fx:id="colReportTouristLastName1" minWidth="0.0" prefWidth="125.60000610351562" text="Primer apellido" />
+                              <TableColumn fx:id="colReportTouristLastName2" prefWidth="121.60003662109375" text="Segundo apellido" />
+                              <TableColumn fx:id="colReportTouristPassport" minWidth="0.0" prefWidth="90.4000244140625" text="Pasaporte" />
+                              <TableColumn fx:id="colReportTouristCantCars" minWidth="0.0" prefWidth="161.5999755859375" text="Uso de autos por el turista" />
+                              <TableColumn fx:id="colReportTouristTotalRent" prefWidth="177.5999755859375" text="Total de alquileres del turista" />
+                              <TableColumn fx:id="colReportTouristCountry" prefWidth="144.0" text="País" />
+                           </columns>
+                        </TableView>
+                        <TextField fx:id="touristSearch1" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="tableReportsCarPane" prefHeight="636.0" prefWidth="1040.8" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <styleClass>
+                        <String fx:value="white-bg" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <TableView fx:id="reportCarTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
+                           <columns>
+                              <TableColumn fx:id="colReportCarSPlate" prefWidth="176.80001831054688" text="Placa" />
+                              <TableColumn fx:id="colReportCarSBrand" minWidth="0.0" prefWidth="150.40005493164062" text="Marca" />
+                              <TableColumn fx:id="colReportCarSModel" prefWidth="182.39996337890625" text="Modelo" />
+                              <TableColumn fx:id="colReportCarSColor" minWidth="0.0" prefWidth="173.5999755859375" text="Color" />
+                              <TableColumn fx:id="colReportCarSKM" minWidth="0.0" prefWidth="314.4000244140625" text="Cantidad de Km recorridos" />
+                           </columns>
+                        </TableView>
+                        <TextField fx:id="touristSearch11" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="tableReportsContractPane" layoutX="10.0" layoutY="10.0" prefHeight="646.4" prefWidth="1051.2" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <styleClass>
+                        <String fx:value="white-bg" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <TableView fx:id="reportContractTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
+                           <columns>
+                              <TableColumn fx:id="colReportContractTourist" prefWidth="176.80001831054688" text="Turista" />
+                              <TableColumn fx:id="colReportContractStartDate" minWidth="0.0" prefWidth="140.0" text="Fecha de inicio" />
+                              <TableColumn fx:id="colReportContractEndDate" prefWidth="136.0" text="Fin del contrato" />
+                              <TableColumn fx:id="colReportContractCar" minWidth="0.0" prefWidth="121.60003662109375" text="Carro" />
+                              <TableColumn fx:id="colReportContractPayMethod" minWidth="0.0" prefWidth="132.79998779296875" text="Método de pago" />
+                              <TableColumn fx:id="colReportContractProrroga" prefWidth="75.0" text="Prórroga" />
+                              <TableColumn fx:id="colReportContractRentalCar" prefWidth="116.0" text="Alquiler del chófer" />
+                              <TableColumn fx:id="colReportContractTotalImport" prefWidth="97.5999755859375" text="Importe total" />
+                           </columns>
+                        </TableView>
+                        <TextField fx:id="touristSearch111" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="tableReportsDriverPane" prefHeight="636.0" prefWidth="1040.8" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <styleClass>
+                        <String fx:value="white-bg" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <TableView fx:id="reportDriverTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
+                           <columns>
+                              <TableColumn fx:id="colReportDriverID" prefWidth="176.80001831054688" text="Carnét de indentidad" />
+                              <TableColumn fx:id="colReportDriverName" minWidth="0.0" prefWidth="125.60000610351562" text="Nombre" />
+                              <TableColumn fx:id="colReportDriverLastName1" prefWidth="121.60003662109375" text="Primer apellido" />
+                              <TableColumn fx:id="colReportDriverLastName2" minWidth="0.0" prefWidth="115.20001220703125" text="Segundo apellido" />
+                              <TableColumn fx:id="colReportDriverDirection" minWidth="0.0" prefWidth="137.5999755859375" text="Dirección" />
+                              <TableColumn fx:id="colReportDriverLicense" prefWidth="136.7999267578125" text="Tipo de licencia" />
+                              <TableColumn fx:id="colReportDriverCantCars" prefWidth="184.800048828125" text="Número de carros manejados" />
+                           </columns>
+                        </TableView>
+                        <TextField fx:id="touristSearch12" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
                      </children>
                   </AnchorPane>
                </children>

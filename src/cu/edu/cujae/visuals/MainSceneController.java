@@ -279,7 +279,153 @@ public class MainSceneController {
     	}
 	}
     
-    
+	public void openReportTourist1(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneReports.fxml"));
+		root = loader.load();
+		
+		DataTableSceneReportsController reportsController = loader.getController();
+		
+		reportsController.getBttnReportTourists().setDisable(true);
+		reportsController.getTableReportsTouristsPane().setVisible(true);
+
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		
+		root.setOnMousePressed((MouseEvent e) ->{
+			x = e.getSceneX();
+			y = e.getSceneY();
+		});
+		
+		root.setOnMouseDragged((MouseEvent e) ->{
+			stage.setX(e.getScreenX() - x);
+			stage.setY(e.getScreenY() - y);
+			
+			stage.setOpacity(.9);
+		});
+		
+		root.setOnMouseReleased((MouseEvent e) ->{
+			stage.setOpacity(1);
+		});
+		
+		Image image = new Image("/resources/Rental_car_login.png");
+	    
+		stage.getIcons().add(image);
+		
+		stage.setScene(scene);
+		stage.centerOnScreen();
+			
+	}
+	
+	public void openReportCar2(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneReports.fxml"));
+		root = loader.load();
+		
+		DataTableSceneReportsController reportsController = loader.getController();
+		
+		reportsController.getBttnReportCar().setDisable(true);
+		reportsController.getTableReportsCarPane().setVisible(true);
+
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		
+		root.setOnMousePressed((MouseEvent e) ->{
+			x = e.getSceneX();
+			y = e.getSceneY();
+		});
+		
+		root.setOnMouseDragged((MouseEvent e) ->{
+			stage.setX(e.getScreenX() - x);
+			stage.setY(e.getScreenY() - y);
+			
+			stage.setOpacity(.9);
+		});
+		
+		root.setOnMouseReleased((MouseEvent e) ->{
+			stage.setOpacity(1);
+		});
+		
+		Image image = new Image("/resources/Rental_car_login.png");
+	    
+		stage.getIcons().add(image);
+		
+		stage.setScene(scene);
+		stage.centerOnScreen();
+			
+	}
+	
+	public void openReportContract3(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneReports.fxml"));
+		root = loader.load();
+		
+		DataTableSceneReportsController reportsController = loader.getController();
+		
+		reportsController.getBttnReportContract().setDisable(true);
+		reportsController.getTableReportsContractPane().setVisible(true);
+
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		
+		root.setOnMousePressed((MouseEvent e) ->{
+			x = e.getSceneX();
+			y = e.getSceneY();
+		});
+		
+		root.setOnMouseDragged((MouseEvent e) ->{
+			stage.setX(e.getScreenX() - x);
+			stage.setY(e.getScreenY() - y);
+			
+			stage.setOpacity(.9);
+		});
+		
+		root.setOnMouseReleased((MouseEvent e) ->{
+			stage.setOpacity(1);
+		});
+		
+		Image image = new Image("/resources/Rental_car_login.png");
+	    
+		stage.getIcons().add(image);
+		
+		stage.setScene(scene);
+		stage.centerOnScreen();
+			
+	}
+	
+	public void openReportDriver4(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneReports.fxml"));
+		root = loader.load();
+		
+		DataTableSceneReportsController reportsController = loader.getController();
+		
+		reportsController.getBttnReportDrivers().setDisable(true);
+		reportsController.getTableReportsDriverPane().setVisible(true);
+
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		
+		root.setOnMousePressed((MouseEvent e) ->{
+			x = e.getSceneX();
+			y = e.getSceneY();
+		});
+		
+		root.setOnMouseDragged((MouseEvent e) ->{
+			stage.setX(e.getScreenX() - x);
+			stage.setY(e.getScreenY() - y);
+			
+			stage.setOpacity(.9);
+		});
+		
+		root.setOnMouseReleased((MouseEvent e) ->{
+			stage.setOpacity(1);
+		});
+		
+		Image image = new Image("/resources/Rental_car_login.png");
+	    
+		stage.getIcons().add(image);
+		
+		stage.setScene(scene);
+		stage.centerOnScreen();
+			
+	}
 	
 	public void openReportTourist(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneReports.fxml"));

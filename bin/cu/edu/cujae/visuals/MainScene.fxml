@@ -115,6 +115,18 @@
                         <Insets left="15.0" />
                      </padding>
                   </Button>
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Países, Marcas, Modelos etc..." textFill="WHITE">
+                     <graphic>
+                        <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../resources/icons8_america_50px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Button>
                   <Button fx:id="bttnReportsAdmin" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Reportes" textFill="WHITE">
                      <graphic>
                         <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
@@ -276,7 +288,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="secondaryPane" layoutX="262.0" prefHeight="567.0" prefWidth="755.0" visible="false">
+      <Pane fx:id="secondaryPane" layoutX="262.0" layoutY="-6.0" prefHeight="574.0" prefWidth="755.0" visible="false">
          <children>
             <Button layoutX="39.0" layoutY="232.0" mnemonicParsing="false" onAction="#openReportModelBrand" opacity="0.46" prefHeight="100.0" prefWidth="678.0" styleClass="buttonReports" stylesheets="@application.css">
                <effect>

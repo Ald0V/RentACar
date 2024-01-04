@@ -25,68 +25,164 @@ public class DataTableSceneReportsController {
 	
 	@FXML
     private AnchorPane reportsScenePane;
-
-    @FXML
-    private Button bttnTourists;
-
-    @FXML
-    private Button bttnCarSituation;
-
-    @FXML
-    private Button bttnModelBrand;
-
-    @FXML
-    private Button bttnCountry;
-    
-    @FXML
-    private Button bttnImport;
     
     @FXML
     private Button bttnBack;
 
     @FXML
-    private AnchorPane mainScenePane;
+    private AnchorPane mainScenePane;  
 
+       
+    
+    //0ººººººººººººººººººººººººººº0    
+    //0   REPORT TOURIST TABLE    0
+    //0ººººººººººººººººººººººººººº0 
+    
+    @FXML
+    private Button bttnReportTourists;
+
+    @FXML
+    private AnchorPane tableReportsTouristsPane;
+    
+    @FXML
+    private TableView<?> reportTouristTable;
+    
+    @FXML
+    private TableColumn<?, ?> colReportTouristLastName1;
+
+    @FXML
+    private TableColumn<?, ?> colReportTouristLastName2;
+    
+    @FXML
+    private TableColumn<?, ?> colReportTouristName;
+    
+    @FXML
+    private TableColumn<?, ?> colReportTouristPassport;
+    
+    @FXML
+    private TableColumn<?, ?> colReportTouristCantCars;
+    
+    @FXML
+    private TableColumn<?, ?> colReportTouristTotalRent;
+    
+    @FXML
+    private TableColumn<?, ?> colReportTouristCountry;
+    
+    
+    //0ºººººººººººººººººººººººº0    
+    //0   REPORT CAR TABLE     0
+    //0ºººººººººººººººººººººººº0 
+    
+    @FXML
+    private Button bttnReportCar;
+
+    @FXML
+    private AnchorPane tableReportsCarPane;
+    
+    @FXML
+    private TableView<?> reportCarTable;
+    
+    @FXML
+    private TableColumn<?, ?> colReportCarSPlate;
+    
+    @FXML
+    private TableColumn<?, ?> colReportCarSKM;
+
+    @FXML
+    private TableColumn<?, ?> colReportCarSBrand;
+
+    @FXML
+    private TableColumn<?, ?> colReportCarSModel;
+
+    @FXML
+    private TableColumn<?, ?> colReportCarSColor;
+    
+    
+    //0ºººººººººººººººººººººººººººº0    
+    //0   REPORT CONTRACT TABLE    0
+    //0ºººººººººººººººººººººººººººº0 
+    
+    @FXML
+    private Button bttnReportContract;
+    
+    @FXML
+    private AnchorPane tableReportsContractPane;
+    
+    @FXML
+    private TableView<?> reportContractTable;
+    
+    @FXML
+    private TableColumn<?, ?> colReportContractTourist;
+    
+    @FXML
+    private TableColumn<?, ?> colReportContractStartDate;
+    
+    @FXML
+    private TableColumn<?, ?> colReportContractEndDate;
+    
+    @FXML
+    private TableColumn<?, ?> colReportContractCar;
+    
+    @FXML
+    private TableColumn<?, ?> colReportContractPayMethod;
+    
+    @FXML
+    private TableColumn<?, ?> colReportContractProrroga;
+    
+    @FXML
+    private TableColumn<?, ?> colReportContractRentalCar;
+    
+    @FXML
+    private TableColumn<?, ?> colReportContractTotalImport;
+    
+    
+    //0ºººººººººººººººººººººººººº0    
+    //0   REPORT DRIVER TABLE    0
+    //0ºººººººººººººººººººººººººº0 
+    
+    @FXML
+    private Button bttnReportDrivers;
+
+    @FXML
+    private AnchorPane tableReportsDriverPane;
+  
+    @FXML
+    private TableView<?> reportDriverTable;
+    
+    @FXML
+    private TableColumn<?, ?> colReportDriverID;
+    
+    @FXML
+    private TableColumn<?, ?> colReportDriverName;
+    
+    @FXML
+    private TableColumn<?, ?> colReportDriverLastName1;
+
+    @FXML
+    private TableColumn<?, ?> colReportDriverLastName2;
+    
+    @FXML
+    private TableColumn<?, ?> colReportDriverDirection;
+    
+    @FXML
+    private TableColumn<?, ?> colReportDriverLicense;
+    
+    @FXML
+    private TableColumn<?, ?> colReportDriverCantCars;
+  
+  
+  //0ºººººººººººººººººººº0    
+  //0   TOURIST TABLE    0
+  //0ºººººººººººººººººººº0 
+      
+    @FXML
+    private Button bttnTourists;
+    
     @FXML
     private AnchorPane tableTouristsPane;
     
     @FXML
-    private AnchorPane tableCarSituationPane;
-    
-    @FXML
-    private AnchorPane tableModelBrandPane;
-    
-    @FXML
-    private AnchorPane tableCountryPane;
-    
-    @FXML
-    private AnchorPane tableImportsPane;
-
-    @FXML
     private TableView<?> touristTable;
-
-	@FXML
-    private TableView<?> carTable;
-
-    @FXML
-    private TableView<?> modelBrandTable;
-    
-    @FXML
-    private TableView<?> importsBrandTable;
-    
-    @FXML
-    private TableView<?> countryTable;
-    
-    @FXML
-    private TableView<?> importsTable;
-    
-    @FXML
-    private TableView<?> importsMonthTable;
-       
-    
-  //0ºººººººººººººººººººº0    
-  //0   TOURIST TABLE    0
-  //0ºººººººººººººººººººº0 
     
     @FXML
     private TextField touristSearch;
@@ -105,11 +201,23 @@ public class DataTableSceneReportsController {
 
     @FXML
     private TableColumn<?, ?> colTouristLastName2;
+    
+    @FXML
+    private TableColumn<?, ?> colTouristName;
 
     
   //0ºººººººººººººººº0    
   //0   CAR TABLE    0
   //0ºººººººººººººººº0
+    
+    @FXML
+    private Button bttnCarSituation;
+
+    @FXML
+    private AnchorPane tableCarSituationPane;
+    
+    @FXML
+    private TableView<?> carTable;
     
     @FXML
     private TextField carSSearch;
@@ -129,6 +237,15 @@ public class DataTableSceneReportsController {
   //0ºººººººººººººººººººººººº0  
   //0   BRAND/MODEL TABLE    0
   //0ºººººººººººººººººººººººº0
+    
+    @FXML
+    private Button bttnModelBrand;
+    
+    @FXML
+    private AnchorPane tableModelBrandPane;
+    
+    @FXML
+    private TableView<?> modelBrandTable;
     
     @FXML
     private TextField brandModelSearch;
@@ -168,6 +285,15 @@ public class DataTableSceneReportsController {
   //0ººººººººººººººººººººº0
     
     @FXML
+    private Button bttnCountry;
+
+    @FXML
+    private AnchorPane tableCountryPane;
+    
+    @FXML
+    private TableView<?> countryTable;
+    
+    @FXML
     private TextField countrySearch;
     
     @FXML
@@ -196,8 +322,23 @@ public class DataTableSceneReportsController {
     
   //0ºººººººººººººººººººººººººº0    
   //0   TOTAL IMPORTS TABLE    0
-  //0ºººººººººººººººººººººººººº0 
-      
+  //0ºººººººººººººººººººººººººº0   
+    
+    @FXML
+    private Button bttnImport;
+
+    @FXML
+    private AnchorPane tableImportsPane;
+
+    @FXML
+    private TableView<?> importsBrandTable;
+    
+    @FXML
+    private TableView<?> importsTable;
+    
+    @FXML
+    private TableView<?> importsMonthTable;
+    
     @FXML
     private TableColumn<?, ?> colImports$Month;
 
@@ -258,6 +399,40 @@ public class DataTableSceneReportsController {
 	public AnchorPane getTableImportsPane() {
 		return tableImportsPane;
 	}
+	
+	public Button getBttnReportTourists() {
+		return bttnReportTourists;
+	}
+
+	public AnchorPane getTableReportsTouristsPane() {
+		return tableReportsTouristsPane;
+	}
+
+	public Button getBttnReportCar() {
+		return bttnReportCar;
+	}
+
+	public AnchorPane getTableReportsCarPane() {
+		return tableReportsCarPane;
+	}
+
+	public Button getBttnReportContract() {
+		return bttnReportContract;
+	}
+
+	public AnchorPane getTableReportsContractPane() {
+		return tableReportsContractPane;
+	}
+
+	public Button getBttnReportDrivers() {
+		return bttnReportDrivers;
+	}
+
+	public AnchorPane getTableReportsDriverPane() {
+		return tableReportsDriverPane;
+	}
+
+
 
 	public void backMain(ActionEvent event) throws IOException{
 		
@@ -303,11 +478,19 @@ public class DataTableSceneReportsController {
     		tableTouristsPane.setVisible(true);
     		
     		bttnTourists.setDisable(true);
+    		bttnReportTourists.setDisable(false);
+    		bttnReportCar.setDisable(false);
+    		bttnReportContract.setDisable(false);
+    		bttnReportDrivers.setDisable(false);
     		bttnCarSituation.setDisable(false);
     		bttnModelBrand.setDisable(false);
     		bttnCountry.setDisable(false);
     		bttnImport.setDisable(false);
     		
+    		tableReportsTouristsPane.setVisible(false);
+    		tableReportsCarPane.setVisible(false);
+    		tableReportsContractPane.setVisible(false);
+    		tableReportsDriverPane.setVisible(false);
     		tableCarSituationPane.setVisible(false);
     		tableImportsPane.setVisible(false);
     		tableModelBrandPane.setVisible(false);
@@ -317,11 +500,19 @@ public class DataTableSceneReportsController {
     		tableCarSituationPane.setVisible(true);
     		
     		bttnCarSituation.setDisable(true);
+    		bttnReportTourists.setDisable(false);
+    		bttnReportCar.setDisable(false);
+    		bttnReportContract.setDisable(false);
+    		bttnReportDrivers.setDisable(false);
     		bttnTourists.setDisable(false);
     		bttnModelBrand.setDisable(false);
     		bttnCountry.setDisable(false);
     		bttnImport.setDisable(false);
     		
+    		tableReportsTouristsPane.setVisible(false);
+    		tableReportsCarPane.setVisible(false);
+    		tableReportsContractPane.setVisible(false);
+    		tableReportsDriverPane.setVisible(false);
     		tableTouristsPane.setVisible(false);
     		tableImportsPane.setVisible(false);
     		tableModelBrandPane.setVisible(false);
@@ -331,11 +522,19 @@ public class DataTableSceneReportsController {
     		tableModelBrandPane.setVisible(true);
     		
     		bttnModelBrand.setDisable(true);
+    		bttnReportTourists.setDisable(false);
+    		bttnReportCar.setDisable(false);
+    		bttnReportContract.setDisable(false);
+    		bttnReportDrivers.setDisable(false);
     		bttnTourists.setDisable(false);
     		bttnCarSituation.setDisable(false);
     		bttnCountry.setDisable(false);
     		bttnImport.setDisable(false);
     		
+    		tableReportsTouristsPane.setVisible(false);
+    		tableReportsCarPane.setVisible(false);
+    		tableReportsContractPane.setVisible(false);
+    		tableReportsDriverPane.setVisible(false);
     		tableTouristsPane.setVisible(false);
     		tableCarSituationPane.setVisible(false);
     		tableImportsPane.setVisible(false);
@@ -345,11 +544,19 @@ public class DataTableSceneReportsController {
     		tableCountryPane.setVisible(true);
     		
     		bttnCountry.setDisable(true);
+    		bttnReportTourists.setDisable(false);
+    		bttnReportCar.setDisable(false);
+    		bttnReportContract.setDisable(false);
+    		bttnReportDrivers.setDisable(false);
     		bttnModelBrand.setDisable(false);
     		bttnTourists.setDisable(false);
     		bttnCarSituation.setDisable(false);
     		bttnImport.setDisable(false);
     		
+    		tableReportsTouristsPane.setVisible(false);
+    		tableReportsCarPane.setVisible(false);
+    		tableReportsContractPane.setVisible(false);
+    		tableReportsDriverPane.setVisible(false);
     		tableTouristsPane.setVisible(false);
     		tableCarSituationPane.setVisible(false);
     		tableImportsPane.setVisible(false);
@@ -359,18 +566,112 @@ public class DataTableSceneReportsController {
     		tableImportsPane.setVisible(true);
     		
     		bttnImport.setDisable(true);
+    		bttnReportTourists.setDisable(false);
+    		bttnReportCar.setDisable(false);
+    		bttnReportContract.setDisable(false);
+    		bttnReportDrivers.setDisable(false);
+    		bttnModelBrand.setDisable(false);
+    		bttnTourists.setDisable(false);
+    		bttnCarSituation.setDisable(false);
+    		bttnCountry.setDisable(false);
+    		
+    		tableReportsTouristsPane.setVisible(false);
+    		tableReportsCarPane.setVisible(false);
+    		tableReportsContractPane.setVisible(false);
+    		tableReportsDriverPane.setVisible(false);
+    		tableTouristsPane.setVisible(false);
+    		tableCarSituationPane.setVisible(false);
+    		tableCountryPane.setVisible(false);
+    		tableModelBrandPane.setVisible(false);
+    	}
+    	else if(event.getSource() == bttnReportTourists) {
+    		tableReportsTouristsPane.setVisible(true);
+    		
+    		bttnReportTourists.setDisable(true);
+    		bttnImport.setDisable(false);
+    		bttnReportCar.setDisable(false);
+    		bttnReportContract.setDisable(false);
+    		bttnReportDrivers.setDisable(false);
     		bttnModelBrand.setDisable(false);
     		bttnTourists.setDisable(false);
     		bttnCarSituation.setDisable(false);
     		bttnCountry.setDisable(false);
     		
     		tableTouristsPane.setVisible(false);
+    		tableReportsCarPane.setVisible(false);
+    		tableReportsContractPane.setVisible(false);
+    		tableReportsDriverPane.setVisible(false);
     		tableCarSituationPane.setVisible(false);
-    		tableCountryPane.setVisible(false);
+    		tableImportsPane.setVisible(false);
     		tableModelBrandPane.setVisible(false);
+    		tableCountryPane.setVisible(false);
     	}
+    	else if(event.getSource() == bttnReportCar) {
+    		tableReportsCarPane.setVisible(true);
     		
-
+    		bttnReportCar.setDisable(true);
+    		bttnReportTourists.setDisable(false);
+    		bttnImport.setDisable(false);
+    		bttnReportContract.setDisable(false);
+    		bttnReportDrivers.setDisable(false);
+    		bttnModelBrand.setDisable(false);
+    		bttnTourists.setDisable(false);
+    		bttnCarSituation.setDisable(false);
+    		bttnCountry.setDisable(false);
+    		
+    		tableReportsTouristsPane.setVisible(false);
+    		tableTouristsPane.setVisible(false);
+    		tableReportsContractPane.setVisible(false);
+    		tableReportsDriverPane.setVisible(false);
+    		tableCarSituationPane.setVisible(false);
+    		tableImportsPane.setVisible(false);
+    		tableModelBrandPane.setVisible(false);
+    		tableCountryPane.setVisible(false);
+    	}
+    	else if(event.getSource() == bttnReportContract) {
+    		tableReportsContractPane.setVisible(true);
+    		
+    		bttnReportContract.setDisable(true);
+    		bttnReportCar.setDisable(false);
+    		bttnReportTourists.setDisable(false);
+    		bttnImport.setDisable(false);
+    		bttnReportDrivers.setDisable(false);
+    		bttnModelBrand.setDisable(false);
+    		bttnTourists.setDisable(false);
+    		bttnCarSituation.setDisable(false);
+    		bttnCountry.setDisable(false);
+    		
+    		tableReportsCarPane.setVisible(false);
+    		tableReportsTouristsPane.setVisible(false);
+    		tableTouristsPane.setVisible(false);
+    		tableReportsDriverPane.setVisible(false);
+    		tableCarSituationPane.setVisible(false);
+    		tableImportsPane.setVisible(false);
+    		tableModelBrandPane.setVisible(false);
+    		tableCountryPane.setVisible(false);
+    	}
+    	else if(event.getSource() == bttnReportDrivers) {
+    		tableReportsDriverPane.setVisible(true);
+    		
+    		bttnReportDrivers.setDisable(true);
+    		bttnReportContract.setDisable(false);
+    		bttnReportCar.setDisable(false);
+    		bttnReportTourists.setDisable(false);
+    		bttnImport.setDisable(false);
+    		bttnModelBrand.setDisable(false);
+    		bttnTourists.setDisable(false);
+    		bttnCarSituation.setDisable(false);
+    		bttnCountry.setDisable(false);
+    		
+    		tableReportsContractPane.setVisible(false);
+    		tableReportsCarPane.setVisible(false);
+    		tableReportsTouristsPane.setVisible(false);
+    		tableTouristsPane.setVisible(false);
+       		tableCarSituationPane.setVisible(false);
+    		tableImportsPane.setVisible(false);
+    		tableModelBrandPane.setVisible(false);
+    		tableCountryPane.setVisible(false);
+    	}
     }
     
 		
