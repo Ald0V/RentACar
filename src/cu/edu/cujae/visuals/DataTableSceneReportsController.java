@@ -24,6 +24,11 @@ import cu.edu.cujae.utils.DriverAux;
 import cu.edu.cujae.utils.CarAux;
 import cu.edu.cujae.utils.ContractAux;
 import cu.edu.cujae.utils.TouristAux;
+import cu.edu.cujae.utils.BadTouristAux;
+import cu.edu.cujae.utils.CarStatusAux;
+import cu.edu.cujae.utils.ModelBrandAux;
+import cu.edu.cujae.utils.CountryContractAux;
+import cu.edu.cujae.utils.ImportsAux;
 import java.time.format.DateTimeFormatter;
 
 public class DataTableSceneReportsController {
@@ -209,25 +214,25 @@ public class DataTableSceneReportsController {
     private AnchorPane tableTouristsPane;
     
     @FXML
-    private TableView<?> touristTable;
+    private TableView<BadTouristAux> touristTable;
     
     @FXML
     private TextField touristSearch;
 
     @FXML
-    private TableColumn<?, ?> colTouristDateCar;
+    private TableColumn<BadTouristAux, LocalDate> colTouristDateCar;
 
     @FXML
-    private TableColumn<?, ?> colTouristEndDate;
+    private TableColumn<BadTouristAux, LocalDate> colTouristEndDate;
 
     @FXML
-    private TableColumn<?, ?> colTouristLastName1;
+    private TableColumn<BadTouristAux, String> colTouristLastName1;
 
     @FXML
-    private TableColumn<?, ?> colTouristLastName2;
+    private TableColumn<BadTouristAux, String> colTouristLastName2;
     
     @FXML
-    private TableColumn<?, ?> colTouristName;
+    private TableColumn<BadTouristAux, String> colTouristName;
 
     
   //0ºººººººººººººººº0    
@@ -241,19 +246,19 @@ public class DataTableSceneReportsController {
     private AnchorPane tableCarSituationPane;
     
     @FXML
-    private TableView<?> carTable;
+    private TableView<CarStatusAux> carTable;
     
     @FXML
     private TextField carSSearch;
 
     @FXML
-    private TableColumn<?, ?> colCarSBrand;
+    private TableColumn<CarStatusAux, String> colCarSBrand;
 
     @FXML
-    private TableColumn<?, ?> colCarSEndDate;
+    private TableColumn<CarStatusAux, LocalDate> colCarSEndDate;
 
     @FXML
-    private TableColumn<?, ?> colCarSSituation;
+    private TableColumn<CarStatusAux, String> colCarSSituation;
       
   //0ºººººººººººººººººººººººº0  
   //0   BRAND/MODEL TABLE    0
@@ -266,34 +271,34 @@ public class DataTableSceneReportsController {
     private AnchorPane tableModelBrandPane;
     
     @FXML
-    private TableView<?> modelBrandTable;
+    private TableView<ModelBrandAux> modelBrandTable;
     
     @FXML
     private TextField brandModelSearch;
     
     @FXML
-    private TableColumn<?, ?> colBrand$Cheque;
+    private TableColumn<ModelBrandAux, Float> colBrand$Cheque;
 
     @FXML
-    private TableColumn<?, ?> colBrand$CreditCard;
+    private TableColumn<ModelBrandAux, Float> colBrand$CreditCard;
 
     @FXML
-    private TableColumn<?, ?> colBrand$Paper;
+    private TableColumn<ModelBrandAux, Float> colBrand$Paper;
 
     @FXML
-    private TableColumn<?, ?> colBrandBrand;
+    private TableColumn<ModelBrandAux, String> colBrandBrand;
 
     @FXML
-    private TableColumn<?, ?> colBrandCantRentalDays;
+    private TableColumn<ModelBrandAux, Integer> colBrandCantRentalDays;
 
     @FXML
-    private TableColumn<?, ?> colBrandImportBrand;
+    private TableColumn<ModelBrandAux, Float> colBrandImportBrand;
 
     @FXML
-    private TableColumn<?, ?> colBrandModel;
+    private TableColumn<ModelBrandAux, String> colBrandModel;
 
     @FXML
-    private TableColumn<?, ?> colBrandTotalImport;
+    private TableColumn<ModelBrandAux, Float> colBrandTotalImport;
     
     @FXML
     private Label lblTotalImport;
@@ -309,31 +314,31 @@ public class DataTableSceneReportsController {
     private AnchorPane tableCountryPane;
     
     @FXML
-    private TableView<?> countryTable;
+    private TableView<CountryContractAux> countryTable;
     
     @FXML
     private TextField countrySearch;
     
     @FXML
-    private TableColumn<?, ?> colCountry$PaperTotal;
+    private TableColumn<CountryContractAux, Float> colCountry$PaperTotal;
 
     @FXML
-    private TableColumn<?, ?> colCountryBrand;
+    private TableColumn<CountryContractAux, String> colCountryBrand;
 
     @FXML
-    private TableColumn<?, ?> colCountryCantRentalDays;
+    private TableColumn<CountryContractAux, Integer> colCountryCantRentalDays;
 
     @FXML
-    private TableColumn<?, ?> colCountryCountry;
+    private TableColumn<CountryContractAux, String> colCountryCountry;
 
     @FXML
-    private TableColumn<?, ?> colCountryModel;
+    private TableColumn<CountryContractAux, String> colCountryModel;
 
     @FXML
-    private TableColumn<?, ?> colCountryProrroga;
+    private TableColumn<CountryContractAux, Integer> colCountryProrroga;
 
     @FXML
-    private TableColumn<?, ?> colCountryTotal;
+    private TableColumn<CountryContractAux, Float> colCountryTotal;
     
   //0ºººººººººººººººººººººººººº0    
   //0   TOTAL IMPORTS TABLE    0
@@ -346,25 +351,25 @@ public class DataTableSceneReportsController {
     private AnchorPane tableImportsPane;
 
     @FXML
-    private TableView<?> importsBrandTable;
+    private TableView<ImportsAux> importsBrandTable;
     
     @FXML
-    private TableView<?> importsTable;
+    private TableView<ImportsAux> importsTable;
     
     @FXML
-    private TableView<?> importsMonthTable;
+    private TableView<ImportsAux> importsMonthTable;
     
     @FXML
-    private TableColumn<?, ?> colImports$Month;
+    private TableColumn<ImportsAux, Float> colImports$Month;
 
     @FXML
-    private TableColumn<?, ?> colImports$Year;
+    private TableColumn<ImportsAux, Float> colImports$Year;
 
     @FXML
-    private TableColumn<?, ?> colImportsDateYear;
+    private TableColumn<ImportsAux, String> colImportsDateYear;
 
     @FXML
-    private TableColumn<?, ?> colImportsDateMonth;
+    private TableColumn<ImportsAux, String> colImportsDateMonth;
     
     @FXML
     private Label lblYearImport;
