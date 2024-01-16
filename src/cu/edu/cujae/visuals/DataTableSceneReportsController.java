@@ -24,6 +24,7 @@ import cu.edu.cujae.utils.DriverAux;
 import cu.edu.cujae.utils.CarAux;
 import cu.edu.cujae.utils.ContractAux;
 import cu.edu.cujae.utils.TouristAux;
+import java.time.format.DateTimeFormatter;
 
 public class DataTableSceneReportsController {
 	
@@ -449,7 +450,8 @@ public class DataTableSceneReportsController {
 	@FXML
 	public void initializeDate() {
         LocalDate currentDate = LocalDate.now();
-        lblCurrentDate.setText(currentDate.toString());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        lblCurrentDate.setText(currentDate.format(formatter));
     }
 
 	public void backMain(ActionEvent event) throws IOException{
