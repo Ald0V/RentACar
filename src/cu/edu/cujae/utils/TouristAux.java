@@ -6,37 +6,37 @@ public class TouristAux {
     private String name;
     private String lastName1;
     private String lastName2;
-    private int CantRentalCars;
-    private double RentalTotalValue;
+    private int cantRentalCars;
+    private float rentalTotalValue;
     private String country;
     
     public TouristAux(String passport, String name, String lastName1, String lastName2, int cantRentalCars,
-    		double rentalTotalValue, String country) {
+    		float rentalTotalValue, String country) {
     	
 		super();
 		this.passport = passport;
 		this.name = name;
 		this.lastName1 = lastName1;
 		this.lastName2 = lastName2;
-		CantRentalCars = cantRentalCars;
-		RentalTotalValue = rentalTotalValue;
+		this.cantRentalCars = cantRentalCars;
+		this.rentalTotalValue = rentalTotalValue;
 		this.country = country;
 	}
 
 	public double getRentalTotalValue() {
-		return RentalTotalValue;
+		return rentalTotalValue;
 	}
 
-	public void setRentalTotalValue(double rentalTotalValue) {
-		RentalTotalValue = rentalTotalValue;
+	public void setRentalTotalValue(float rentalTotalValue) {
+		this.rentalTotalValue = rentalTotalValue;
 	}
     
     public int getCantRentalCars() {
-		return CantRentalCars;
+		return cantRentalCars;
 	}
 
 	public void setCantRentalCars(int cantRentalCars) {
-		CantRentalCars = cantRentalCars;
+		this.cantRentalCars = cantRentalCars;
 	}
 
 	public String getCountry() {

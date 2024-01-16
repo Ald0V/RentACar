@@ -1,6 +1,7 @@
 package cu.edu.cujae.visuals;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,7 +10,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -17,6 +20,10 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import cu.edu.cujae.utils.DriverAux;
+import cu.edu.cujae.utils.CarAux;
+import cu.edu.cujae.utils.ContractAux;
+import cu.edu.cujae.utils.TouristAux;
 
 public class DataTableSceneReportsController {
 	
@@ -45,28 +52,28 @@ public class DataTableSceneReportsController {
     private AnchorPane tableReportsTouristsPane;
     
     @FXML
-    private TableView<?> reportTouristTable;
+    private TableView<TouristAux> reportTouristTable;
     
     @FXML
-    private TableColumn<?, ?> colReportTouristLastName1;
+    private TableColumn<TouristAux, String> colReportTouristLastName1;
 
     @FXML
-    private TableColumn<?, ?> colReportTouristLastName2;
+    private TableColumn<TouristAux, String> colReportTouristLastName2;
     
     @FXML
-    private TableColumn<?, ?> colReportTouristName;
+    private TableColumn<TouristAux, String> colReportTouristName;
     
     @FXML
-    private TableColumn<?, ?> colReportTouristPassport;
+    private TableColumn<TouristAux, String> colReportTouristPassport;
     
     @FXML
-    private TableColumn<?, ?> colReportTouristCantCars;
+    private TableColumn<TouristAux, Integer> colReportTouristCantCars;
     
     @FXML
-    private TableColumn<?, ?> colReportTouristTotalRent;
+    private TableColumn<TouristAux, Float> colReportTouristTotalRent;
     
     @FXML
-    private TableColumn<?, ?> colReportTouristCountry;
+    private TableColumn<TouristAux, String> colReportTouristCountry;
     
     
     //0ºººººººººººººººººººººººº0    
@@ -80,22 +87,22 @@ public class DataTableSceneReportsController {
     private AnchorPane tableReportsCarPane;
     
     @FXML
-    private TableView<?> reportCarTable;
+    private TableView<CarAux> reportCarTable;
     
     @FXML
-    private TableColumn<?, ?> colReportCarSPlate;
+    private TableColumn<CarAux, String> colReportCarSPlate;
     
     @FXML
-    private TableColumn<?, ?> colReportCarSKM;
+    private TableColumn<CarAux, Integer> colReportCarSKM;
 
     @FXML
-    private TableColumn<?, ?> colReportCarSBrand;
+    private TableColumn<CarAux, String> colReportCarSBrand;
 
     @FXML
-    private TableColumn<?, ?> colReportCarSModel;
+    private TableColumn<CarAux, String> colReportCarSModel;
 
     @FXML
-    private TableColumn<?, ?> colReportCarSColor;
+    private TableColumn<CarAux, String> colReportCarSColor;
     
     
     //0ºººººººººººººººººººººººººººº0    
@@ -109,31 +116,48 @@ public class DataTableSceneReportsController {
     private AnchorPane tableReportsContractPane;
     
     @FXML
-    private TableView<?> reportContractTable;
+    private TableView<ContractAux> reportContractTable;
     
     @FXML
-    private TableColumn<?, ?> colReportContractTourist;
+    private TableColumn<ContractAux, String> colReportContractTourist;
     
     @FXML
-    private TableColumn<?, ?> colReportContractStartDate;
+    private TableColumn<ContractAux, LocalDate> colReportContractStartDate;
     
     @FXML
-    private TableColumn<?, ?> colReportContractEndDate;
+    private TableColumn<ContractAux, LocalDate> colReportContractEndDate;
     
     @FXML
-    private TableColumn<?, ?> colReportContractCar;
+    private TableColumn<ContractAux, String> colReportContractCar;
     
     @FXML
-    private TableColumn<?, ?> colReportContractPayMethod;
+    private TableColumn<ContractAux, String> colReportContractPayMethod;
     
     @FXML
-    private TableColumn<?, ?> colReportContractProrroga;
+    private TableColumn<ContractAux, Integer> colReportContractProrroga;
     
     @FXML
-    private TableColumn<?, ?> colReportContractRentalCar;
+    private TableColumn<ContractAux, Boolean> colReportContractRentalCar;
+    
+//    colReportContractRentalCar.setCellFactory(tc -> new TableCell<ContractAux, Boolean>() {
+//        private final CheckBox checkBox = new CheckBox();
+//
+//        protected void updateItem(Boolean item, boolean empty) {
+//            super.updateItem(item, empty);
+//            if (empty || item == null) {
+//                setGraphic(null);
+//            } else {
+//                checkBox.setSelected(item);
+//                checkBox.setDisable(true); // Deshabilita la casilla de verificación
+//                setGraphic(checkBox);
+//            }
+//        }
+//    });
+    
+    
     
     @FXML
-    private TableColumn<?, ?> colReportContractTotalImport;
+    private TableColumn<ContractAux, Float> colReportContractTotalImport;
     
     
     //0ºººººººººººººººººººººººººº0    
@@ -147,28 +171,28 @@ public class DataTableSceneReportsController {
     private AnchorPane tableReportsDriverPane;
   
     @FXML
-    private TableView<?> reportDriverTable;
+    private TableView<DriverAux> reportDriverTable;
     
     @FXML
-    private TableColumn<?, ?> colReportDriverID;
+    private TableColumn<DriverAux, String> colReportDriverID;
     
     @FXML
-    private TableColumn<?, ?> colReportDriverName;
+    private TableColumn<DriverAux, String> colReportDriverName;
     
     @FXML
-    private TableColumn<?, ?> colReportDriverLastName1;
+    private TableColumn<DriverAux, String> colReportDriverLastName1;
 
     @FXML
-    private TableColumn<?, ?> colReportDriverLastName2;
+    private TableColumn<DriverAux, String> colReportDriverLastName2;
     
     @FXML
-    private TableColumn<?, ?> colReportDriverDirection;
+    private TableColumn<DriverAux, String> colReportDriverDirection;
     
     @FXML
-    private TableColumn<?, ?> colReportDriverLicense;
+    private TableColumn<DriverAux, String> colReportDriverLicense;
     
     @FXML
-    private TableColumn<?, ?> colReportDriverCantCars;
+    private TableColumn<DriverAux, Integer> colReportDriverCantCars;
   
   
   //0ºººººººººººººººººººº0    

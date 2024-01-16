@@ -2,22 +2,19 @@ package cu.edu.cujae.utils;
 
 import java.time.LocalDate;
 
-import cu.edu.cujae.dto.AuxiliaryDTO;
-import cu.edu.cujae.dto.CarDTO;
-import cu.edu.cujae.dto.TouristDTO;
 
 public class ContractAux {
 
-	private TouristDTO tourist;
+	private String tourist;
 	private LocalDate startDate;
     private LocalDate endDate;
-    private CarDTO car;
-    private AuxiliaryDTO payMethod;
+    private String car;
+    private String payMethod;
     private int prorroga;
     private boolean rentalDriver;
     private float totalImport;
         
-	public ContractAux(TouristDTO tourist, LocalDate startDate, LocalDate endDate, CarDTO car, AuxiliaryDTO payMethod,
+	public ContractAux(String tourist, LocalDate startDate, LocalDate endDate, String car, String payMethod,
 			int prorroga, boolean rentalDriver, float totalImport) {
 		super();
 		this.tourist = tourist;
@@ -30,10 +27,10 @@ public class ContractAux {
 		this.totalImport = totalImport;
 	}
 	
-	public TouristDTO getTourist() {
+	public String getTourist() {
 		return tourist;
 	}
-	public void setTourist(TouristDTO tourist) {
+	public void setTourist(String tourist) {
 		this.tourist = tourist;
 	}
 	public LocalDate getStartDate() {
@@ -48,16 +45,16 @@ public class ContractAux {
 	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
-	public CarDTO getCar() {
+	public String getCar() {
 		return car;
 	}
-	public void setCar(CarDTO car) {
+	public void setCar(String car) {
 		this.car = car;
 	}
-	public AuxiliaryDTO getPayMethod() {
+	public String getPayMethod() {
 		return payMethod;
 	}
-	public void setPayMethod(AuxiliaryDTO payMethod) {
+	public void setPayMethod(String payMethod) {
 		this.payMethod = payMethod;
 	}
 	public int getProrroga() {
