@@ -38,8 +38,10 @@ public class DataTableSceneReportsController {
 
     @FXML
     private AnchorPane mainScenePane;  
-
-       
+    
+    @FXML
+    private Label lblCurrentDate;
+    
     
     //0ººººººººººººººººººººººººººº0    
     //0   REPORT TOURIST TABLE    0
@@ -210,9 +212,6 @@ public class DataTableSceneReportsController {
     
     @FXML
     private TextField touristSearch;
-    
-    @FXML
-    private TableColumn<?, ?> colTouristDate;
 
     @FXML
     private TableColumn<?, ?> colTouristDateCar;
@@ -245,9 +244,6 @@ public class DataTableSceneReportsController {
     
     @FXML
     private TextField carSSearch;
-    
-    @FXML
-    private TableColumn<?, ?> colCarS;
 
     @FXML
     private TableColumn<?, ?> colCarSBrand;
@@ -290,9 +286,6 @@ public class DataTableSceneReportsController {
     private TableColumn<?, ?> colBrandCantRentalDays;
 
     @FXML
-    private TableColumn<?, ?> colBrandDate;
-
-    @FXML
     private TableColumn<?, ?> colBrandImportBrand;
 
     @FXML
@@ -333,9 +326,6 @@ public class DataTableSceneReportsController {
     private TableColumn<?, ?> colCountryCountry;
 
     @FXML
-    private TableColumn<?, ?> colCountryDate;
-
-    @FXML
     private TableColumn<?, ?> colCountryModel;
 
     @FXML
@@ -370,7 +360,7 @@ public class DataTableSceneReportsController {
     private TableColumn<?, ?> colImports$Year;
 
     @FXML
-    private TableColumn<?, ?> colImportsDate;
+    private TableColumn<?, ?> colImportsDateYear;
 
     @FXML
     private TableColumn<?, ?> colImportsDateMonth;
@@ -455,8 +445,12 @@ public class DataTableSceneReportsController {
 	public AnchorPane getTableReportsDriverPane() {
 		return tableReportsDriverPane;
 	}
-
-
+	
+	@FXML
+	public void initializeDate() {
+        LocalDate currentDate = LocalDate.now();
+        lblCurrentDate.setText(currentDate.toString());
+    }
 
 	public void backMain(ActionEvent event) throws IOException{
 		

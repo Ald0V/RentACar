@@ -159,7 +159,7 @@
             </VBox>
             <Pane layoutX="1.0" prefHeight="54.0" prefWidth="262.0" style="-fx-background-color: #FA2C56; -fx-background-radius: 5;">
                <children>
-                  <Label layoutX="26.0" layoutY="14.0" text="Reportes" textFill="WHITE">
+                  <Label fx:id="lblCurrentDate" layoutX="26.0" layoutY="14.0" text="Fecha actual" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -180,12 +180,11 @@
                      <children>
                         <TableView fx:id="touristTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
                           <columns>
-                            <TableColumn fx:id="colTouristDate" prefWidth="135.20001220703125" text="Fecha" />
-                            <TableColumn fx:id="colTouristName" prefWidth="176.80001831054688" text="Nombre" />
-                              <TableColumn fx:id="colTouristLastName1" minWidth="0.0" prefWidth="156.79998779296875" text="Primer apellido" />
-                              <TableColumn fx:id="colTouristLastName2" prefWidth="160.800048828125" text="Segundo apellido" />
-                              <TableColumn fx:id="colTouristEndDate" minWidth="0.0" prefWidth="159.199951171875" text="Fin del contrato" />
-                              <TableColumn fx:id="colTouristDateCar" minWidth="0.0" prefWidth="206.4000244140625" text="Fecha de entrega del carro" />
+                            <TableColumn fx:id="colTouristName" prefWidth="200.80001831054688" text="Nombre" />
+                              <TableColumn fx:id="colTouristLastName1" minWidth="0.0" prefWidth="163.199951171875" text="Primer apellido" />
+                              <TableColumn fx:id="colTouristLastName2" prefWidth="195.20001220703125" text="Segundo apellido" />
+                              <TableColumn fx:id="colTouristEndDate" minWidth="0.0" prefWidth="188.0" text="Fin del contrato" />
+                              <TableColumn fx:id="colTouristDateCar" minWidth="0.0" prefWidth="250.39996337890625" text="Fecha de entrega del carro" />
                           </columns>
                         </TableView>
                         <TextField fx:id="touristSearch" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
@@ -199,16 +198,15 @@
                      <children>
                         <TableView fx:id="carTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
                            <columns>
-                              <TableColumn fx:id="colCarS" prefWidth="192.79998779296875" text="Fecha" />
-                              <TableColumn fx:id="colCarSBrand" prefWidth="252.79998779296875" text="Marca" />
-                              <TableColumn fx:id="colCarSSituation" minWidth="0.0" prefWidth="261.60003662109375" text="Situación" />
-                              <TableColumn fx:id="colCarSEndDate" minWidth="0.0" prefWidth="291.9998779296875" text="Fin del contrato" />
+                              <TableColumn fx:id="colCarSBrand" prefWidth="331.9999694824219" text="Marca" />
+                              <TableColumn fx:id="colCarSSituation" minWidth="0.0" prefWidth="346.4000244140625" text="Situación" />
+                              <TableColumn fx:id="colCarSEndDate" minWidth="0.0" prefWidth="319.199951171875" text="Fin del contrato" />
                            </columns>
                         </TableView>
                         <TextField fx:id="carSSearch" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="tableModelBrandPane" layoutX="10.0" layoutY="9.0" prefHeight="636.0" prefWidth="1040.8" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="tableModelBrandPane" layoutY="-7.0" prefHeight="636.0" prefWidth="1040.8" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-7.0">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
@@ -216,13 +214,12 @@
                      <children>
                         <TableView fx:id="modelBrandTable" layoutX="12.0" layoutY="67.0" prefHeight="294.0" prefWidth="998.0">
                            <columns>
-                              <TableColumn fx:id="colBrandDate" prefWidth="103.20001220703125" text="Fecha" />
-                              <TableColumn fx:id="colBrandBrand" prefWidth="136.00003051757812" text="Marca" />
-                              <TableColumn fx:id="colBrandModel" minWidth="0.0" prefWidth="138.39996337890625" text="Modelo" />
-                              <TableColumn fx:id="colBrandCantRentalDays" prefWidth="167.199951171875" text="Cantidad de días alquilados" />
-                              <TableColumn fx:id="colBrand$CreditCard" minWidth="0.0" prefWidth="182.39996337890625" text="Ingresos por tarjeta de crédito" />
-                              <TableColumn fx:id="colBrand$Cheque" minWidth="0.0" prefWidth="131.2000732421875" text="Ingresos por cheques" />
-                              <TableColumn fx:id="colBrand$Paper" minWidth="0.0" prefWidth="142.4000244140625" text="Ingresos por efectivo" />
+                              <TableColumn fx:id="colBrandBrand" prefWidth="154.4000244140625" text="Marca" />
+                              <TableColumn fx:id="colBrandModel" minWidth="0.0" prefWidth="160.79998779296875" text="Modelo" />
+                              <TableColumn fx:id="colBrandCantRentalDays" prefWidth="170.4000244140625" text="Cantidad de días alquilados" />
+                              <TableColumn fx:id="colBrand$CreditCard" minWidth="0.0" prefWidth="192.800048828125" text="Ingresos por tarjeta de crédito" />
+                              <TableColumn fx:id="colBrand$Cheque" minWidth="0.0" prefWidth="142.39990234375" text="Ingresos por cheques" />
+                              <TableColumn fx:id="colBrand$Paper" minWidth="0.0" prefWidth="178.4000244140625" text="Ingresos por efectivo" />
                            </columns>
                         </TableView>
                         <TextField fx:id="brandModelSearch" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
@@ -256,14 +253,13 @@
                      <children>
                         <TableView fx:id="countryTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
                            <columns>
-                              <TableColumn fx:id="colCountryDate" prefWidth="102.39999389648438" text="Fecha" />
                               <TableColumn fx:id="colCountryCountry" prefWidth="151.20004272460938" text="País" />
                               <TableColumn fx:id="colCountryBrand" minWidth="0.0" prefWidth="124.800048828125" text="Marca" />
                               <TableColumn fx:id="colCountryModel" prefWidth="143.199951171875" text="Modelo" />
                               <TableColumn fx:id="colCountryCantRentalDays" minWidth="0.0" prefWidth="168.7999267578125" text="Cantidad de días alquilados" />
-                              <TableColumn fx:id="colCountryProrroga" minWidth="0.0" prefWidth="58.39990234375" text="Prórroga" />
-                              <TableColumn fx:id="colCountry$PaperTotal" minWidth="0.0" prefWidth="128.800048828125" text="Total en efectivo" />
-                              <TableColumn fx:id="colCountryTotal" minWidth="0.0" prefWidth="124.800048828125" text="Total general" />
+                              <TableColumn fx:id="colCountryProrroga" minWidth="0.0" prefWidth="147.20001220703125" text="Prórroga" />
+                              <TableColumn fx:id="colCountry$PaperTotal" minWidth="0.0" prefWidth="119.20001220703125" text="Total en efectivo" />
+                              <TableColumn fx:id="colCountryTotal" minWidth="0.0" prefWidth="143.199951171875" text="Total general" />
                            </columns>
                         </TableView>
                         <TextField fx:id="countrySearch" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
@@ -277,7 +273,7 @@
                      <children>
                         <TableView fx:id="importsTable" layoutX="12.0" layoutY="67.0" prefHeight="185.0" prefWidth="998.0">
                            <columns>
-                              <TableColumn fx:id="colImportsDate" prefWidth="529.6000366210938" text="Fecha" />
+                              <TableColumn fx:id="colImportsDateYear" prefWidth="529.6000366210938" text="Año" />
                               <TableColumn fx:id="colImports$Year" prefWidth="468.7999267578125" text="Ingreso total anual" />
                            </columns>
                         </TableView>
