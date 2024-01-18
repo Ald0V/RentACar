@@ -27,12 +27,18 @@ public class MainSceneController {
 	
 	@FXML
 	private Pane secondaryPane;
+	
+	@FXML
+	private Pane terciaryPane;
 
     @FXML
     private Button bttnGoBack;
 
     @FXML
     private Button bttnReports;
+    
+    @FXML
+    private Button bttnCBM;
     
     @FXML
     private Button bttnReportsAdmin;
@@ -60,6 +66,9 @@ public class MainSceneController {
     
     @FXML
     private Label lblMainMenu;
+    
+    @FXML
+    private Label lblCBM;
     
     @FXML
     private VBox mainVBox;
@@ -255,19 +264,31 @@ public class MainSceneController {
     		mainPane.setVisible(false);
     		adminVBox.setVisible(false);
     		lblMainMenu.setVisible(false);
+    	}else if(event.getSource() == bttnCBM) {
+    		lastButtonPressed = bttnCBM;
+    		
+    		terciaryPane.setVisible(true);
+    		secondaryVBox.setVisible(true);
+    		lblCBM.setVisible(true);
+    		
+    		mainPane.setVisible(false);
+    		adminVBox.setVisible(false);
+    		lblMainMenu.setVisible(false);
     	}
     }
-		
+	
 	
     public void backToAdmin_OR_User(ActionEvent event) {
-    	if (lastButtonPressed == bttnReportsAdmin && event.getSource() == bttnGoBack) {
+    	if ((lastButtonPressed == bttnReportsAdmin || lastButtonPressed == bttnCBM) && event.getSource() == bttnGoBack) {
     		mainPane.setVisible(true);
 			adminVBox.setVisible(true);
 			lblMainMenu.setVisible(true);
 			
 			secondaryPane.setVisible(false);
+			terciaryPane.setVisible(false);
 			secondaryVBox.setVisible(false);
 			lblReports.setVisible(false);
+			lblCBM.setVisible(false);
     	}else {
     		mainPane.setVisible(true);
     		mainVBox.setVisible(true);

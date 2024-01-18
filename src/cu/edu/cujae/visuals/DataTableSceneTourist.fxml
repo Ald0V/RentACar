@@ -126,7 +126,7 @@
          <children>
             <AnchorPane fx:id="addScenePane" layoutX="15.0" layoutY="15.0" prefHeight="624.0" prefWidth="986.0" stylesheets="@application.css">
                <children>
-                  <AnchorPane fx:id="tableScenePane" layoutY="-1.0" prefHeight="626.0" prefWidth="488.0" stylesheets="@application.css">
+                  <AnchorPane fx:id="tableScenePane" layoutY="-1.0" prefHeight="626.0" prefWidth="1030.0" stylesheets="@application.css">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
