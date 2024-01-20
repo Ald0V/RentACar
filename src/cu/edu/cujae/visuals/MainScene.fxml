@@ -479,7 +479,7 @@
       </Pane>
       <Pane fx:id="terciaryPane" layoutX="261.0" prefHeight="574.0" prefWidth="755.0" visible="false">
          <children>
-            <Button layoutX="58.0" layoutY="209.0" mnemonicParsing="false" onAction="#openContracts" opacity="0.46" prefHeight="157.0" prefWidth="168.0" styleClass="button2" stylesheets="@application.css">
+            <Button layoutX="58.0" layoutY="209.0" mnemonicParsing="false" onAction="#openCountry" opacity="0.46" prefHeight="157.0" prefWidth="168.0" styleClass="button2" stylesheets="@application.css">
                <effect>
                   <DropShadow />
                </effect>
@@ -507,7 +507,7 @@
                   <Font size="25.0" />
                </font>
             </Label>
-            <Button layoutX="294.0" layoutY="209.0" mnemonicParsing="false" onAction="#openCars" opacity="0.46" prefHeight="157.0" prefWidth="168.0" styleClass="button2" stylesheets="@application.css">
+            <Button layoutX="294.0" layoutY="209.0" mnemonicParsing="false" onAction="#openBrand" opacity="0.46" prefHeight="157.0" prefWidth="168.0" styleClass="button2" stylesheets="@application.css">
                <effect>
                   <DropShadow />
                </effect>
@@ -535,7 +535,7 @@
                   <Font size="25.0" />
                </font>
             </Label>
-            <Button layoutX="524.0" layoutY="209.0" mnemonicParsing="false" onAction="#openChofers" opacity="0.46" prefHeight="157.0" prefWidth="168.0" styleClass="button2" stylesheets="@application.css">
+            <Button layoutX="524.0" layoutY="209.0" mnemonicParsing="false" onAction="#openModel" opacity="0.46" prefHeight="157.0" prefWidth="168.0" styleClass="button2" stylesheets="@application.css">
                <effect>
                   <DropShadow />
                </effect>

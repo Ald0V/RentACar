@@ -705,5 +705,119 @@ public class MainSceneController {
 		stage.setScene(scene);
 		stage.centerOnScreen();
 	}
+	
+	public void openCountry(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneCBM.fxml"));
+		root = loader.load();
+		
+		DataTableSceneCBMController reportsController = loader.getController();
+		
+		reportsController.getBttnCountry().setDisable(true);
+		reportsController.getCountryPane().setVisible(true);
+//		reportsController.initializeDate();
+
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		
+		root.setOnMousePressed((MouseEvent e) ->{
+			x = e.getSceneX();
+			y = e.getSceneY();
+		});
+		
+		root.setOnMouseDragged((MouseEvent e) ->{
+			stage.setX(e.getScreenX() - x);
+			stage.setY(e.getScreenY() - y);
+			
+			stage.setOpacity(.9);
+		});
+		
+		root.setOnMouseReleased((MouseEvent e) ->{
+			stage.setOpacity(1);
+		});
+		
+		Image image = new Image("/resources/Rental_car_login.png");
+	    
+		stage.getIcons().add(image);
+		
+		stage.setScene(scene);
+		stage.centerOnScreen();
+			
+	}
+	
+	public void openBrand(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneCBM.fxml"));
+		root = loader.load();
+		
+		DataTableSceneCBMController reportsController = loader.getController();
+		
+		reportsController.getBttnBrands().setDisable(true);
+		reportsController.getBrandPane().setVisible(true);
+//		reportsController.initializeDate();
+
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		
+		root.setOnMousePressed((MouseEvent e) ->{
+			x = e.getSceneX();
+			y = e.getSceneY();
+		});
+		
+		root.setOnMouseDragged((MouseEvent e) ->{
+			stage.setX(e.getScreenX() - x);
+			stage.setY(e.getScreenY() - y);
+			
+			stage.setOpacity(.9);
+		});
+		
+		root.setOnMouseReleased((MouseEvent e) ->{
+			stage.setOpacity(1);
+		});
+		
+		Image image = new Image("/resources/Rental_car_login.png");
+	    
+		stage.getIcons().add(image);
+		
+		stage.setScene(scene);
+		stage.centerOnScreen();
+			
+	}
+	
+	public void openModel(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataTableSceneCBM.fxml"));
+		root = loader.load();
+		
+		DataTableSceneCBMController reportsController = loader.getController();
+		
+		reportsController.getBttnModels().setDisable(true);
+		reportsController.getModelPane().setVisible(true);
+//		reportsController.initializeDate();
+
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		
+		root.setOnMousePressed((MouseEvent e) ->{
+			x = e.getSceneX();
+			y = e.getSceneY();
+		});
+		
+		root.setOnMouseDragged((MouseEvent e) ->{
+			stage.setX(e.getScreenX() - x);
+			stage.setY(e.getScreenY() - y);
+			
+			stage.setOpacity(.9);
+		});
+		
+		root.setOnMouseReleased((MouseEvent e) ->{
+			stage.setOpacity(1);
+		});
+		
+		Image image = new Image("/resources/Rental_car_login.png");
+	    
+		stage.getIcons().add(image);
+		
+		stage.setScene(scene);
+		stage.centerOnScreen();
+			
+	}
 
 }
