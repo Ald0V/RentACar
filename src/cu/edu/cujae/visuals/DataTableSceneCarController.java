@@ -296,7 +296,7 @@ public class DataTableSceneCarController {
 			String model = cmboxModelAdd.getValue();
 			
 			try {
-				CarDTO car = new CarDTO(plate, model, 0, color, situation);
+				CarDTO car = new CarDTO(plate, brand, model, 0, color, situation);
 				
 //				serviceLocator.createCar(car);
 
@@ -331,7 +331,7 @@ if(txtColorAdd.getText() != "" && txtPlateAdd.getText() != "" && cmboxBrandAdd.g
 			String model = cmboxModelAdd.getValue();
 			
 			try {
-				CarDTO car = new CarDTO(plate, model, 0, color, situation);
+				CarDTO car = new CarDTO(plate, brand, model, 0, color, situation);
 				
 //				serviceLocator.updateCar(car);
 

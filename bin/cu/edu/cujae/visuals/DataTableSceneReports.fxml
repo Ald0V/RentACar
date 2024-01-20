@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -187,7 +186,6 @@
                               <TableColumn fx:id="colTouristDateCar" minWidth="0.0" prefWidth="250.39996337890625" text="Fecha de entrega del carro" />
                           </columns>
                         </TableView>
-                        <TextField fx:id="touristSearch" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="tableCarSituationPane" layoutY="14.0" prefHeight="640.8" prefWidth="1030.4" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -203,7 +201,6 @@
                               <TableColumn fx:id="colCarSEndDate" minWidth="0.0" prefWidth="319.199951171875" text="Fin del contrato" />
                            </columns>
                         </TableView>
-                        <TextField fx:id="carSSearch" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="tableModelBrandPane" layoutY="-7.0" prefHeight="636.0" prefWidth="1040.8" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-7.0">
@@ -222,7 +219,6 @@
                               <TableColumn fx:id="colBrand$Paper" minWidth="0.0" prefWidth="178.4000244140625" text="Ingresos por efectivo" />
                            </columns>
                         </TableView>
-                        <TextField fx:id="brandModelSearch" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
                         <TableView fx:id="importsBrandTable" layoutX="12.0" layoutY="369.0" prefHeight="242.0" prefWidth="499.0">
                            <columns>
                               <TableColumn fx:id="colBrandImportBrand" prefWidth="246.39993286132812" text="Marca" />
@@ -262,7 +258,6 @@
                               <TableColumn fx:id="colCountryTotal" minWidth="0.0" prefWidth="143.199951171875" text="Total general" />
                            </columns>
                         </TableView>
-                        <TextField fx:id="countrySearch" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="tableImportsPane" layoutX="10.0" layoutY="9.0" prefHeight="636.0" prefWidth="1040.8" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -305,7 +300,6 @@
                               <TableColumn fx:id="colReportTouristCountry" prefWidth="236.7999267578125" text="País" />
                            </columns>
                         </TableView>
-                        <TextField fx:id="touristSearch1" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="tableReportsCarPane" prefHeight="636.0" prefWidth="1040.8" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -323,7 +317,6 @@
                               <TableColumn fx:id="colReportCarSKM" minWidth="0.0" prefWidth="314.4000244140625" text="Cantidad de Km recorridos" />
                            </columns>
                         </TableView>
-                        <TextField fx:id="touristSearch11" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="tableReportsContractPane" layoutX="10.0" layoutY="10.0" prefHeight="646.4" prefWidth="1051.2" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -344,7 +337,6 @@
                               <TableColumn fx:id="colReportContractTotalImport" prefWidth="97.5999755859375" text="Importe total" />
                            </columns>
                         </TableView>
-                        <TextField fx:id="touristSearch111" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="tableReportsDriverPane" prefHeight="636.0" prefWidth="1040.8" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -364,7 +356,6 @@
                               <TableColumn fx:id="colReportDriverCantCars" prefWidth="184.800048828125" text="Número de carros manejados" />
                            </columns>
                         </TableView>
-                        <TextField fx:id="touristSearch12" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
                      </children>
                   </AnchorPane>
                </children>

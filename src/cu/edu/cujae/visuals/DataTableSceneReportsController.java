@@ -211,9 +211,6 @@ public class DataTableSceneReportsController {
     private TableView<BadTouristAux> touristTable;
     
     @FXML
-    private TextField touristSearch;
-
-    @FXML
     private TableColumn<BadTouristAux, LocalDate> colTouristDateCar;
 
     @FXML
@@ -241,9 +238,6 @@ public class DataTableSceneReportsController {
     
     @FXML
     private TableView<CarStatusAux> carTable;
-    
-    @FXML
-    private TextField carSSearch;
 
     @FXML
     private TableColumn<CarStatusAux, String> colCarSBrand;
@@ -266,9 +260,6 @@ public class DataTableSceneReportsController {
     
     @FXML
     private TableView<ModelBrandAux> modelBrandTable;
-    
-    @FXML
-    private TextField brandModelSearch;
     
     @FXML
     private TableColumn<ModelBrandAux, Float> colBrand$Cheque;
@@ -309,10 +300,7 @@ public class DataTableSceneReportsController {
     
     @FXML
     private TableView<CountryContractAux> countryTable;
-    
-    @FXML
-    private TextField countrySearch;
-    
+   
     @FXML
     private TableColumn<CountryContractAux, Float> colCountry$PaperTotal;
 
