@@ -140,8 +140,8 @@
                               <TableColumn fx:id="colAddLastName2" prefWidth="132.79998779296875" text="Segundo apellido" />
                               <TableColumn fx:id="colAddAge" minWidth="0.0" prefWidth="90.4000244140625" text="Edad" />
                               <TableColumn fx:id="colAddSex" minWidth="0.0" prefWidth="66.39996337890625" text="Género" />
-                              <TableColumn fx:id="colAddCountry" minWidth="0.0" prefWidth="166.4000244140625" text="País" />
-                              <TableColumn fx:id="colAddPhone" prefWidth="136.80002441406248" text="Teléfono" />
+                              <TableColumn fx:id="colAddPhone" minWidth="0.0" prefWidth="166.4000244140625" text="Teléfono" />
+                              <TableColumn fx:id="colAddCountry" prefWidth="136.80002441406248" text="Pais" />
                           </columns>
                         </TableView>
                         <TextField fx:id="search" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />

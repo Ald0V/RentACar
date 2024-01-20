@@ -136,9 +136,10 @@
                           <columns>
                             <TableColumn fx:id="colAddPlate" prefWidth="135.20001220703125" text="Placa" />
                             <TableColumn fx:id="colAddBrand" prefWidth="176.80001831054688" text="Marca" />
-                              <TableColumn fx:id="colAddModel" minWidth="0.0" prefWidth="249.5999755859375" text="Modelo" />
-                              <TableColumn fx:id="colAddColor" prefWidth="144.0" text="Color" />
-                              <TableColumn fx:id="colAddCarSituation" prefWidth="291.2000732421875" text="Estado del coche" />
+                              <TableColumn fx:id="colAddModel" minWidth="0.0" prefWidth="212.79998779296875" text="Modelo" />
+                              <TableColumn fx:id="colAddColor" prefWidth="142.4000244140625" text="Color" />
+                              <TableColumn fx:id="colAddCarSituation" prefWidth="163.199951171875" text="Estado del coche" />
+                              <TableColumn fx:id="colCantKm" prefWidth="166.39999999999998" text="Cantidad de KM" />
                           </columns>
                         </TableView>
                         <TextField fx:id="search" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />

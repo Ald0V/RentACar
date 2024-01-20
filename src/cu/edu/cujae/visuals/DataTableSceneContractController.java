@@ -54,6 +54,9 @@ public class DataTableSceneContractController {
     private AnchorPane addNewCar;
     
     @FXML
+    private AnchorPane deliveryDatePane;
+    
+    @FXML
     private Button bttnAddNewTourist;
     
     @FXML
@@ -93,13 +96,12 @@ public class DataTableSceneContractController {
     private Button bttnModify;
     
     @FXML
-    private Button bttnAdd;
-    
-    @FXML
-    private Button bttnDelete;
+    private Button bttnAdd; 
     
     @FXML
     private Button bttnAddNewCountry;
+    
+    
     
 //*****************    
 //*   ADD PANE    *
@@ -118,6 +120,9 @@ public class DataTableSceneContractController {
     private DatePicker pickdateStartAdd;
     
     @FXML
+    private DatePicker pickdateEndDate;
+    
+    @FXML
     private CheckBox checkDriverRentalAdd;
      
     @FXML
@@ -125,6 +130,9 @@ public class DataTableSceneContractController {
     
     @FXML
     private Button bttnModifyContract;
+    
+    @FXML
+    private Button bttnCloseContract;
     
 //0ºººººººººººººººº0    
 //0   ADD TABLE    0
@@ -309,13 +317,13 @@ public class DataTableSceneContractController {
 			
 			bttnAdd.setDisable(true);
 			bttnModify.setDisable(true);
-			bttnDelete.setDisable(true);
 			addScenePane.setVisible(true);
 			addParametersScenePane.setVisible(true);
 			tableScenePane.setVisible(true);
 			
 			bttnAddContract.setVisible(false);
 			bttnModifyContract.setVisible(true);
+			bttnCloseContract.setVisible(true);
 			
 			tableScenePane.setMaxHeight(382);
 			contractTable.setMaxHeight(286);
@@ -324,13 +332,13 @@ public class DataTableSceneContractController {
 			
 			bttnAdd.setDisable(true);
 			bttnModify.setDisable(true);
-			bttnDelete.setDisable(true);
 			addScenePane.setVisible(true);
 			addParametersScenePane.setVisible(true);
 			tableScenePane.setVisible(true);
 			
 			bttnAddContract.setVisible(true);
 			bttnModifyContract.setVisible(false);
+			bttnCloseContract.setVisible(false);
 			
 			tableScenePane.setMaxHeight(382);
 			contractTable.setMaxHeight(286);
@@ -355,7 +363,6 @@ public class DataTableSceneContractController {
 		addParametersScenePane.setVisible(false);
 		bttnAdd.setDisable(false);
 		bttnModify.setDisable(false);
-		bttnDelete.setDisable(false);
 		addScenePane.setVisible(true);
 		tableScenePane.setMaxHeight(626);
 		contractTable.setMaxHeight(554);
@@ -365,7 +372,6 @@ public class DataTableSceneContractController {
 		addParametersScenePane.setVisible(false);
 		bttnAdd.setDisable(false);
 		bttnModify.setDisable(false);
-		bttnDelete.setDisable(false);
 		addScenePane.setVisible(true);
 		tableScenePane.setMaxHeight(626);
 		contractTable.setMaxHeight(554);
@@ -402,21 +408,22 @@ public class DataTableSceneContractController {
 		
 		
 	}
-    	
+    
+	public void openDeliveryDate(ActionEvent event) {
+		
+		addParametersScenePane.setVisible(false);
+		deliveryDatePane.setVisible(true);
+	}
+	
+	public void closeDeliveryDate(ActionEvent event) {
+		
+		addParametersScenePane.setVisible(true);
+		deliveryDatePane.setVisible(false);
+	}
 
 
     
     
-    public void deleteContract(ActionEvent event) throws ClassNotFoundException, SQLException {
-        ObservableList<ContractAux> allContracts, singleContract;
-        allContracts = contractTable.getItems();
-        singleContract = contractTable.getSelectionModel().getSelectedItems();
 
-        if (singleContract.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Primero se debe seleccionar un item");
-        } else {
-            singleContract.forEach(allContracts::remove);
-        }
-    }
 
 }

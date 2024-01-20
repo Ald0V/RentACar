@@ -2,6 +2,9 @@ package cu.edu.cujae.visuals;
 
 import java.io.IOException;
 
+import cu.edu.cujae.dto.UserDTO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,13 +33,15 @@ public class UserManagerController {
     private Button bttnModify;
 
     @FXML
-    private ComboBox<?> cmboxRol;
+    private ComboBox<String> cmboxRol;
+    
+    ObservableList<String> list = FXCollections.observableArrayList("Administrador", "Trabajador", "Visitante");
 
     @FXML
     private AnchorPane mainScenePane;
 
     @FXML
-    private TableView<?> usersTable;
+    private TableView<UserDTO> usersTable;
     
     @FXML
     private TextField search;
@@ -46,18 +51,24 @@ public class UserManagerController {
 //0ººººººººººººººººº0 
     
     @FXML
-    private TableColumn<?, ?> colDate;
+    private TableColumn<UserDTO, String> colRol;
 
     @FXML
-    private TableColumn<?, ?> colEmail;
+    private TableColumn<UserDTO, String> colEmail;
 
     @FXML
-    private TableColumn<?, ?> colUsername;
+    private TableColumn<UserDTO, String> colUsername;
+    
+    
 
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
 	
+	public ComboBox<String> getCmboxRol() {
+		return cmboxRol;
+	}
+
 	public void backMain(ActionEvent event) throws IOException{
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("MainScene.fxml"));

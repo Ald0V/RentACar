@@ -92,6 +92,9 @@ public class DataTableSceneCarController {
 
     @FXML
     private TableColumn<CarDTO, String> colAddPlate;
+    
+    @FXML
+    private TableColumn<CarDTO, Integer> colCantKm;
  
 //*****************    
 //*   ADD PANE    *

@@ -2,6 +2,8 @@ package cu.edu.cujae.visuals;
 
 import java.io.IOException;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -678,7 +681,15 @@ public class MainSceneController {
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("UserManager.fxml"));
 		root = loader.load();
-				
+		
+        UserManagerController reportsController = loader.getController();
+		
+        ComboBox<String> aux;
+        
+		aux = reportsController.getCmboxRol();
+		ObservableList<String> list = FXCollections.observableArrayList("Administrador", "Trabajador", "Visitante");
+		aux.setItems(list);
+					
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		

@@ -47,18 +47,6 @@
                         <Insets left="15.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="bttnDelete" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#deleteContract" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Eliminar..." textFill="WHITE">
-                     <graphic>
-                        <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="file:/D:/Universidad/2do%20semestre/Base%20de%20datos/Curso%20CUJAE%202023-2024/Trabajo/Final%20Project%20Repository/src/resources/icons8_trash_50px.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <padding>
-                        <Insets left="15.0" />
-                     </padding>
-                  </Button>
                   <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#backMain" prefHeight="54.0" prefWidth="258.0" stylesheets="@application.css" text="Atrás" textFill="WHITE">
                      <graphic>
                         <ImageView disable="true" fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
@@ -128,6 +116,43 @@
          <children>
             <AnchorPane fx:id="addScenePane" layoutX="15.0" layoutY="15.0" prefHeight="626.0" prefWidth="1030.0" stylesheets="@application.css">
                <children>
+                  <AnchorPane fx:id="deliveryDatePane" layoutY="406.0" prefHeight="220.0" prefWidth="1030.0" stylesheets="@application.css" visible="false">
+                     <styleClass>
+                        <String fx:value="white-bg" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <Button layoutX="358.0" layoutY="158.0" mnemonicParsing="false" onAction="#closeDeliveryDate" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Cancelar" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="buttonCancel" />
+                           </styleClass>
+                        </Button>
+                        <Label fx:id="lblErrorEmpty1" alignment="CENTER" layoutX="212.0" layoutY="173.0" prefHeight="38.0" prefWidth="418.0" text="Todos los campos son obligatorios" textAlignment="CENTER" textFill="RED" visible="false">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="567.0" layoutY="158.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Aceptar" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="buttonAdd" />
+                           </styleClass>
+                        </Button>
+                        <Label layoutX="377.0" layoutY="63.0" prefHeight="27.0" prefWidth="114.0" text="Fecha de entrega:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="pickdateStartAdd1" layoutX="497.0" layoutY="65.0" />
+                     </children>
+                  </AnchorPane>
                   <AnchorPane fx:id="tableScenePane" layoutY="-1.0" prefHeight="626.0" prefWidth="1030.0" stylesheets="@application.css">
                      <styleClass>
                         <String fx:value="white-bg" />
@@ -173,46 +198,46 @@
                               <String fx:value="buttonAdd" />
                            </styleClass>
                         </Button>
-                        <Label layoutX="48.0" layoutY="33.0" prefHeight="27.0" prefWidth="98.0" text="Fecha de inicio:" textFill="WHITE">
+                        <Label layoutX="43.0" layoutY="33.0" prefHeight="27.0" prefWidth="98.0" text="Fecha de inicio:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
                         <DatePicker fx:id="pickdateStartAdd" layoutX="147.0" layoutY="35.0" />
-                        <Label layoutX="97.0" layoutY="116.0" prefHeight="27.0" prefWidth="48.0" text="Turista:" textFill="WHITE">
+                        <Label layoutX="451.0" layoutY="106.0" prefHeight="27.0" prefWidth="48.0" text="Turista:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="cmboxTouristAdd" layoutX="147.0" layoutY="116.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <ComboBox fx:id="cmboxTouristAdd" layoutX="501.0" layoutY="106.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="726.0" layoutY="34.0" prefHeight="27.0" prefWidth="108.0" text="Método de pago:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
                         <ComboBox fx:id="cmboxPayMethodAdd" layoutX="841.0" layoutY="35.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="460.0" layoutY="34.0" prefHeight="27.0" prefWidth="42.0" text="Carro:" textFill="WHITE">
+                        <Label layoutX="457.0" layoutY="34.0" prefHeight="27.0" prefWidth="42.0" text="Carro:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="cmboxCarAdd" layoutX="502.0" layoutY="35.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Button fx:id="bttnAddNewTourist" layoutX="296.0" layoutY="114.0" mnemonicParsing="false" onAction="#switchNewTouristOrCar" prefHeight="30.0" prefWidth="32.0" styleClass="buttonNew" stylesheets="@application.css" textFill="WHITE">
+                        <ComboBox fx:id="cmboxCarAdd" layoutX="499.0" layoutY="35.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <Button fx:id="bttnAddNewTourist" layoutX="650.0" layoutY="104.0" mnemonicParsing="false" onAction="#switchNewTouristOrCar" prefHeight="30.0" prefWidth="32.0" styleClass="buttonNew" stylesheets="@application.css" textFill="WHITE">
                            <font>
                               <Font name="System Bold Italic" size="12.0" />
                            </font>
                         </Button>
-                        <ImageView disable="true" fitHeight="30.0" fitWidth="32.0" layoutX="296.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView disable="true" fitHeight="30.0" fitWidth="32.0" layoutX="650.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../resources/icons8_plus_math_32px.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="bttnAddNewCar" layoutX="652.0" layoutY="32.0" mnemonicParsing="false" onAction="#switchNewTouristOrCar" prefHeight="30.0" prefWidth="30.0" styleClass="buttonNew" stylesheets="@application.css" textFill="WHITE">
+                        <Button fx:id="bttnAddNewCar" layoutX="649.0" layoutY="32.0" mnemonicParsing="false" onAction="#switchNewTouristOrCar" prefHeight="30.0" prefWidth="30.0" styleClass="buttonNew" stylesheets="@application.css" textFill="WHITE">
                            <font>
                               <Font name="System Bold Italic" size="12.0" />
                            </font>
                         </Button>
-                        <ImageView disable="true" fitHeight="30.0" fitWidth="32.0" layoutX="652.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView disable="true" fitHeight="30.0" fitWidth="32.0" layoutX="649.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../resources/icons8_plus_math_32px.png" />
                            </image>
@@ -237,6 +262,21 @@
                               <String fx:value="buttonAdd" />
                            </styleClass>
                         </Button>
+                        <Button fx:id="bttnCloseContract" layoutX="435.0" layoutY="158.0" mnemonicParsing="false" onAction="#openDeliveryDate" prefHeight="48.0" prefWidth="160.0" stylesheets="@application.css" text="Cerrar contrato" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="shadow" />
+                              <String fx:value="buttonCancel" />
+                           </styleClass>
+                        </Button>
+                        <Label layoutX="38.0" layoutY="102.0" prefHeight="27.0" prefWidth="108.0" text="Fin del contrato:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="pickdateEndDate" layoutX="147.0" layoutY="104.0" />
                      </children>
                   </AnchorPane>
                </children>
