@@ -149,7 +149,26 @@ public class DataTableSceneDriverController {
 //	    // Establecer los elementos de la tabla
 //	    driverTable.setItems(driversList);
 
-	    
+	 // Desactiva los botones al inicio
+        bttnDelete.setDisable(true);
+        bttnModify.setDisable(true);
+
+        // Añade un ChangeListener a la propiedad selectedItemProperty de la tabla
+        driverTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                // Activa los botones cuando se selecciona una fila
+                bttnDelete.setDisable(false);
+                bttnModify.setDisable(false);
+                bttnModifyDriver.setVisible(true);
+                bttnAddDriver.setVisible(false);
+            } else {
+                // Desactiva los botones cuando no hay ninguna fila seleccionada
+                bttnDelete.setDisable(true);
+                bttnModify.setDisable(true);
+                bttnModifyDriver.setVisible(false);
+                bttnAddDriver.setVisible(true);
+            }
+        });
 	    
 	    // Añadir un listener a la propiedad selectedItemProperty
 	    driverTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {

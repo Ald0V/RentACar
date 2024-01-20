@@ -148,7 +148,26 @@ public class DataTableSceneCarController {
 //	    // Establecer los elementos de la tabla
 //	    carTable.setItems(carList);
 
-	    
+		// Desactiva los botones al inicio
+        bttnDelete.setDisable(true);
+        bttnModify.setDisable(true);
+
+        // Añade un ChangeListener a la propiedad selectedItemProperty de la tabla
+        carTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                // Activa los botones cuando se selecciona una fila
+                bttnDelete.setDisable(false);
+                bttnModify.setDisable(false);
+                bttnModifyCar.setVisible(true);
+                bttnAddCar.setVisible(false);
+            } else {
+                // Desactiva los botones cuando no hay ninguna fila seleccionada
+                bttnDelete.setDisable(true);
+                bttnModify.setDisable(true);
+                bttnModifyCar.setVisible(false);
+                bttnAddCar.setVisible(true);
+            }
+        });
 	    
 	    // Añadir un listener a la propiedad selectedItemProperty
 		carTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {

@@ -245,7 +245,21 @@ public class DataTableSceneContractController {
 //	    
 //	    // Establecer los elementos de la tabla
 //	    contractTable.setItems(contractList);
-   
+	    
+	       // Añade un ChangeListener a la propiedad selectedItemProperty de la tabla
+        contractTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                // Activa los botones cuando se selecciona una fila
+                bttnModify.setDisable(false);
+                bttnModifyContract.setVisible(true);
+                bttnAddContract.setVisible(false);
+            } else {
+                // Desactiva los botones cuando no hay ninguna fila seleccionada
+                bttnModify.setDisable(true);
+                bttnModifyContract.setVisible(false);
+                bttnAddContract.setVisible(true);
+            }
+        });
 	    
 	    // Añadir un listener a la propiedad selectedItemProperty
 	    contractTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {

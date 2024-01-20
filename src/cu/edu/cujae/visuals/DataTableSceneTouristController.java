@@ -169,6 +169,8 @@ public class DataTableSceneTouristController {
 	private Scene scene;
 	private Parent root;
 	
+	
+	
 	@SuppressWarnings("unchecked")
 	private void touristTableChargeData() throws ClassNotFoundException, SQLException {	
 	    // Configurar cellValueFactory para cada columna
@@ -189,7 +191,26 @@ public class DataTableSceneTouristController {
 //	    // Establecer los elementos de la tabla
 //	    touristTable.setItems(touristList);
 
-	    
+	 // Desactiva los botones al inicio
+        bttnDelete.setDisable(true);
+        bttnModify.setDisable(true);
+
+        // Añade un ChangeListener a la propiedad selectedItemProperty de la tabla
+        touristTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                // Activa los botones cuando se selecciona una fila
+                bttnDelete.setDisable(false);
+                bttnModify.setDisable(false);
+                bttnModifyTourist.setVisible(true);
+                bttnAddTourist.setVisible(false);
+            } else {
+                // Desactiva los botones cuando no hay ninguna fila seleccionada
+                bttnDelete.setDisable(true);
+                bttnModify.setDisable(true);
+                bttnModifyTourist.setVisible(false);
+                bttnAddTourist.setVisible(true);
+            }
+        });
 	    
 	    // Añadir un listener a la propiedad selectedItemProperty
 	    touristTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
