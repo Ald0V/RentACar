@@ -299,12 +299,10 @@
                         <TableView fx:id="reportTouristTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
                            <columns>
                               <TableColumn fx:id="colReportTouristName" prefWidth="176.80001831054688" text="Nombre" />
-                              <TableColumn fx:id="colReportTouristLastName1" minWidth="0.0" prefWidth="125.60000610351562" text="Primer apellido" />
-                              <TableColumn fx:id="colReportTouristLastName2" prefWidth="121.60003662109375" text="Segundo apellido" />
-                              <TableColumn fx:id="colReportTouristPassport" minWidth="0.0" prefWidth="90.4000244140625" text="Pasaporte" />
-                              <TableColumn fx:id="colReportTouristCantCars" minWidth="0.0" prefWidth="161.5999755859375" text="Uso de autos por el turista" />
-                              <TableColumn fx:id="colReportTouristTotalRent" prefWidth="177.5999755859375" text="Total de alquileres del turista" />
-                              <TableColumn fx:id="colReportTouristCountry" prefWidth="144.0" text="País" />
+                              <TableColumn fx:id="colReportTouristPassport" minWidth="0.0" prefWidth="229.60006713867188" text="Pasaporte" />
+                              <TableColumn fx:id="colReportTouristCantCars" minWidth="0.0" prefWidth="165.5999755859375" text="Uso de autos por el turista" />
+                              <TableColumn fx:id="colReportTouristTotalRent" prefWidth="189.5999755859375" text="Total de alquileres del turista" />
+                              <TableColumn fx:id="colReportTouristCountry" prefWidth="236.7999267578125" text="País" />
                            </columns>
                         </TableView>
                         <TextField fx:id="touristSearch1" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />

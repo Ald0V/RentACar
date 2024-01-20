@@ -63,12 +63,6 @@ public class DataTableSceneReportsController {
     private TableView<TouristAux> reportTouristTable;
     
     @FXML
-    private TableColumn<TouristAux, String> colReportTouristLastName1;
-
-    @FXML
-    private TableColumn<TouristAux, String> colReportTouristLastName2;
-    
-    @FXML
     private TableColumn<TouristAux, String> colReportTouristName;
     
     @FXML

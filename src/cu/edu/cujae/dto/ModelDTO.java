@@ -1,14 +1,15 @@
 package cu.edu.cujae.dto;
 
 public class ModelDTO {
+    private int brand;
 	private int id;
     private String name;
-    private AuxiliaryDTO brand;
+    
 
     public ModelDTO() {
     }
 
-    public ModelDTO(int id, String name, AuxiliaryDTO brand) {
+    public ModelDTO(int brand, int id, String name) {
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -30,11 +31,11 @@ public class ModelDTO {
         this.name = name;
     }
 
-    public AuxiliaryDTO getBrand() {
+    public int getBrand() {
         return brand;
     }
 
-    public void setBrand(AuxiliaryDTO brand) {
+    public void setBrand(int brand) {
         this.brand = brand;
     }
 }

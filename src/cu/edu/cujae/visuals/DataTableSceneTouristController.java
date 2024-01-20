@@ -321,8 +321,6 @@ public class DataTableSceneTouristController {
 		addScenePane.setVisible(true);
 		addParametersScenePane.setVisible(false);
 		bttnAdd.setDisable(false);
-		bttnModify.setDisable(false);
-		bttnDelete.setDisable(false);
 		
 		cmboxCountryAdd.setVisible(true);
 		imgCountryAdd.setVisible(true);
@@ -337,8 +335,6 @@ public class DataTableSceneTouristController {
 		addScenePane.setVisible(true);
 		addParametersScenePane.setVisible(false);
 		bttnAdd.setDisable(false);
-		bttnModify.setDisable(false);
-		bttnDelete.setDisable(false);
 		
 		cmboxCountryAdd.setVisible(true);
 		imgCountryAdd.setVisible(true);
@@ -389,8 +385,7 @@ public class DataTableSceneTouristController {
 					int age = Integer.parseInt(txtAgeAdd.getText());
 
 					try {
-						AuxiliaryDTO aux = new AuxiliaryDTO(-1, country);
-						TouristDTO tourist = new TouristDTO(passport, name, lastName1, lastName2, age, sex, contact, aux);
+						TouristDTO tourist = new TouristDTO(passport, name, lastName1, lastName2, age, sex, contact, country);
 						
 //						serviceLocator.insertTourist(tourist);
 
@@ -399,7 +394,7 @@ public class DataTableSceneTouristController {
 						txtLastName2Add.setText("");
 						txtPassportAdd.setText("");
 						cmboxSexAdd.setValue("");
-						txtPhoneAdd.setText("");
+						txtPhoneAdd.setText("");	
 						cmboxCountryAdd.setValue("");
 						txtAgeAdd.setText("");
 
@@ -440,8 +435,7 @@ public class DataTableSceneTouristController {
 					int age = Integer.parseInt(txtAgeAdd.getText());
 
 					try {
-						AuxiliaryDTO aux = new AuxiliaryDTO(-1 ,country);
-						TouristDTO tourist = new TouristDTO(passport, name, lastName1, lastName2, age, sex, contact, aux);
+						TouristDTO tourist = new TouristDTO(passport, name, lastName1, lastName2, age, sex, contact, country);
 						
 //						serviceLocator.updateTourist(tourist);
 

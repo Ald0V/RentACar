@@ -278,8 +278,6 @@ public class DataTableSceneDriverController {
 	public void cancelModify(ActionEvent event) {
 		addParametersScenePane.setVisible(false);
 		bttnAdd.setDisable(false);
-		bttnModify.setDisable(false);
-		bttnDelete.setDisable(false);
 		addScenePane.setVisible(true);
 		tableScenePane.setMaxHeight(626);
 		driverTable.setMaxHeight(554);
@@ -288,8 +286,6 @@ public class DataTableSceneDriverController {
 	public void cancelAdd(ActionEvent event) {
 		addParametersScenePane.setVisible(false);
 		bttnAdd.setDisable(false);
-		bttnModify.setDisable(false);
-		bttnDelete.setDisable(false);
 		addScenePane.setVisible(true);
 		tableScenePane.setMaxHeight(626);
 		driverTable.setMaxHeight(554);
@@ -306,8 +302,7 @@ public class DataTableSceneDriverController {
 			String license = cmboxLicenseAdd.getValue();
 			
 			try {
-				AuxiliaryDTO aux = new AuxiliaryDTO(-1, license);
-				DriverDTO tourist = new DriverDTO(id, name, lastName1, lastName2, aux, address);
+				DriverDTO tourist = new DriverDTO(id, name, lastName1, lastName2, license, address);
 				
 //				serviceLocator.insertDriver(driver);
 
@@ -343,8 +338,7 @@ public class DataTableSceneDriverController {
 			String license = cmboxLicenseAdd.getValue();
 			
 			try {
-				AuxiliaryDTO aux = new AuxiliaryDTO(-1, license);
-				DriverDTO tourist = new DriverDTO(id, name, lastName1, lastName2, aux, address);
+				DriverDTO tourist = new DriverDTO(id, name, lastName1, lastName2, license, address);
 				
 //				serviceLocator.updateDriver(driver);
 

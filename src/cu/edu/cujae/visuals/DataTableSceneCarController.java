@@ -273,8 +273,6 @@ public class DataTableSceneCarController {
 	public void cancelModify(ActionEvent event) {
 		addParametersScenePane.setVisible(false);
 		bttnAdd.setDisable(false);
-		bttnModify.setDisable(false);
-		bttnDelete.setDisable(false);
 		addScenePane.setVisible(true);
 		tableScenePane.setMaxHeight(626);
 		carTable.setMaxHeight(554);
@@ -283,8 +281,6 @@ public class DataTableSceneCarController {
 	public void cancelAdd(ActionEvent event) {
 		addParametersScenePane.setVisible(false);
 		bttnAdd.setDisable(false);
-		bttnModify.setDisable(false);
-		bttnDelete.setDisable(false);
 		addScenePane.setVisible(true);
 		tableScenePane.setMaxHeight(626);
 		carTable.setMaxHeight(554);
@@ -300,10 +296,7 @@ public class DataTableSceneCarController {
 			String model = cmboxModelAdd.getValue();
 			
 			try {
-				AuxiliaryDTO brandAux = new AuxiliaryDTO(-1 ,brand);
-				ModelDTO carAux = new ModelDTO(-1, model, brandAux);
-				AuxiliaryDTO carAux2 = new AuxiliaryDTO(-1 ,situation);
-				CarDTO car = new CarDTO(plate, carAux, 0, color, carAux2);
+				CarDTO car = new CarDTO(plate, model, 0, color, situation);
 				
 //				serviceLocator.createCar(car);
 
@@ -338,10 +331,7 @@ if(txtColorAdd.getText() != "" && txtPlateAdd.getText() != "" && cmboxBrandAdd.g
 			String model = cmboxModelAdd.getValue();
 			
 			try {
-				AuxiliaryDTO brandAux = new AuxiliaryDTO(-1 ,brand);
-				ModelDTO carAux = new ModelDTO(-1, model, brandAux);
-				AuxiliaryDTO carAux2 = new AuxiliaryDTO(-1 ,situation);
-				CarDTO car = new CarDTO(plate, carAux, 0, color, carAux2);
+				CarDTO car = new CarDTO(plate, model, 0, color, situation);
 				
 //				serviceLocator.updateCar(car);
 
