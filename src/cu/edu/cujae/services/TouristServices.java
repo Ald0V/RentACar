@@ -69,7 +69,7 @@ public class TouristServices {
 		preparedFunction.execute();
 		ResultSet rs = (ResultSet) preparedFunction.getObject(1);
 		while (rs.next()){
-			lodgings.add(new TouristDTO(rs.getString(1), rs.getString(2),rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getObject(8) ));
+			lodgings.add(new TouristDTO(rs.getString(1), rs.getString(2),rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getString(8) ));
 		}
 		rs.close();
 		preparedFunction.close();
