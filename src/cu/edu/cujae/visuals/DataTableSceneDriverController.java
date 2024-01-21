@@ -9,6 +9,7 @@ import cu.edu.cujae.dto.AuxiliaryDTO;
 import cu.edu.cujae.dto.DriverDTO;
 import cu.edu.cujae.dto.TouristDTO;
 import cu.edu.cujae.utils.TouristAux;
+import cu.edu.cujae.utils.Validator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -131,6 +132,8 @@ public class DataTableSceneDriverController {
 	private Scene scene;
 	private Parent root;
 	
+	Validator val = new Validator();
+	
 	@SuppressWarnings("unchecked")
 	public void driverTableChargeData()throws ClassNotFoundException, SQLException {
 		// Configurar cellValueFactory para cada columna
@@ -156,31 +159,34 @@ public class DataTableSceneDriverController {
         // Añade un ChangeListener a la propiedad selectedItemProperty de la tabla
         driverTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
-                // Activa los botones cuando se selecciona una fila
-                bttnDelete.setDisable(false);
-                bttnModify.setDisable(false);
-                bttnModifyDriver.setVisible(true);
-                bttnAddDriver.setVisible(false);
-            } else {
-                // Desactiva los botones cuando no hay ninguna fila seleccionada
-                bttnDelete.setDisable(true);
-                bttnModify.setDisable(true);
-                bttnModifyDriver.setVisible(false);
-                bttnAddDriver.setVisible(true);
+
             }
         });
 	    
 	    // Añadir un listener a la propiedad selectedItemProperty
 	    driverTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 	        if (newValue != null) {
-//	            iTidTextField=(String.valueOf(newValue.getpassport()));
-//	            iTnameTextField.setText(newValue.getName());	 
-//	            iTprovinceChoiceBox.setValue(newValue.getCountry());
-//	            iTPCHamountTextField.setText(String.valueOf(newValue.getCantRentalCars()));
-//	            iTWCHamountTextField.setText(String.valueOf(newValue.getRentalTotalValue()));
-//	            iTmascotTextField.setText(newValue.getLastName1());
-//	            iTcolorTextField.setText(newValue.getLastName2());
-	        }
+                // Activa los botones cuando se selecciona una fila
+                bttnDelete.setDisable(false);
+                bttnModify.setDisable(false);
+                bttnModifyDriver.setVisible(true);
+                bttnAddDriver.setVisible(false);
+                
+                
+                txtIDAdd.setText(newValue.getID());
+                txtNameAdd.setText(newValue.getName());
+                txtLastName1Add.setText(newValue.getLastName1());
+                txtLastName2Add.setText(newValue.getLastName2());
+                txtAddressAdd.setText(newValue.getAddress());
+                cmboxLicenseAdd.setValue(newValue.getCategory());
+
+	        } else {
+                // Desactiva los botones cuando no hay ninguna fila seleccionada
+                bttnDelete.setDisable(true);
+                bttnModify.setDisable(true);
+                bttnModifyDriver.setVisible(false);
+                bttnAddDriver.setVisible(true);
+            }
 	    });
 	}
 	
@@ -294,35 +300,38 @@ public class DataTableSceneDriverController {
 
 	public void insertDriver(ActionEvent event) {
 		if(txtAddressAdd.getText() != "" && txtIDAdd.getText() != "" && txtLastName1Add.getText() != "" && txtLastName2Add.getText() != "" && txtNameAdd.getText() != "" && cmboxLicenseAdd.getValue() != "") {
-			String name = txtNameAdd.getText();
-			String lastName1 = txtLastName1Add.getText();
-			String lastName2 = txtLastName2Add.getText();
-			String id = txtIDAdd.getText();
-			String address = txtAddressAdd.getText();
-			String license = cmboxLicenseAdd.getValue();
-			
-			try {
-				DriverDTO tourist = new DriverDTO(id, name, lastName1, lastName2, license, address);
-				
-//				serviceLocator.insertDriver(driver);
-
-			     txtNameAdd.setText("");
-			     txtLastName1Add.setText("");
-			     txtLastName2Add.setText("");
-			     txtIDAdd.setText("");
-			     txtAddressAdd.setText("");
-			     cmboxLicenseAdd.setValue("");
-
+			if(val.isPassportCorrect(txtIDAdd.getText())) {
+				String name = txtNameAdd.getText();
+				String lastName1 = txtLastName1Add.getText();
+				String lastName2 = txtLastName2Add.getText();
+				String id = txtIDAdd.getText();
+				String address = txtAddressAdd.getText();
+				String license = cmboxLicenseAdd.getValue();
 
 				try {
-					driverTableChargeData();
-				} catch (ClassNotFoundException | SQLException e) {
-					e.printStackTrace();
+					DriverDTO tourist = new DriverDTO(id, name, lastName1, lastName2, license, address);
+
+					//				serviceLocator.insertDriver(driver);
+
+					txtNameAdd.setText("");
+					txtLastName1Add.setText("");
+					txtLastName2Add.setText("");
+					txtIDAdd.setText("");
+					txtAddressAdd.setText("");
+					cmboxLicenseAdd.setValue("");
+
+
+					try {
+						driverTableChargeData();
+					} catch (ClassNotFoundException | SQLException e) {
+						e.printStackTrace();
+					}
 				}
-			}
-			catch(Exception e) {
-				JOptionPane.showMessageDialog(null, e.getMessage());
-			}
+				catch(Exception e) {
+					JOptionPane.showMessageDialog(null, e.getMessage());
+				}
+			}else
+				lblErrorCI.setVisible(true);
 		}else
 			lblErrorEmpty.setVisible(true);
 

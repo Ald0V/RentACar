@@ -35,5 +35,17 @@ public  class Validator {
         }
         return validated;
     }
+    
+	public boolean isAgeCorrect(int edad) {
+		return edad >= 18 && edad <= 60;
+	}
+	
+    public boolean isPassportCorrect(String str) {
+        return str.matches("\\d{11}");
+    }
+	
+    public boolean isPhoneCorrect(String str) {
+        return str.matches("[\\d+\\-\\)\\(]{1,15}");
+    }
 
     }

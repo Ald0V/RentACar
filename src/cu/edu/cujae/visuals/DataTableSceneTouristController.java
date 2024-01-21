@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 import cu.edu.cujae.dto.AuxiliaryDTO;
 import cu.edu.cujae.utils.TouristAux;
-
+import cu.edu.cujae.utils.Validator;
 import cu.edu.cujae.dto.TouristDTO;
 import javafx.beans.value.ObservableSetValue;
 import javafx.collections.FXCollections;
@@ -169,6 +169,7 @@ public class DataTableSceneTouristController {
 	private Scene scene;
 	private Parent root;
 	
+	Validator val = new Validator();
 	
 	
 	@SuppressWarnings("unchecked")
@@ -215,12 +216,6 @@ public class DataTableSceneTouristController {
 	            cmboxSexAdd.setValue(newValue.getSex());
 	            txtPhoneAdd.setText(newValue.getContact());
 	            cmboxCountryAdd.setValue(newValue.getCountry());
-	            
-//	            iTprovinceChoiceBox.setValue(newValue.getCountry());
-//	            iTPCHamountTextField.setText(String.valueOf(newValue.getCantRentalCars()));
-//	            iTWCHamountTextField.setText(String.valueOf(newValue.getRentalTotalValue()));
-//	            iTmascotTextField.setText(newValue.getLastName1());
-//	            iTcolorTextField.setText(newValue.getLastName2());
                 
 	        }else {
                 // Desactiva los botones cuando no hay ninguna fila seleccionada
@@ -363,17 +358,6 @@ public class DataTableSceneTouristController {
 		}
 	}
 	
-	public static boolean isAgeCorrect(int edad) {
-		return edad >= 18 && edad <= 60;
-	}
-	
-    public static boolean isPassportCorrect(String str) {
-        return str.matches("\\d{11}");
-    }
-	
-    public static boolean isPhoneCorrect(String str) {
-        return str.matches("[\\d+\\-\\)\\(]{1,15}");
-    }
 	
 	public void insertTourist(ActionEvent event) throws ClassNotFoundException, SQLException {
   		lblErrorPassport.setVisible(false);
@@ -385,8 +369,8 @@ public class DataTableSceneTouristController {
             
 //			Necesito hacer una validacion para si lo obtenido de txtAgeAdd.getText() no es int, no se cumpla la funcion
         	
-			if(isAgeCorrect(Integer.parseInt(txtAgeAdd.getText())) ) {
-				if(isPassportCorrect(txtPassportAdd.getText()) && isPhoneCorrect(txtPhoneAdd.getText())) {
+			if(val.isAgeCorrect(Integer.parseInt(txtAgeAdd.getText())) ) {
+				if(val.isPassportCorrect(txtPassportAdd.getText()) && val.isPhoneCorrect(txtPhoneAdd.getText())) {
 
 					String name = txtNameAdd.getText();
 					String lastName1 = txtLastName1Add.getText();
@@ -421,7 +405,7 @@ public class DataTableSceneTouristController {
 						JOptionPane.showMessageDialog(null, e.getMessage());
 					}
 
-				}else if(isPassportCorrect(txtPassportAdd.getText()) != false) {
+				}else if(val.isPassportCorrect(txtPassportAdd.getText()) != false) {
 					lblErrorPassport.setVisible(true);
 				}else
 					lblErrorPhone.setVisible(true);		
@@ -440,8 +424,8 @@ public class DataTableSceneTouristController {
     	lblErrorEmpty.setVisible(false);
     	if(txtAgeAdd.getText() != "" && txtLastName1Add.getText() != "" && txtLastName2Add.getText() != "" && txtNameAdd.getText() != "" && txtPassportAdd.getText() != "" && txtPhoneAdd.getText() != "" && (cmboxCountryAdd.getValue() != "" || txtCountryAdd.getText() != "") && cmboxSexAdd.getValue() != "" && cmboxSexAdd.getValue() != "") { 
 
-    		if(isAgeCorrect(Integer.parseInt(txtAgeAdd.getText())) ) {
-				if(isPassportCorrect(txtPassportAdd.getText()) && isPhoneCorrect(txtPhoneAdd.getText())) {
+    		if(val.isAgeCorrect(Integer.parseInt(txtAgeAdd.getText())) ) {
+				if(val.isPassportCorrect(txtPassportAdd.getText()) && val.isPhoneCorrect(txtPhoneAdd.getText())) {
 
 					String name = txtNameAdd.getText();
 					String lastName1 = txtLastName1Add.getText();
@@ -476,7 +460,7 @@ public class DataTableSceneTouristController {
 						JOptionPane.showMessageDialog(null, e.getMessage());
 					}
 
-				}else if(isPassportCorrect(txtPassportAdd.getText()) != false) {
+				}else if(val.isPassportCorrect(txtPassportAdd.getText()) != false) {
 					lblErrorPassport.setVisible(true);
 				}else
 					lblErrorPhone.setVisible(true);		
