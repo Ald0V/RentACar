@@ -1,7 +1,8 @@
 package cu.edu.cujae.utils;
-
+import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 
 public  class Validator {
     /**
@@ -48,4 +49,12 @@ public  class Validator {
         return str.matches("[\\d+\\-\\)\\(]{1,15}");
     }
 
+    public boolean validateDate(LocalDate firstDate, LocalDate secondDate) {
+        // Retorna verdadero si la segunda fecha es posterior a la primera fecha
+        return secondDate.isAfter(firstDate);
     }
+
+
+    }
+
+

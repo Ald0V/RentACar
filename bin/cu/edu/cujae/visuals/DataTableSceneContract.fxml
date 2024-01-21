@@ -3,7 +3,6 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -210,12 +209,12 @@
                            </font>
                         </Label>
                         <ComboBox fx:id="cmboxTouristAdd" layoutX="501.0" layoutY="106.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Label layoutX="726.0" layoutY="34.0" prefHeight="27.0" prefWidth="108.0" text="Método de pago:" textFill="WHITE">
+                        <Label layoutX="721.0" layoutY="34.0" prefHeight="27.0" prefWidth="108.0" text="Método de pago:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="cmboxPayMethodAdd" layoutX="841.0" layoutY="35.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <ComboBox fx:id="cmboxPayMethodAdd" layoutX="836.0" layoutY="35.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                         <Label layoutX="457.0" layoutY="34.0" prefHeight="27.0" prefWidth="42.0" text="Carro:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
@@ -242,17 +241,16 @@
                               <Image url="@../../../../resources/icons8_plus_math_32px.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="lblErrorEmpty" alignment="CENTER" layoutX="212.0" layoutY="173.0" prefHeight="38.0" prefWidth="418.0" text="Todos los campos son obligatorios" textAlignment="CENTER" textFill="RED" visible="false">
+                        <Label fx:id="lblErrorEmpty" alignment="CENTER" layoutY="163.0" prefHeight="38.0" prefWidth="418.0" text="Todos los campos son obligatorios" textAlignment="CENTER" textFill="RED" visible="false">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label layoutX="726.0" layoutY="116.0" prefHeight="27.0" prefWidth="126.0" text="Alquiler del chófer:" textFill="WHITE">
+                        <Label layoutX="789.0" layoutY="106.0" prefHeight="27.0" prefWidth="48.0" text="Chófer:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <CheckBox fx:id="checkDriverRentalAdd" layoutX="852.0" layoutY="120.0" mnemonicParsing="false" />
                         <Button fx:id="bttnModifyContract" layoutX="892.0" layoutY="158.0" mnemonicParsing="false" onAction="#modifyContract" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Actualizar" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
@@ -277,6 +275,22 @@
                            </font>
                         </Label>
                         <DatePicker fx:id="pickdateEndDate" layoutX="147.0" layoutY="104.0" />
+                        <ComboBox fx:id="cmboxDriverAdd" layoutX="837.0" layoutY="106.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <Button fx:id="bttnAddNewTourist1" layoutX="986.0" layoutY="104.0" mnemonicParsing="false" onAction="#switchNewTouristOrCar" prefHeight="30.0" prefWidth="32.0" styleClass="buttonNew" stylesheets="@application.css" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="12.0" />
+                           </font>
+                        </Button>
+                        <ImageView disable="true" fitHeight="30.0" fitWidth="32.0" layoutX="986.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../resources/icons8_plus_math_32px.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="lblErrorDate" alignment="CENTER" layoutY="163.0" prefHeight="38.0" prefWidth="427.0" text="El fin del contrato ocurre después del inicio del contrato" textAlignment="CENTER" textFill="RED" visible="false">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </children>

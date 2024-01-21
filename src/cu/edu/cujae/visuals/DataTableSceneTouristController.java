@@ -10,6 +10,7 @@ import cu.edu.cujae.dto.AuxiliaryDTO;
 import cu.edu.cujae.utils.TouristAux;
 import cu.edu.cujae.utils.Validator;
 import cu.edu.cujae.dto.TouristDTO;
+import cu.edu.cujae.services.ServicesLocator;
 import javafx.beans.value.ObservableSetValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -382,10 +383,9 @@ public class DataTableSceneTouristController {
 					int age = Integer.parseInt(txtAgeAdd.getText());
 
 					try {
-						TouristDTO tourist = new TouristDTO(passport, name, lastName1, lastName2, age, sex, contact, country);
 						
-//						serviceLocator.insertTourist(tourist);
-
+						ServicesLocator.getTouristServices().insert_tourist(passport, name, lastName1, lastName2, age, sex, contact, age);
+//                        Hay que cambiar el ultimo age por country
 						txtNameAdd.setText("");
 						txtLastName1Add.setText("");
 						txtLastName2Add.setText("");
@@ -437,9 +437,8 @@ public class DataTableSceneTouristController {
 					int age = Integer.parseInt(txtAgeAdd.getText());
 
 					try {
-						TouristDTO tourist = new TouristDTO(passport, name, lastName1, lastName2, age, sex, contact, country);
-						
-//						serviceLocator.updateTourist(tourist);
+						ServicesLocator.getTouristServices().update_tourist(passport, name, lastName1, lastName2, age, sex, contact, age);
+//                      Hay que cambiar el ultimo age por country
 
 						txtNameAdd.setText("");
 						txtLastName1Add.setText("");

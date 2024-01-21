@@ -6,7 +6,10 @@ import java.time.LocalDate;
 
 import javax.swing.JOptionPane;
 
+import cu.edu.cujae.dto.ContractDTO;
+import cu.edu.cujae.services.ServicesLocator;
 import cu.edu.cujae.utils.ContractAux;
+import cu.edu.cujae.utils.Validator;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -63,7 +66,7 @@ public class DataTableSceneContractController {
     private Button bttnAddNewCar;
     
     @FXML
-    private TableView<ContractAux> contractTable;
+    private TableView<ContractDTO> contractTable;
     
     @FXML
     private TextField search;
@@ -73,6 +76,9 @@ public class DataTableSceneContractController {
     
     @FXML
     private Label lblErrorEmpty;
+    
+    @FXML
+    private Label lblErrorDate;
     
     @FXML
     private Label lblErrorEmptyTourist;
@@ -117,13 +123,13 @@ public class DataTableSceneContractController {
     private ComboBox<String> cmboxTouristAdd;
     
     @FXML
+    private ComboBox<String> cmboxDriverAdd;
+    
+    @FXML
     private DatePicker pickdateStartAdd;
     
     @FXML
     private DatePicker pickdateEndDate;
-    
-    @FXML
-    private CheckBox checkDriverRentalAdd;
      
     @FXML
     private Button bttnAddContract;
@@ -139,28 +145,28 @@ public class DataTableSceneContractController {
 //0ºººººººººººººººº0 
     
     @FXML
-    private TableColumn<ContractAux, String> colAddCar;
+    private TableColumn<ContractDTO, String> colAddCar;
 
     @FXML
-    private TableColumn<ContractAux, Float> colAddDriverRental;
+    private TableColumn<ContractDTO, String> colAddDriverRental;
 
     @FXML
-    private TableColumn<ContractAux, LocalDate> colAddEndDate;
+    private TableColumn<ContractDTO, LocalDate> colAddEndDate;
 
     @FXML
-    private TableColumn<ContractAux, String> colAddPayMethod;
+    private TableColumn<ContractDTO, String> colAddPayMethod;
 
     @FXML
-    private TableColumn<ContractAux, Integer> colAddProrroga;
+    private TableColumn<ContractDTO, Integer> colAddProrroga;
 
     @FXML
-    private TableColumn<ContractAux, Float> colAddTotalImport;
+    private TableColumn<ContractDTO, Float> colAddTotalImport;
 
     @FXML
-    private TableColumn<ContractAux, String> colAddTourist;
+    private TableColumn<ContractDTO, String> colAddTourist;
 
     @FXML
-    private TableColumn<ContractAux, LocalDate>  colAddstartDate;    
+    private TableColumn<ContractDTO, LocalDate>  colAddstartDate;    
     
 //*************************    
 //*   TOURIST ADD PANE    *
@@ -213,7 +219,11 @@ public class DataTableSceneContractController {
     private TextField txtColorAdd;
 
     @FXML
-    private TextField txtPlateAdd;   
+    private TextField txtPlateAdd;  
+    
+//************************    
+//*   Driver ADD PANE    *
+//************************
     
     @FXML
     private VBox notVisitorVBox;
@@ -224,6 +234,8 @@ public class DataTableSceneContractController {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+	
+	Validator val = new Validator();
 	
 	@SuppressWarnings("unchecked")
 	private void contractTableChargeData()throws ClassNotFoundException, SQLException {
@@ -239,31 +251,28 @@ public class DataTableSceneContractController {
 	    colAddTourist.setCellValueFactory(new PropertyValueFactory<>("Tourist"));
 
 	    // Obtener la lista de turistas
-//	    ArrayList<ContractAux> list = ServiceLocator.getInstance().getContracts();		
-//	    ObservableList<ContractAux> contractList = FXCollections.observableArrayList();
+//	    ArrayList<ContractDTO> list = ServiceLocator.getInstance().getContracts();		
+//	    ObservableList<ContractDTO> contractList = FXCollections.observableArrayList();
 //	    contractList.addAll(list);
 //	    
 //	    // Establecer los elementos de la tabla
 //	    contractTable.setItems(contractList);
 	    
-	       // Añade un ChangeListener a la propiedad selectedItemProperty de la tabla
-        contractTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null) {
+	    // Añadir un listener a la propiedad selectedItemProperty
+	    contractTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+	        if (newValue != null) {
                 // Activa los botones cuando se selecciona una fila
                 bttnModify.setDisable(false);
                 bttnModifyContract.setVisible(true);
                 bttnAddContract.setVisible(false);
-            } else {
-                // Desactiva los botones cuando no hay ninguna fila seleccionada
-                bttnModify.setDisable(true);
-                bttnModifyContract.setVisible(false);
-                bttnAddContract.setVisible(true);
-            }
-        });
-	    
-	    // Añadir un listener a la propiedad selectedItemProperty
-	    contractTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-	        if (newValue != null) {
+	        	
+                cmboxTouristAdd.setValue(newValue.getPassport());
+                cmboxCarAdd.setValue(newValue.getPlate());
+                cmboxPayMethodAdd.setValue(newValue.getPayMethod());
+                cmboxDriverAdd.setValue(newValue.getDriver());
+                pickdateStartAdd.setValue(newValue.getStartDate());
+                pickdateEndDate.setValue(newValue.getEndDate());
+                
 //	            iTidTextField=(String.valueOf(newValue.getpassport()));
 //	            iTnameTextField.setText(newValue.getName());	 
 //	            iTprovinceChoiceBox.setValue(newValue.getCountry());
@@ -271,7 +280,12 @@ public class DataTableSceneContractController {
 //	            iTWCHamountTextField.setText(String.valueOf(newValue.getRentalTotalValue()));
 //	            iTmascotTextField.setText(newValue.getLastName1());
 //	            iTcolorTextField.setText(newValue.getLastName2());
-	        }
+	        } else {
+                // Desactiva los botones cuando no hay ninguna fila seleccionada
+                bttnModify.setDisable(true);
+                bttnModifyContract.setVisible(false);
+                bttnAddContract.setVisible(true);
+            }
 	    });
 	}
 	
@@ -413,13 +427,93 @@ public class DataTableSceneContractController {
 
 	}
 	
-    public void insertContract(ActionEvent event) {
+    public void insertContract(ActionEvent event)throws ClassNotFoundException, SQLException {
+		lblErrorEmpty.setVisible(false);
+		lblErrorDate.setVisible(false);
 		
+		if (cmboxCarAdd.getSelectionModel().getSelectedItem() != null && cmboxPayMethodAdd.getSelectionModel().getSelectedItem() != null && cmboxTouristAdd.getSelectionModel().getSelectedItem() != null && pickdateStartAdd.getValue() != null && pickdateEndDate.getValue() != null) {
+			if(val.validateDate(pickdateStartAdd.getValue(), pickdateEndDate.getValue())) {
+				
+				String car = (String) cmboxCarAdd.getValue();
+				String payMethod = (String) cmboxPayMethodAdd.getValue();
+				String tourist = (String) cmboxTouristAdd.getValue();
+				String driver = (String) cmboxDriverAdd.getValue();
+				LocalDate startDate = pickdateStartAdd.getValue();
+				LocalDate endDate = pickdateEndDate.getValue();
+				
+				try {
+					//					ContractDTO contract = new ContractDTO(car, tourist, startDate, endDate, null, payMethod, driver);
+					//					ServicesLocator.getContractsServices().insert_contract(car, tourist, startDate, endDate, null, payMethod, driver);
+
+					cmboxCarAdd.setValue("");
+					cmboxPayMethodAdd.setValue("");
+					cmboxTouristAdd.setValue("");
+					cmboxDriverAdd.setValue("");
+					pickdateStartAdd.setValue(null);
+					pickdateEndDate.setValue(null);
+					try {
+						contractTableChargeData();
+					} catch (ClassNotFoundException | SQLException e) {
+						e.printStackTrace();
+					}
+				} catch (Exception e) {
+					JOptionPane.showMessageDialog(null, e.getMessage());
+				}
+
+			}else
+				lblErrorDate.setVisible(true);
+		} else {
+			lblErrorEmpty.setVisible(true);
+		}
+
+    }
+    
+    public void modifyContract(ActionEvent event) {
+    	lblErrorEmpty.setVisible(false);
+    	lblErrorDate.setVisible(false);
+
+    	if (cmboxCarAdd.getSelectionModel().getSelectedItem() != null && cmboxPayMethodAdd.getSelectionModel().getSelectedItem() != null && cmboxTouristAdd.getSelectionModel().getSelectedItem() != null && pickdateStartAdd.getValue() != null && pickdateEndDate.getValue() != null) {
+    		if(val.validateDate(pickdateStartAdd.getValue(), pickdateEndDate.getValue())) {
+
+    			String car = (String) cmboxCarAdd.getValue();
+    			String payMethod = (String) cmboxPayMethodAdd.getValue();
+    			String tourist = (String) cmboxTouristAdd.getValue();
+    			String driver = (String) cmboxDriverAdd.getValue();
+    			LocalDate startDate = pickdateStartAdd.getValue();
+    			LocalDate endDate = pickdateEndDate.getValue();
+
+    			try {
+    				//					ContractDTO contract = new ContractDTO(car, tourist, startDate, endDate, null, payMethod, driver);
+    				//					ServicesLocator.getContractsServices().update_contract(car, tourist, startDate, endDate, null, payMethod, driver);
+
+    				cmboxCarAdd.setValue("");
+    				cmboxPayMethodAdd.setValue("");
+    				cmboxTouristAdd.setValue("");
+    				cmboxDriverAdd.setValue("");
+    				pickdateStartAdd.setValue(null);
+    				pickdateEndDate.setValue(null);
+    				try {
+    					contractTableChargeData();
+    				} catch (ClassNotFoundException | SQLException e) {
+    					e.printStackTrace();
+    				}
+    			} catch (Exception e) {
+    				JOptionPane.showMessageDialog(null, e.getMessage());
+    			}
+
+    		}else
+    			lblErrorDate.setVisible(true);
+    	} else {
+    		lblErrorEmpty.setVisible(true);
+    	}
+
+    }
+	
+	public void insertTourist(ActionEvent event) {
 		
 	}
-    
-	public void modifyContract(ActionEvent event) {
-		
+	
+	public void insertCar(ActionEvent event) {
 		
 	}
     

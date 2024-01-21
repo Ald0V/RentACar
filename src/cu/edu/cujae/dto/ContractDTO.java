@@ -8,7 +8,7 @@ public class ContractDTO {
     private LocalDate startDate;
     private LocalDate endDate;
     private LocalDate deliveryDate;
-    private int payMethod;
+    private String payMethod;
     private String driver;
     private int startKm;
     private int endKm;
@@ -16,7 +16,7 @@ public class ContractDTO {
     public ContractDTO() {
     }
 
-    public ContractDTO(String plate, String passport, LocalDate startDate, LocalDate endDate, LocalDate deliveryDate, int payMethod, String driver) {
+    public ContractDTO(String plate, String passport, LocalDate startDate, LocalDate endDate, LocalDate deliveryDate, String payMethod, String driver) {
         this.plate = plate;
         this.passport = passport;
         this.startDate = startDate;
@@ -66,11 +66,11 @@ public class ContractDTO {
         this.deliveryDate = deliveryDate;
     }
 
-    public int getPayMethod() {
+    public String getPayMethod() {
         return payMethod;
     }
 
-    public void setPayMethod(int payMethod) {
+    public void setPayMethod(String payMethod) {
         this.payMethod = payMethod;
     }
 

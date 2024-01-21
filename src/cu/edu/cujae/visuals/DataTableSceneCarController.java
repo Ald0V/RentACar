@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import cu.edu.cujae.dto.AuxiliaryDTO;
 import cu.edu.cujae.dto.CarDTO;
 import cu.edu.cujae.dto.ModelDTO;
+import cu.edu.cujae.services.ServicesLocator;
 import cu.edu.cujae.utils.TouristAux;
 import cu.edu.cujae.utils.Validator;
 import javafx.collections.FXCollections;
@@ -296,10 +297,8 @@ public class DataTableSceneCarController {
 				String model = cmboxModelAdd.getValue();
 
 				try {
-					CarDTO car = new CarDTO(plate, brand, model, 0, color, situation);
-
-					//				serviceLocator.createCar(car);
-
+                    ServicesLocator.getCarServices().insert_car(plate, 0, 0, 0, color, 0);
+//                  En realidad, va en este orden (plate, brand, model, 0, color, situation)
 					txtColorAdd.setText("");
 					txtPlateAdd.setText("");
 					cmboxBrandAdd.setValue("");
@@ -336,9 +335,8 @@ public class DataTableSceneCarController {
 				String model = cmboxModelAdd.getValue();
 
 				try {
-					CarDTO car = new CarDTO(plate, brand, model, 0, color, situation);
-
-					//				serviceLocator.updateCar(car);
+					ServicesLocator.getCarServices().update_car(plate, 0, 0, 0, color, 0);
+//                  En realidad, va en este orden (plate, brand, model, 0, color, situation)
 
 					txtColorAdd.setText("");
 					txtPlateAdd.setText("");
