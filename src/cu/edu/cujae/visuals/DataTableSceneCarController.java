@@ -9,6 +9,7 @@ import cu.edu.cujae.dto.AuxiliaryDTO;
 import cu.edu.cujae.dto.CarDTO;
 import cu.edu.cujae.dto.ModelDTO;
 import cu.edu.cujae.utils.TouristAux;
+import cu.edu.cujae.utils.Validator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -130,6 +131,10 @@ public class DataTableSceneCarController {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+	
+
+	Validator val = new Validator();
+
 
 	@SuppressWarnings("unchecked")
 	private void carTableChargeData() throws ClassNotFoundException, SQLException {	
@@ -172,13 +177,12 @@ public class DataTableSceneCarController {
 	    // Añadir un listener a la propiedad selectedItemProperty
 		carTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 	        if (newValue != null) {
-//	            iTidTextField=(String.valueOf(newValue.getpassport()));
-//	            iTnameTextField.setText(newValue.getName());	 
-//	            iTprovinceChoiceBox.setValue(newValue.getCountry());
-//	            iTPCHamountTextField.setText(String.valueOf(newValue.getCantRentalCars()));
-//	            iTWCHamountTextField.setText(String.valueOf(newValue.getRentalTotalValue()));
-//	            iTmascotTextField.setText(newValue.getLastName1());
-//	            iTcolorTextField.setText(newValue.getLastName2());
+	        	
+	        	txtPlateAdd.setText(newValue.getPlate());
+	        	cmboxBrandAdd.setValue(newValue.getBrand());
+	        	cmboxModelAdd.setValue(newValue.getModel());
+	        	txtColorAdd.setText(newValue.getColor());
+	        	cmboxCarStatusAdd.setValue(newValue.getSituation());
 	        }
 	    });
 	} 
@@ -286,70 +290,82 @@ public class DataTableSceneCarController {
 		carTable.setMaxHeight(554);
 	}
 	
-    public void insertCar(ActionEvent event) {
-		if(txtColorAdd.getText() != "" && txtPlateAdd.getText() != "" && cmboxBrandAdd.getValue() != "" && cmboxCarStatusAdd.getValue() != "" && cmboxModelAdd.getValue() != "" ) {
-			
-			String color = txtColorAdd.getText();
-			String plate = txtPlateAdd.getText();
-			String brand = cmboxBrandAdd.getValue();
-			String situation = cmboxCarStatusAdd.getValue();
-			String model = cmboxModelAdd.getValue();
-			
-			try {
-				CarDTO car = new CarDTO(plate, brand, model, 0, color, situation);
-				
-//				serviceLocator.createCar(car);
+	public void insertCar(ActionEvent event) {
+		lblErrorPlate.setVisible(false);
+		lblErrorEmpty.setVisible(false);
 
-				txtColorAdd.setText("");
-				txtPlateAdd.setText("");
-				cmboxBrandAdd.setValue("");
-				cmboxCarStatusAdd.setValue("");
-				cmboxModelAdd.getValue();
+		if(txtColorAdd.getText() != "" && txtPlateAdd.getText() != "" && cmboxBrandAdd.getValue() != "" && cmboxCarStatusAdd.getValue() != "" && cmboxModelAdd.getValue() != "" ) {
+			if(val.ValidatePlate(txtPlateAdd.getText())) {
+				String color = txtColorAdd.getText();
+				String plate = txtPlateAdd.getText();
+				String brand = cmboxBrandAdd.getValue();
+				String situation = cmboxCarStatusAdd.getValue();
+				String model = cmboxModelAdd.getValue();
 
 				try {
-					carTableChargeData();
-				} catch (ClassNotFoundException | SQLException e) {
-					e.printStackTrace();
+					CarDTO car = new CarDTO(plate, brand, model, 0, color, situation);
+
+					//				serviceLocator.createCar(car);
+
+					txtColorAdd.setText("");
+					txtPlateAdd.setText("");
+					cmboxBrandAdd.setValue("");
+					cmboxCarStatusAdd.setValue("");
+					cmboxModelAdd.getValue();
+
+					try {
+						carTableChargeData();
+					} catch (ClassNotFoundException | SQLException e) {
+						e.printStackTrace();
+					}
 				}
-			}
-			catch(Exception e) {
-				JOptionPane.showMessageDialog(null, e.getMessage());
-			}
+				catch(Exception e) {
+					JOptionPane.showMessageDialog(null, e.getMessage());
+				}
+
+			}else
+				lblErrorPlate.setVisible(true);
 		}else
 			lblErrorEmpty.setVisible(true);
-		
+
 	}
 	
-    public void modifyCar(ActionEvent event) {
-		
-if(txtColorAdd.getText() != "" && txtPlateAdd.getText() != "" && cmboxBrandAdd.getValue() != "" && cmboxCarStatusAdd.getValue() != "" && cmboxModelAdd.getValue() != "" ) {
-			
-			String color = txtColorAdd.getText();
-			String plate = txtPlateAdd.getText();
-			String brand = cmboxBrandAdd.getValue();
-			String situation = cmboxCarStatusAdd.getValue();
-			String model = cmboxModelAdd.getValue();
-			
-			try {
-				CarDTO car = new CarDTO(plate, brand, model, 0, color, situation);
-				
-//				serviceLocator.updateCar(car);
+	public void modifyCar(ActionEvent event) {
+		lblErrorPlate.setVisible(false);
+		lblErrorEmpty.setVisible(false);
 
-				txtColorAdd.setText("");
-				txtPlateAdd.setText("");
-				cmboxBrandAdd.setValue("");
-				cmboxCarStatusAdd.setValue("");
-				cmboxModelAdd.getValue();
+		if(txtColorAdd.getText() != "" && txtPlateAdd.getText() != "" && cmboxBrandAdd.getValue() != "" && cmboxCarStatusAdd.getValue() != "" && cmboxModelAdd.getValue() != "" ) {
+			if(val.ValidatePlate(txtPlateAdd.getText())) {
+				String color = txtColorAdd.getText();
+				String plate = txtPlateAdd.getText();
+				String brand = cmboxBrandAdd.getValue();
+				String situation = cmboxCarStatusAdd.getValue();
+				String model = cmboxModelAdd.getValue();
 
 				try {
-					carTableChargeData();
-				} catch (ClassNotFoundException | SQLException e) {
-					e.printStackTrace();
+					CarDTO car = new CarDTO(plate, brand, model, 0, color, situation);
+
+					//				serviceLocator.updateCar(car);
+
+					txtColorAdd.setText("");
+					txtPlateAdd.setText("");
+					cmboxBrandAdd.setValue("");
+					cmboxCarStatusAdd.setValue("");
+					cmboxModelAdd.getValue();
+
+					try {
+						carTableChargeData();
+					} catch (ClassNotFoundException | SQLException e) {
+						e.printStackTrace();
+					}
 				}
+				catch(Exception e) {
+					JOptionPane.showMessageDialog(null, e.getMessage());
+				}
+
 			}
-			catch(Exception e) {
-				JOptionPane.showMessageDialog(null, e.getMessage());
-			}
+			else
+				lblErrorPlate.setVisible(true);
 		}else
 			lblErrorEmpty.setVisible(true);
 	}

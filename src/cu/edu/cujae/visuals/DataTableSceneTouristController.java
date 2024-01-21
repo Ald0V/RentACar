@@ -376,8 +376,15 @@ public class DataTableSceneTouristController {
     }
 	
 	public void insertTourist(ActionEvent event) throws ClassNotFoundException, SQLException {
-		
+  		lblErrorPassport.setVisible(false);
+    	lblErrorPhone.setVisible(false);
+    	lblErrorAge.setVisible(false);
+    	lblErrorEmpty.setVisible(false);
+    	
 		if(txtAgeAdd.getText() != "" && txtLastName1Add.getText() != "" && txtLastName2Add.getText() != "" && txtNameAdd.getText() != "" && txtPassportAdd.getText() != "" && txtPhoneAdd.getText() != "" && (cmboxCountryAdd.getValue() != "" || txtCountryAdd.getText() != "") && cmboxSexAdd.getValue() != "") { 
+            
+//			Necesito hacer una validacion para si lo obtenido de txtAgeAdd.getText() no es int, no se cumpla la funcion
+        	
 			if(isAgeCorrect(Integer.parseInt(txtAgeAdd.getText())) ) {
 				if(isPassportCorrect(txtPassportAdd.getText()) && isPhoneCorrect(txtPhoneAdd.getText())) {
 
@@ -426,9 +433,14 @@ public class DataTableSceneTouristController {
 	}
 	
     public void modifyTourist(ActionEvent event)throws ClassNotFoundException, SQLException {
-		
-    	if(txtAgeAdd.getText() != "" && txtLastName1Add.getText() != "" && txtLastName2Add.getText() != "" && txtNameAdd.getText() != "" && txtPassportAdd.getText() != "" && txtPhoneAdd.getText() != "" && cmboxCountryAdd.getValue() != "" && cmboxSexAdd.getValue() != "") { 
-			if(isAgeCorrect(Integer.parseInt(txtAgeAdd.getText())) ) {
+    	
+		lblErrorPassport.setVisible(false);
+    	lblErrorPhone.setVisible(false);
+    	lblErrorAge.setVisible(false);
+    	lblErrorEmpty.setVisible(false);
+    	if(txtAgeAdd.getText() != "" && txtLastName1Add.getText() != "" && txtLastName2Add.getText() != "" && txtNameAdd.getText() != "" && txtPassportAdd.getText() != "" && txtPhoneAdd.getText() != "" && (cmboxCountryAdd.getValue() != "" || txtCountryAdd.getText() != "") && cmboxSexAdd.getValue() != "" && cmboxSexAdd.getValue() != "") { 
+
+    		if(isAgeCorrect(Integer.parseInt(txtAgeAdd.getText())) ) {
 				if(isPassportCorrect(txtPassportAdd.getText()) && isPhoneCorrect(txtPhoneAdd.getText())) {
 
 					String name = txtNameAdd.getText();
