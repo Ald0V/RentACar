@@ -10,7 +10,7 @@ import cu.edu.cujae.dto.AuxiliaryDTO;
 import cu.edu.cujae.utils.TouristAux;
 
 import cu.edu.cujae.dto.TouristDTO;
-
+import javafx.beans.value.ObservableSetValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -54,7 +54,7 @@ public class DataTableSceneTouristController {
     private TextField search;
     
     @FXML
-    private TableView<TouristAux> touristTable;
+    private TableView<TouristDTO> touristTable;
 	
     @FXML
     private Label lblName;
@@ -174,14 +174,14 @@ public class DataTableSceneTouristController {
 	@SuppressWarnings("unchecked")
 	private void touristTableChargeData() throws ClassNotFoundException, SQLException {	
 	    // Configurar cellValueFactory para cada columna
+		colAddPassport.setCellValueFactory(new PropertyValueFactory<>("Pasaporte"));
+		colAddName.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
+		colAddLastName1.setCellValueFactory(new PropertyValueFactory<>("Primer apellido"));
+		colAddLastName2.setCellValueFactory(new PropertyValueFactory<>("Segundo apellido"));
 		colAddAge.setCellValueFactory(new PropertyValueFactory<>("Edad"));
+		colAddSex.setCellValueFactory(new PropertyValueFactory<>("Género"));
+		colAddPhone.setCellValueFactory(new PropertyValueFactory<>("Teléfono"));
 	    colAddCountry.setCellValueFactory(new PropertyValueFactory<>("País"));
-	    colAddLastName1.setCellValueFactory(new PropertyValueFactory<>("Primer apellido"));
-	    colAddLastName2.setCellValueFactory(new PropertyValueFactory<>("Segundo apellido"));
-	    colAddName.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
-	    colAddPassport.setCellValueFactory(new PropertyValueFactory<>("Pasaporte"));
-	    colAddSex.setCellValueFactory(new PropertyValueFactory<>("RentalTotalValue"));
-	    colAddPhone.setCellValueFactory(new PropertyValueFactory<>("RentalTotalValue"));
 
 	    // Obtener la lista de turistas
 //	    ArrayList<TouristDTO> list = ServiceLocator.getInstance().getTourists();		
@@ -194,35 +194,41 @@ public class DataTableSceneTouristController {
 	 // Desactiva los botones al inicio
         bttnDelete.setDisable(true);
         bttnModify.setDisable(true);
-
-        // Añade un ChangeListener a la propiedad selectedItemProperty de la tabla
-        touristTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null) {
+	    
+	    // Añadir un listener a la propiedad selectedItemProperty
+	    touristTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+	        if (newValue != null) {
                 // Activa los botones cuando se selecciona una fila
                 bttnDelete.setDisable(false);
                 bttnModify.setDisable(false);
                 bttnModifyTourist.setVisible(true);
                 bttnAddTourist.setVisible(false);
-            } else {
+                
+                // Carga los datos
+                
+//	            iTidTextField=(String.valueOf(newValue.getpassport()));
+	            txtPassportAdd.setText(newValue.getID()); 
+	            txtNameAdd.setText(newValue.getName());
+	            txtLastName1Add.setText(newValue.getLastName1());
+	            txtLastName2Add.setText(newValue.getLastName2());
+	            txtAgeAdd.setText(String.valueOf(newValue.getAge()));
+	            cmboxSexAdd.setValue(newValue.getSex());
+	            txtPhoneAdd.setText(newValue.getContact());
+	            cmboxCountryAdd.setValue(newValue.getCountry());
+	            
+//	            iTprovinceChoiceBox.setValue(newValue.getCountry());
+//	            iTPCHamountTextField.setText(String.valueOf(newValue.getCantRentalCars()));
+//	            iTWCHamountTextField.setText(String.valueOf(newValue.getRentalTotalValue()));
+//	            iTmascotTextField.setText(newValue.getLastName1());
+//	            iTcolorTextField.setText(newValue.getLastName2());
+                
+	        }else {
                 // Desactiva los botones cuando no hay ninguna fila seleccionada
                 bttnDelete.setDisable(true);
                 bttnModify.setDisable(true);
                 bttnModifyTourist.setVisible(false);
                 bttnAddTourist.setVisible(true);
             }
-        });
-	    
-	    // Añadir un listener a la propiedad selectedItemProperty
-	    touristTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-	        if (newValue != null) {
-//	            iTidTextField=(String.valueOf(newValue.getpassport()));
-//	            iTnameTextField.setText(newValue.getName());	 
-//	            iTprovinceChoiceBox.setValue(newValue.getCountry());
-//	            iTPCHamountTextField.setText(String.valueOf(newValue.getCantRentalCars()));
-//	            iTWCHamountTextField.setText(String.valueOf(newValue.getRentalTotalValue()));
-//	            iTmascotTextField.setText(newValue.getLastName1());
-//	            iTcolorTextField.setText(newValue.getLastName2());
-	        }
 	    });
 	}
 	
@@ -371,7 +377,7 @@ public class DataTableSceneTouristController {
 	
 	public void insertTourist(ActionEvent event) throws ClassNotFoundException, SQLException {
 		
-		if(txtAgeAdd.getText() != "" && txtLastName1Add.getText() != "" && txtLastName2Add.getText() != "" && txtNameAdd.getText() != "" && txtPassportAdd.getText() != "" && txtPhoneAdd.getText() != "" && cmboxCountryAdd.getValue() != "" && cmboxSexAdd.getValue() != "") { 
+		if(txtAgeAdd.getText() != "" && txtLastName1Add.getText() != "" && txtLastName2Add.getText() != "" && txtNameAdd.getText() != "" && txtPassportAdd.getText() != "" && txtPhoneAdd.getText() != "" && (cmboxCountryAdd.getValue() != "" || txtCountryAdd.getText() != "") && cmboxSexAdd.getValue() != "") { 
 			if(isAgeCorrect(Integer.parseInt(txtAgeAdd.getText())) ) {
 				if(isPassportCorrect(txtPassportAdd.getText()) && isPhoneCorrect(txtPhoneAdd.getText())) {
 
@@ -469,7 +475,7 @@ public class DataTableSceneTouristController {
 	}
     
     public void deleteTourist(ActionEvent event) throws ClassNotFoundException, SQLException {
-        ObservableList<TouristAux> allTourists, singleTourist;
+        ObservableList<TouristDTO> allTourists, singleTourist;
         allTourists = touristTable.getItems();
         singleTourist = touristTable.getSelectionModel().getSelectedItems();
 
