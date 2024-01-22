@@ -221,7 +221,7 @@
                            </font>
                         </Label>
                         <ComboBox fx:id="cmboxCarAdd" layoutX="499.0" layoutY="35.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Button fx:id="bttnAddNewTourist" layoutX="650.0" layoutY="104.0" mnemonicParsing="false" onAction="#switchNewTouristOrCar" prefHeight="30.0" prefWidth="32.0" styleClass="buttonNew" stylesheets="@application.css" textFill="WHITE">
+                        <Button fx:id="bttnAddNewTourist" layoutX="650.0" layoutY="104.0" mnemonicParsing="false" onAction="#switchNewTouristCarOrDriver" prefHeight="30.0" prefWidth="32.0" styleClass="buttonNew" stylesheets="@application.css" textFill="WHITE">
                            <font>
                               <Font name="System Bold Italic" size="12.0" />
                            </font>
@@ -231,7 +231,7 @@
                               <Image url="@../../../../resources/icons8_plus_math_32px.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="bttnAddNewCar" layoutX="649.0" layoutY="32.0" mnemonicParsing="false" onAction="#switchNewTouristOrCar" prefHeight="30.0" prefWidth="30.0" styleClass="buttonNew" stylesheets="@application.css" textFill="WHITE">
+                        <Button fx:id="bttnAddNewCar" layoutX="649.0" layoutY="32.0" mnemonicParsing="false" onAction="#switchNewTouristCarOrDriver" prefHeight="30.0" prefWidth="30.0" styleClass="buttonNew" stylesheets="@application.css" textFill="WHITE">
                            <font>
                               <Font name="System Bold Italic" size="12.0" />
                            </font>
@@ -276,7 +276,7 @@
                         </Label>
                         <DatePicker fx:id="pickdateEndDate" layoutX="147.0" layoutY="104.0" />
                         <ComboBox fx:id="cmboxDriverAdd" layoutX="837.0" layoutY="106.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
-                        <Button fx:id="bttnAddNewTourist1" layoutX="986.0" layoutY="104.0" mnemonicParsing="false" onAction="#switchNewTouristOrCar" prefHeight="30.0" prefWidth="32.0" styleClass="buttonNew" stylesheets="@application.css" textFill="WHITE">
+                        <Button fx:id="bttnAddNewDriver" layoutX="986.0" layoutY="104.0" mnemonicParsing="false" onAction="#switchNewTouristCarOrDriver" prefHeight="30.0" prefWidth="32.0" styleClass="buttonNew" stylesheets="@application.css" textFill="WHITE">
                            <font>
                               <Font name="System Bold Italic" size="12.0" />
                            </font>
@@ -470,6 +470,87 @@
                   <Font size="24.0" />
                </font>
             </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="addNewDriver" layoutX="278.0" layoutY="419.0" prefHeight="220.0" prefWidth="1030.0" stylesheets="@application.css" visible="false">
+         <styleClass>
+            <String fx:value="white-bg" />
+            <String fx:value="shadow" />
+         </styleClass>
+         <children>
+            <Button layoutX="740.0" layoutY="158.0" mnemonicParsing="false" onAction="#cancelNewDriver" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Cancelar" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="buttonCancel" />
+               </styleClass>
+            </Button>
+            <Button fx:id="bttnAddDriver" layoutX="892.0" layoutY="158.0" mnemonicParsing="false" onAction="#insertDriver" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Crear" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="buttonAdd" />
+               </styleClass>
+            </Button>
+            <Label layoutX="34.0" layoutY="40.0" prefHeight="27.0" prefWidth="126.0" text="Carnét de identidad:" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtDriverIDAdd" layoutX="164.0" layoutY="41.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+            <Label layoutX="403.0" layoutY="41.0" prefHeight="27.0" prefWidth="98.0" text="Primer apellido:" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtDriverLastName1Add" layoutX="506.0" layoutY="42.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+            <Label layoutX="758.0" layoutY="40.0" prefHeight="27.0" prefWidth="66.0" text="Dirección:" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtDriverAddressAdd" layoutX="824.0" layoutY="41.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+            <Label layoutX="105.0" layoutY="95.0" prefHeight="27.0" prefWidth="56.0" text="Nombre:" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtDriverNameAdd" layoutX="165.0" layoutY="96.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+            <Label layoutX="390.0" layoutY="96.0" prefHeight="27.0" prefWidth="114.0" text="Segundo apellido:" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtDriverLastName2Add" layoutX="507.0" layoutY="97.0" prefHeight="26.0" prefWidth="172.0" style="-fx-background-color: #9C98B3;" />
+            <Label layoutX="721.0" layoutY="95.0" prefHeight="27.0" prefWidth="105.0" text="Tipo de licencia:" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cmboxDriverLicenseAdd" layoutX="825.0" layoutY="96.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+            <Label fx:id="lblErrorEmptyDriver" alignment="CENTER" layoutX="212.0" layoutY="173.0" prefHeight="38.0" prefWidth="418.0" text="Todos los campos son obligatorios" textAlignment="CENTER" textFill="RED" visible="false">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblErrorCI" alignment="CENTER" layoutX="212.0" layoutY="173.0" prefHeight="38.0" prefWidth="418.0" text="El campo carnét no es válido" textAlignment="CENTER" textFill="RED" visible="false">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="892.0" layoutY="158.0" mnemonicParsing="false" onAction="#insertDriver" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Crear" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="buttonAdd" />
+               </styleClass>
+            </Button>
          </children>
       </AnchorPane>
    </children>

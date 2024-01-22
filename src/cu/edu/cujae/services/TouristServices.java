@@ -11,7 +11,7 @@ import cu.edu.cujae.dto.TouristDTO;
 
 public class TouristServices {
     public void insert_tourist(String iD, String name, String lastName1, String lastName2, int age, String sex,
-				String contact, int country) 
+				String contact, String country) 
 			throws SQLException, ClassNotFoundException{
 		String query = "SELECT insert_tourist(?,?,?,?,?,?,?,?)";
 		java.sql.Connection connection = ServicesLocator.getConnection();
@@ -23,7 +23,7 @@ public class TouristServices {
         preparedStatement.setInt(5, age);
         preparedStatement.setString(6, sex);
         preparedStatement.setString(7, contact);
-        preparedStatement.setInt(8, country);
+        preparedStatement.setString(8, country);
 		preparedStatement.execute();
 		preparedStatement.close();
 		connection.close();
@@ -40,7 +40,7 @@ public class TouristServices {
 	}
 	
 	public void update_tourist(String iD, String name, String lastName1, String lastName2, int age, String sex,
-				String contact, int country) 
+				String contact, String country) 
 			throws SQLException, ClassNotFoundException{
 		String query = "SELECT update_tourist(?,?,?,?,?,?,?,?)";
 		java.sql.Connection connection = ServicesLocator.getConnection();
@@ -52,7 +52,7 @@ public class TouristServices {
         preparedStatement.setInt(5, age);
         preparedStatement.setString(6, sex);
         preparedStatement.setString(7, contact);
-        preparedStatement.setInt(8, country);
+        preparedStatement.setString(8, country);
 		preparedStatement.execute();
 		preparedStatement.close();
 		connection.close();

@@ -57,6 +57,9 @@ public class DataTableSceneContractController {
     private AnchorPane addNewCar;
     
     @FXML
+    private AnchorPane addNewDriver;
+    
+    @FXML
     private AnchorPane deliveryDatePane;
     
     @FXML
@@ -85,6 +88,12 @@ public class DataTableSceneContractController {
     
     @FXML
     private Label lblErrorEmptyCar;
+    
+    @FXML
+    private Label lblErrorEmptyDriver;
+    
+    @FXML
+    private Label lblErrorCI;
     
     @FXML
     private Label lblErrorAge;
@@ -224,6 +233,27 @@ public class DataTableSceneContractController {
 //************************    
 //*   Driver ADD PANE    *
 //************************
+    
+    @FXML
+    private ComboBox<String> cmboxDriverLicenseAdd;
+    
+    @FXML
+    private TextField txtDriverAddressAdd;
+
+    @FXML
+    private TextField txtDriverIDAdd;
+
+    @FXML
+    private TextField txtDriverLastName1Add;
+
+    @FXML
+    private TextField txtDriverLastName2Add;
+
+    @FXML
+    private TextField txtDriverNameAdd;
+    
+    @FXML
+    private Button bttnAddNewDriver;
     
     @FXML
     private VBox notVisitorVBox;
@@ -378,12 +408,14 @@ public class DataTableSceneContractController {
 		
 	
 	
-	public void switchNewTouristOrCar(ActionEvent event) {
+	public void switchNewTouristCarOrDriver(ActionEvent event) {
 		
 		if(event.getSource() == bttnAddNewTourist) {
 			addNewTourist.setVisible(true);
 		}else if(event.getSource() == bttnAddNewCar) {
 			addNewCar.setVisible(true);
+		}else if(event.getSource() == bttnAddNewDriver) {
+			addNewDriver.setVisible(true);
 		}
 	}
 	
@@ -416,6 +448,10 @@ public class DataTableSceneContractController {
 	
 	public void cancelNewCar(ActionEvent event) {
 		addNewCar.setVisible(false);
+	}
+	
+	public void cancelNewDriver(ActionEvent event) {
+		addNewDriver.setVisible(false);
 	}
 	
 	public void newTouristAdd(ActionEvent event) {
@@ -514,6 +550,10 @@ public class DataTableSceneContractController {
 	}
 	
 	public void insertCar(ActionEvent event) {
+		
+	}
+	
+	public void insertDriver(ActionEvent event) {
 		
 	}
     

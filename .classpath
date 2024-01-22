@@ -12,5 +12,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX"/>
+	<classpathentry kind="lib" path="lib/postgresql-8.4-702.jdbc3.jar"/>
+	<classpathentry kind="lib" path="lib/postgresql-8.4-702.jdbc4.jar"/>
+	<classpathentry kind="lib" path="lib/postgresql-9.0-801.jdbc3.jar"/>
+	<classpathentry kind="lib" path="lib/postgresql-9.0-801.jdbc4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

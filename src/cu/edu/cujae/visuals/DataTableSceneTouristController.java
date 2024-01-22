@@ -384,7 +384,7 @@ public class DataTableSceneTouristController {
 
 					try {
 						
-						ServicesLocator.getTouristServices().insert_tourist(passport, name, lastName1, lastName2, age, sex, contact, age);
+						ServicesLocator.getTouristServices().insert_tourist(passport, name, lastName1, lastName2, age, sex, contact, country);
 //                        Hay que cambiar el ultimo age por country
 						txtNameAdd.setText("");
 						txtLastName1Add.setText("");
@@ -433,11 +433,12 @@ public class DataTableSceneTouristController {
 					String passport = txtPassportAdd.getText();
 					String sex = (String) cmboxSexAdd.getValue();
 					String contact = txtPhoneAdd.getText();
-					String country = (String) cmboxCountryAdd.getValue();
+//					String country = (String) cmboxCountryAdd.getValue();
+					String country = txtCountryAdd.getText();
 					int age = Integer.parseInt(txtAgeAdd.getText());
 
 					try {
-						ServicesLocator.getTouristServices().update_tourist(passport, name, lastName1, lastName2, age, sex, contact, age);
+						ServicesLocator.getTouristServices().update_tourist(passport, name, lastName1, lastName2, age, sex, contact, country);
 //                      Hay que cambiar el ultimo age por country
 
 						txtNameAdd.setText("");
