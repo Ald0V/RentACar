@@ -196,9 +196,10 @@
                      <children>
                         <TableView fx:id="carTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
                            <columns>
-                              <TableColumn fx:id="colCarSBrand" prefWidth="331.9999694824219" text="Marca" />
-                              <TableColumn fx:id="colCarSSituation" minWidth="0.0" prefWidth="346.4000244140625" text="Situación" />
-                              <TableColumn fx:id="colCarSEndDate" minWidth="0.0" prefWidth="319.199951171875" text="Fin del contrato" />
+                              <TableColumn fx:id="colCarSPlate" prefWidth="279.20001220703125" text="Placa" />
+                              <TableColumn fx:id="colCarSBrand" minWidth="0.0" prefWidth="288.0" text="Marca" />
+                              <TableColumn fx:id="colCarSSituation" minWidth="0.0" prefWidth="220.800048828125" text="Situación" />
+                              <TableColumn fx:id="colCarSEndDate" prefWidth="209.60009765625" text="Fin del contrato" />
                            </columns>
                         </TableView>
                      </children>

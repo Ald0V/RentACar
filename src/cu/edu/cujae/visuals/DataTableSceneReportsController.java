@@ -238,6 +238,9 @@ public class DataTableSceneReportsController {
     
     @FXML
     private TableView<CarStatusAux> carTable;
+    
+    @FXML
+    private TableColumn<CarStatusAux, String> colCarSPlate;
 
     @FXML
     private TableColumn<CarStatusAux, String> colCarSBrand;
