@@ -11,7 +11,7 @@ import cu.edu.cujae.dto.TouristDTO;
 
 public class TouristServices {
     public void insert_tourist(String iD, String name, String lastName1, String lastName2, int age, String sex,
-				String contact, String country) 
+				String contact, int country) 
 			throws SQLException, ClassNotFoundException{
 		String query = "SELECT insert_tourist(?,?,?,?,?,?,?,?)";
 		java.sql.Connection connection = ServicesLocator.getConnection();
@@ -23,7 +23,7 @@ public class TouristServices {
         preparedStatement.setInt(5, age);
         preparedStatement.setString(6, sex);
         preparedStatement.setString(7, contact);
-        preparedStatement.setString(8, country);
+        preparedStatement.setInt(8, country);
 		preparedStatement.execute();
 		preparedStatement.close();
 		connection.close();
@@ -40,7 +40,7 @@ public class TouristServices {
 	}
 	
 	public void update_tourist(String iD, String name, String lastName1, String lastName2, int age, String sex,
-				String contact, String country) 
+				String contact, int country) 
 			throws SQLException, ClassNotFoundException{
 		String query = "SELECT update_tourist(?,?,?,?,?,?,?,?)";
 		java.sql.Connection connection = ServicesLocator.getConnection();
@@ -52,7 +52,7 @@ public class TouristServices {
         preparedStatement.setInt(5, age);
         preparedStatement.setString(6, sex);
         preparedStatement.setString(7, contact);
-        preparedStatement.setString(8, country);
+        preparedStatement.setInt(8, country);
 		preparedStatement.execute();
 		preparedStatement.close();
 		connection.close();
@@ -69,7 +69,7 @@ public class TouristServices {
 		preparedFunction.execute();
 		ResultSet rs = (ResultSet) preparedFunction.getObject(1);
 		while (rs.next()){
-			lodgings.add(new TouristDTO(rs.getString(1), rs.getString(2),rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getString(8) ));
+			lodgings.add(new TouristDTO(rs.getString(1), rs.getString(2),rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8) ));
 		}
 		rs.close();
 		preparedFunction.close();

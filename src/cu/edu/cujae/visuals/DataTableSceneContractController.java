@@ -564,13 +564,26 @@ public class DataTableSceneContractController {
 					String passport = txtPassportAdd.getText();
 					String sex = (String) cmboxSexAdd.getValue();
 					String contact = txtPhoneAdd.getText();
-					String country = (String) cmboxCountryAdd.getValue();
+					String countrytxt = txtCountryAdd.getText();	
 					int age = Integer.parseInt(txtAgeAdd.getText());
+					
+					int selectedIndex = cmboxCountryAdd.getSelectionModel().getSelectedIndex() + 1;		
 
 					try {
 						
-						ServicesLocator.getTouristServices().insert_tourist(passport, name, lastName1, lastName2, age, sex, contact, country);
-//                        Hay que cambiar el ultimo age por country
+						if(selectedIndex != 0) {
+							
+							ServicesLocator.getTouristServices().update_tourist(passport, name, lastName1, lastName2, age, sex, contact, selectedIndex);
+							
+							
+						}else {
+							
+							ServicesLocator.getCountryServices().insert_country(countrytxt);
+							ServicesLocator.getTouristServices().update_tourist(passport, name, lastName1, lastName2, age, sex, contact, cmboxCountryAdd.getItems().size() + 1);
+						}
+						
+
+						
 						txtNameAdd.setText("");
 						txtLastName1Add.setText("");
 						txtLastName2Add.setText("");
@@ -579,8 +592,6 @@ public class DataTableSceneContractController {
 						txtPhoneAdd.setText("");	
 						cmboxCountryAdd.setValue("");
 						txtAgeAdd.setText("");
-						
-						cmboxTouristAdd.setValue(passport);
 
 					}
 					catch(Exception e) {

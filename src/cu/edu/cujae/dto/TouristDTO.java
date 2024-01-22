@@ -4,14 +4,14 @@ public class TouristDTO extends PersonDTO {
 		private int age;
 	    private String sex;
 	    private String contact;
-	    private String country;
+	    private int country;
 	    
 	    public TouristDTO() {
 	    	super();
 	    }
 	    
 	    public TouristDTO(String iD, String name, String lastName1, String lastName2, int age, String sex,
-				String contact, String country) {
+				String contact, int country) {
 			super(iD, name, lastName1, lastName2);
 			this.age = age;
 			this.sex = sex;
@@ -43,11 +43,11 @@ public class TouristDTO extends PersonDTO {
 	        this.contact = contact;
 	    }
 
-	    public String getCountry() {
+	    public int getCountry() {
 	        return country;
 	    }
 
-	    public void setCountry(String country) {
+	    public void setCountry(int country) {
 	        this.country = country;
 	    }
 

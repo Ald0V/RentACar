@@ -208,7 +208,6 @@ public class DataTableSceneTouristController {
                 
                 // Carga los datos
                 
-//	            iTidTextField=(String.valueOf(newValue.getpassport()));
 	            txtPassportAdd.setText(newValue.getID()); 
 	            txtNameAdd.setText(newValue.getName());
 	            txtLastName1Add.setText(newValue.getLastName1());
@@ -216,7 +215,7 @@ public class DataTableSceneTouristController {
 	            txtAgeAdd.setText(String.valueOf(newValue.getAge()));
 	            cmboxSexAdd.setValue(newValue.getSex());
 	            txtPhoneAdd.setText(newValue.getContact());
-	            cmboxCountryAdd.setValue(newValue.getCountry());
+//	            cmboxCountryAdd.setValue(newValue.getCountry());
                 
 	        }else {
                 // Desactiva los botones cuando no hay ninguna fila seleccionada
@@ -379,13 +378,26 @@ public class DataTableSceneTouristController {
 					String passport = txtPassportAdd.getText();
 					String sex = (String) cmboxSexAdd.getValue();
 					String contact = txtPhoneAdd.getText();
-					String country = (String) cmboxCountryAdd.getValue();
+					String countrytxt = txtCountryAdd.getText();	
 					int age = Integer.parseInt(txtAgeAdd.getText());
+					
+					int selectedIndex = cmboxCountryAdd.getSelectionModel().getSelectedIndex() + 1;		
 
 					try {
 						
-						ServicesLocator.getTouristServices().insert_tourist(passport, name, lastName1, lastName2, age, sex, contact, country);
-//                        Hay que cambiar el ultimo age por country
+						if(selectedIndex != 0) {
+							
+							ServicesLocator.getTouristServices().insert_tourist(passport, name, lastName1, lastName2, age, sex, contact, selectedIndex);
+							
+							
+						}else {
+							
+							ServicesLocator.getCountryServices().insert_country(countrytxt);
+							ServicesLocator.getTouristServices().insert_tourist(passport, name, lastName1, lastName2, age, sex, contact, cmboxCountryAdd.getItems().size() + 1);
+						}
+						
+
+						
 						txtNameAdd.setText("");
 						txtLastName1Add.setText("");
 						txtLastName2Add.setText("");
@@ -433,20 +445,32 @@ public class DataTableSceneTouristController {
 					String passport = txtPassportAdd.getText();
 					String sex = (String) cmboxSexAdd.getValue();
 					String contact = txtPhoneAdd.getText();
-//					String country = (String) cmboxCountryAdd.getValue();
-					String country = txtCountryAdd.getText();
+					String countrytxt = txtCountryAdd.getText();	
 					int age = Integer.parseInt(txtAgeAdd.getText());
+					
+					int selectedIndex = cmboxCountryAdd.getSelectionModel().getSelectedIndex() + 1;		
 
 					try {
-						ServicesLocator.getTouristServices().update_tourist(passport, name, lastName1, lastName2, age, sex, contact, country);
-//                      Hay que cambiar el ultimo age por country
+						
+						if(selectedIndex != 0) {
+							
+							ServicesLocator.getTouristServices().update_tourist(passport, name, lastName1, lastName2, age, sex, contact, selectedIndex);
+							
+							
+						}else {
+							
+							ServicesLocator.getCountryServices().insert_country(countrytxt);
+							ServicesLocator.getTouristServices().update_tourist(passport, name, lastName1, lastName2, age, sex, contact, cmboxCountryAdd.getItems().size() + 1);
+						}
+						
 
+						
 						txtNameAdd.setText("");
 						txtLastName1Add.setText("");
 						txtLastName2Add.setText("");
 						txtPassportAdd.setText("");
 						cmboxSexAdd.setValue("");
-						txtPhoneAdd.setText("");
+						txtPhoneAdd.setText("");	
 						cmboxCountryAdd.setValue("");
 						txtAgeAdd.setText("");
 
