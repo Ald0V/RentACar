@@ -504,7 +504,7 @@ public class DataTableSceneContractController {
 
     }
     
-    public void modifyContract(ActionEvent event) {
+    public void modifyContract(ActionEvent event) throws ClassNotFoundException, SQLException {
     	lblErrorEmpty.setVisible(false);
     	lblErrorDate.setVisible(false);
 
@@ -545,16 +545,129 @@ public class DataTableSceneContractController {
 
     }
 	
-	public void insertTourist(ActionEvent event) {
+    public void insertTourist(ActionEvent event) throws ClassNotFoundException, SQLException {
+  		lblErrorPassport.setVisible(false);
+    	lblErrorPhone.setVisible(false);
+    	lblErrorAge.setVisible(false);
+    	lblErrorEmptyTourist.setVisible(false);
+    	
+		if(txtAgeAdd.getText() != "" && txtLastName1Add.getText() != "" && txtLastName2Add.getText() != "" && txtNameAdd.getText() != "" && txtPassportAdd.getText() != "" && txtPhoneAdd.getText() != "" && (cmboxCountryAdd.getValue() != "" || txtCountryAdd.getText() != "") && cmboxSexAdd.getValue() != "") { 
+            
+//			Necesito hacer una validacion para si lo obtenido de txtAgeAdd.getText() no es int, no se cumpla la funcion
+        	
+			if(val.isAgeCorrect(Integer.parseInt(txtAgeAdd.getText())) ) {
+				if(val.isPassportCorrect(txtPassportAdd.getText()) && val.isPhoneCorrect(txtPhoneAdd.getText())) {
+
+					String name = txtNameAdd.getText();
+					String lastName1 = txtLastName1Add.getText();
+					String lastName2 = txtLastName2Add.getText();
+					String passport = txtPassportAdd.getText();
+					String sex = (String) cmboxSexAdd.getValue();
+					String contact = txtPhoneAdd.getText();
+					String country = (String) cmboxCountryAdd.getValue();
+					int age = Integer.parseInt(txtAgeAdd.getText());
+
+					try {
+						
+						ServicesLocator.getTouristServices().insert_tourist(passport, name, lastName1, lastName2, age, sex, contact, country);
+//                        Hay que cambiar el ultimo age por country
+						txtNameAdd.setText("");
+						txtLastName1Add.setText("");
+						txtLastName2Add.setText("");
+						txtPassportAdd.setText("");
+						cmboxSexAdd.setValue("");
+						txtPhoneAdd.setText("");	
+						cmboxCountryAdd.setValue("");
+						txtAgeAdd.setText("");
+						
+						cmboxTouristAdd.setValue(passport);
+
+					}
+					catch(Exception e) {
+						JOptionPane.showMessageDialog(null, e.getMessage());
+					}
+
+				}else if(val.isPassportCorrect(txtPassportAdd.getText()) != false) {
+					lblErrorPassport.setVisible(true);
+				}else
+					lblErrorPhone.setVisible(true);		
+			}else
+				lblErrorAge.setVisible(true);			
+		}else
+			lblErrorEmptyTourist.setVisible(true);
+		
 		
 	}
 	
-	public void insertCar(ActionEvent event) {
-		
+	public void insertCar(ActionEvent event) throws ClassNotFoundException, SQLException{
+		lblErrorPlate.setVisible(false);
+		lblErrorEmptyCar.setVisible(false);
+
+		if(txtColorAdd.getText() != "" && txtPlateAdd.getText() != "" && cmboxBrandAdd.getValue() != "" && cmboxCarStatusAdd.getValue() != "" && cmboxModelAdd.getValue() != "" ) {
+			if(val.ValidatePlate(txtPlateAdd.getText())) {
+				String color = txtColorAdd.getText();
+				String plate = txtPlateAdd.getText();
+				String brand = cmboxBrandAdd.getValue();
+				String situation = cmboxCarStatusAdd.getValue();
+				String model = cmboxModelAdd.getValue();
+
+				try {
+                    ServicesLocator.getCarServices().insert_car(plate, 0, 0, 0, color, 0);
+//                  En realidad, va en este orden (plate, brand, model, 0, color, situation)
+					txtColorAdd.setText("");
+					txtPlateAdd.setText("");
+					cmboxBrandAdd.setValue("");
+					cmboxCarStatusAdd.setValue("");
+					cmboxModelAdd.getValue();
+					
+					cmboxCarAdd.setValue(plate);
+
+				}
+				catch(Exception e) {
+					JOptionPane.showMessageDialog(null, e.getMessage());
+				}
+
+			}else
+				lblErrorPlate.setVisible(true);
+		}else
+			lblErrorEmptyCar.setVisible(true);
+
 	}
 	
-	public void insertDriver(ActionEvent event) {
-		
+	public void insertDriver(ActionEvent event) throws ClassNotFoundException, SQLException {
+		lblErrorCI.setVisible(true);
+		lblErrorEmptyDriver.setVisible(true);
+		if(txtDriverAddressAdd.getText() != "" && txtDriverIDAdd.getText() != "" && txtDriverLastName1Add.getText() != "" && txtDriverLastName2Add.getText() != "" && txtDriverNameAdd.getText() != "" && cmboxDriverLicenseAdd.getValue() != "") {
+			if(val.isPassportCorrect(txtDriverIDAdd.getText())) {
+				String name = txtDriverNameAdd.getText();
+				String lastName1 = txtDriverLastName1Add.getText();
+				String lastName2 = txtDriverLastName2Add.getText();
+				String id = txtDriverIDAdd.getText();
+				String address = txtDriverAddressAdd.getText();
+				String license = cmboxDriverLicenseAdd.getValue();
+
+				try {
+
+					ServicesLocator.getDriverServices().insert_driver(id, name, lastName1, lastName2, 0, address);
+//                  0 se debe cambiar por license
+					txtDriverNameAdd.setText("");
+					txtDriverLastName1Add.setText("");
+					txtDriverLastName2Add.setText("");
+					txtDriverIDAdd.setText("");
+					txtDriverAddressAdd.setText("");
+					cmboxDriverLicenseAdd.setValue("");
+					
+					cmboxDriverAdd.setValue(id);
+
+				}
+				catch(Exception e) {
+					JOptionPane.showMessageDialog(null, e.getMessage());
+				}
+			}else
+				lblErrorCI.setVisible(true);
+		}else
+			lblErrorEmptyDriver.setVisible(true);
+
 	}
     
 	public void openDeliveryDate(ActionEvent event) {

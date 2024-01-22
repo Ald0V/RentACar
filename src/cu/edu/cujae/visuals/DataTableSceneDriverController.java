@@ -299,7 +299,7 @@ public class DataTableSceneDriverController {
 	}
 
 
-	public void insertDriver(ActionEvent event) {
+	public void insertDriver(ActionEvent event) throws ClassNotFoundException, SQLException {
 		lblErrorCI.setVisible(true);
 		lblErrorEmpty.setVisible(true);
 		if(txtAddressAdd.getText() != "" && txtIDAdd.getText() != "" && txtLastName1Add.getText() != "" && txtLastName2Add.getText() != "" && txtNameAdd.getText() != "" && cmboxLicenseAdd.getValue() != "") {
@@ -339,7 +339,7 @@ public class DataTableSceneDriverController {
 
 	}
 	
-	public void modifyDriver(ActionEvent event) {
+	public void modifyDriver(ActionEvent event) throws ClassNotFoundException, SQLException {
 		lblErrorCI.setVisible(true);
 		lblErrorEmpty.setVisible(true);
 		if(txtAddressAdd.getText() != "" && txtIDAdd.getText() != "" && txtLastName1Add.getText() != "" && txtLastName2Add.getText() != "" && txtNameAdd.getText() != "" && cmboxLicenseAdd.getValue() != "") {
