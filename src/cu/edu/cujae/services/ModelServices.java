@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import cu.edu.cujae.dto.ModelDTO;
 
@@ -48,5 +49,27 @@ public ArrayList<ModelDTO> get_model_all() throws SQLException, ClassNotFoundExc
     return lodgings;
 }
 
+public  LinkedList<ModelDTO> select_model_by_brand(String brand) throws SQLException{
+    LinkedList<ModelDTO> List = new LinkedList<ModelDTO>();
+        java.sql.Connection connection = ServicesLocator.getConnection();
+        String sql = "SELECT model.*" +
+        "FROM model INNER JOIN brand ON model.brand_id = brand.id" +
+        "WHERE brand.name = '?;";
+    PreparedStatement statement = connection.prepareStatement(sql);
+    statement.setString(1, brand);
+    statement.execute();
+    ResultSet resultSet = statement.executeQuery();
+    while (resultSet.next()) {
+      ModelDTO c = new ModelDTO(resultSet.getInt("idbrand"),
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"));
+
+      List.add(c);
+    }
+    resultSet.close();
+    statement.close();
+    
+    return List;
+  }
     
 }

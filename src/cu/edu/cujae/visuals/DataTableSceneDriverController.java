@@ -179,7 +179,7 @@ public class DataTableSceneDriverController {
                 txtLastName1Add.setText(newValue.getLastName1());
                 txtLastName2Add.setText(newValue.getLastName2());
                 txtAddressAdd.setText(newValue.getAddress());
-                cmboxLicenseAdd.setValue(newValue.getCategory());
+//                cmboxLicenseAdd.setValue(newValue.getCategory());
 
 	        } else {
                 // Desactiva los botones cuando no hay ninguna fila seleccionada
@@ -309,12 +309,12 @@ public class DataTableSceneDriverController {
 				String lastName2 = txtLastName2Add.getText();
 				String id = txtIDAdd.getText();
 				String address = txtAddressAdd.getText();
-				String license = cmboxLicenseAdd.getValue();
+				int license = cmboxLicenseAdd.getSelectionModel().getSelectedIndex() + 1;
 
 				try {
 
-					ServicesLocator.getDriverServices().insert_driver(id, name, lastName1, lastName2, 0, address);
-//                  0 se debe cambiar por license
+					ServicesLocator.getDriverServices().insert_driver(id, name, lastName1, lastName2, license, address);
+
 					txtNameAdd.setText("");
 					txtLastName1Add.setText("");
 					txtLastName2Add.setText("");
@@ -349,11 +349,11 @@ public class DataTableSceneDriverController {
 				String lastName2 = txtLastName2Add.getText();
 				String id = txtIDAdd.getText();
 				String address = txtAddressAdd.getText();
-				String license = cmboxLicenseAdd.getValue();
+				int license = cmboxLicenseAdd.getSelectionModel().getSelectedIndex() + 1;
 
 				try {
-					ServicesLocator.getDriverServices().update_driver(id, name, lastName1, lastName2, 0, address);
-//                  0 se debe cambiar por license
+
+					ServicesLocator.getDriverServices().update_driver(id, name, lastName1, lastName2, license, address);
 
 					txtNameAdd.setText("");
 					txtLastName1Add.setText("");

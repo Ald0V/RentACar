@@ -1,25 +1,25 @@
 package cu.edu.cujae.dto;
 
 public class DriverDTO extends PersonDTO{
-    private String category;
+    private int category;
     private String address;
     
     public DriverDTO() {
     	super();
     }
     
-	public DriverDTO(String iD, String name, String lastName1, String lastName2, String category,
+	public DriverDTO(String iD, String name, String lastName1, String lastName2, int category,
 			String address) {
 		super(iD, name, lastName1, lastName2);
 		this.category = category;
 		this.address = address;
 	}
 
-	public String getCategory() {
+	public int getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(int category) {
         this.category = category;
     }
 

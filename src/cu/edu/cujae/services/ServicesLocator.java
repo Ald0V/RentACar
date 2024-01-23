@@ -2,9 +2,7 @@ package cu.edu.cujae.services;
 
 import java.sql.SQLException;
 
-import java.util.ArrayList;
-import cu.edu.cujae.dto.*;
-import cu.edu.cujae.utils.Connection;
+import cu.edu.cujae.utils.Connec;
 
 public class ServicesLocator {
 
@@ -19,6 +17,7 @@ public class ServicesLocator {
     private static PayMethodServices payMethodServices = null;
     private static LicenseServices licenseServices = null;
     private static SituationServices situationServices = null;
+    private static ReportServices reportServices = null;
 
 
     public static TouristServices getTouristServices() {
@@ -97,11 +96,18 @@ public class ServicesLocator {
         }
         return countryServices;
     }
+
+    public static ReportServices getReportServices() {
+        if (reportServices == null) {
+            reportServices = new ReportServices();
+        }
+        return reportServices;
+    }
     
     public static java.sql.Connection getConnection() {
-		Connection connection = null;
+		Connec connection = null;
 		try {
-			connection = new Connection("localhost", "JDBC","postgres", "postgres");
+			connection = new Connec("localhost", "JDBC","postgres", "postgres");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
