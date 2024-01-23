@@ -3,6 +3,7 @@ package cu.edu.cujae.visuals;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
 
@@ -12,6 +13,8 @@ import cu.edu.cujae.dto.ModelDTO;
 import cu.edu.cujae.services.ServicesLocator;
 import cu.edu.cujae.utils.TouristAux;
 import cu.edu.cujae.utils.Validator;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -154,6 +157,39 @@ public class DataTableSceneCarController {
 //	    
 //	    // Establecer los elementos de la tabla
 //	    carTable.setItems(carList);
+		
+		// Añades un listener a tu primer ComboBox para que, cuando cambie el valor seleccionado, cambie el contenido del segundo ComboBox
+		cmboxBrandAdd.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+		    @Override
+		    public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
+		        // Aquí obtienes los modelos de la base de datos en función de la marca seleccionada
+		        LinkedList<ModelDTO> models;
+				try {
+					models = ServicesLocator.getModelServices().select_model_by_brand(newValue);
+
+
+		        // Creas una nueva lista para guardar solo los nombres de los modelos
+		        ArrayList<String> namesList = new ArrayList<String>();
+
+		        // Recorres tu lista original y vas añadiendo los nombres a la nueva lista
+		        for (ModelDTO model : models) {
+		            namesList.add(model.getName());
+		        }
+
+		        // Conviertes la lista de nombres a un ObservableList
+		        ObservableList<String> observableList = FXCollections.observableArrayList(namesList);
+
+		        // Añades los nombres al segundo ComboBox
+		        cmboxModelAdd.setItems(observableList);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    }
+		});
+
+		
+
 
 		// Desactiva los botones al inicio
         bttnDelete.setDisable(true);
@@ -245,6 +281,9 @@ public class DataTableSceneCarController {
 			bttnAddCar.setVisible(false);
 			bttnModifyCar.setVisible(true);
 			
+			ObservableList<String> list = FXCollections.observableArrayList("Disponible", "Alquilado", "En taller");
+			cmboxCarStatusAdd.setItems(list);
+			
 	        ArrayList<AuxiliaryDTO> auxiliaryList = ServicesLocator.getBrandServices().get_brand_all();
 	        ArrayList<String> namesList = new ArrayList<String>();
 	        for (AuxiliaryDTO aux : auxiliaryList) {
@@ -253,19 +292,11 @@ public class DataTableSceneCarController {
 	        ObservableList<String> observableList = FXCollections.observableArrayList(namesList);
 	        cmboxBrandAdd.setItems(observableList);
 	        
-	        //Si no sirve lo que le dije a Brenda
-	        ArrayList<ModelDTO> auxiliaryList2 = ServicesLocator.getModelServices().get_model_all();
-	        ArrayList<String> namesList2 = new ArrayList<String>();
-	        for (ModelDTO aux2 : auxiliaryList2) {
-	            namesList2.add(aux2.getName());
-	        }
-	        ObservableList<String> observableList2 = FXCollections.observableArrayList(namesList2);
-	        cmboxBrandAdd.setItems(observableList2);
-		
+	        
 			tableScenePane.setMaxHeight(382);
 			carTable.setMaxHeight(286);
-			ObservableList<String> list = FXCollections.observableArrayList("Disponible", "Alquilado", "En taller");
-			cmboxCarStatusAdd.setItems(list);
+			
+
 			
 		}else if(event.getSource() == bttnAdd){
 			bttnAdd.setDisable(true);
@@ -274,10 +305,13 @@ public class DataTableSceneCarController {
 			addScenePane.setVisible(true);
 			addParametersScenePane.setVisible(true);
 			tableScenePane.setVisible(true);
-			cmboxModelAdd.setDisable(true);
+
 			
 			bttnAddCar.setVisible(true);
 			bttnModifyCar.setVisible(false);
+			
+			ObservableList<String> list = FXCollections.observableArrayList("Disponible", "Alquilado", "En taller");
+			cmboxCarStatusAdd.setItems(list);
 			
 			
 	        ArrayList<AuxiliaryDTO> auxiliaryList = ServicesLocator.getBrandServices().get_brand_all();
@@ -288,20 +322,10 @@ public class DataTableSceneCarController {
 	        ObservableList<String> observableList = FXCollections.observableArrayList(namesList);
 	        cmboxBrandAdd.setItems(observableList);
 	        
-	        //Si no sirve lo que le dije a Brenda
-	        ArrayList<ModelDTO> auxiliaryList2 = ServicesLocator.getModelServices().get_model_all();
-	        ArrayList<String> namesList2 = new ArrayList<String>();
-	        for (ModelDTO aux2 : auxiliaryList2) {
-	            namesList2.add(aux2.getName());
-	        }
-	        ObservableList<String> observableList2 = FXCollections.observableArrayList(namesList2);
-	        cmboxBrandAdd.setItems(observableList2);
-			
 			
 			tableScenePane.setMaxHeight(382);
 			carTable.setMaxHeight(286);
-			ObservableList<String> list = FXCollections.observableArrayList("Disponible", "Alquilado", "En taller");
-			cmboxCarStatusAdd.setItems(list);
+
 			
 		}
 	}
