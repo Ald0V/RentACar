@@ -261,29 +261,19 @@
                         </TableView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="tableImportsPane" layoutX="10.0" layoutY="9.0" prefHeight="636.0" prefWidth="1040.8" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="tableImportsPane" layoutX="10.0" layoutY="9.0" prefHeight="636.0" prefWidth="1040.8" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
                      </styleClass>
                      <children>
-                        <TableView fx:id="importsTable" layoutX="12.0" layoutY="67.0" prefHeight="185.0" prefWidth="998.0">
+                        <TableView fx:id="importsTable" layoutX="12.0" layoutY="67.0" prefHeight="532.0" prefWidth="998.0">
                            <columns>
-                              <TableColumn fx:id="colImportsDateYear" prefWidth="529.6000366210938" text="Año" />
-                              <TableColumn fx:id="colImports$Year" prefWidth="468.7999267578125" text="Ingreso total anual" />
+                              <TableColumn fx:id="colImportsYear" prefWidth="529.6000366210938" text="Año" />
+                              <TableColumn fx:id="colImportsMonth" prefWidth="263.20001220703125" text="Mes" />
+                              <TableColumn fx:id="colImports" prefWidth="203.20004882812498" text="Ingreso" />
                            </columns>
                         </TableView>
-                        <TableView fx:id="importsMonthTable" layoutX="12.0" layoutY="375.0" prefHeight="185.0" prefWidth="998.0">
-                           <columns>
-                              <TableColumn fx:id="colImportsDateMonth" prefWidth="529.6000366210938" text="Mes" />
-                              <TableColumn fx:id="colImports$Month" prefWidth="468.7999267578125" text="Ingreso mensual" />
-                           </columns>
-                        </TableView>
-                        <Label fx:id="lblYearImport" layoutX="14.0" layoutY="313.0" prefHeight="54.0" prefWidth="238.0" text="Año:" textFill="WHITE">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </Label>
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="tableReportsTouristsPane" layoutX="10.0" layoutY="9.0" prefHeight="636.0" prefWidth="1040.8" stylesheets="@application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

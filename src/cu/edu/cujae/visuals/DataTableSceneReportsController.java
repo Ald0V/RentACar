@@ -341,23 +341,15 @@ public class DataTableSceneReportsController {
     @FXML
     private TableView<ImportsAux> importsTable;
     
-    @FXML
-    private TableView<ImportsAux> importsMonthTable;
-    
-    @FXML
-    private TableColumn<ImportsAux, Float> colImports$Month;
 
     @FXML
-    private TableColumn<ImportsAux, Float> colImports$Year;
+    private TableColumn<ImportsAux, Float> colImports;
 
     @FXML
-    private TableColumn<ImportsAux, String> colImportsDateYear;
+    private TableColumn<ImportsAux, String> colImportsYear;
 
     @FXML
-    private TableColumn<ImportsAux, String> colImportsDateMonth;
-    
-    @FXML
-    private Label lblYearImport;
+    private TableColumn<ImportsAux, String> colImportsMonth;
     
     
     
