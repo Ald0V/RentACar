@@ -3,27 +3,32 @@ package cu.edu.cujae.dto;
 import java.time.LocalDate;
 
 public class ContractDTO {
-	private String plate;
-    private String passport;
+    private String plate;
     private LocalDate startDate;
+    private String passport;
     private LocalDate endDate;
-    private LocalDate deliveryDate;
-    private String payMethod;
-    private String driver;
     private int startKm;
+    private LocalDate deliveryDate;
     private int endKm;
-
+    private int payMethod;
+    private String driver;
+    private float value;
+    
+    
     public ContractDTO() {
     }
 
-    public ContractDTO(String plate, String passport, LocalDate startDate, LocalDate endDate, LocalDate deliveryDate, String payMethod, String driver) {
+    public ContractDTO(String plate, LocalDate startDate, String passport, LocalDate endDate, int startKm, LocalDate deliveryDate, int endKm, int payMethod, String driver, float value) {
         this.plate = plate;
-        this.passport = passport;
         this.startDate = startDate;
+        this.passport = passport; 
         this.endDate = endDate;
+        this.startKm = startKm;
         this.deliveryDate = deliveryDate;
+        this.endKm = endKm;
         this.payMethod = payMethod;
         this.driver = driver;
+        this.value = value;
     }
 
     public String getPlate() {
@@ -66,11 +71,11 @@ public class ContractDTO {
         this.deliveryDate = deliveryDate;
     }
 
-    public String getPayMethod() {
+    public int getPayMethod() {
         return payMethod;
     }
 
-    public void setPayMethod(String payMethod) {
+    public void setPayMethod(int payMethod) {
         this.payMethod = payMethod;
     }
 
@@ -96,6 +101,14 @@ public class ContractDTO {
 
     public void setEndKm(int endKm) {
         this.endKm = endKm;
+    }
+
+    public float getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
     }
 
 }

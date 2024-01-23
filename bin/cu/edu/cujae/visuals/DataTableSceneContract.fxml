@@ -115,7 +115,7 @@
          <children>
             <AnchorPane fx:id="addScenePane" layoutX="15.0" layoutY="15.0" prefHeight="626.0" prefWidth="1030.0" stylesheets="@application.css">
                <children>
-                  <AnchorPane fx:id="deliveryDatePane" layoutY="406.0" prefHeight="220.0" prefWidth="1030.0" stylesheets="@application.css" visible="false">
+                  <AnchorPane fx:id="deliveryDatePane" layoutY="406.0" prefHeight="220.0" prefWidth="1030.0" stylesheets="@application.css">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
@@ -130,7 +130,7 @@
                               <String fx:value="buttonCancel" />
                            </styleClass>
                         </Button>
-                        <Label fx:id="lblErrorEmpty1" alignment="CENTER" layoutX="212.0" layoutY="173.0" prefHeight="38.0" prefWidth="418.0" text="Todos los campos son obligatorios" textAlignment="CENTER" textFill="RED" visible="false">
+                        <Label fx:id="lblErrorEmptyCloseContract" alignment="CENTER" layoutX="317.0" layoutY="110.0" prefHeight="38.0" prefWidth="418.0" text="Todos los campos son obligatorios" textAlignment="CENTER" textFill="RED">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -144,15 +144,21 @@
                               <String fx:value="buttonAdd" />
                            </styleClass>
                         </Button>
-                        <Label layoutX="377.0" layoutY="63.0" prefHeight="27.0" prefWidth="114.0" text="Fecha de entrega:" textFill="WHITE">
+                        <Label layoutX="177.0" layoutY="71.0" prefHeight="27.0" prefWidth="114.0" text="Fecha de entrega:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <DatePicker fx:id="pickdateStartAdd1" layoutX="497.0" layoutY="65.0" />
+                        <DatePicker fx:id="pickdateDeliverDate" layoutX="297.0" layoutY="73.0" />
+                        <Label layoutX="578.0" layoutY="72.0" prefHeight="27.0" prefWidth="92.0" text="Km recorridos:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtKm" layoutX="670.0" layoutY="72.0" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="tableScenePane" layoutY="-1.0" prefHeight="626.0" prefWidth="1030.0" stylesheets="@application.css">
+                  <AnchorPane fx:id="tableScenePane" layoutY="-1.0" prefHeight="626.0" prefWidth="1030.0" stylesheets="@application.css" visible="false">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />

@@ -157,6 +157,16 @@ public class DataTableSceneContractController {
     @FXML
     private Button bttnProrrogaAcept;
     
+    @FXML
+    private Label lblErrorEmptyCloseContract;
+    
+    @FXML
+    private TextField txtKm;
+    
+    @FXML
+    private DatePicker pickdateDeliverDate;
+    
+    
 //0ºººººººººººººººº0    
 //0   ADD TABLE    0
 //0ºººººººººººººººº0 
@@ -288,6 +298,8 @@ public class DataTableSceneContractController {
 	    colAddTotalImport.setCellValueFactory(new PropertyValueFactory<>("TotalImport"));
 	    colAddTourist.setCellValueFactory(new PropertyValueFactory<>("Tourist"));
 
+	    bttnModify.setDisable(true);
+	    
 	    // Obtener la lista de turistas
 //	    ArrayList<ContractDTO> list = ServicesLocator.getContractsServices();	
 //	    ObservableList<ContractDTO> contractList = FXCollections.observableArrayList();
@@ -295,7 +307,6 @@ public class DataTableSceneContractController {
 //	    
 //	    // Establecer los elementos de la tabla
 //	    contractTable.setItems(contractList);
-	    bttnModify.setDisable(true);
 	    // Añadir un listener a la propiedad selectedItemProperty
 	    contractTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 	        if (newValue != null) {
@@ -306,7 +317,7 @@ public class DataTableSceneContractController {
 	        	
                 cmboxTouristAdd.setValue(newValue.getPassport());
                 cmboxCarAdd.setValue(newValue.getPlate());
-                cmboxPayMethodAdd.setValue(newValue.getPayMethod());
+//                cmboxPayMethodAdd.setValue(newValue.getPayMethod());
                 cmboxDriverAdd.setValue(newValue.getDriver());
                 pickdateStartAdd.setValue(newValue.getStartDate());
                 pickdateEndDate.setValue(newValue.getEndDate());
@@ -538,8 +549,8 @@ public class DataTableSceneContractController {
 			if(val.validateDate(pickdateStartAdd.getValue(), pickdateEndDate.getValue())) {
 				
 				String car = (String) cmboxCarAdd.getValue();
-				String payMethod = (String) cmboxPayMethodAdd.getValue();
-				String tourist = (String) cmboxTouristAdd.getValue();
+				int payMethod = cmboxPayMethodAdd.getSelectionModel().getSelectedIndex() + 1;
+				String tourist = cmboxTouristAdd.getValue();
 				String driver = (String) cmboxDriverAdd.getValue();
 				LocalDate startDate = pickdateStartAdd.getValue();
 				LocalDate endDate = pickdateEndDate.getValue();
@@ -575,12 +586,11 @@ public class DataTableSceneContractController {
     	contractTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
     	    if (newSelection != null) {
     	        ContractDTO selectedContract = contractTable.getSelectionModel().getSelectedItem();
-//    	        if (selectedContract.getAddProrroga() != 0) {
-//    	            bttnProrrogaAcept.setVisible(false);
-//    	        } else {
-//    	            bttnProrrogaAcept.setVisible(true);
-//    	        }
-//    	        EL PROBLEMA AQUI ES QUE DONDE VOY A SACAR YO LA PRORROGA?????
+    	        if (selectedContract.getDeliveryDate() != null) {
+    	            bttnProrrogaAcept.setVisible(false);
+    	        } else {
+    	            bttnProrrogaAcept.setVisible(true);
+    	        }
     	    }
     	});
 
@@ -591,14 +601,13 @@ public class DataTableSceneContractController {
     		if(val.validateDate(pickdateStartAdd.getValue(), pickdateEndDate.getValue())) {
 
     			String car = (String) cmboxCarAdd.getValue();
-    			String payMethod = (String) cmboxPayMethodAdd.getValue();
+    			int payMethod = cmboxPayMethodAdd.getSelectionModel().getSelectedIndex() + 1;
     			String tourist = (String) cmboxTouristAdd.getValue();
     			String driver = (String) cmboxDriverAdd.getValue();
     			LocalDate startDate = pickdateStartAdd.getValue();
     			LocalDate endDate = pickdateEndDate.getValue();
 
     			try {
-    				//					ContractDTO contract = new ContractDTO(car, tourist, startDate, endDate, null, payMethod, driver);
     				//					ServicesLocator.getContractsServices().update_contract(car, tourist, startDate, endDate, null, payMethod, driver);
 
     				cmboxCarAdd.setValue("");
@@ -769,6 +778,19 @@ public class DataTableSceneContractController {
 		
 		addParametersScenePane.setVisible(true);
 		deliveryDatePane.setVisible(false);
+	}
+	
+	public void closeContract (ActionEvent event) throws ClassNotFoundException, SQLException {
+		
+		lblErrorEmptyCloseContract.setVisible(false);
+		if(pickdateDeliverDate.getValue() != null && txtKm.getText() != "") {
+			LocalDate delivery = pickdateDeliverDate.getValue();
+			int km  = Integer.parseInt(txtKm.getText());
+			
+//			ServicesLocator.getContractsServices().insert_contract...
+			
+		}else
+			lblErrorEmptyCloseContract.setVisible(true);
 	}
 
 
