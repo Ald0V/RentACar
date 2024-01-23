@@ -689,6 +689,8 @@ public class MainSceneController {
 		aux = reportsController.getCmboxRol();
 		ObservableList<String> list = FXCollections.observableArrayList("Administrador", "Trabajador", "Visitante");
 		aux.setItems(list);
+		
+		reportsController.initializeUserTable();
 					
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);

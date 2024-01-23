@@ -145,6 +145,11 @@ public class DataTableSceneDriverController {
 	    colAddLastName2.setCellValueFactory(new PropertyValueFactory<>("Segundo apellido"));
 	    colAddLicense.setCellValueFactory(new PropertyValueFactory<>("Tipo de licencia"));
 	    colAddName.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
+	    
+		 // Desactiva los botones al inicio
+        bttnDelete.setDisable(true);
+        bttnModify.setDisable(true);
+
 
 	    // Obtener la lista de conductores
 	    ArrayList<DriverDTO> list = ServicesLocator.getDriverServices().get_driver_all();		
@@ -154,9 +159,6 @@ public class DataTableSceneDriverController {
 //	    // Establecer los elementos de la tabla
 	    driverTable.setItems(driversList);
 
-	 // Desactiva los botones al inicio
-        bttnDelete.setDisable(true);
-        bttnModify.setDisable(true);
 
         // Añade un ChangeListener a la propiedad selectedItemProperty de la tabla
         driverTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {

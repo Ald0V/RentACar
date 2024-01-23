@@ -1,8 +1,11 @@
 package cu.edu.cujae.visuals;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import cu.edu.cujae.dto.UserDTO;
+import cu.edu.cujae.services.ServicesLocator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,9 +16,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -46,6 +51,9 @@ public class UserManagerController {
     @FXML
     private TextField search;
     
+    @FXML
+    private Label lblErrorEmpty;
+    
 //0ººººººººººººººººº0    
 //0   USER TABLE    0
 //0ººººººººººººººººº0 
@@ -59,11 +67,51 @@ public class UserManagerController {
     @FXML
     private TableColumn<UserDTO, String> colUsername;
     
-    
 
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+	
+	
+	private void userTableChargeData() throws ClassNotFoundException, SQLException{
+		colEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
+		colRol.setCellValueFactory(new PropertyValueFactory<>("Rol"));
+		colUsername.setCellValueFactory(new PropertyValueFactory<>("Usuario"));
+		
+		bttnDelete.setDisable(true);
+		bttnModify.setDisable(true);
+		
+		ArrayList<UserDTO> list = ServicesLocator.getUserServices().get_user_all();
+		ObservableList<UserDTO> userList = FXCollections.observableArrayList();
+		userList.addAll(list);
+		
+		usersTable.setItems(userList);
+		
+		usersTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+	        if (newValue != null) {
+	        	
+	    		bttnDelete.setDisable(false);
+	    		bttnModify.setDisable(false);
+	    		
+	    		cmboxRol.setValue(newValue.getRol());
+	        	
+	        } else {
+	    		bttnDelete.setDisable(true);
+	    		bttnModify.setDisable(true);
+	        }
+	    });
+	}
+	
+	public void initializeUserTable() {
+		try {
+	        // Llama al método touristTableChargeData() aquí
+	        userTableChargeData();
+	    } catch (ClassNotFoundException | SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
+	
+	
 	
 	public ComboBox<String> getCmboxRol() {
 		return cmboxRol;
@@ -111,8 +159,23 @@ public class UserManagerController {
 		
 	}
 	
-    public void modifyUser(ActionEvent event) {
-		
+    public void modifyUser(ActionEvent event) throws ClassNotFoundException, SQLException {
+		lblErrorEmpty.setVisible(false);
+		if(cmboxRol.getValue() != "") {
+			String rol = (String) cmboxRol.getValue();
+			
+//			Esto va a ser cambiado por Brenda
+			ServicesLocator.getUserServices().update_user(rol, rol, rol, rol);
+//			Esto va a ser cambiado por Brenda
+			
+			cmboxRol.setValue("");
+			try {
+				userTableChargeData();
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
+		}else
+			lblErrorEmpty.setVisible(true);
 		
 	}
 }

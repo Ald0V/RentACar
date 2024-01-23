@@ -102,12 +102,17 @@
                               <String fx:value="buttonAdd" />
                            </styleClass>
                         </Button>
-                        <Label layoutX="427.0" layoutY="36.0" prefHeight="27.0" prefWidth="25.0" text="Rol:" textFill="WHITE">
+                        <Label layoutX="427.0" layoutY="14.0" prefHeight="27.0" prefWidth="25.0" text="Rol:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="cmboxRol" layoutX="453.0" layoutY="37.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <ComboBox fx:id="cmboxRol" layoutX="453.0" layoutY="15.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
+                        <Label fx:id="lblErrorEmpty" layoutX="359.0" layoutY="60.0" text="El campo no puede estar vacío" textFill="RED" visible="false">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </children>

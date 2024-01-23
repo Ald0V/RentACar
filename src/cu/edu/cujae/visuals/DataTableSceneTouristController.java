@@ -186,6 +186,10 @@ public class DataTableSceneTouristController {
 		colAddSex.setCellValueFactory(new PropertyValueFactory<>("Género"));
 		colAddPhone.setCellValueFactory(new PropertyValueFactory<>("Teléfono"));
 	    colAddCountry.setCellValueFactory(new PropertyValueFactory<>("País"));
+	    
+		 // Desactiva los botones al inicio
+        bttnDelete.setDisable(true);
+        bttnModify.setDisable(true);
 
 	    // Obtener la lista de turistas
 	    ArrayList<TouristDTO> list = ServicesLocator.getTouristServices().get_tourist_all();		
@@ -195,9 +199,7 @@ public class DataTableSceneTouristController {
 	    // Establecer los elementos de la tabla
 	    touristTable.setItems(touristList);
 
-	 // Desactiva los botones al inicio
-        bttnDelete.setDisable(true);
-        bttnModify.setDisable(true);
+
 	    
 	    // Añadir un listener a la propiedad selectedItemProperty
 	    touristTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {

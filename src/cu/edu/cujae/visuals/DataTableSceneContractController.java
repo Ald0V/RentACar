@@ -12,7 +12,6 @@ import cu.edu.cujae.dto.AuxiliaryDTO;
 import cu.edu.cujae.dto.ContractDTO;
 import cu.edu.cujae.dto.ModelDTO;
 import cu.edu.cujae.services.ServicesLocator;
-import cu.edu.cujae.utils.ContractAux;
 import cu.edu.cujae.utils.Validator;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -25,7 +24,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -291,12 +289,12 @@ public class DataTableSceneContractController {
 	    colAddTourist.setCellValueFactory(new PropertyValueFactory<>("Tourist"));
 
 	    // Obtener la lista de turistas
-	    ArrayList<ContractDTO> list = ServicesLocator.getContractsServices();	
-	    ObservableList<ContractDTO> contractList = FXCollections.observableArrayList();
-	    contractList.addAll(list);
+//	    ArrayList<ContractDTO> list = ServicesLocator.getContractsServices();	
+//	    ObservableList<ContractDTO> contractList = FXCollections.observableArrayList();
+//	    contractList.addAll(list);
 //	    
 //	    // Establecer los elementos de la tabla
-	    contractTable.setItems(contractList);
+//	    contractTable.setItems(contractList);
 	    bttnModify.setDisable(true);
 	    // Añadir un listener a la propiedad selectedItemProperty
 	    contractTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {

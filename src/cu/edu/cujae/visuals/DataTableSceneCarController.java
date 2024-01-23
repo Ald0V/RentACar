@@ -148,7 +148,11 @@ public class DataTableSceneCarController {
 		colAddCarSituation.setCellValueFactory(new PropertyValueFactory<>("Situation"));
 		colAddColor.setCellValueFactory(new PropertyValueFactory<>("Color"));
 		colAddModel.setCellValueFactory(new PropertyValueFactory<>("Model"));
-		colAddPlate.setCellValueFactory(new PropertyValueFactory<>("Plate"));	   
+		colAddPlate.setCellValueFactory(new PropertyValueFactory<>("Plate"));
+
+		// Desactiva los botones al inicio
+        bttnDelete.setDisable(true);
+        bttnModify.setDisable(true);
 
 	    // Obtener la lista de turistas
 	    ArrayList<CarDTO> list = ServicesLocator.getCarServices().selectAllSeasons();	
@@ -188,12 +192,6 @@ public class DataTableSceneCarController {
 		    }
 		});
 
-		
-
-
-		// Desactiva los botones al inicio
-        bttnDelete.setDisable(true);
-        bttnModify.setDisable(true);
 
 	    // Añadir un listener a la propiedad selectedItemProperty
 		carTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {

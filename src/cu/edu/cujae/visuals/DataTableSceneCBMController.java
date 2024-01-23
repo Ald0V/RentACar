@@ -154,6 +154,9 @@ public class DataTableSceneCBMController {
 	private void countryTableChargeData() throws ClassNotFoundException, SQLException {
 		colCountries.setCellValueFactory(new PropertyValueFactory<>("Países"));
 		
+	    bttnDeleteCountry.setDisable(true);
+        bttnUpdateCountry.setDisable(true);
+		
 	    ArrayList<AuxiliaryDTO> list = ServicesLocator.getCountryServices().get_country_all();
 	    ArrayList<String> namesList = new ArrayList<String>();
         for (AuxiliaryDTO aux : list) {
@@ -164,8 +167,6 @@ public class DataTableSceneCBMController {
 	    
 	    countryTable.setItems(countryList);
 	    
-	    bttnDeleteCountry.setDisable(true);
-        bttnUpdateCountry.setDisable(true);
         
         countryTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 	        if (newValue != null) {
@@ -190,6 +191,10 @@ public class DataTableSceneCBMController {
 	private void brandTableChargeData() throws ClassNotFoundException, SQLException {
 		colBrands.setCellValueFactory(new PropertyValueFactory<>("Marcas"));
 		
+	    
+	    bttnDeleteBrand.setDisable(true);
+        bttnUpdateBrand.setDisable(true);
+		
 		ArrayList<AuxiliaryDTO> list = ServicesLocator.getBrandServices().get_brand_all();
 	    ArrayList<String> namesList = new ArrayList<String>();
         for (AuxiliaryDTO aux : list) {
@@ -199,9 +204,6 @@ public class DataTableSceneCBMController {
 	    brandList.addAll(namesList);
 	    
 	    brandTable.setItems(brandList);
-	    
-	    bttnDeleteBrand.setDisable(true);
-        bttnUpdateBrand.setDisable(true);
         
         brandTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 	        if (newValue != null) {
@@ -225,6 +227,10 @@ public class DataTableSceneCBMController {
 	private void modelTableChargeData() throws ClassNotFoundException, SQLException {
 		colModels.setCellValueFactory(new PropertyValueFactory<>("Modelos"));
 		
+	    
+	    bttnDeleteModel.setDisable(true);
+        bttnUpdateModel.setDisable(true);
+		
 		ArrayList<ModelDTO> list = ServicesLocator.getModelServices().get_model_all();
 	    ArrayList<String> namesList = new ArrayList<String>();
         for (ModelDTO aux : list) {
@@ -242,9 +248,7 @@ public class DataTableSceneCBMController {
         }
 	    ObservableList<String> brandList = FXCollections.observableArrayList();
 	    cmboxBrands.setItems(brandList);
-	    
-	    bttnDeleteModel.setDisable(true);
-        bttnUpdateModel.setDisable(true);
+
         
         modelTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 	        if (newValue != null) {
