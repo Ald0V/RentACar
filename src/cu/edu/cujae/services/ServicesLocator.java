@@ -118,7 +118,6 @@ public class ServicesLocator {
         }
         return connection.getConnection();
       }
-    
 }
 
 

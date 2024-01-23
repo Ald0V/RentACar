@@ -1,5 +1,7 @@
 package cu.edu.cujae.services;
 
+import java.sql.SQLException;
+
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -7,18 +9,18 @@ import net.sf.jasperreports.view.JasperViewer;
 
 
 public class ReportServices {
-    public static ReportServices reports = ServicesLocator.getReportServices();
+	public static ReportServices reports = new ReportServices();
 
 	private java.sql.Connection myConnection = null;
 
 	public ReportServices() {
-		super();
-		try {
-			this.myConnection = ServicesLocator.getConnection();
-		} catch (JRException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
+	 super();
+	 try {
+		this.myConnection = ServicesLocator.getConnection();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	}
 
     public  void CargarReporte_1(){

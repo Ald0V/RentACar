@@ -115,7 +115,7 @@
          <children>
             <AnchorPane fx:id="addScenePane" layoutX="15.0" layoutY="15.0" prefHeight="626.0" prefWidth="1030.0" stylesheets="@application.css">
                <children>
-                  <AnchorPane fx:id="deliveryDatePane" layoutY="406.0" prefHeight="220.0" prefWidth="1030.0" stylesheets="@application.css">
+                  <AnchorPane fx:id="deliveryDatePane" layoutY="406.0" prefHeight="220.0" prefWidth="1030.0" stylesheets="@application.css" visible="false">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
@@ -158,7 +158,7 @@
                         <TextField fx:id="txtKm" layoutX="670.0" layoutY="72.0" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #9C98B3;" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="tableScenePane" layoutY="-1.0" prefHeight="626.0" prefWidth="1030.0" stylesheets="@application.css" visible="false">
+                  <AnchorPane fx:id="tableScenePane" layoutY="-1.0" prefHeight="626.0" prefWidth="1030.0" stylesheets="@application.css">
                      <styleClass>
                         <String fx:value="white-bg" />
                         <String fx:value="shadow" />
