@@ -12,10 +12,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX"/>
-	<classpathentry kind="lib" path="lib/postgresql-8.4-702.jdbc3.jar"/>
-	<classpathentry kind="lib" path="lib/postgresql-8.4-702.jdbc4.jar"/>
-	<classpathentry kind="lib" path="lib/postgresql-9.0-801.jdbc3.jar"/>
-	<classpathentry kind="lib" path="lib/postgresql-9.0-801.jdbc4.jar"/>
 	<classpathentry kind="lib" path="lib/commons-beanutils-1.7.jar"/>
 	<classpathentry kind="lib" path="lib/commons-codec-1.3.jar"/>
 	<classpathentry kind="lib" path="lib/commons-collections-2.1.jar"/>
@@ -26,9 +22,8 @@
 	<classpathentry kind="lib" path="lib/itext-1.3.1.jar"/>
 	<classpathentry kind="lib" path="lib/jasperreports-3.0.0.jar"/>
 	<classpathentry kind="lib" path="lib/jasperreports-extensions-1.3.1.jar"/>
-	<classpathentry kind="lib" path="lib/postgresql-8.1-404.jdbc2.jar"/>
-	<classpathentry kind="lib" path="lib/postgresql-8.1-404.jdbc2ee.jar"/>
-	<classpathentry kind="lib" path="lib/postgresql-8.1-404.jdbc3.jar"/>
-	<classpathentry kind="lib" path="lib/postgresql-8.1-405.jdbc3.jar"/>
+	<classpathentry kind="lib" path="lib/postgresql-42.2.27.jre6.jar"/>
+	<classpathentry kind="lib" path="lib/postgresql-42.2.27.jre7.jar"/>
+	<classpathentry kind="lib" path="lib/postgresql-42.7.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

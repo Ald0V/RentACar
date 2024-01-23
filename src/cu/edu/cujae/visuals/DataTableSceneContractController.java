@@ -3,13 +3,20 @@ package cu.edu.cujae.visuals;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
 
+import cu.edu.cujae.dto.AuxiliaryDTO;
 import cu.edu.cujae.dto.ContractDTO;
+import cu.edu.cujae.dto.ModelDTO;
 import cu.edu.cujae.services.ServicesLocator;
 import cu.edu.cujae.utils.ContractAux;
 import cu.edu.cujae.utils.Validator;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -149,6 +156,9 @@ public class DataTableSceneContractController {
     @FXML
     private Button bttnCloseContract;
     
+    @FXML
+    private Button bttnProrrogaAcept;
+    
 //0ºººººººººººººººº0    
 //0   ADD TABLE    0
 //0ºººººººººººººººº0 
@@ -287,7 +297,7 @@ public class DataTableSceneContractController {
 //	    
 //	    // Establecer los elementos de la tabla
 //	    contractTable.setItems(contractList);
-	    
+	    bttnModify.setDisable(true);
 	    // Añadir un listener a la propiedad selectedItemProperty
 	    contractTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 	        if (newValue != null) {
@@ -409,14 +419,70 @@ public class DataTableSceneContractController {
 		
 	
 	
-	public void switchNewTouristCarOrDriver(ActionEvent event) {
+	public void switchNewTouristCarOrDriver(ActionEvent event) throws ClassNotFoundException, SQLException  {
 		
 		if(event.getSource() == bttnAddNewTourist) {
 			addNewTourist.setVisible(true);
+			
+	        ObservableList<String> list = FXCollections.observableArrayList("Hombre", "Mujer");
+	        cmboxSexAdd.setItems(list);
+	        
+	        
+	        ArrayList<AuxiliaryDTO> auxiliaryList = ServicesLocator.getCountryServices().get_country_all();
+	        ArrayList<String> namesList = new ArrayList<String>();
+	        for (AuxiliaryDTO aux : auxiliaryList) {
+	            namesList.add(aux.getName());
+	        }
+	        ObservableList<String> observableList = FXCollections.observableArrayList(namesList);
+	        cmboxCountryAdd.setItems(observableList);
 		}else if(event.getSource() == bttnAddNewCar) {
 			addNewCar.setVisible(true);
+			
+			ObservableList<String> list = FXCollections.observableArrayList("Disponible", "Alquilado", "En taller");
+			cmboxCarStatusAdd.setItems(list);
+			
+	        ArrayList<AuxiliaryDTO> auxiliaryList = ServicesLocator.getBrandServices().get_brand_all();
+	        ArrayList<String> namesList = new ArrayList<String>();
+	        for (AuxiliaryDTO aux : auxiliaryList) {
+	            namesList.add(aux.getName());
+	        }
+	        ObservableList<String> observableList = FXCollections.observableArrayList(namesList);
+	        cmboxBrandAdd.setItems(observableList);
+	        
+	     // Añades un listener a tu primer ComboBox para que, cuando cambie el valor seleccionado, cambie el contenido del segundo ComboBox
+			cmboxBrandAdd.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+			    @Override
+			    public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
+			        // Aquí obtienes los modelos de la base de datos en función de la marca seleccionada
+			        LinkedList<ModelDTO> models;
+					try {
+						models = ServicesLocator.getModelServices().select_model_by_brand(newValue);
+
+
+			        // Creas una nueva lista para guardar solo los nombres de los modelos
+			        ArrayList<String> namesList = new ArrayList<String>();
+
+			        // Recorres tu lista original y vas añadiendo los nombres a la nueva lista
+			        for (ModelDTO model : models) {
+			            namesList.add(model.getName());
+			        }
+
+			        // Conviertes la lista de nombres a un ObservableList
+			        ObservableList<String> observableList = FXCollections.observableArrayList(namesList);
+
+			        // Añades los nombres al segundo ComboBox
+			        cmboxModelAdd.setItems(observableList);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			    }
+			});
 		}else if(event.getSource() == bttnAddNewDriver) {
 			addNewDriver.setVisible(true);
+			
+			ObservableList<String> list = FXCollections.observableArrayList("B", "C", "D", "E");
+	        cmboxDriverLicenseAdd.setItems(list);
 		}
 	}
 	
@@ -455,12 +521,14 @@ public class DataTableSceneContractController {
 		addNewDriver.setVisible(false);
 	}
 	
-	public void newTouristAdd(ActionEvent event) {
+	public void newTouristAdd(ActionEvent event){
 				
 		txtCountryAdd.setVisible(true);
 		bttnAddNewCountry.setDisable(true);
 		cmboxCountryAdd.setVisible(false);
 		imgCountryAdd.setVisible(false);
+		
+
 
 	}
 	
@@ -479,8 +547,7 @@ public class DataTableSceneContractController {
 				LocalDate endDate = pickdateEndDate.getValue();
 				
 				try {
-					//					ContractDTO contract = new ContractDTO(car, tourist, startDate, endDate, null, payMethod, driver);
-					//					ServicesLocator.getContractsServices().insert_contract(car, tourist, startDate, endDate, null, payMethod, driver);
+//						ServicesLocator.getContractsServices().insert_contract(car, tourist, startDate, endDate, null, payMethod, driver);
 
 					cmboxCarAdd.setValue("");
 					cmboxPayMethodAdd.setValue("");
@@ -506,6 +573,19 @@ public class DataTableSceneContractController {
     }
     
     public void modifyContract(ActionEvent event) throws ClassNotFoundException, SQLException {
+    	
+    	contractTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+    	    if (newSelection != null) {
+    	        ContractDTO selectedContract = contractTable.getSelectionModel().getSelectedItem();
+//    	        if (selectedContract.getAddProrroga() != 0) {
+//    	            bttnProrrogaAcept.setVisible(false);
+//    	        } else {
+//    	            bttnProrrogaAcept.setVisible(true);
+//    	        }
+//    	        EL PROBLEMA AQUI ES QUE DONDE VOY A SACAR YO LA PRORROGA?????
+    	    }
+    	});
+
     	lblErrorEmpty.setVisible(false);
     	lblErrorDate.setVisible(false);
 
@@ -551,6 +631,7 @@ public class DataTableSceneContractController {
     	lblErrorPhone.setVisible(false);
     	lblErrorAge.setVisible(false);
     	lblErrorEmptyTourist.setVisible(false);
+    	
     	
 		if(txtAgeAdd.getText() != "" && txtLastName1Add.getText() != "" && txtLastName2Add.getText() != "" && txtNameAdd.getText() != "" && txtPassportAdd.getText() != "" && txtPhoneAdd.getText() != "" && (cmboxCountryAdd.getValue() != "" || txtCountryAdd.getText() != "") && cmboxSexAdd.getValue() != "") { 
             
@@ -619,21 +700,19 @@ public class DataTableSceneContractController {
 			if(val.ValidatePlate(txtPlateAdd.getText())) {
 				String color = txtColorAdd.getText();
 				String plate = txtPlateAdd.getText();
-				String brand = cmboxBrandAdd.getValue();
-				String situation = cmboxCarStatusAdd.getValue();
-				String model = cmboxModelAdd.getValue();
-
+				int itemBrand = cmboxBrandAdd.getSelectionModel().getSelectedIndex() + 1;
+				int itemSituation = cmboxCarStatusAdd.getSelectionModel().getSelectedIndex() + 1;
+				int itenModel = cmboxModelAdd.getSelectionModel().getSelectedIndex() + 1;
+				
 				try {
-                    ServicesLocator.getCarServices().insert_car(plate, 0, 0, 0, color, 0);
-//                  En realidad, va en este orden (plate, brand, model, 0, color, situation)
+					
+                    ServicesLocator.getCarServices().insert_car(plate, itemBrand, itenModel, 0, color, itemSituation);
+
 					txtColorAdd.setText("");
 					txtPlateAdd.setText("");
 					cmboxBrandAdd.setValue("");
 					cmboxCarStatusAdd.setValue("");
 					cmboxModelAdd.getValue();
-					
-					cmboxCarAdd.setValue(plate);
-
 				}
 				catch(Exception e) {
 					JOptionPane.showMessageDialog(null, e.getMessage());
@@ -656,12 +735,12 @@ public class DataTableSceneContractController {
 				String lastName2 = txtDriverLastName2Add.getText();
 				String id = txtDriverIDAdd.getText();
 				String address = txtDriverAddressAdd.getText();
-				String license = cmboxDriverLicenseAdd.getValue();
-
+				int license = cmboxDriverLicenseAdd.getSelectionModel().getSelectedIndex() + 1;
+				
 				try {
 
-					ServicesLocator.getDriverServices().insert_driver(id, name, lastName1, lastName2, 0, address);
-//                  0 se debe cambiar por license
+					ServicesLocator.getDriverServices().insert_driver(id, name, lastName1, lastName2, license, address);
+
 					txtDriverNameAdd.setText("");
 					txtDriverLastName1Add.setText("");
 					txtDriverLastName2Add.setText("");
