@@ -165,6 +165,8 @@ public class DataTableSceneTouristController {
     
     @FXML
     private Button bttnModifyTourist;
+    
+    
 	
 	private Stage stage;
 	private Scene scene;
@@ -186,12 +188,12 @@ public class DataTableSceneTouristController {
 	    colAddCountry.setCellValueFactory(new PropertyValueFactory<>("País"));
 
 	    // Obtener la lista de turistas
-//	    ArrayList<TouristDTO> list = ServiceLocator.getInstance().getTourists();		
-//	    ObservableList<TouristDTO> touristList = FXCollections.observableArrayList();
-//	    touristList.addAll(list);
-//	    
-//	    // Establecer los elementos de la tabla
-//	    touristTable.setItems(touristList);
+	    ArrayList<TouristDTO> list = ServicesLocator.getTouristServices().get_tourist_all();		
+	    ObservableList<TouristDTO> touristList = FXCollections.observableArrayList();
+	    touristList.addAll(list);
+	    
+	    // Establecer los elementos de la tabla
+	    touristTable.setItems(touristList);
 
 	 // Desactiva los botones al inicio
         bttnDelete.setDisable(true);
@@ -417,8 +419,7 @@ public class DataTableSceneTouristController {
 							ServicesLocator.getTouristServices().insert_tourist(passport, name, lastName1, lastName2, age, sex, contact, cmboxCountryAdd.getItems().size() + 1);
 						}
 						
-
-						
+				
 						txtNameAdd.setText("");
 						txtLastName1Add.setText("");
 						txtLastName2Add.setText("");

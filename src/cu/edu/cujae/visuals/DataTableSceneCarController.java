@@ -151,12 +151,12 @@ public class DataTableSceneCarController {
 		colAddPlate.setCellValueFactory(new PropertyValueFactory<>("Plate"));	   
 
 	    // Obtener la lista de turistas
-//	    ArrayList<CarDTO> list = ServiceLocator.getInstance().getCars();		
-//	    ObservableList<CarDTO> carList = FXCollections.observableArrayList();
-//	    carList.addAll(list);
+	    ArrayList<CarDTO> list = ServicesLocator.getCarServices().selectAllSeasons();	
+	    ObservableList<CarDTO> carList = FXCollections.observableArrayList();
+	    carList.addAll(list);
 //	    
 //	    // Establecer los elementos de la tabla
-//	    carTable.setItems(carList);
+	    carTable.setItems(carList);
 		
 		// Añades un listener a tu primer ComboBox para que, cuando cambie el valor seleccionado, cambie el contenido del segundo ComboBox
 		cmboxBrandAdd.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {

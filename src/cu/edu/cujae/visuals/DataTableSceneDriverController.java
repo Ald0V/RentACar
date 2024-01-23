@@ -2,6 +2,7 @@ package cu.edu.cujae.visuals;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -146,12 +147,12 @@ public class DataTableSceneDriverController {
 	    colAddName.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
 
 	    // Obtener la lista de conductores
-//	    ArrayList<DriverDTO> list = ServiceLocator.getInstance().getDrivers();		
-//	    ObservableList<DriverDTO> driversList = FXCollections.observableArrayList();
-//	    driversList.addAll(list);
+	    ArrayList<DriverDTO> list = ServicesLocator.getDriverServices().get_driver_all();		
+	    ObservableList<DriverDTO> driversList = FXCollections.observableArrayList();
+	    driversList.addAll(list);
 //	    
 //	    // Establecer los elementos de la tabla
-//	    driverTable.setItems(driversList);
+	    driverTable.setItems(driversList);
 
 	 // Desactiva los botones al inicio
         bttnDelete.setDisable(true);

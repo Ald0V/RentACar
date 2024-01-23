@@ -725,7 +725,7 @@ public class MainSceneController {
 		
 		reportsController.getBttnCountry().setDisable(true);
 		reportsController.getCountryPane().setVisible(true);
-//		reportsController.initializeDate();
+		reportsController.initializeCountryTable();
 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
@@ -763,7 +763,7 @@ public class MainSceneController {
 		
 		reportsController.getBttnBrands().setDisable(true);
 		reportsController.getBrandPane().setVisible(true);
-//		reportsController.initializeDate();
+		reportsController.initializeBrandTable();
 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
@@ -801,7 +801,7 @@ public class MainSceneController {
 		
 		reportsController.getBttnModels().setDisable(true);
 		reportsController.getModelPane().setVisible(true);
-//		reportsController.initializeDate();
+		reportsController.initializeModelTable();
 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);

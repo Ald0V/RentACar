@@ -291,12 +291,12 @@ public class DataTableSceneContractController {
 	    colAddTourist.setCellValueFactory(new PropertyValueFactory<>("Tourist"));
 
 	    // Obtener la lista de turistas
-//	    ArrayList<ContractDTO> list = ServiceLocator.getInstance().getContracts();		
-//	    ObservableList<ContractDTO> contractList = FXCollections.observableArrayList();
-//	    contractList.addAll(list);
+	    ArrayList<ContractDTO> list = ServicesLocator.getContractsServices();	
+	    ObservableList<ContractDTO> contractList = FXCollections.observableArrayList();
+	    contractList.addAll(list);
 //	    
 //	    // Establecer los elementos de la tabla
-//	    contractTable.setItems(contractList);
+	    contractTable.setItems(contractList);
 	    bttnModify.setDisable(true);
 	    // Añadir un listener a la propiedad selectedItemProperty
 	    contractTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
