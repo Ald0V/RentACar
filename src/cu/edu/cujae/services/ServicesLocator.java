@@ -97,24 +97,27 @@ public class ServicesLocator {
         return countryServices;
     }
 
-    public static ReportServices getReportServices() {
+    public static ReportServices getReportServices() throws SQLException {
         if (reportServices == null) {
             reportServices = new ReportServices();
         }
         return reportServices;
     }
     
-    public static java.sql.Connection getConnection() {
-		Connec connection = null;
-		try {
-			connection = new Connec("localhost", "JDBC","postgres", "postgres");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return connection.getConnection();
-	}
+    public static java.sql.Connection getConnection() throws SQLException {
+        Connec connection = null;
+        try {
+          connection = new Connec("localhost", "JDBC","postgres", "postgres");
+        } catch (ClassNotFoundException e) {
+          e.printStackTrace();
+        } catch (SQLException e) {
+          e.printStackTrace();
+        }
+        if (connection == null) {
+          throw new SQLException("No se pudo crear la conexión");
+        }
+        return connection.getConnection();
+      }
     
 }
 
