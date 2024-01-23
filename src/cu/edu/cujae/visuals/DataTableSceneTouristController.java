@@ -277,7 +277,7 @@ public class DataTableSceneTouristController {
 		lblName.setText(table);
 	}
 	
-	public void switchForm(ActionEvent event) {
+	public void switchForm(ActionEvent event) throws ClassNotFoundException, SQLException  {
 		
 		if(event.getSource() == bttnModify) {
 			
@@ -289,6 +289,16 @@ public class DataTableSceneTouristController {
 			tableScenePane.setVisible(true);
 	        ObservableList<String> list = FXCollections.observableArrayList("Hombre", "Mujer");
 	        cmboxSexAdd.setItems(list);
+	        
+	        
+	        ArrayList<AuxiliaryDTO> auxiliaryList = ServicesLocator.getCountryServices().get_country_all();
+	        ArrayList<String> namesList = new ArrayList<String>();
+	        for (AuxiliaryDTO aux : auxiliaryList) {
+	            namesList.add(aux.getName());
+	        }
+	        ObservableList<String> observableList = FXCollections.observableArrayList(namesList);
+	        cmboxCountryAdd.setItems(observableList);
+
 	        
 	        bttnAddTourist.setVisible(false);
 			bttnModifyTourist.setVisible(true);
@@ -310,7 +320,18 @@ public class DataTableSceneTouristController {
 			
 	        ObservableList<String> list = FXCollections.observableArrayList("Hombre", "Mujer");
 	        cmboxSexAdd.setItems(list);
-			
+	        
+	        
+	        ArrayList<AuxiliaryDTO> auxiliaryList = ServicesLocator.getCountryServices().get_country_all();
+	        ArrayList<String> namesList = new ArrayList<String>();
+	        for (AuxiliaryDTO aux : auxiliaryList) {
+	            namesList.add(aux.getName());
+	        }
+	        
+	        ObservableList<String> observableList = FXCollections.observableArrayList(namesList);
+	        cmboxCountryAdd.setItems(observableList);
+
+	
 			tableScenePane.setMaxHeight(382);
 			touristTable.setMaxHeight(286);
 				
@@ -332,7 +353,7 @@ public class DataTableSceneTouristController {
 		touristTable.setMaxHeight(554);
 	}
 	
-	public void cancelAdd(ActionEvent event) {
+	public void cancelAdd(ActionEvent event) throws ClassNotFoundException, SQLException {
 		addScenePane.setVisible(true);
 		addParametersScenePane.setVisible(false);
 		bttnAdd.setDisable(false);

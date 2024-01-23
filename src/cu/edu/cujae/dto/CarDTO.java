@@ -2,16 +2,16 @@ package cu.edu.cujae.dto;
 
 public class CarDTO {
 	private String plate;
-    private String brand;
-    private String model;
+    private int brand;
+    private int model;
     private int cantKm;
     private String color;
-    private String situation;
+    private int situation;
 
     public CarDTO() {
     }
 
-    public CarDTO(String plate, String brand, String model, int cantKm, String color, String situation) {
+    public CarDTO(String plate, int brand, int model, int cantKm, String color, int situation) {
         this.plate = plate;
         this.brand = brand;
         this.model = model;
@@ -28,11 +28,11 @@ public class CarDTO {
         this.plate = plate;
     }
 
-    public String getModel() {
+    public int getModel() {
         return model;
     }
 
-    public void setModel(String model) {
+    public void setModel(int model) {
         this.model = model;
     }
 
@@ -52,19 +52,19 @@ public class CarDTO {
         this.color = color;
     }
 
-    public String getSituation() {
+    public int getSituation() {
         return situation;
     }
 
-    public void setSituation(String situation) {
+    public void setSituation(int situation) {
         this.situation = situation;
     }
 
-    public String getBrand() {
+    public int getBrand() {
         return brand;
     }
 
-    public void setBrand(String brand) {
+    public void setBrand(int brand) {
         this.brand = brand;
     }
 

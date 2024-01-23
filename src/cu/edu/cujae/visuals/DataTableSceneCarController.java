@@ -2,6 +2,7 @@ package cu.edu.cujae.visuals;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -167,10 +168,10 @@ public class DataTableSceneCarController {
                 bttnAddCar.setVisible(false);
 	        	
 	        	txtPlateAdd.setText(newValue.getPlate());
-	        	cmboxBrandAdd.setValue(newValue.getBrand());
-	        	cmboxModelAdd.setValue(newValue.getModel());
+//	        	cmboxBrandAdd.setValue(newValue.getBrand());
+//	        	cmboxModelAdd.setValue(newValue.getModel());
 	        	txtColorAdd.setText(newValue.getColor());
-	        	cmboxCarStatusAdd.setValue(newValue.getSituation());
+//	        	cmboxCarStatusAdd.setValue(newValue.getSituation());
 	        } else {
                 // Desactiva los botones cuando no hay ninguna fila seleccionada
                 bttnDelete.setDisable(true);
@@ -231,7 +232,7 @@ public class DataTableSceneCarController {
 		lblName.setText(table);
 	}
 	
-	public void switchForm(ActionEvent event) {
+	public void switchForm(ActionEvent event) throws ClassNotFoundException, SQLException  {
 		
 		if(event.getSource() == bttnModify) {
 			bttnAdd.setDisable(true);
@@ -244,9 +245,26 @@ public class DataTableSceneCarController {
 			bttnAddCar.setVisible(false);
 			bttnModifyCar.setVisible(true);
 			
+	        ArrayList<AuxiliaryDTO> auxiliaryList = ServicesLocator.getBrandServices().get_brand_all();
+	        ArrayList<String> namesList = new ArrayList<String>();
+	        for (AuxiliaryDTO aux : auxiliaryList) {
+	            namesList.add(aux.getName());
+	        }
+	        ObservableList<String> observableList = FXCollections.observableArrayList(namesList);
+	        cmboxBrandAdd.setItems(observableList);
+	        
+	        //Si no sirve lo que le dije a Brenda
+	        ArrayList<ModelDTO> auxiliaryList2 = ServicesLocator.getModelServices().get_model_all();
+	        ArrayList<String> namesList2 = new ArrayList<String>();
+	        for (ModelDTO aux2 : auxiliaryList2) {
+	            namesList2.add(aux2.getName());
+	        }
+	        ObservableList<String> observableList2 = FXCollections.observableArrayList(namesList2);
+	        cmboxBrandAdd.setItems(observableList2);
+		
 			tableScenePane.setMaxHeight(382);
 			carTable.setMaxHeight(286);
-			ObservableList<String> list = FXCollections.observableArrayList("En taller", "Alquilado", "Disponible");
+			ObservableList<String> list = FXCollections.observableArrayList("Disponible", "Alquilado", "En taller");
 			cmboxCarStatusAdd.setItems(list);
 			
 		}else if(event.getSource() == bttnAdd){
@@ -256,13 +274,33 @@ public class DataTableSceneCarController {
 			addScenePane.setVisible(true);
 			addParametersScenePane.setVisible(true);
 			tableScenePane.setVisible(true);
+			cmboxModelAdd.setDisable(true);
 			
 			bttnAddCar.setVisible(true);
 			bttnModifyCar.setVisible(false);
 			
+			
+	        ArrayList<AuxiliaryDTO> auxiliaryList = ServicesLocator.getBrandServices().get_brand_all();
+	        ArrayList<String> namesList = new ArrayList<String>();
+	        for (AuxiliaryDTO aux : auxiliaryList) {
+	            namesList.add(aux.getName());
+	        }
+	        ObservableList<String> observableList = FXCollections.observableArrayList(namesList);
+	        cmboxBrandAdd.setItems(observableList);
+	        
+	        //Si no sirve lo que le dije a Brenda
+	        ArrayList<ModelDTO> auxiliaryList2 = ServicesLocator.getModelServices().get_model_all();
+	        ArrayList<String> namesList2 = new ArrayList<String>();
+	        for (ModelDTO aux2 : auxiliaryList2) {
+	            namesList2.add(aux2.getName());
+	        }
+	        ObservableList<String> observableList2 = FXCollections.observableArrayList(namesList2);
+	        cmboxBrandAdd.setItems(observableList2);
+			
+			
 			tableScenePane.setMaxHeight(382);
 			carTable.setMaxHeight(286);
-			ObservableList<String> list = FXCollections.observableArrayList("En taller", "Alquilado", "Disponible");
+			ObservableList<String> list = FXCollections.observableArrayList("Disponible", "Alquilado", "En taller");
 			cmboxCarStatusAdd.setItems(list);
 			
 		}
@@ -292,13 +330,14 @@ public class DataTableSceneCarController {
 			if(val.ValidatePlate(txtPlateAdd.getText())) {
 				String color = txtColorAdd.getText();
 				String plate = txtPlateAdd.getText();
-				String brand = cmboxBrandAdd.getValue();
-				String situation = cmboxCarStatusAdd.getValue();
-				String model = cmboxModelAdd.getValue();
-
+				int itemBrand = cmboxBrandAdd.getSelectionModel().getSelectedIndex() + 1;
+				int itemSituation = cmboxCarStatusAdd.getSelectionModel().getSelectedIndex() + 1;
+				int itenModel = cmboxModelAdd.getSelectionModel().getSelectedIndex() + 1;
+				
 				try {
-                    ServicesLocator.getCarServices().insert_car(plate, 0, 0, 0, color, 0);
-//                  En realidad, va en este orden (plate, brand, model, 0, color, situation)
+					
+                    ServicesLocator.getCarServices().insert_car(plate, itemBrand, itenModel, 0, color, itemSituation);
+
 					txtColorAdd.setText("");
 					txtPlateAdd.setText("");
 					cmboxBrandAdd.setValue("");
@@ -330,13 +369,13 @@ public class DataTableSceneCarController {
 			if(val.ValidatePlate(txtPlateAdd.getText())) {
 				String color = txtColorAdd.getText();
 				String plate = txtPlateAdd.getText();
-				String brand = cmboxBrandAdd.getValue();
-				String situation = cmboxCarStatusAdd.getValue();
-				String model = cmboxModelAdd.getValue();
-
+				int itemBrand = cmboxBrandAdd.getSelectionModel().getSelectedIndex() + 1;
+				int itemSituation = cmboxCarStatusAdd.getSelectionModel().getSelectedIndex() + 1;
+				int itenModel = cmboxModelAdd.getSelectionModel().getSelectedIndex() + 1;
+				
 				try {
-					ServicesLocator.getCarServices().update_car(plate, 0, 0, 0, color, 0);
-//                  En realidad, va en este orden (plate, brand, model, 0, color, situation)
+					
+                    ServicesLocator.getCarServices().update_car(plate, itemBrand, itenModel, 0, color, itemSituation);
 
 					txtColorAdd.setText("");
 					txtPlateAdd.setText("");

@@ -379,6 +379,7 @@ public class DataTableSceneContractController {
 			addParametersScenePane.setVisible(true);
 			tableScenePane.setVisible(true);
 			
+			
 			bttnAddContract.setVisible(false);
 			bttnModifyContract.setVisible(true);
 			bttnCloseContract.setVisible(true);
