@@ -3,6 +3,7 @@ package cu.edu.cujae.visuals;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
@@ -138,6 +139,8 @@ public class DataTableSceneCarController {
 	private Scene scene;
 	private Parent root;
 	
+	private int km;
+	
 
 	Validator val = new Validator();
 
@@ -252,6 +255,8 @@ public class DataTableSceneCarController {
 	        	cmboxModelAdd.setValue(newValue.getModel());
 	        	txtColorAdd.setText(newValue.getColor());
 	        	cmboxCarStatusAdd.setValue(newValue.getSituation());
+	        	km=newValue.getKm();
+	        	
 	        } else {
                 // Desactiva los botones cuando no hay ninguna fila seleccionada
                 bttnDelete.setDisable(true);
@@ -325,7 +330,7 @@ public class DataTableSceneCarController {
 			bttnAddCar.setVisible(false);
 			bttnModifyCar.setVisible(true);
 			
-			ObservableList<String> list = FXCollections.observableArrayList("Disponible", "Alquilado", "En taller");
+			ObservableList<String> list = FXCollections.observableArrayList("disponible", "alquilado", "en taller");
 			cmboxCarStatusAdd.setItems(list);
 			
 	        ArrayList<AuxiliaryDTO> auxiliaryList = ServicesLocator.getBrandServices().get_brand_all();
@@ -354,7 +359,7 @@ public class DataTableSceneCarController {
 			bttnAddCar.setVisible(true);
 			bttnModifyCar.setVisible(false);
 			
-			ObservableList<String> list = FXCollections.observableArrayList("Disponible", "Alquilado", "En taller");
+			ObservableList<String> list = FXCollections.observableArrayList("disponible", "alquilado", "en taller");
 			cmboxCarStatusAdd.setItems(list);
 			
 			lblErrorPlate.setVisible(false);
@@ -396,7 +401,7 @@ public class DataTableSceneCarController {
 		carTable.setMaxHeight(554);
 	}
 	
-	public void insertCar(ActionEvent event) {
+	public void insertCar(ActionEvent event) throws SQLException {
 		lblErrorPlate.setVisible(false);
 		lblErrorEmpty.setVisible(false);
 
@@ -404,13 +409,26 @@ public class DataTableSceneCarController {
 			if(val.ValidatePlate(txtPlateAdd.getText())) {
 				String color = txtColorAdd.getText();
 				String plate = txtPlateAdd.getText();
-				int itemBrand = cmboxBrandAdd.getSelectionModel().getSelectedIndex() + 4;
+				int itemBrand = cmboxBrandAdd.getSelectionModel().getSelectedIndex() + 5;
+				
 				int itemSituation = cmboxCarStatusAdd.getSelectionModel().getSelectedIndex() + 4;
-				int itenModel = cmboxModelAdd.getSelectionModel().getSelectedIndex() + 1;
+				String brand = (String)cmboxBrandAdd.getValue();
+				
+				int codeModel = cmboxModelAdd.getSelectionModel().getSelectedIndex();
+				
+				LinkedList<ModelDTO> models;
+				System.out.println(brand);
+				models = ServicesLocator.getModelServices().select_model_by_brand(brand);
+				ArrayList<Integer> codeList = new ArrayList<Integer>();
+		        for (ModelDTO modelaux : models) {
+		        	codeList.add(modelaux.getId());
+		        }
+		        int modelSelection = codeList.get(codeModel);
+		        
 				
 				try {
-					
-                    ServicesLocator.getCarServices().insert_car(plate, itemBrand, itenModel, 0, color, itemSituation);
+					System.out.println(itemSituation);
+                    ServicesLocator.getCarServices().insert_car(plate, itemBrand, modelSelection, 0, color, itemSituation);
 
 					txtColorAdd.setText("");
 					txtPlateAdd.setText("");
@@ -436,21 +454,46 @@ public class DataTableSceneCarController {
 
 	}
 	
-	public void modifyCar(ActionEvent event) {
+	public void modifyCar(ActionEvent event) throws SQLException {
 		lblErrorPlate.setVisible(false);
 		lblErrorEmpty.setVisible(false);
 
 		if(txtColorAdd.getText() != "" && txtPlateAdd.getText() != "" && cmboxBrandAdd.getValue() != "" && cmboxCarStatusAdd.getValue() != "" && cmboxModelAdd.getValue() != "" ) {
 			if(val.ValidatePlate(txtPlateAdd.getText())) {
+//				String color = txtColorAdd.getText();
+//				String plate = txtPlateAdd.getText();
+//				int itemBrand = cmboxBrandAdd.getSelectionModel().getSelectedIndex() + 4;
+//				int itemSituation = cmboxCarStatusAdd.getSelectionModel().getSelectedIndex() + 4;
+//				int itenModel = cmboxModelAdd.getSelectionModel().getSelectedIndex() + 1;
 				String color = txtColorAdd.getText();
 				String plate = txtPlateAdd.getText();
-				int itemBrand = cmboxBrandAdd.getSelectionModel().getSelectedIndex() + 4;
+				int itemBrand = cmboxBrandAdd.getSelectionModel().getSelectedIndex() + 5;
 				int itemSituation = cmboxCarStatusAdd.getSelectionModel().getSelectedIndex() + 4;
-				int itenModel = cmboxModelAdd.getSelectionModel().getSelectedIndex() + 1;
+				System.out.println(cmboxCarStatusAdd.getSelectionModel().getSelectedIndex());
+				String brand = (String)cmboxBrandAdd.getValue();
+				
+				int codeModel = cmboxModelAdd.getSelectionModel().getSelectedIndex();
+				
+				LinkedList<ModelDTO> models;
+				System.out.println(brand);
+				models = ServicesLocator.getModelServices().select_model_by_brand(brand);
+				ArrayList<Integer> codeList = new ArrayList<Integer>();
+		        for (ModelDTO modelaux : models) {
+		        	codeList.add(modelaux.getId());
+		        }
+		        int modelSelection = codeList.get(codeModel);
 				
 				try {
 					
-                    ServicesLocator.getCarServices().update_car(plate, itemBrand, itenModel, 0, color, itemSituation);
+//                    ServicesLocator.getCarServices().update_car(plate, itemBrand, itenModel, 0, color, itemSituation);
+//
+//					txtColorAdd.setText("");
+//					txtPlateAdd.setText("");
+//					cmboxBrandAdd.setValue("");
+//					cmboxCarStatusAdd.setValue("");
+//					cmboxModelAdd.setValue("");
+					System.out.println(itemSituation);
+					ServicesLocator.getCarServices().update_car(plate, itemBrand, modelSelection, km, color, itemSituation);
 
 					txtColorAdd.setText("");
 					txtPlateAdd.setText("");
@@ -465,7 +508,8 @@ public class DataTableSceneCarController {
 					}
 				}
 				catch(Exception e) {
-					JOptionPane.showMessageDialog(null, Validator.formatError(e));
+					//JOptionPane.showMessageDialog(null, Validator.formatError(e));
+					e.printStackTrace();
 				}
 
 			}

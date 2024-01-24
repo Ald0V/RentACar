@@ -20,7 +20,7 @@ public class CarAux {
 		setPlate(car.getPlate());
 		setColor(car.getColor());
 		setKm(car.getCantKm());
-		setModel(ServicesLocator.getModelServices().get_model_by_id(car.getBrand()));
+		setModel(ServicesLocator.getModelServices().get_model_by_id(car.getModel()));
 		setSituation(ServicesLocator.getSituationServices().get_situation_by_id(car.getSituation()));
 		setBrand(ServicesLocator.getBrandServices().get_brand_by_id(car.getBrand()));
 		
