@@ -11,6 +11,7 @@ import cu.edu.cujae.dto.AuxiliaryDTO;
 import cu.edu.cujae.dto.CarDTO;
 import cu.edu.cujae.dto.ModelDTO;
 import cu.edu.cujae.services.ServicesLocator;
+import cu.edu.cujae.utils.CarAux;
 import cu.edu.cujae.utils.Validator;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -53,7 +54,7 @@ public class DataTableSceneCarController {
     private AnchorPane addParametersScenePane;
     
     @FXML
-    private TableView<CarDTO> carTable;
+    private TableView<CarAux> carTable;
     
     @FXML
     private TextField search;
@@ -81,25 +82,26 @@ public class DataTableSceneCarController {
 //0ºººººººººººººººº0 
     
     @FXML
-    private TableColumn<CarDTO, String> colAddBrand;
+    private TableColumn<CarAux, String> colAddBrand;
 
     @FXML
-    private TableColumn<CarDTO, String> colAddCarSituation;
+    private TableColumn<CarAux, String> colAddCarSituation;
 
     @FXML
-    private TableColumn<CarDTO, String> colAddColor;
+    private TableColumn<CarAux, String> colAddColor;
+
+//    ?????
+    @FXML
+    private TableColumn<CarAux, Integer> colAddKM;
 
     @FXML
-    private TableColumn<CarDTO, Integer> colAddKM;
+    private TableColumn<CarAux, String> colAddModel;
 
     @FXML
-    private TableColumn<CarDTO, String> colAddModel;
-
-    @FXML
-    private TableColumn<CarDTO, String> colAddPlate;
+    private TableColumn<CarAux, String> colAddPlate;
     
     @FXML
-    private TableColumn<CarDTO, Integer> colCantKm;
+    private TableColumn<CarAux, Integer> colCantKm;
  
 //*****************    
 //*   ADD PANE    *
@@ -148,16 +150,23 @@ public class DataTableSceneCarController {
 		colAddColor.setCellValueFactory(new PropertyValueFactory<>("Color"));
 		colAddModel.setCellValueFactory(new PropertyValueFactory<>("Model"));
 		colAddPlate.setCellValueFactory(new PropertyValueFactory<>("Plate"));
-		colCantKm.setCellValueFactory(new PropertyValueFactory<>("CantKm"));
+		colCantKm.setCellValueFactory(new PropertyValueFactory<>("Km"));
 
 		// Desactiva los botones al inicio
         bttnDelete.setDisable(true);
         bttnModify.setDisable(true);
 
 	    // Obtener la lista de turistas
-	    ArrayList<CarDTO> list = ServicesLocator.getCarServices().get_car_all();	
-	    ObservableList<CarDTO> carList = FXCollections.observableArrayList();
-	    carList.addAll(list);
+	    ArrayList<CarDTO> list = ServicesLocator.getCarServices().get_car_all();
+	    ArrayList<CarAux> listaux = new ArrayList<CarAux>();
+	    
+	    for (CarDTO a : list) {
+			listaux.add(new CarAux(a));
+		}
+	    
+	    
+	    ObservableList<CarAux> carList = FXCollections.observableArrayList();
+	    carList.addAll(listaux);
 //	    
 //	    // Establecer los elementos de la tabla
 	    carTable.setItems(carList);
@@ -239,10 +248,10 @@ public class DataTableSceneCarController {
                 bttnAddCar.setVisible(false);
 	        	
 	        	txtPlateAdd.setText(newValue.getPlate());
-//	        	cmboxBrandAdd.setValue(newValue.getBrand());
-//	        	cmboxModelAdd.setValue(newValue.getModel());
+	        	cmboxBrandAdd.setValue(newValue.getBrand());
+	        	cmboxModelAdd.setValue(newValue.getModel());
 	        	txtColorAdd.setText(newValue.getColor());
-//	        	cmboxCarStatusAdd.setValue(newValue.getSituation());
+	        	cmboxCarStatusAdd.setValue(newValue.getSituation());
 	        } else {
                 // Desactiva los botones cuando no hay ninguna fila seleccionada
                 bttnDelete.setDisable(true);
@@ -395,7 +404,7 @@ public class DataTableSceneCarController {
 			if(val.ValidatePlate(txtPlateAdd.getText())) {
 				String color = txtColorAdd.getText();
 				String plate = txtPlateAdd.getText();
-				int itemBrand = cmboxBrandAdd.getSelectionModel().getSelectedIndex() + 1;
+				int itemBrand = cmboxBrandAdd.getSelectionModel().getSelectedIndex() + 4;
 				int itemSituation = cmboxCarStatusAdd.getSelectionModel().getSelectedIndex() + 4;
 				int itenModel = cmboxModelAdd.getSelectionModel().getSelectedIndex() + 1;
 				
@@ -407,7 +416,7 @@ public class DataTableSceneCarController {
 					txtPlateAdd.setText("");
 					cmboxBrandAdd.setValue("");
 					cmboxCarStatusAdd.setValue("");
-					cmboxModelAdd.getValue();
+					cmboxModelAdd.setValue("");
 
 					try {
 						carTableChargeData();
@@ -417,6 +426,7 @@ public class DataTableSceneCarController {
 				}
 				catch(Exception e) {
 					JOptionPane.showMessageDialog(null, e.getMessage());
+					e.printStackTrace();
 				}
 
 			}else
@@ -434,7 +444,7 @@ public class DataTableSceneCarController {
 			if(val.ValidatePlate(txtPlateAdd.getText())) {
 				String color = txtColorAdd.getText();
 				String plate = txtPlateAdd.getText();
-				int itemBrand = cmboxBrandAdd.getSelectionModel().getSelectedIndex() + 1;
+				int itemBrand = cmboxBrandAdd.getSelectionModel().getSelectedIndex() + 4;
 				int itemSituation = cmboxCarStatusAdd.getSelectionModel().getSelectedIndex() + 4;
 				int itenModel = cmboxModelAdd.getSelectionModel().getSelectedIndex() + 1;
 				
@@ -446,7 +456,7 @@ public class DataTableSceneCarController {
 					txtPlateAdd.setText("");
 					cmboxBrandAdd.setValue("");
 					cmboxCarStatusAdd.setValue("");
-					cmboxModelAdd.getValue();
+					cmboxModelAdd.setValue("");
 
 					try {
 						carTableChargeData();
@@ -455,7 +465,7 @@ public class DataTableSceneCarController {
 					}
 				}
 				catch(Exception e) {
-					JOptionPane.showMessageDialog(null, e.getMessage());
+					JOptionPane.showMessageDialog(null, Validator.formatError(e));
 				}
 
 			}
@@ -466,14 +476,14 @@ public class DataTableSceneCarController {
 	}
 	
     public void deleteCar(ActionEvent event) throws ClassNotFoundException, SQLException {
-        ObservableList<CarDTO> allCarss, singleCar;
+        ObservableList<CarAux> allCarss, singleCar;
         allCarss = carTable.getItems();
         singleCar = carTable.getSelectionModel().getSelectedItems();
         
 
         if (singleCar.size() == 1) {
         	singleCar.forEach(allCarss::remove);
-        	CarDTO deleteCar= singleCar.get(0);
+        	CarAux deleteCar= singleCar.get(0);
             ServicesLocator.getCarServices().delete_car(deleteCar.getPlate());
         } else {
         	JOptionPane.showMessageDialog(null, "Solo se puede eliminar un carro a la vez");

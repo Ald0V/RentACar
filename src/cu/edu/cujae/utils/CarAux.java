@@ -1,5 +1,9 @@
 package cu.edu.cujae.utils;
 
+import java.sql.SQLException;
+
+import cu.edu.cujae.dto.CarDTO;
+import cu.edu.cujae.services.ServicesLocator;
 
 public class CarAux {
 	
@@ -7,8 +11,20 @@ public class CarAux {
 	private String brand;
 	private String model;
 	private String color;
+	private String situation;
 	private int km;
 	
+	
+	
+	public CarAux(CarDTO car) throws ClassNotFoundException, SQLException {
+		setPlate(car.getPlate());
+		setColor(car.getColor());
+		setKm(car.getCantKm());
+		setModel(ServicesLocator.getModelServices().get_model_by_id(car.getBrand()));
+		setSituation(ServicesLocator.getSituationServices().get_situation_by_id(car.getSituation()));
+		setBrand(ServicesLocator.getBrandServices().get_brand_by_id(car.getBrand()));
+		
+	}
 	
 	public String getPlate() {
 		return plate;
@@ -39,6 +55,14 @@ public class CarAux {
 	}
 	public void setKm(int km) {
 		this.km = km;
+	}
+
+	public String getSituation() {
+		return situation;
+	}
+
+	public void setSituation(String situation) {
+		this.situation = situation;
 	}
 
 }

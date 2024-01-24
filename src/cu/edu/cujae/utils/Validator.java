@@ -53,6 +53,11 @@ public  class Validator {
         // Retorna verdadero si la segunda fecha es posterior a la primera fecha
         return secondDate.isAfter(firstDate);
     }
+    
+	public static String formatError(Exception e) {
+		String errorMessage = e.getMessage().split("\n")[0];
+		return errorMessage;
+	}
 
 
     }

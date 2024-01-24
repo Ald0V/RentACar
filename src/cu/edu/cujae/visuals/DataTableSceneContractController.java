@@ -725,7 +725,7 @@ public class DataTableSceneContractController {
 					txtPlateAdd.setText("");
 					cmboxBrandAdd.setValue("");
 					cmboxCarStatusAdd.setValue("");
-					cmboxModelAdd.getValue();
+					cmboxModelAdd.setValue("");
 				}
 				catch(Exception e) {
 					JOptionPane.showMessageDialog(null, e.getMessage());

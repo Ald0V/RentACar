@@ -74,5 +74,26 @@ public LinkedList<ModelDTO> select_model_by_brand(String brand) throws SQLExcept
     return List;
 }
 
+public String get_model_by_id (int id)throws SQLException, ClassNotFoundException{
+    String model = null;
+    
+    String function = "{?= call get_model_by_id(?)}";
+    java.sql.Connection connection = ServicesLocator.getConexion();
+    connection.setAutoCommit(false);
+    CallableStatement preparedFunction = connection.prepareCall(function);
+    preparedFunction.registerOutParameter(1, java.sql.Types.OTHER);
+    preparedFunction.setInt(2,id);
+    preparedFunction.execute();
+    ResultSet rs = (ResultSet) preparedFunction.getObject(1);
+    while (rs.next()){
+        model = rs.getString(1);
+    }
+    rs.close();
+    preparedFunction.close();
+    connection.close();
+    
+    return model;
+    
+}
     
 }

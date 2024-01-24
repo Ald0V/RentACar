@@ -47,5 +47,27 @@ public ArrayList<AuxiliaryDTO> get_brand_all() throws SQLException, ClassNotFoun
     return lodgings;
 }
 
+public String get_brand_by_id (int id)throws SQLException, ClassNotFoundException{
+    String brand = null;
+    
+    String function = "{?= call get_brand_by_id(?)}";
+    java.sql.Connection connection = ServicesLocator.getConexion();
+    connection.setAutoCommit(false);
+    CallableStatement preparedFunction = connection.prepareCall(function);
+    preparedFunction.registerOutParameter(1, java.sql.Types.OTHER);
+    preparedFunction.setInt(2,id);
+    preparedFunction.execute();
+    ResultSet rs = (ResultSet) preparedFunction.getObject(1);
+    while (rs.next()){
+        brand = rs.getString(1);
+    }
+    rs.close();
+    preparedFunction.close();
+    connection.close();
+    
+    return brand;
+    
+}
+
     
 }
