@@ -12,7 +12,7 @@ public class UserServices {
     public void insert_user(String username, String email, String password, String rol) 
 			throws SQLException, ClassNotFoundException{
 		String query = "SELECT insert_user(?,?,?,?)";
-		java.sql.Connection connection = ServicesLocator.getConnection();
+		java.sql.Connection connection = ServicesLocator.getConexion();
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setString(1, username);
         preparedStatement.setString(2, email);
@@ -27,7 +27,7 @@ public class UserServices {
 	public void update_user(String username, String email, String password, String rol) 
 			throws SQLException, ClassNotFoundException{
 		String query = "SELECT update_user(?,?,?,?)";
-		java.sql.Connection connection = ServicesLocator.getConnection();
+		java.sql.Connection connection = ServicesLocator.getConexion();
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setString(1, username);
         preparedStatement.setString(2, email);
@@ -42,7 +42,7 @@ public class UserServices {
 	public ArrayList<UserDTO> get_user_all() throws SQLException, ClassNotFoundException{
 		ArrayList<UserDTO> lodgings = new ArrayList<UserDTO>();
 		String function = "{?= call get_user_all()}";
-		java.sql.Connection connection = ServicesLocator.getConnection();
+		java.sql.Connection connection = ServicesLocator.getConexion();
 		connection.setAutoCommit(false);
 		CallableStatement preparedFunction = connection.prepareCall(function);
 		preparedFunction.registerOutParameter(1, java.sql.Types.OTHER);

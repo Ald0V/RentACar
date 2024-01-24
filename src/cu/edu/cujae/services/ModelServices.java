@@ -12,7 +12,7 @@ import cu.edu.cujae.dto.ModelDTO;
 public class ModelServices {
     public void insert_model(int brand, String name) throws SQLException, ClassNotFoundException{
     String query = "SELECT insert_model(?, ?)";
-    java.sql.Connection connection = ServicesLocator.getConnection();
+    java.sql.Connection connection = ServicesLocator.getConexion();
     PreparedStatement preparedStatement = connection.prepareStatement(query);
     preparedStatement.setInt(1, brand);
     preparedStatement.setString(2, name);
@@ -23,7 +23,7 @@ public class ModelServices {
 
 public void delete_model(String name) throws SQLException, ClassNotFoundException{
     String query = "SELECT delete_model(?)";
-    java.sql.Connection connection = ServicesLocator.getConnection();
+    java.sql.Connection connection = ServicesLocator.getConexion();
     PreparedStatement preparedStatement = connection.prepareStatement(query);
     preparedStatement.setString(1, name);
     preparedStatement.execute();
@@ -34,7 +34,7 @@ public void delete_model(String name) throws SQLException, ClassNotFoundExceptio
 public ArrayList<ModelDTO> get_model_all() throws SQLException, ClassNotFoundException{
     ArrayList<ModelDTO> lodgings = new ArrayList<ModelDTO>();
     String function = "{?= call get_model_all()}";
-    java.sql.Connection connection = ServicesLocator.getConnection();
+    java.sql.Connection connection = ServicesLocator.getConexion();
     connection.setAutoCommit(false);
     CallableStatement preparedFunction = connection.prepareCall(function);
     preparedFunction.registerOutParameter(1, java.sql.Types.OTHER);
@@ -49,27 +49,30 @@ public ArrayList<ModelDTO> get_model_all() throws SQLException, ClassNotFoundExc
     return lodgings;
 }
 
-public  LinkedList<ModelDTO> select_model_by_brand(String brand) throws SQLException{
+public LinkedList<ModelDTO> select_model_by_brand(String brand) throws SQLException {
     LinkedList<ModelDTO> List = new LinkedList<ModelDTO>();
-        java.sql.Connection connection = ServicesLocator.getConnection();
-        String sql = "SELECT model.*" +
-        "FROM model INNER JOIN brand ON model.brand_id = brand.id" +
-        "WHERE brand.name = '?;";
+    java.sql.Connection connection = ServicesLocator.getConexion();
+    String sql = "SELECT model.*, brand.id " +
+    		"FROM model INNER JOIN brand ON model.brand_id = brand.id " +
+    		"WHERE brand.name = ?;";
+
     PreparedStatement statement = connection.prepareStatement(sql);
     statement.setString(1, brand);
     statement.execute();
     ResultSet resultSet = statement.executeQuery();
     while (resultSet.next()) {
-      ModelDTO c = new ModelDTO(resultSet.getInt("idbrand"),
-                        resultSet.getInt("id"),
-                        resultSet.getString("name"));
+    	  ModelDTO c = new ModelDTO(resultSet.getInt("id"),
+    	                    resultSet.getInt("id"),
+    	                    resultSet.getString("name"));
 
-      List.add(c);
-    }
+    	  List.add(c);
+    	}
+
     resultSet.close();
     statement.close();
-    
+
     return List;
-  }
+}
+
     
 }

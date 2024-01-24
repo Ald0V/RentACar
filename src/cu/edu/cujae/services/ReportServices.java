@@ -16,7 +16,7 @@ public class ReportServices {
 	public ReportServices() {
 	 super();
 	 try {
-		this.myConnection = ServicesLocator.getConnection();
+		this.myConnection = ServicesLocator.getConexion();
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

@@ -11,7 +11,6 @@ import cu.edu.cujae.dto.AuxiliaryDTO;
 import cu.edu.cujae.dto.CarDTO;
 import cu.edu.cujae.dto.ModelDTO;
 import cu.edu.cujae.services.ServicesLocator;
-import cu.edu.cujae.utils.TouristAux;
 import cu.edu.cujae.utils.Validator;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -144,18 +143,19 @@ public class DataTableSceneCarController {
 	@SuppressWarnings("unchecked")
 	private void carTableChargeData() throws ClassNotFoundException, SQLException {	
 	    // Configurar cellValueFactory para cada columna
-		colAddBrand.setCellValueFactory(new PropertyValueFactory<>("CarsBrand"));
+		colAddBrand.setCellValueFactory(new PropertyValueFactory<>("Brand"));
 		colAddCarSituation.setCellValueFactory(new PropertyValueFactory<>("Situation"));
 		colAddColor.setCellValueFactory(new PropertyValueFactory<>("Color"));
 		colAddModel.setCellValueFactory(new PropertyValueFactory<>("Model"));
 		colAddPlate.setCellValueFactory(new PropertyValueFactory<>("Plate"));
+		colCantKm.setCellValueFactory(new PropertyValueFactory<>("CantKm"));
 
 		// Desactiva los botones al inicio
         bttnDelete.setDisable(true);
         bttnModify.setDisable(true);
 
 	    // Obtener la lista de turistas
-	    ArrayList<CarDTO> list = ServicesLocator.getCarServices().selectAllSeasons();	
+	    ArrayList<CarDTO> list = ServicesLocator.getCarServices().get_car_all();	
 	    ObservableList<CarDTO> carList = FXCollections.observableArrayList();
 	    carList.addAll(list);
 //	    
@@ -191,6 +191,43 @@ public class DataTableSceneCarController {
 				}
 		    }
 		});
+	    
+//	    cmboxBrandAdd.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+//	        @Override
+//	        public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
+//	            // Imprime los valores antiguo y nuevo cada vez que cambia la selección
+//	            System.out.println("Valor antiguo: " + oldValue);
+//	            System.out.println("Valor nuevo: " + newValue);
+//
+//	            // Aquí obtienes los modelos de la base de datos en función de la marca seleccionada
+//	            LinkedList<ModelDTO> models;
+//	            try {
+//	                models = ServicesLocator.getModelServices().select_model_by_brand(newValue);
+//
+//	                // Imprime el número de modelos recuperados
+//	                System.out.println("Número de modelos recuperados: " + models.size());
+//
+//	                // Creas una nueva lista para guardar solo los nombres de los modelos
+//	                ArrayList<String> namesList = new ArrayList<String>();
+//
+//	                // Recorres tu lista original y vas añadiendo los nombres a la nueva lista
+//	                for (ModelDTO model : models) {
+//	                    namesList.add(model.getName());
+//	                }
+//
+//	                // Conviertes la lista de nombres a un ObservableList
+//	                ObservableList<String> observableList = FXCollections.observableArrayList(namesList);
+//
+//	                // Añades los nombres al segundo ComboBox
+//	                cmboxModelAdd.setItems(observableList);
+//	            } catch (SQLException e) {
+//	                // Imprime el mensaje de error
+//	                System.out.println("Error al recuperar los modelos: " + e.getMessage());
+//	                e.printStackTrace();
+//	            }
+//	        }
+//	    });
+
 
 
 	    // Añadir un listener a la propiedad selectedItemProperty
@@ -311,6 +348,9 @@ public class DataTableSceneCarController {
 			ObservableList<String> list = FXCollections.observableArrayList("Disponible", "Alquilado", "En taller");
 			cmboxCarStatusAdd.setItems(list);
 			
+			lblErrorPlate.setVisible(false);
+			lblErrorEmpty.setVisible(false);
+			
 			
 	        ArrayList<AuxiliaryDTO> auxiliaryList = ServicesLocator.getBrandServices().get_brand_all();
 	        ArrayList<String> namesList = new ArrayList<String>();
@@ -323,6 +363,9 @@ public class DataTableSceneCarController {
 			
 			tableScenePane.setMaxHeight(382);
 			carTable.setMaxHeight(286);
+			
+			lblErrorPlate.setVisible(false);
+			lblErrorEmpty.setVisible(false);
 
 			
 		}
@@ -353,7 +396,7 @@ public class DataTableSceneCarController {
 				String color = txtColorAdd.getText();
 				String plate = txtPlateAdd.getText();
 				int itemBrand = cmboxBrandAdd.getSelectionModel().getSelectedIndex() + 1;
-				int itemSituation = cmboxCarStatusAdd.getSelectionModel().getSelectedIndex() + 1;
+				int itemSituation = cmboxCarStatusAdd.getSelectionModel().getSelectedIndex() + 4;
 				int itenModel = cmboxModelAdd.getSelectionModel().getSelectedIndex() + 1;
 				
 				try {
@@ -392,7 +435,7 @@ public class DataTableSceneCarController {
 				String color = txtColorAdd.getText();
 				String plate = txtPlateAdd.getText();
 				int itemBrand = cmboxBrandAdd.getSelectionModel().getSelectedIndex() + 1;
-				int itemSituation = cmboxCarStatusAdd.getSelectionModel().getSelectedIndex() + 1;
+				int itemSituation = cmboxCarStatusAdd.getSelectionModel().getSelectedIndex() + 4;
 				int itenModel = cmboxModelAdd.getSelectionModel().getSelectedIndex() + 1;
 				
 				try {
@@ -421,17 +464,20 @@ public class DataTableSceneCarController {
 		}else
 			lblErrorEmpty.setVisible(true);
 	}
-    
+	
     public void deleteCar(ActionEvent event) throws ClassNotFoundException, SQLException {
         ObservableList<CarDTO> allCarss, singleCar;
         allCarss = carTable.getItems();
         singleCar = carTable.getSelectionModel().getSelectedItems();
+        
 
-        if (singleCar.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Primero se debe seleccionar un item");
+        if (singleCar.size() == 1) {
+        	singleCar.forEach(allCarss::remove);
+        	CarDTO deleteCar= singleCar.get(0);
+            ServicesLocator.getCarServices().delete_car(deleteCar.getPlate());
         } else {
-            singleCar.forEach(allCarss::remove);
+        	JOptionPane.showMessageDialog(null, "Solo se puede eliminar un carro a la vez");
         }
-    }
+    }	
 }
 

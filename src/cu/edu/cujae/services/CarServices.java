@@ -16,7 +16,7 @@ public class CarServices {
     public void insert_car(String plate, int brand, int model, int km, String color, int situation) 
 			throws SQLException, ClassNotFoundException{
 		String query = "SELECT insert_car(?,?,?,?,?,?)";
-		java.sql.Connection connection = ServicesLocator.getConnection();
+		java.sql.Connection connection = ServicesLocator.getConexion();
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setString(1, plate);
         preparedStatement.setInt(2, brand);
@@ -29,11 +29,11 @@ public class CarServices {
 		connection.close();
 	}
 	
-	public void delete_car(int seasonCode) throws SQLException, ClassNotFoundException{
+	public void delete_car(String seasonCode) throws SQLException, ClassNotFoundException{
 		String query = "SELECT delete_car(?)";
-		java.sql.Connection connection = ServicesLocator.getConnection();
+		java.sql.Connection connection = ServicesLocator.getConexion();
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
-		preparedStatement.setInt(1, seasonCode);
+		preparedStatement.setString(1, seasonCode);
 		preparedStatement.execute();
 		preparedStatement.close();
 		connection.close();
@@ -42,7 +42,7 @@ public class CarServices {
 	public void update_car(String plate, int brand, int model, int km, String color, int situation) 
 			throws SQLException, ClassNotFoundException{
 		String query = "SELECT update_car(?,?,?,?,?,?)";
-		java.sql.Connection connection = ServicesLocator.getConnection();
+		java.sql.Connection connection = ServicesLocator.getConexion();
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setString(1, plate);
         preparedStatement.setInt(2, brand);
@@ -56,10 +56,10 @@ public class CarServices {
 	}
 	
 	
-	public ArrayList<CarDTO> selectAllSeasons() throws SQLException, ClassNotFoundException{
+	public ArrayList<CarDTO> get_car_all() throws SQLException, ClassNotFoundException{
 		ArrayList<CarDTO> lodgings = new ArrayList<CarDTO>();
-		String function = "{?= call select_all_season()}";
-		java.sql.Connection connection = ServicesLocator.getConnection();
+		String function = "{?= call get_car_all()}";
+		java.sql.Connection connection = ServicesLocator.getConexion();
 		connection.setAutoCommit(false);
 		CallableStatement preparedFunction = connection.prepareCall(function);
 		preparedFunction.registerOutParameter(1, java.sql.Types.OTHER);

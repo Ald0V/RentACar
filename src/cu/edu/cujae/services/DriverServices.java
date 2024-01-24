@@ -14,7 +14,7 @@ public class DriverServices {
     public void insert_driver(String iD, String name, String lastName1, String lastName2, int category, String address) 
 			throws SQLException, ClassNotFoundException{
 		String query = "SELECT insert_driver(?,?,?,?,?,?)";
-		java.sql.Connection connection = ServicesLocator.getConnection();
+		java.sql.Connection connection = ServicesLocator.getConexion();
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setString(1, iD);
         preparedStatement.setString(2, name);
@@ -27,11 +27,11 @@ public class DriverServices {
 		connection.close();
 	}
 	
-	public void delete_driver(int seasonCode) throws SQLException, ClassNotFoundException{
+	public void delete_driver(String seasonCode) throws SQLException, ClassNotFoundException{
 		String query = "SELECT delete_driver(?)";
-		java.sql.Connection connection = ServicesLocator.getConnection();
+		java.sql.Connection connection = ServicesLocator.getConexion();
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
-		preparedStatement.setInt(1, seasonCode);
+		preparedStatement.setString(1, seasonCode);
 		preparedStatement.execute();
 		preparedStatement.close();
 		connection.close();
@@ -40,7 +40,7 @@ public class DriverServices {
 	public void update_driver(String iD, String name, String lastName1, String lastName2, int category, String address) 
 			throws SQLException, ClassNotFoundException{
 		String query = "SELECT update_driver(?,?,?,?,?,?)";
-		java.sql.Connection connection = ServicesLocator.getConnection();
+		java.sql.Connection connection = ServicesLocator.getConexion();
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setString(1, iD);
         preparedStatement.setString(2, name);
@@ -57,7 +57,7 @@ public class DriverServices {
 	public ArrayList<DriverDTO> get_driver_all() throws SQLException, ClassNotFoundException{
 		ArrayList<DriverDTO> lodgings = new ArrayList<DriverDTO>();
 		String function = "{?= call get_driver_all()}";
-		java.sql.Connection connection = ServicesLocator.getConnection();
+		java.sql.Connection connection = ServicesLocator.getConexion();
 		connection.setAutoCommit(false);
 		CallableStatement preparedFunction = connection.prepareCall(function);
 		preparedFunction.registerOutParameter(1, java.sql.Types.OTHER);

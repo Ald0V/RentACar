@@ -310,6 +310,12 @@ public class DataTableSceneTouristController {
 			tableScenePane.setMaxHeight(382);
 			touristTable.setMaxHeight(286);
 			
+			lblErrorPassport.setVisible(false);
+	    	lblErrorPhone.setVisible(false);
+	    	lblErrorAge.setVisible(false);
+	    	lblErrorEmpty.setVisible(false);
+	    	
+			
 		}else if(event.getSource() == bttnAdd){
 			
 			bttnAdd.setDisable(true);
@@ -338,6 +344,11 @@ public class DataTableSceneTouristController {
 	
 			tableScenePane.setMaxHeight(382);
 			touristTable.setMaxHeight(286);
+			
+			lblErrorPassport.setVisible(false);
+	    	lblErrorPhone.setVisible(false);
+	    	lblErrorAge.setVisible(false);
+	    	lblErrorEmpty.setVisible(false);
 				
 		}
 		
@@ -522,11 +533,14 @@ public class DataTableSceneTouristController {
         ObservableList<TouristDTO> allTourists, singleTourist;
         allTourists = touristTable.getItems();
         singleTourist = touristTable.getSelectionModel().getSelectedItems();
+        
 
-        if (singleTourist.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Primero se debe seleccionar un item");
-        } else {
+        if (singleTourist.size() == 1) {
             singleTourist.forEach(allTourists::remove);
+            TouristDTO deleteTourist = singleTourist.get(0);
+            ServicesLocator.getTouristServices().delete_car(deleteTourist.getID());
+        } else {
+        	JOptionPane.showMessageDialog(null, "Solo se puede eliminar un turista a la vez");
         }
     }
 

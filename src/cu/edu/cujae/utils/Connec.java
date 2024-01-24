@@ -9,8 +9,9 @@ public class Connec {
 	  public Connec(String serveraddres, String database, String user,String pass) throws ClassNotFoundException, SQLException {
 
 	      Class.forName("org.postgresql.Driver");
-	      String url = "jdbc:postgresql://" + serveraddres + ":5433/"+ database;
+	      String url = "jdbc:postgresql://" + serveraddres + ":5432/"+ database;
 	      connection = DriverManager.getConnection(url, user, pass);
+
 	  }
 
 	   public java.sql.Connection getConnection() {

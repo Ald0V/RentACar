@@ -104,10 +104,10 @@ public class ServicesLocator {
         return reportServices;
     }
     
-    public static java.sql.Connection getConnection() throws SQLException {
+    public static java.sql.Connection getConexion() throws SQLException {
         Connec connection = null;
         try {
-          connection = new Connec("localhost", "JDBC","postgres", "postgres");
+          connection = new Connec("localhost", "proyecto" ,"postgres", "postgres");
         } catch (ClassNotFoundException e) {
           e.printStackTrace();
         } catch (SQLException e) {

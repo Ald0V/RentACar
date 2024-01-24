@@ -11,7 +11,7 @@ import cu.edu.cujae.dto.AuxiliaryDTO;
 public class SituationServices {
     public void insert_situation(String name) throws SQLException, ClassNotFoundException{
     String query = "SELECT insert_situation(?)";
-    java.sql.Connection connection = ServicesLocator.getConnection();
+    java.sql.Connection connection = ServicesLocator.getConexion();
     PreparedStatement preparedStatement = connection.prepareStatement(query);
     preparedStatement.setString(1, name);
     preparedStatement.execute();
@@ -21,7 +21,7 @@ public class SituationServices {
 
 public void delete_situation(String name) throws SQLException, ClassNotFoundException{
     String query = "SELECT delete_situation(?)";
-    java.sql.Connection connection = ServicesLocator.getConnection();
+    java.sql.Connection connection = ServicesLocator.getConexion();
     PreparedStatement preparedStatement = connection.prepareStatement(query);
     preparedStatement.setString(1, name);
     preparedStatement.execute();
@@ -32,7 +32,7 @@ public void delete_situation(String name) throws SQLException, ClassNotFoundExce
 public ArrayList<AuxiliaryDTO> get_situation_all() throws SQLException, ClassNotFoundException{
     ArrayList<AuxiliaryDTO> lodgings = new ArrayList<AuxiliaryDTO>();
     String function = "{?= call get_situation_all()}";
-    java.sql.Connection connection = ServicesLocator.getConnection();
+    java.sql.Connection connection = ServicesLocator.getConexion();
     connection.setAutoCommit(false);
     CallableStatement preparedFunction = connection.prepareCall(function);
     preparedFunction.registerOutParameter(1, java.sql.Types.OTHER);

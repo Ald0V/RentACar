@@ -11,7 +11,7 @@ import cu.edu.cujae.dto.AuxiliaryDTO;
 public class PayMethodServices {
     public void insert_paymethod(String name) throws SQLException, ClassNotFoundException{
     String query = "SELECT insert_paymethod(?)";
-    java.sql.Connection connection = ServicesLocator.getConnection();
+    java.sql.Connection connection = ServicesLocator.getConexion();
     PreparedStatement preparedStatement = connection.prepareStatement(query);
     preparedStatement.setString(1, name);
     preparedStatement.execute();
@@ -22,7 +22,7 @@ public class PayMethodServices {
 public ArrayList<AuxiliaryDTO> get_paymethod_all() throws SQLException, ClassNotFoundException{
     ArrayList<AuxiliaryDTO> lodgings = new ArrayList<AuxiliaryDTO>();
     String function = "{?= call get_paymethod_all()}";
-    java.sql.Connection connection = ServicesLocator.getConnection();
+    java.sql.Connection connection = ServicesLocator.getConexion();
     connection.setAutoCommit(false);
     CallableStatement preparedFunction = connection.prepareCall(function);
     preparedFunction.registerOutParameter(1, java.sql.Types.OTHER);

@@ -406,6 +406,9 @@ public class DataTableSceneContractController {
 			tableScenePane.setMaxHeight(382);
 			contractTable.setMaxHeight(286);
 			
+			lblErrorEmpty.setVisible(false);
+			lblErrorDate.setVisible(false);
+			
 		}else if(event.getSource() == bttnAdd){
 			
 			bttnAdd.setDisable(true);
@@ -420,6 +423,9 @@ public class DataTableSceneContractController {
 			
 			tableScenePane.setMaxHeight(382);
 			contractTable.setMaxHeight(286);
+			
+			lblErrorEmpty.setVisible(false);
+			lblErrorDate.setVisible(false);
 			
 		}
 			

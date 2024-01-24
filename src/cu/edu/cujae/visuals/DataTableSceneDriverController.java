@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import cu.edu.cujae.dto.AuxiliaryDTO;
+import cu.edu.cujae.dto.CarDTO;
 import cu.edu.cujae.dto.DriverDTO;
 import cu.edu.cujae.dto.TouristDTO;
 import cu.edu.cujae.services.ServicesLocator;
@@ -263,6 +264,9 @@ public class DataTableSceneDriverController {
 			
 			ObservableList<String> list = FXCollections.observableArrayList("B", "C", "D", "E");
 	        cmboxLicenseAdd.setItems(list);
+	        
+			lblErrorCI.setVisible(true);
+			lblErrorEmpty.setVisible(true);
 			
 		}else if(event.getSource() == bttnAdd){
 			
@@ -281,6 +285,9 @@ public class DataTableSceneDriverController {
 			
 			ObservableList<String> list = FXCollections.observableArrayList("B", "C", "D", "E");
 	        cmboxLicenseAdd.setItems(list);
+	        
+			lblErrorCI.setVisible(true);
+			lblErrorEmpty.setVisible(true);
 			
 		}
 	}
@@ -384,15 +391,19 @@ public class DataTableSceneDriverController {
 	}
 	
     
+	
     public void deleteDriver(ActionEvent event) throws ClassNotFoundException, SQLException {
-        ObservableList<DriverDTO> allDrivers, singleDriver;
+    	ObservableList<DriverDTO> allDrivers, singleDriver;
         allDrivers = driverTable.getItems();
         singleDriver = driverTable.getSelectionModel().getSelectedItems();
+        
 
-        if (singleDriver.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Primero se debe seleccionar un item");
+        if (singleDriver.size() == 1) {
+        	singleDriver.forEach(allDrivers::remove);
+        	DriverDTO deleteDriver= singleDriver.get(0);
+            ServicesLocator.getDriverServices().delete_driver(deleteDriver.getID());
         } else {
-            singleDriver.forEach(allDrivers::remove);
+        	JOptionPane.showMessageDialog(null, "Solo se puede eliminar un conductor a la vez");
         }
-    }
+    }	
 }

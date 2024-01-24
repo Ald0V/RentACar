@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import cu.edu.cujae.dto.AuxiliaryDTO;
+import cu.edu.cujae.dto.DriverDTO;
 import cu.edu.cujae.dto.ModelDTO;
 import cu.edu.cujae.dto.TouristDTO;
 import cu.edu.cujae.services.ServicesLocator;
@@ -393,15 +396,49 @@ public class DataTableSceneCBMController {
 	}
 	
 	public void deleteCountry(ActionEvent event) throws ClassNotFoundException, SQLException{
-		
+
+		ObservableList<String> allCountries, singleCountries;
+		allCountries = countryTable.getItems();
+		singleCountries = countryTable.getSelectionModel().getSelectedItems();
+
+
+		if (singleCountries.size() == 1) {
+			singleCountries.forEach(allCountries::remove);
+			String deleteCountry= singleCountries.get(0);
+			ServicesLocator.getCountryServices().delete_country(deleteCountry);
+		} else {
+			JOptionPane.showMessageDialog(null, "Solo se puede eliminar un país a la vez");
+		}
 	}
 	
 	public void deleteBrand(ActionEvent event) throws ClassNotFoundException, SQLException{
-		
+		ObservableList<String> allBrands, singleBrands;
+		allBrands = countryTable.getItems();
+		singleBrands = countryTable.getSelectionModel().getSelectedItems();
+
+
+		if (singleBrands.size() == 1) {
+			singleBrands.forEach(allBrands::remove);
+			String deleteBrand = singleBrands.get(0);
+			ServicesLocator.getBrandServices().delete_brand(deleteBrand);
+		} else {
+			JOptionPane.showMessageDialog(null, "Solo se puede eliminar una marca a la vez");
+		}
 	}
 	
 	public void deleteModel(ActionEvent event) throws ClassNotFoundException, SQLException{
-		
+		ObservableList<String> allModels, singleModels;
+		allModels = modelTable.getItems();
+		singleModels = countryTable.getSelectionModel().getSelectedItems();
+
+
+		if (singleModels.size() == 1) {
+			singleModels.forEach(allModels::remove);
+			String deleteModel= singleModels.get(0);
+			ServicesLocator.getModelServices().delete_model(deleteModel);
+		} else {
+			JOptionPane.showMessageDialog(null, "Solo se puede eliminar una marca a la vez");
+		}
 	}
 	
 	
@@ -455,7 +492,14 @@ public class DataTableSceneCBMController {
     		brandPane.setVisible(false);
     		modelPane.setVisible(false);
     		
+    		lblErrorCountry.setVisible(false);
+    		lblErrorBrand.setVisible(false);
+    		lblErrorModel.setVisible(false);
+    		
+    		
     		initializeCountryTable();
+    		
+    		
     		
     	}else if(event.getSource() == bttnBrands) {
     		
@@ -466,6 +510,10 @@ public class DataTableSceneCBMController {
     		
     		modelPane.setVisible(false);
     		countryPane.setVisible(false);
+    		
+    		lblErrorCountry.setVisible(false);
+    		lblErrorBrand.setVisible(false);
+    		lblErrorModel.setVisible(false);
     		
     		initializeBrandTable();
     		
@@ -478,6 +526,10 @@ public class DataTableSceneCBMController {
     		
     		countryPane.setVisible(true);
     		brandPane.setVisible(false);  
+    		
+    		lblErrorCountry.setVisible(false);
+    		lblErrorBrand.setVisible(false);
+    		lblErrorModel.setVisible(false);
     		
     		initializeModelTable();
     	}

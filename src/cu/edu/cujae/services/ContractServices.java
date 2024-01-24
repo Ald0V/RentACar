@@ -35,7 +35,7 @@ public class ContractServices {
 
     public void DeleteContract(int contract_code){
         try {
-        java.sql.Connection connection = ServicesLocator.getConnection();
+        java.sql.Connection connection = ServicesLocator.getConexion();
         String proCall = "{call delete_contract(?)}";
         CallableStatement statement = connection.prepareCall(proCall);
         statement.setInt(1, contract_code);

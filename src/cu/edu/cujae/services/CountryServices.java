@@ -14,7 +14,7 @@ public class CountryServices {
     public void insert_country(String name) 
 			throws SQLException, ClassNotFoundException{
 		String query = "SELECT insert_country(?)";
-		java.sql.Connection connection = ServicesLocator.getConnection();
+		java.sql.Connection connection = ServicesLocator.getConexion();
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setString(1, name);
 		preparedStatement.execute();
@@ -24,7 +24,7 @@ public class CountryServices {
 	
 	public void delete_country(String name) throws SQLException, ClassNotFoundException{
 		String query = "SELECT delete_country(?)";
-		java.sql.Connection connection = ServicesLocator.getConnection();
+		java.sql.Connection connection = ServicesLocator.getConexion();
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setString(1, name);
 		preparedStatement.execute();
@@ -37,7 +37,7 @@ public class CountryServices {
 	public ArrayList<AuxiliaryDTO> get_country_all() throws SQLException, ClassNotFoundException{
 		ArrayList<AuxiliaryDTO> lodgings = new ArrayList<AuxiliaryDTO>();
 		String function = "{?= call get_country_all()}";
-		java.sql.Connection connection = ServicesLocator.getConnection();
+		java.sql.Connection connection = ServicesLocator.getConexion();
 		connection.setAutoCommit(false);
 		CallableStatement preparedFunction = connection.prepareCall(function);
 		preparedFunction.registerOutParameter(1, java.sql.Types.OTHER);

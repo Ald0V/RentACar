@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import cu.edu.cujae.dto.UserDTO;
 import cu.edu.cujae.services.ServicesLocator;
 import javafx.collections.FXCollections;
@@ -155,7 +157,18 @@ public class UserManagerController {
 	}
 	
 	public void deleteUser(ActionEvent event) {
-		
+		ObservableList<UserDTO> allUsers, singleUsers;
+		allUsers = usersTable.getItems();
+		singleUsers = usersTable.getSelectionModel().getSelectedItems();
+
+
+		if (singleUsers.size() == 1) {
+			singleUsers.forEach(allUsers::remove);
+			UserDTO deleteUsers= singleUsers.get(0);
+//			ServicesLocator.getUserServices().delete_users(deleteUsers.getId());
+		} else {
+			JOptionPane.showMessageDialog(null, "Solo se puede eliminar un país a la vez");
+		}
 		
 	}
 	

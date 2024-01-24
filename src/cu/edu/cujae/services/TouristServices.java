@@ -14,7 +14,7 @@ public class TouristServices {
 				String contact, int country) 
 			throws SQLException, ClassNotFoundException{
 		String query = "SELECT insert_tourist(?,?,?,?,?,?,?,?)";
-		java.sql.Connection connection = ServicesLocator.getConnection();
+		java.sql.Connection connection = ServicesLocator.getConexion();
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setString(1, iD);
         preparedStatement.setString(2, name);
@@ -29,11 +29,11 @@ public class TouristServices {
 		connection.close();
 	}
 	
-	public void delete_car(int seasonCode) throws SQLException, ClassNotFoundException{
+	public void delete_car(String seasonCode) throws SQLException, ClassNotFoundException{
 		String query = "SELECT delete_car(?)";
-		java.sql.Connection connection = ServicesLocator.getConnection();
+		java.sql.Connection connection = ServicesLocator.getConexion();
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
-		preparedStatement.setInt(1, seasonCode);
+		preparedStatement.setString(1, seasonCode);
 		preparedStatement.execute();
 		preparedStatement.close();
 		connection.close();
@@ -43,7 +43,7 @@ public class TouristServices {
 				String contact, int country) 
 			throws SQLException, ClassNotFoundException{
 		String query = "SELECT update_tourist(?,?,?,?,?,?,?,?)";
-		java.sql.Connection connection = ServicesLocator.getConnection();
+		java.sql.Connection connection = ServicesLocator.getConexion();
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setString(1, iD);
         preparedStatement.setString(2, name);
@@ -62,7 +62,7 @@ public class TouristServices {
 	public ArrayList<TouristDTO> get_tourist_all() throws SQLException, ClassNotFoundException{
 		ArrayList<TouristDTO> lodgings = new ArrayList<TouristDTO>();
 		String function = "{?= call get_tourist_all()}";
-		java.sql.Connection connection = ServicesLocator.getConnection();
+		java.sql.Connection connection = ServicesLocator.getConexion();
 		connection.setAutoCommit(false);
 		CallableStatement preparedFunction = connection.prepareCall(function);
 		preparedFunction.registerOutParameter(1, java.sql.Types.OTHER);
