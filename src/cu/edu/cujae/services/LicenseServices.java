@@ -46,6 +46,6 @@ public ArrayList<AuxiliaryDTO> get_license_all() throws SQLException, ClassNotFo
     connection.close();
     return lodgings;
 }
-
+ 
     
 }

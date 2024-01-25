@@ -457,7 +457,7 @@ public class DataTableSceneTouristController {
 							e.printStackTrace();
 						}
 						
-						JOptionPane.showMessageDialog(null, "El turista ha sido modificado con éxito");
+						JOptionPane.showMessageDialog(null, "El turista ha sido insertado con éxito");
 						
 					}
 					catch(Exception e) {

@@ -140,12 +140,12 @@ public class DataTableSceneDriverController {
 	@SuppressWarnings("unchecked")
 	public void driverTableChargeData()throws ClassNotFoundException, SQLException {
 		// Configurar cellValueFactory para cada columna
-	    colAddAddress.setCellValueFactory(new PropertyValueFactory<>("Dirección"));
-	    colAddID.setCellValueFactory(new PropertyValueFactory<>("Carnét de identidad"));
-	    colAddLastName1.setCellValueFactory(new PropertyValueFactory<>("Primer apellido"));
-	    colAddLastName2.setCellValueFactory(new PropertyValueFactory<>("Segundo apellido"));
-	    colAddLicense.setCellValueFactory(new PropertyValueFactory<>("Tipo de licencia"));
-	    colAddName.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
+	    colAddAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+	    colAddID.setCellValueFactory(new PropertyValueFactory<>("iD"));
+	    colAddLastName1.setCellValueFactory(new PropertyValueFactory<>("lastName1"));
+	    colAddLastName2.setCellValueFactory(new PropertyValueFactory<>("lastName2"));
+	    colAddLicense.setCellValueFactory(new PropertyValueFactory<>("category"));
+	    colAddName.setCellValueFactory(new PropertyValueFactory<>("name"));
 	    
 		 // Desactiva los botones al inicio
         bttnDelete.setDisable(true);
@@ -172,6 +172,7 @@ public class DataTableSceneDriverController {
 	    driverTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 	        if (newValue != null) {
                 // Activa los botones cuando se selecciona una fila
+	        	bttnAdd.setDisable(true);
                 bttnDelete.setDisable(false);
                 bttnModify.setDisable(false);
                 bttnModifyDriver.setVisible(true);
@@ -338,6 +339,9 @@ public class DataTableSceneDriverController {
 					} catch (ClassNotFoundException | SQLException e) {
 						e.printStackTrace();
 					}
+					
+					JOptionPane.showMessageDialog(null, "El conductor ha sido insertado con éxito");
+					
 				}
 				catch(Exception e) {
 					JOptionPane.showMessageDialog(null, e.getMessage());
@@ -378,6 +382,9 @@ public class DataTableSceneDriverController {
 					} catch (ClassNotFoundException | SQLException e) {
 						e.printStackTrace();
 					}
+					
+					JOptionPane.showMessageDialog(null, "El conductor ha sido modificado con éxito");
+					
 				}
 				catch(Exception e) {
 					JOptionPane.showMessageDialog(null, e.getMessage());
@@ -392,18 +399,23 @@ public class DataTableSceneDriverController {
 	
     
 	
-    public void deleteDriver(ActionEvent event) throws ClassNotFoundException, SQLException {
-    	ObservableList<DriverDTO> allDrivers, singleDriver;
-        allDrivers = driverTable.getItems();
-        singleDriver = driverTable.getSelectionModel().getSelectedItems();
-        
+	public void deleteDriver(ActionEvent event) throws ClassNotFoundException, SQLException {
+	    ObservableList<DriverDTO> allDrivers, singleDriver;
+	    allDrivers = driverTable.getItems();
+	    singleDriver = driverTable.getSelectionModel().getSelectedItems();
 
-        if (singleDriver.size() == 1) {
-        	singleDriver.forEach(allDrivers::remove);
-        	DriverDTO deleteDriver= singleDriver.get(0);
-            ServicesLocator.getDriverServices().delete_driver(deleteDriver.getID());
-        } else {
-        	JOptionPane.showMessageDialog(null, "Solo se puede eliminar un conductor a la vez");
-        }
-    }	
+	    if (singleDriver.size() == 1) {
+	        DriverDTO deleteDriver = singleDriver.get(0);
+	        
+	        int dialogButton = JOptionPane.YES_NO_OPTION;
+	        int dialogResult = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres eliminar el conductor con ID " + deleteDriver.getID() + "?", "Confirmación", dialogButton);
+	        if(dialogResult == JOptionPane.YES_OPTION){
+	            singleDriver.forEach(allDrivers::remove);
+	            ServicesLocator.getDriverServices().delete_driver(deleteDriver.getID());
+	        }
+	    } else {
+	        JOptionPane.showMessageDialog(null, "Solo se puede eliminar un conductor a la vez");
+	    }
+	}
+
 }

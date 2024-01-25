@@ -6,9 +6,10 @@ public class DriverAux {
     private String name;
     private String lastName1;
     private String lastName2;
-    private String direction;
+    private String address;
     private String license;
-    private int cars;
+    
+    
     
 	public String getiD() {
 		return iD;
@@ -35,22 +36,16 @@ public class DriverAux {
 		this.lastName2 = lastName2;
 	}
 	public String getDirection() {
-		return direction;
+		return address;
 	}
 	public void setDirection(String direction) {
-		this.direction = direction;
+		this.address = direction;
 	}
 	public String getLicense() {
 		return license;
 	}
 	public void setLicense(String license) {
 		this.license = license;
-	}
-	public int getCars() {
-		return cars;
-	}
-	public void setCars(int cars) {
-		this.cars = cars;
 	}
 
 }
