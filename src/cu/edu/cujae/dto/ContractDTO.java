@@ -14,9 +14,6 @@ public class ContractDTO {
     private String driver;
     private float value;
     
-    
-    public ContractDTO() {
-    }
 
     public ContractDTO(String plate, LocalDate startDate, String passport, LocalDate endDate, int startKm, LocalDate deliveryDate, int endKm, int payMethod, String driver, float value) {
         this.plate = plate;

@@ -1,6 +1,10 @@
 package cu.edu.cujae.utils;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
+
+import cu.edu.cujae.dto.ContractDTO;
+import cu.edu.cujae.services.ServicesLocator;
 
 
 public class ContractAux {
@@ -8,23 +12,20 @@ public class ContractAux {
 	private String tourist;
 	private LocalDate startDate;
     private LocalDate endDate;
+    private LocalDate deliveryDate;
     private String car;
     private String payMethod;
-    private int prorroga;
-    private boolean rentalDriver;
+    private String rentalDriver;
     private float totalImport;
         
-	public ContractAux(String tourist, LocalDate startDate, LocalDate endDate, String car, String payMethod,
-			int prorroga, boolean rentalDriver, float totalImport) {
-		super();
-		this.tourist = tourist;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.car = car;
-		this.payMethod = payMethod;
-		this.prorroga = prorroga;
-		this.rentalDriver = rentalDriver;
-		this.totalImport = totalImport;
+	public ContractAux(ContractDTO contract) throws ClassNotFoundException, SQLException {
+		setTourist(contract.getPassport());
+		setStartDate(contract.getStartDate());
+		setDeliveryDate(contract.getDeliveryDate());
+		setEndDate(contract.getEndDate());
+		setCar(contract.getPlate());
+		setPayMethod(ServicesLocator.getPayMethodServices().get_paymethod_by_id(contract.getPayMethod()));
+		setRentalDriver(contract.getDriver());
 	}
 	
 	public String getTourist() {
@@ -57,16 +58,10 @@ public class ContractAux {
 	public void setPayMethod(String payMethod) {
 		this.payMethod = payMethod;
 	}
-	public int getProrroga() {
-		return prorroga;
-	}
-	public void setProrroga(int prorroga) {
-		this.prorroga = prorroga;
-	}
-	public boolean isRentalDriver() {
+	public String isRentalDriver() {
 		return rentalDriver;
 	}
-	public void setRentalDriver(boolean rentalDriver) {
+	public void setRentalDriver(String rentalDriver) {
 		this.rentalDriver = rentalDriver;
 	}
 	public float getTotalImport() {
@@ -74,5 +69,13 @@ public class ContractAux {
 	}
 	public void setTotalImport(float totalImport) {
 		this.totalImport = totalImport;
+	}
+
+	public LocalDate getDeliveryDate() {
+		return deliveryDate;
+	}
+
+	public void setDeliveryDate(LocalDate deliveryDate) {
+		this.deliveryDate = deliveryDate;
 	}
 }

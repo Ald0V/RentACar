@@ -9,9 +9,14 @@ import java.util.LinkedList;
 import javax.swing.JOptionPane;
 
 import cu.edu.cujae.dto.AuxiliaryDTO;
+import cu.edu.cujae.dto.CarDTO;
 import cu.edu.cujae.dto.ContractDTO;
+import cu.edu.cujae.dto.DriverDTO;
 import cu.edu.cujae.dto.ModelDTO;
+import cu.edu.cujae.dto.TouristDTO;
 import cu.edu.cujae.services.ServicesLocator;
+import cu.edu.cujae.utils.CarAux;
+import cu.edu.cujae.utils.ContractAux;
 import cu.edu.cujae.utils.Validator;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -184,9 +189,6 @@ public class DataTableSceneContractController {
     private TableColumn<ContractDTO, String> colAddPayMethod;
 
     @FXML
-    private TableColumn<ContractDTO, Integer> colAddProrroga;
-
-    @FXML
     private TableColumn<ContractDTO, Float> colAddTotalImport;
 
     @FXML
@@ -194,6 +196,15 @@ public class DataTableSceneContractController {
 
     @FXML
     private TableColumn<ContractDTO, LocalDate>  colAddstartDate;    
+    
+    @FXML
+    private TableColumn<ContractDTO, LocalDate>  colAddDeliveryDate;   
+    
+    @FXML
+    private TableColumn<ContractDTO, Integer>  colAddStartKm; 
+    
+    @FXML
+    private TableColumn<ContractDTO, Integer>  colAddEndKm; 
     
 //*************************    
 //*   TOURIST ADD PANE    *
@@ -289,28 +300,78 @@ public class DataTableSceneContractController {
 	private void contractTableChargeData()throws ClassNotFoundException, SQLException {
 		 // Configurar cellValueFactory para cada columna
 		
-		colAddCar.setCellValueFactory(new PropertyValueFactory<>("Carro"));
-	    colAddDriverRental.setCellValueFactory(new PropertyValueFactory<>("DriverRental"));
-	    colAddEndDate.setCellValueFactory(new PropertyValueFactory<>("ContractEnd"));
-	    colAddPayMethod.setCellValueFactory(new PropertyValueFactory<>("PayMethod"));
-	    colAddProrroga.setCellValueFactory(new PropertyValueFactory<>("Prorroga"));
-	    colAddstartDate.setCellValueFactory(new PropertyValueFactory<>("startDate"));
-	    colAddTotalImport.setCellValueFactory(new PropertyValueFactory<>("TotalImport"));
-	    colAddTourist.setCellValueFactory(new PropertyValueFactory<>("Tourist"));
+		colAddCar.setCellValueFactory(new PropertyValueFactory<>("plate"));
+		colAddstartDate.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+		colAddTourist.setCellValueFactory(new PropertyValueFactory<>("passport"));
+		colAddEndDate.setCellValueFactory(new PropertyValueFactory<>("endDate"));
+        colAddStartKm.setCellValueFactory(new PropertyValueFactory<>("startKm"));
+        colAddDeliveryDate.setCellValueFactory(new PropertyValueFactory<>("deliveryDate"));
+        colAddEndKm.setCellValueFactory(new PropertyValueFactory<>("endKm"));
+        colAddPayMethod.setCellValueFactory(new PropertyValueFactory<>("payMethod"));
+		colAddDriverRental.setCellValueFactory(new PropertyValueFactory<>("driver"));
+	    colAddTotalImport.setCellValueFactory(new PropertyValueFactory<>("value"));
 
 	    bttnModify.setDisable(true);
+	    lblErrorEmptyCloseContract.setVisible(false);
 	    
 	    // Obtener la lista de turistas
-//	    ArrayList<ContractDTO> list = ServicesLocator.getContractsServices();	
-//	    ObservableList<ContractDTO> contractList = FXCollections.observableArrayList();
-//	    contractList.addAll(list);
-//	    
-//	    // Establecer los elementos de la tabla
-//	    contractTable.setItems(contractList);
+//	    ContractDTO prueba = new ContractDTO("T123456", null, null, null, null, 0, 0, null, 0);
+//	    ArrayList<ContractDTO> list = new ArrayList<ContractDTO>();
+//	    list.add(prueba);
+	    ArrayList<ContractDTO> list = ServicesLocator.getContractsServices().selectAllContract();	
+	    ObservableList<ContractDTO> contractList = FXCollections.observableArrayList();
+	    contractList.addAll(list);
+  
+	    // Establecer los elementos de la tabla
+	    contractTable.setItems(contractList);
+	    
+	    
+	    //Establecer los carros
+	    ArrayList<CarDTO> carList = ServicesLocator.getCarServices().get_car_all();
+	    ArrayList<String> plateList = new ArrayList<String>();
+
+	    for (CarDTO car : carList) {
+	        plateList.add(car.getPlate());
+	    }
+	    
+	    ObservableList<String> carCombo = FXCollections.observableArrayList();
+	    carCombo.addAll(plateList);
+	    cmboxCarAdd.setItems(carCombo);
+	    
+	    //Establecer los turistas
+	    ArrayList<TouristDTO> touristList = ServicesLocator.getTouristServices().get_tourist_all();
+	    ArrayList<String> passportList = new ArrayList<String>();
+	    
+	    for (TouristDTO tourist : touristList) {
+	    	passportList.add(tourist.getID());
+	    }
+	    
+	    ObservableList<String> touristCombo = FXCollections.observableArrayList();
+	    touristCombo.addAll(passportList);
+	    cmboxTouristAdd.setItems(touristCombo);
+	    
+	    //Establecer los chofers
+	    ArrayList<DriverDTO> driversList = ServicesLocator.getDriverServices().get_driver_all();
+	    ArrayList<String> nameList = new ArrayList<String>();
+	    
+	    for (DriverDTO driver : driversList) {
+	    	nameList.add(driver.getID());
+	    }
+	    
+	    ObservableList<String> driverCombo = FXCollections.observableArrayList();
+	    driverCombo.addAll(nameList);
+	    cmboxDriverAdd.setItems(driverCombo);
+	    
+	    //Establecer las licencias
+		ObservableList<String> licenseList = FXCollections.observableArrayList("efectivo", "tarjeta de crédito", "cheque");
+        cmboxPayMethodAdd.setItems(licenseList);
+        
+        
 	    // Añadir un listener a la propiedad selectedItemProperty
 	    contractTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 	        if (newValue != null) {
                 // Activa los botones cuando se selecciona una fila
+	        	bttnAdd.setDisable(true);
                 bttnModify.setDisable(false);
                 bttnModifyContract.setVisible(true);
                 bttnAddContract.setVisible(false);
@@ -322,13 +383,7 @@ public class DataTableSceneContractController {
                 pickdateStartAdd.setValue(newValue.getStartDate());
                 pickdateEndDate.setValue(newValue.getEndDate());
                 
-//	            iTidTextField=(String.valueOf(newValue.getpassport()));
-//	            iTnameTextField.setText(newValue.getName());	 
-//	            iTprovinceChoiceBox.setValue(newValue.getCountry());
-//	            iTPCHamountTextField.setText(String.valueOf(newValue.getCantRentalCars()));
-//	            iTWCHamountTextField.setText(String.valueOf(newValue.getRentalTotalValue()));
-//	            iTmascotTextField.setText(newValue.getLastName1());
-//	            iTcolorTextField.setText(newValue.getLastName2());
+
 	        } else {
                 // Desactiva los botones cuando no hay ninguna fila seleccionada
                 bttnModify.setDisable(true);
@@ -340,7 +395,7 @@ public class DataTableSceneContractController {
 	
 	public void initializeContractTable() {
 		try {
-	        // Llama al método touristTableChargeData() aquí
+	        // Llama al método contractTableChargeData() aquí
 	        contractTableChargeData();
 	    } catch (ClassNotFoundException | SQLException e) {
 	        e.printStackTrace();
@@ -739,20 +794,22 @@ public class DataTableSceneContractController {
 	}
 	
 	public void insertDriver(ActionEvent event) throws ClassNotFoundException, SQLException {
-		lblErrorCI.setVisible(true);
-		lblErrorEmptyDriver.setVisible(true);
+		lblErrorCI.setVisible(false);
+		lblErrorEmpty.setVisible(false);
 		if(txtDriverAddressAdd.getText() != "" && txtDriverIDAdd.getText() != "" && txtDriverLastName1Add.getText() != "" && txtDriverLastName2Add.getText() != "" && txtDriverNameAdd.getText() != "" && cmboxDriverLicenseAdd.getValue() != "") {
-			if(val.isPassportCorrect(txtDriverIDAdd.getText())) {
+			if(val.isIDCorrect(txtDriverIDAdd.getText())) {
 				String name = txtDriverNameAdd.getText();
 				String lastName1 = txtDriverLastName1Add.getText();
 				String lastName2 = txtDriverLastName2Add.getText();
 				String id = txtDriverIDAdd.getText();
 				String address = txtDriverAddressAdd.getText();
 				int license = cmboxDriverLicenseAdd.getSelectionModel().getSelectedIndex() + 1;
-				
+
 				try {
 
 					ServicesLocator.getDriverServices().insert_driver(id, name, lastName1, lastName2, license, address);
+					
+					cmboxDriverAdd.setValue(id);
 
 					txtDriverNameAdd.setText("");
 					txtDriverLastName1Add.setText("");
@@ -761,8 +818,10 @@ public class DataTableSceneContractController {
 					txtDriverAddressAdd.setText("");
 					cmboxDriverLicenseAdd.setValue("");
 					
-					cmboxDriverAdd.setValue(id);
-
+					
+					
+					JOptionPane.showMessageDialog(null, "El conductor ha sido insertado con éxito");
+					
 				}
 				catch(Exception e) {
 					JOptionPane.showMessageDialog(null, e.getMessage());
@@ -770,9 +829,10 @@ public class DataTableSceneContractController {
 			}else
 				lblErrorCI.setVisible(true);
 		}else
-			lblErrorEmptyDriver.setVisible(true);
+			lblErrorEmpty.setVisible(true);
 
 	}
+
     
 	public void openDeliveryDate(ActionEvent event) {
 		
@@ -787,17 +847,24 @@ public class DataTableSceneContractController {
 	}
 	
 	public void closeContract (ActionEvent event) throws ClassNotFoundException, SQLException {
-		
-		lblErrorEmptyCloseContract.setVisible(false);
-		if(pickdateDeliverDate.getValue() != null && txtKm.getText() != "") {
-			LocalDate delivery = pickdateDeliverDate.getValue();
-			int km  = Integer.parseInt(txtKm.getText());
-			
-//			ServicesLocator.getContractsServices().insert_contract...
-			
-		}else
-			lblErrorEmptyCloseContract.setVisible(true);
+	    lblErrorEmptyCloseContract.setVisible(false);
+	    String plate = cmboxCarAdd.getValue();
+	    LocalDate startDate = pickdateStartAdd.getValue();
+	    if(pickdateDeliverDate.getValue() != null && txtKm.getText() != "") {
+	        LocalDate delivery = pickdateDeliverDate.getValue();
+	        int km  = Integer.parseInt(txtKm.getText());
+	        
+	        Object[] options = {"Sí", "No"};
+	        int dialogResult = JOptionPane.showOptionDialog(null, "¿Estás seguro de que quieres cerrar el contrato para el carro con placa " + plate + "?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+	        if(dialogResult == JOptionPane.YES_OPTION){
+	            ServicesLocator.getContractsServices().contract_close(plate, startDate, delivery, km);
+	            JOptionPane.showMessageDialog(null, "El contrato ha sido cerrado con éxito");
+	        }
+	    } else {
+	        lblErrorEmptyCloseContract.setVisible(true);
+	    }
 	}
+
 
 
     

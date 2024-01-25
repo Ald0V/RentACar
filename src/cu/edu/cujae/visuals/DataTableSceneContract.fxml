@@ -166,14 +166,16 @@
                      <children>
                         <TableView fx:id="contractTable" layoutX="12.0" layoutY="67.0" prefHeight="554.0" prefWidth="998.0">
                           <columns>
-                            <TableColumn fx:id="colAddTourist" prefWidth="150.39999389648438" text="Turista" />
-                            <TableColumn fx:id="colAddstartDate" prefWidth="100.79998779296875" text="Fecha de inicio" />
-                              <TableColumn fx:id="colAddEndDate" minWidth="0.0" prefWidth="104.0" text="Fin del contrato" />
-                              <TableColumn fx:id="colAddCar" prefWidth="151.199951171875" text="Carro" />
-                              <TableColumn fx:id="colAddPayMethod" minWidth="0.0" prefWidth="124.0" text="Método de pago" />
-                              <TableColumn fx:id="colAddProrroga" text="Prórroga" />
-                              <TableColumn fx:id="colAddDriverRental" minWidth="0.0" prefWidth="150.39996337890625" text="Alquiler del chófer" />
-                              <TableColumn fx:id="colAddTotalImport" minWidth="0.0" prefWidth="136.80002441406248" text="Importe total" />
+                            <TableColumn fx:id="colAddCar" prefWidth="150.39999389648438" text="Carro" />
+                            <TableColumn fx:id="colAddstartDate" prefWidth="79.20001220703125" text="Inicio" />
+                              <TableColumn fx:id="colAddTourist" minWidth="0.0" prefWidth="94.39996337890625" text="Turista" />
+                              <TableColumn fx:id="colAddEndDate" prefWidth="119.99993896484375" text="Fin" />
+                              <TableColumn fx:id="colAddStartKm" minWidth="0.0" prefWidth="62.39996337890625" text="Km inicio" />
+                              <TableColumn fx:id="colAddDeliveryDate" prefWidth="114.4000244140625" text="Fecha de entrega" />
+                              <TableColumn fx:id="colAddEndKm" minWidth="0.0" prefWidth="54.4000244140625" text="Km final" />
+                              <TableColumn fx:id="colAddPayMethod" minWidth="0.0" prefWidth="120.0" text="Método de pago" />
+                              <TableColumn fx:id="colAddDriverRental" prefWidth="101.5999755859375" text="Conductor" />
+                              <TableColumn fx:id="colAddTotalImport" prefWidth="99.2000732421875" text="Importe final" />
                           </columns>
                         </TableView>
                         <TextField fx:id="search" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />

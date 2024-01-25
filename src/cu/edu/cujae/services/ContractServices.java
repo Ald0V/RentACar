@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -82,23 +83,28 @@ public class ContractServices {
 		connection.close();
     }
 
-    public ArrayList<ContractDTO> selectAllContract() throws SQLException, ClassNotFoundException{
-		ArrayList<ContractDTO> lodgings = new ArrayList<ContractDTO>();
-		String function = "{?= call get_contract_all()}";
-		java.sql.Connection connection = ServicesLocator.getConexion();
-		connection.setAutoCommit(false);
-		CallableStatement preparedFunction = connection.prepareCall(function);
-		preparedFunction.registerOutParameter(1, java.sql.Types.OTHER);
-		preparedFunction.execute();
-		ResultSet rs = (ResultSet) preparedFunction.getObject(1);
-		while (rs.next()){
-			//lodgings.add(new ContractDTO(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getInt(6)));
-		}
-		rs.close();
-		preparedFunction.close();
-		connection.close();
-		return lodgings;
-	}
+    public ArrayList<ContractDTO> selectAllContract() throws SQLException, ClassNotFoundException {
+        ArrayList<ContractDTO> lodgings = new ArrayList<ContractDTO>();
+        String function = "{?= call get_contract_all()}";
+        java.sql.Connection connection = ServicesLocator.getConexion();
+        connection.setAutoCommit(false);
+        CallableStatement preparedFunction = connection.prepareCall(function);
+        preparedFunction.registerOutParameter(1, java.sql.Types.OTHER);
+        preparedFunction.execute();
+        ResultSet rs = (ResultSet) preparedFunction.getObject(1);
+        while (rs.next()){
+            Date date6 = rs.getDate(6);
+            LocalDate localDate6 = (date6 != null) ? date6.toInstant().atZone(ZoneId.systemDefault()).toLocalDate() : null;
+
+            lodgings.add(new ContractDTO(rs.getString(1), rs.getDate(2).toLocalDate(), rs.getString(3), rs.getDate(4).toLocalDate(), rs.getInt(5), localDate6, rs.getInt(7), rs.getInt(8), rs.getString(9), rs.getFloat(10)));
+        }
+        rs.close();
+        preparedFunction.close();
+        connection.close();
+        return lodgings;
+    }
+
+
 
 	
 }
