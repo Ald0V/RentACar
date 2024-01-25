@@ -135,7 +135,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Button fx:id="bttnProrrogaAcept" layoutX="567.0" layoutY="158.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Aceptar" textFill="WHITE">
+                        <Button fx:id="bttnProrrogaAcept" layoutX="567.0" layoutY="158.0" mnemonicParsing="false" onAction="#closeContract" prefHeight="48.0" prefWidth="126.0" stylesheets="@application.css" text="Aceptar" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>

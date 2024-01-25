@@ -617,7 +617,7 @@ public class DataTableSceneContractController {
 				LocalDate endDate = pickdateEndDate.getValue();
 				
 				try {
-//						ServicesLocator.getContractsServices().insert_contract(car, tourist, startDate, endDate, null, payMethod, driver);
+					ServicesLocator.getContractsServices().contract_open(car, startDate, tourist, endDate, payMethod, driver);
 
 					cmboxCarAdd.setValue("");
 					cmboxPayMethodAdd.setValue("");
@@ -630,6 +630,9 @@ public class DataTableSceneContractController {
 					} catch (ClassNotFoundException | SQLException e) {
 						e.printStackTrace();
 					}
+					
+					JOptionPane.showMessageDialog(null, "El contrato ha sido insertado con éxito");
+					
 				} catch (Exception e) {
 					JOptionPane.showMessageDialog(null, e.getMessage());
 				}
@@ -682,6 +685,9 @@ public class DataTableSceneContractController {
     				} catch (ClassNotFoundException | SQLException e) {
     					e.printStackTrace();
     				}
+    				
+    				JOptionPane.showMessageDialog(null, "El contrato ha sido modificado con éxito");
+    				
     			} catch (Exception e) {
     				JOptionPane.showMessageDialog(null, e.getMessage());
     			}
@@ -698,8 +704,7 @@ public class DataTableSceneContractController {
   		lblErrorPassport.setVisible(false);
     	lblErrorPhone.setVisible(false);
     	lblErrorAge.setVisible(false);
-    	lblErrorEmptyTourist.setVisible(false);
-    	
+    	lblErrorEmpty.setVisible(false);
     	
 		if(txtAgeAdd.getText() != "" && txtLastName1Add.getText() != "" && txtLastName2Add.getText() != "" && txtNameAdd.getText() != "" && txtPassportAdd.getText() != "" && txtPhoneAdd.getText() != "" && (cmboxCountryAdd.getValue() != "" || txtCountryAdd.getText() != "") && cmboxSexAdd.getValue() != "") { 
             
@@ -721,19 +726,19 @@ public class DataTableSceneContractController {
 
 					try {
 						
-						if(selectedIndex != 0) {
+						if(!txtCountryAdd.isVisible()) {
 							
-							ServicesLocator.getTouristServices().update_tourist(passport, name, lastName1, lastName2, age, sex, contact, selectedIndex);
+							ServicesLocator.getTouristServices().insert_tourist(passport, name, lastName1, lastName2, age, sex, contact, selectedIndex);
 							
 							
 						}else {
 							
 							ServicesLocator.getCountryServices().insert_country(countrytxt);
-							ServicesLocator.getTouristServices().update_tourist(passport, name, lastName1, lastName2, age, sex, contact, cmboxCountryAdd.getItems().size() + 1);
+							ServicesLocator.getTouristServices().insert_tourist(passport, name, lastName1, lastName2, age, sex, contact, cmboxCountryAdd.getItems().size() + 1);
 						}
 						
-
-						
+						cmboxTouristAdd.setValue(passport);
+				
 						txtNameAdd.setText("");
 						txtLastName1Add.setText("");
 						txtLastName2Add.setText("");
@@ -742,54 +747,72 @@ public class DataTableSceneContractController {
 						txtPhoneAdd.setText("");	
 						cmboxCountryAdd.setValue("");
 						txtAgeAdd.setText("");
-
+						
+						JOptionPane.showMessageDialog(null, "El turista ha sido insertado con éxito");
+						
 					}
 					catch(Exception e) {
 						JOptionPane.showMessageDialog(null, e.getMessage());
 					}
 
-				}else if(val.isPassportCorrect(txtPassportAdd.getText()) != false) {
+				}else if(val.isPassportCorrect(txtPassportAdd.getText()) == false) {
 					lblErrorPassport.setVisible(true);
 				}else
 					lblErrorPhone.setVisible(true);		
 			}else
 				lblErrorAge.setVisible(true);			
 		}else
-			lblErrorEmptyTourist.setVisible(true);
-		
+			lblErrorEmpty.setVisible(true);
 		
 	}
 	
-	public void insertCar(ActionEvent event) throws ClassNotFoundException, SQLException{
+    public void insertCar(ActionEvent event) throws SQLException {
 		lblErrorPlate.setVisible(false);
-		lblErrorEmptyCar.setVisible(false);
+		lblErrorEmpty.setVisible(false);
 
 		if(txtColorAdd.getText() != "" && txtPlateAdd.getText() != "" && cmboxBrandAdd.getValue() != "" && cmboxCarStatusAdd.getValue() != "" && cmboxModelAdd.getValue() != "" ) {
 			if(val.ValidatePlate(txtPlateAdd.getText())) {
 				String color = txtColorAdd.getText();
 				String plate = txtPlateAdd.getText();
-				int itemBrand = cmboxBrandAdd.getSelectionModel().getSelectedIndex() + 1;
-				int itemSituation = cmboxCarStatusAdd.getSelectionModel().getSelectedIndex() + 1;
-				int itenModel = cmboxModelAdd.getSelectionModel().getSelectedIndex() + 1;
+				int itemBrand = cmboxBrandAdd.getSelectionModel().getSelectedIndex() + 5;
+				
+				int itemSituation = cmboxCarStatusAdd.getSelectionModel().getSelectedIndex() + 4;
+				String brand = (String)cmboxBrandAdd.getValue();
+				
+				int codeModel = cmboxModelAdd.getSelectionModel().getSelectedIndex();
+				
+				LinkedList<ModelDTO> models;
+				System.out.println(brand);
+				models = ServicesLocator.getModelServices().select_model_by_brand(brand);
+				ArrayList<Integer> codeList = new ArrayList<Integer>();
+		        for (ModelDTO modelaux : models) {
+		        	codeList.add(modelaux.getId());
+		        }
+		        int modelSelection = codeList.get(codeModel);
+		        
 				
 				try {
-					
-                    ServicesLocator.getCarServices().insert_car(plate, itemBrand, itenModel, 0, color, itemSituation);
+                    ServicesLocator.getCarServices().insert_car(plate, itemBrand, modelSelection, 0, color, itemSituation);
 
 					txtColorAdd.setText("");
 					txtPlateAdd.setText("");
 					cmboxBrandAdd.setValue("");
 					cmboxCarStatusAdd.setValue("");
 					cmboxModelAdd.setValue("");
+					
+					
+					
+					JOptionPane.showMessageDialog(null, "El carro ha sido insertado con éxito");
 				}
 				catch(Exception e) {
 					JOptionPane.showMessageDialog(null, e.getMessage());
+					e.printStackTrace();
 				}
 
 			}else
 				lblErrorPlate.setVisible(true);
 		}else
-			lblErrorEmptyCar.setVisible(true);
+			lblErrorEmpty.setVisible(true);
 
 	}
 	
@@ -847,22 +870,27 @@ public class DataTableSceneContractController {
 	}
 	
 	public void closeContract (ActionEvent event) throws ClassNotFoundException, SQLException {
-	    lblErrorEmptyCloseContract.setVisible(false);
-	    String plate = cmboxCarAdd.getValue();
-	    LocalDate startDate = pickdateStartAdd.getValue();
-	    if(pickdateDeliverDate.getValue() != null && txtKm.getText() != "") {
-	        LocalDate delivery = pickdateDeliverDate.getValue();
-	        int km  = Integer.parseInt(txtKm.getText());
-	        
-	        Object[] options = {"Sí", "No"};
-	        int dialogResult = JOptionPane.showOptionDialog(null, "¿Estás seguro de que quieres cerrar el contrato para el carro con placa " + plate + "?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-	        if(dialogResult == JOptionPane.YES_OPTION){
-	            ServicesLocator.getContractsServices().contract_close(plate, startDate, delivery, km);
-	            JOptionPane.showMessageDialog(null, "El contrato ha sido cerrado con éxito");
-	        }
-	    } else {
-	        lblErrorEmptyCloseContract.setVisible(true);
-	    }
+		lblErrorEmptyCloseContract.setVisible(false);
+		String plate = cmboxCarAdd.getValue();
+		LocalDate startDate = pickdateStartAdd.getValue();
+		if(pickdateDeliverDate.getValue() != null && txtKm.getText() != "") {
+			if(val.validateDate(startDate, pickdateDeliverDate.getValue())) {
+				LocalDate delivery = pickdateDeliverDate.getValue();
+				int km  = Integer.parseInt(txtKm.getText());
+
+				Object[] options = {"Sí", "No"};
+				int dialogResult = JOptionPane.showOptionDialog(null, "¿Estás seguro de que quieres cerrar el contrato para el carro con placa " + plate + "?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+				if(dialogResult == JOptionPane.YES_OPTION){
+					ServicesLocator.getContractsServices().contract_close(plate, startDate, delivery, km);
+					JOptionPane.showMessageDialog(null, "El contrato ha sido cerrado con éxito");
+					addParametersScenePane.setVisible(true);
+					deliveryDatePane.setVisible(false);
+				}
+			} else
+				JOptionPane.showMessageDialog(null, "La fecha de entrega no puede ser antes de la fecha de inicio");
+		} else 
+			lblErrorEmptyCloseContract.setVisible(true);
+
 	}
 
 
