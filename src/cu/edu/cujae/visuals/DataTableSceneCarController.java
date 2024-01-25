@@ -245,6 +245,7 @@ public class DataTableSceneCarController {
 	    // Añadir un listener a la propiedad selectedItemProperty
 		carTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 	        if (newValue != null) {
+	        	bttnAdd.setDisable(true);
 	        	bttnDelete.setDisable(false);
                 bttnModify.setDisable(false);
                 bttnModifyCar.setVisible(true);
@@ -435,12 +436,16 @@ public class DataTableSceneCarController {
 					cmboxBrandAdd.setValue("");
 					cmboxCarStatusAdd.setValue("");
 					cmboxModelAdd.setValue("");
+					
+
 
 					try {
 						carTableChargeData();
 					} catch (ClassNotFoundException | SQLException e) {
 						e.printStackTrace();
 					}
+					
+					JOptionPane.showMessageDialog(null, "El carro ha sido insertado con éxito");
 				}
 				catch(Exception e) {
 					JOptionPane.showMessageDialog(null, e.getMessage());
@@ -482,6 +487,8 @@ public class DataTableSceneCarController {
 		        	codeList.add(modelaux.getId());
 		        }
 		        int modelSelection = codeList.get(codeModel);
+		        
+		        System.out.print(codeModel);;
 				
 				try {
 					
@@ -492,7 +499,6 @@ public class DataTableSceneCarController {
 //					cmboxBrandAdd.setValue("");
 //					cmboxCarStatusAdd.setValue("");
 //					cmboxModelAdd.setValue("");
-					System.out.println(itemSituation);
 					ServicesLocator.getCarServices().update_car(plate, itemBrand, modelSelection, km, color, itemSituation);
 
 					txtColorAdd.setText("");
@@ -500,12 +506,16 @@ public class DataTableSceneCarController {
 					cmboxBrandAdd.setValue("");
 					cmboxCarStatusAdd.setValue("");
 					cmboxModelAdd.setValue("");
+					
+
 
 					try {
 						carTableChargeData();
 					} catch (ClassNotFoundException | SQLException e) {
 						e.printStackTrace();
 					}
+					
+					JOptionPane.showMessageDialog(null, "El carro ha sido modificado con éxito");
 				}
 				catch(Exception e) {
 					//JOptionPane.showMessageDialog(null, Validator.formatError(e));
@@ -519,19 +529,25 @@ public class DataTableSceneCarController {
 			lblErrorEmpty.setVisible(true);
 	}
 	
-    public void deleteCar(ActionEvent event) throws ClassNotFoundException, SQLException {
-        ObservableList<CarAux> allCarss, singleCar;
-        allCarss = carTable.getItems();
-        singleCar = carTable.getSelectionModel().getSelectedItems();
-        
+	public void deleteCar(ActionEvent event) throws ClassNotFoundException, SQLException {
+	    ObservableList<CarAux> allCarss, singleCar;
+	    allCarss = carTable.getItems();
+	    singleCar = carTable.getSelectionModel().getSelectedItems();
 
-        if (singleCar.size() == 1) {
-        	singleCar.forEach(allCarss::remove);
-        	CarAux deleteCar= singleCar.get(0);
-            ServicesLocator.getCarServices().delete_car(deleteCar.getPlate());
-        } else {
-        	JOptionPane.showMessageDialog(null, "Solo se puede eliminar un carro a la vez");
-        }
-    }	
+	    if (singleCar.size() == 1) {
+	        CarAux deleteCar= singleCar.get(0);
+	        
+	        Object[] options = {"Sí", "No"};
+	        int dialogResult = JOptionPane.showOptionDialog(null, "¿Estás seguro de que quieres eliminar el carro con placa " + deleteCar.getPlate() + "?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+	        if(dialogResult == JOptionPane.YES_OPTION){
+	            singleCar.forEach(allCarss::remove);
+	            ServicesLocator.getCarServices().delete_car(deleteCar.getPlate());
+	        }
+	    } else {
+	        JOptionPane.showMessageDialog(null, "Solo se puede eliminar un carro a la vez");
+	    }
+	}
+
+
 }
 
