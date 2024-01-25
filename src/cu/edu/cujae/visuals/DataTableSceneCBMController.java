@@ -11,6 +11,7 @@ import cu.edu.cujae.dto.DriverDTO;
 import cu.edu.cujae.dto.ModelDTO;
 import cu.edu.cujae.dto.TouristDTO;
 import cu.edu.cujae.services.ServicesLocator;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -83,7 +84,7 @@ public class DataTableSceneCBMController {
 	private AnchorPane modelPane;
 
 	@FXML
-	private TableView<String> modelTable;
+	private TableView<ModelDTO> modelTable;
 
 	@FXML
 	private TextField txtBrand;
@@ -155,7 +156,8 @@ public class DataTableSceneCBMController {
 	
 	@SuppressWarnings("unchecked")
 	private void countryTableChargeData() throws ClassNotFoundException, SQLException {
-		colCountries.setCellValueFactory(new PropertyValueFactory<>("Países"));
+
+		colCountries.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
 		
 	    bttnDeleteCountry.setDisable(true);
         bttnUpdateCountry.setDisable(true);
@@ -192,7 +194,7 @@ public class DataTableSceneCBMController {
 	
 	@SuppressWarnings("unchecked")
 	private void brandTableChargeData() throws ClassNotFoundException, SQLException {
-		colBrands.setCellValueFactory(new PropertyValueFactory<>("Marcas"));
+		colBrands.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
 		
 	    
 	    bttnDeleteBrand.setDisable(true);
@@ -215,7 +217,8 @@ public class DataTableSceneCBMController {
 	            bttnUpdateBrand.setDisable(false);
                 
                 // Carga los datos
-                txtBrand.setText(newValue);
+	            txtBrand.setText(newValue);
+
                 
 	        }else {
                 // Desactiva los botones cuando no hay ninguna fila seleccionada
@@ -228,49 +231,54 @@ public class DataTableSceneCBMController {
 	
 	@SuppressWarnings("unchecked")
 	private void modelTableChargeData() throws ClassNotFoundException, SQLException {
-		colModels.setCellValueFactory(new PropertyValueFactory<>("Modelos"));
-		
-	    
+	    // Asegúrate de que ModelDTO tiene un método getBrand() que devuelve el nombre de la marca
+		colBrandsModels.setCellValueFactory(new PropertyValueFactory<>("brand"));
+		colModels.setCellValueFactory(new PropertyValueFactory<>("name"));
+
 	    bttnDeleteModel.setDisable(true);
-        bttnUpdateModel.setDisable(true);
-		
-		ArrayList<ModelDTO> list = ServicesLocator.getModelServices().get_model_all();
-	    ArrayList<String> namesList = new ArrayList<String>();
-        for (ModelDTO aux : list) {
-            namesList.add(aux.getName());
-        }
-	    ObservableList<String> modelList = FXCollections.observableArrayList();
-	    modelList.addAll(namesList);
-	    
-		modelTable.setItems(modelList);
-		
-		ArrayList<AuxiliaryDTO> list2 = ServicesLocator.getBrandServices().get_brand_all();
-	    ArrayList<String> namesList2 = new ArrayList<String>();
-        for (AuxiliaryDTO aux : list2) {
-            namesList2.add(aux.getName());
-        }
-	    ObservableList<String> brandList = FXCollections.observableArrayList();
-	    cmboxBrands.setItems(brandList);
+	    bttnUpdateModel.setDisable(true);
 
-        
-        modelTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+	    ArrayList<ModelDTO> list = ServicesLocator.getModelServices().get_model_all();
+	    ObservableList<ModelDTO> modelList = FXCollections.observableArrayList();
+	    modelList.addAll(list);
+
+	    modelTable.setItems(modelList);
+
+	    ArrayList<AuxiliaryDTO> auxiliaryList = ServicesLocator.getBrandServices().get_brand_all();
+	    ArrayList<String> namesList3 = new ArrayList<String>();
+	    for (AuxiliaryDTO aux : auxiliaryList) {
+	        namesList3.add(aux.getName());
+	    }
+	    ObservableList<String> observableList = FXCollections.observableArrayList(namesList3);
+	    cmboxBrands.setItems(observableList);
+
+	    modelTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 	        if (newValue != null) {
-                // Activa los botones cuando se selecciona una fila
-	        	bttnDeleteModel.setDisable(false);
-	        	bttnUpdateModel.setDisable(false);
-                
-                // Carga los datos
-                txtBrand.setText(newValue);
-                
-	        }else {
-                // Desactiva los botones cuando no hay ninguna fila seleccionada
-	    	    bttnDeleteModel.setDisable(true);
-	            bttnUpdateModel.setDisable(true);
+	            // Activa los botones cuando se selecciona una fila
+	            bttnDeleteModel.setDisable(false);
+	            bttnUpdateModel.setDisable(false);
 
-            }
-	    });      
-		
+	            // Carga los datos
+	            String modelName = newValue.getName();
+	            try {
+					cmboxBrands.setValue(ServicesLocator.getBrandServices().get_brand_by_id(newValue.getBrand()));
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	            txtModel.setText(modelName);
+
+	        } else {
+	            // Desactiva los botones cuando no hay ninguna fila seleccionada
+	            bttnDeleteModel.setDisable(true);
+	            bttnUpdateModel.setDisable(true);
+	        }
+	    });
 	}
+
 
 
 
@@ -302,22 +310,26 @@ public class DataTableSceneCBMController {
 	}
 	
 	public void insertCountry(ActionEvent event) throws ClassNotFoundException, SQLException{
-		lblErrorCountry.setVisible(false);
-		if(txtCountry.getText() != "") {
-			String name = txtCountry.getText();
-			ServicesLocator.getCountryServices().insert_country(name);
-			txtCountry.setText("");
-			try {
-				countryTableChargeData();
-			} catch (ClassNotFoundException | SQLException e) {
+	    lblErrorCountry.setVisible(false);	    	
+	    countryTable.getSelectionModel().clearSelection(); // Deselecciona la fila primero
+	    if(txtCountry.getText() != "") {
+	        String name = txtCountry.getText();
+	        ServicesLocator.getCountryServices().insert_country(name);
+	        txtCountry.setText("");
+	        try {
+	            countryTableChargeData();
+	        } catch (ClassNotFoundException | SQLException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
 				e.printStackTrace();
-			}
-		}else
-			lblErrorCountry.setVisible(true);
+	        }
+	    }else
+	        lblErrorCountry.setVisible(true);
 	}
+
 	
 	public void insertBrand(ActionEvent event) throws ClassNotFoundException, SQLException{
 		lblErrorBrand.setVisible(false);
+		brandTable.getSelectionModel().clearSelection(); // Deselecciona la fila primero
 		if(txtBrand.getText() != "") {
 			String name = txtBrand.getText();
 			ServicesLocator.getBrandServices().insert_brand(name);
@@ -327,23 +339,29 @@ public class DataTableSceneCBMController {
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 			}
+			
+			JOptionPane.showMessageDialog(null, "La marca ha sido insertada con éxito");
 		}else
 			lblErrorBrand.setVisible(true);
 	}
 	
 	public void insertModel(ActionEvent event) throws ClassNotFoundException, SQLException{
 		lblErrorModel.setVisible(false);
+		modelTable.getSelectionModel().clearSelection(); // Deselecciona la fila primero
 		if(cmboxBrands.getValue() != "" && txtModel.getText() != "") {
-			int brand = cmboxBrands.getSelectionModel().getSelectedIndex() + 1;
+			int brand = cmboxBrands.getSelectionModel().getSelectedIndex() + 4;
 			String model = txtModel.getText();
-			ServicesLocator.getModelServices().insert_model(brand, model);
+			ServicesLocator.getModelServices().insert_model(model, brand);
 			cmboxBrands.setValue("");
 			txtModel.setText("");
 			try {
 				modelTableChargeData();
 			} catch (ClassNotFoundException | SQLException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
 				e.printStackTrace();
 			}
+			
+			JOptionPane.showMessageDialog(null, "El modelo ha sido insertado con éxito");
 		}else
 			lblErrorModel.setVisible(true);
 	}
@@ -359,6 +377,8 @@ public class DataTableSceneCBMController {
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 			}
+			
+			JOptionPane.showMessageDialog(null, "El país ha sido modificado con éxito");
 		}else
 			lblErrorCountry.setVisible(true);
 	}
@@ -374,6 +394,8 @@ public class DataTableSceneCBMController {
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 			}
+			
+			JOptionPane.showMessageDialog(null, "La marca ha sido modificada con éxito");
 		}else
 			lblErrorBrand.setVisible(true);
 	}
@@ -391,55 +413,71 @@ public class DataTableSceneCBMController {
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 			}
+			
+			JOptionPane.showMessageDialog(null, "El modelo ha sido modificado con éxito");
 		}else
 			lblErrorModel.setVisible(true);
 	}
 	
-	public void deleteCountry(ActionEvent event) throws ClassNotFoundException, SQLException{
+	public void deleteCountry(ActionEvent event) throws ClassNotFoundException, SQLException {
+	    ObservableList<String> allCountries, singleCountries;
+	    allCountries = countryTable.getItems();
+	    singleCountries = countryTable.getSelectionModel().getSelectedItems();
 
-		ObservableList<String> allCountries, singleCountries;
-		allCountries = countryTable.getItems();
-		singleCountries = countryTable.getSelectionModel().getSelectedItems();
-
-
-		if (singleCountries.size() == 1) {
-			singleCountries.forEach(allCountries::remove);
-			String deleteCountry= singleCountries.get(0);
-			ServicesLocator.getCountryServices().delete_country(deleteCountry);
-		} else {
-			JOptionPane.showMessageDialog(null, "Solo se puede eliminar un país a la vez");
-		}
+	    if (singleCountries.size() == 1) {
+	        String deleteCountry = singleCountries.get(0);
+	        
+	        Object[] options = {"Sí", "No"};
+	        int dialogResult = JOptionPane.showOptionDialog(null, "¿Estás seguro de que quieres eliminar el país " + deleteCountry + "?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+	        if(dialogResult == JOptionPane.YES_OPTION){
+	            singleCountries.forEach(allCountries::remove);
+	            ServicesLocator.getCountryServices().delete_country(deleteCountry);
+	        }
+	    } else {
+	        JOptionPane.showMessageDialog(null, "Solo se puede eliminar un país a la vez");
+	    }
 	}
+
 	
-	public void deleteBrand(ActionEvent event) throws ClassNotFoundException, SQLException{
-		ObservableList<String> allBrands, singleBrands;
-		allBrands = countryTable.getItems();
-		singleBrands = countryTable.getSelectionModel().getSelectedItems();
+	public void deleteBrand(ActionEvent event) throws ClassNotFoundException, SQLException {
+	    ObservableList<String> allBrands, singleBrands;
+	    allBrands = brandTable.getItems();
+	    singleBrands = brandTable.getSelectionModel().getSelectedItems();
 
-
-		if (singleBrands.size() == 1) {
-			singleBrands.forEach(allBrands::remove);
-			String deleteBrand = singleBrands.get(0);
-			ServicesLocator.getBrandServices().delete_brand(deleteBrand);
-		} else {
-			JOptionPane.showMessageDialog(null, "Solo se puede eliminar una marca a la vez");
-		}
+	    if (singleBrands.size() == 1) {
+	        String deleteBrand = singleBrands.get(0);
+	        
+	        Object[] options = {"Sí", "No"};
+	        int dialogResult = JOptionPane.showOptionDialog(null, "¿Estás seguro de que quieres eliminar la marca " + deleteBrand + "?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+	        if(dialogResult == JOptionPane.YES_OPTION){
+	            singleBrands.forEach(allBrands::remove);
+	            ServicesLocator.getBrandServices().delete_brand(deleteBrand);
+	        }
+	    } else {
+	        JOptionPane.showMessageDialog(null, "Solo se puede eliminar una marca a la vez");
+	    }
 	}
+
 	
-	public void deleteModel(ActionEvent event) throws ClassNotFoundException, SQLException{
-		ObservableList<String> allModels, singleModels;
-		allModels = modelTable.getItems();
-		singleModels = countryTable.getSelectionModel().getSelectedItems();
+	public void deleteModel(ActionEvent event) throws ClassNotFoundException, SQLException {
+	    ObservableList<ModelDTO> allModels, singleModels;
+	    allModels = modelTable.getItems();
+	    singleModels = modelTable.getSelectionModel().getSelectedItems();
 
-
-		if (singleModels.size() == 1) {
-			singleModels.forEach(allModels::remove);
-			String deleteModel= singleModels.get(0);
-			ServicesLocator.getModelServices().delete_model(deleteModel);
-		} else {
-			JOptionPane.showMessageDialog(null, "Solo se puede eliminar una marca a la vez");
-		}
+	    if (singleModels.size() == 1) {
+	    	ModelDTO deleteModel = singleModels.get(0);
+	        
+	        Object[] options = {"Sí", "No"};
+	        int dialogResult = JOptionPane.showOptionDialog(null, "¿Estás seguro de que quieres eliminar el modelo " + deleteModel + "?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+	        if(dialogResult == JOptionPane.YES_OPTION){
+	            singleModels.forEach(allModels::remove);
+	            ServicesLocator.getModelServices().delete_model(deleteModel.getName());
+	        }
+	    } else {
+	        JOptionPane.showMessageDialog(null, "Solo se puede eliminar un modelo a la vez");
+	    }
 	}
+
 	
 	
 	public void backMain(ActionEvent event) throws IOException{

@@ -1,5 +1,9 @@
 package cu.edu.cujae.dto;
 
+import java.sql.SQLException;
+
+import cu.edu.cujae.services.ServicesLocator;
+
 public class ModelDTO {
     private int brand;
 	private int id;
@@ -37,5 +41,13 @@ public class ModelDTO {
 
     public void setBrand(int brand) {
         this.brand = brand;
+    }
+    
+    public String getBrandName(int id) throws ClassNotFoundException, SQLException {
+    	String brand;
+    	
+    	brand = ServicesLocator.getBrandServices().get_brand_by_id(id);
+    	
+    	return brand;
     }
 }

@@ -10,12 +10,12 @@ import java.util.LinkedList;
 import cu.edu.cujae.dto.ModelDTO;
 
 public class ModelServices {
-    public void insert_model(int brand, String name) throws SQLException, ClassNotFoundException{
+    public void insert_model(String name, int brand) throws SQLException, ClassNotFoundException{
     String query = "SELECT insert_model(?, ?)";
     java.sql.Connection connection = ServicesLocator.getConexion();
     PreparedStatement preparedStatement = connection.prepareStatement(query);
-    preparedStatement.setInt(1, brand);
-    preparedStatement.setString(2, name);
+    preparedStatement.setString(1, name);
+    preparedStatement.setInt(2, brand);
     preparedStatement.execute();
     preparedStatement.close();
     connection.close();
