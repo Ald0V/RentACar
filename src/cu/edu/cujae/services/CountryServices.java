@@ -73,4 +73,16 @@ public class CountryServices {
 	    return country;
 	    
 	}
+	
+	public void update_country(int id, String name) 
+		      throws SQLException, ClassNotFoundException{
+		    String query = "SELECT update_country(?, ?)";
+		    java.sql.Connection connection = ServicesLocator.getConexion();
+		    PreparedStatement preparedStatement = connection.prepareStatement(query);
+		    preparedStatement.setInt(1, id);
+		    preparedStatement.setString(2, name);
+		    preparedStatement.execute();
+		    preparedStatement.close();
+		    connection.close();
+		  }
 }

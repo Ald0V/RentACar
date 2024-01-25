@@ -69,5 +69,17 @@ public String get_brand_by_id (int id)throws SQLException, ClassNotFoundExceptio
     
 }
 
+public void update_brand(int id, String name) 
+	      throws SQLException, ClassNotFoundException{
+	    String query = "SELECT update_brand(?, ?)";
+	    java.sql.Connection connection = ServicesLocator.getConexion();
+	    PreparedStatement preparedStatement = connection.prepareStatement(query);
+	    preparedStatement.setInt(1, id);
+	    preparedStatement.setString(2, name);
+	    preparedStatement.execute();
+	    preparedStatement.close();
+	    connection.close();
+	  }
+
     
 }

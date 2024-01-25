@@ -95,5 +95,18 @@ public String get_model_by_id (int id)throws SQLException, ClassNotFoundExceptio
     return model;
     
 }
+
+public void update_model(int brand, int id, String name) 
+	      throws SQLException, ClassNotFoundException{
+	    String query = "SELECT update_model(?, ?, ?)";
+	    java.sql.Connection connection = ServicesLocator.getConexion();
+	    PreparedStatement preparedStatement = connection.prepareStatement(query);
+	    preparedStatement.setInt(1, brand);
+	    preparedStatement.setInt(2, id);
+	    preparedStatement.setString(3, name);
+	    preparedStatement.execute();
+	    preparedStatement.close();
+	    connection.close();
+	  }
     
 }
