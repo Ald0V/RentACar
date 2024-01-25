@@ -1,5 +1,10 @@
 package cu.edu.cujae.utils;
 
+import java.sql.SQLException;
+
+import cu.edu.cujae.dto.DriverDTO;
+import cu.edu.cujae.services.ServicesLocator;
+
 public class DriverAux {
 	
 	private String iD;
@@ -9,12 +14,19 @@ public class DriverAux {
     private String address;
     private String license;
     
+    public DriverAux (DriverDTO driver) throws SQLException {
+    	setID(driver.getID());
+    	setName(driver.getName());
+    	setLastName1(driver.getLastName1());
+    	setLastName2(driver.getLastName2());
+    	setAddress(driver.getAddress());
+    	setCategory(ServicesLocator.getLicenseServices().select_license_by_id(driver.getCategory()));
+    }
     
-    
-	public String getiD() {
+	public String getID() {
 		return iD;
 	}
-	public void setiD(String iD) {
+	public void setID(String iD) {
 		this.iD = iD;
 	}
 	public String getName() {
@@ -35,16 +47,16 @@ public class DriverAux {
 	public void setLastName2(String lastName2) {
 		this.lastName2 = lastName2;
 	}
-	public String getDirection() {
+	public String getAddress() {
 		return address;
 	}
-	public void setDirection(String direction) {
+	public void setAddress(String direction) {
 		this.address = direction;
 	}
-	public String getLicense() {
+	public String getCategory() {
 		return license;
 	}
-	public void setLicense(String license) {
+	public void setCategory(String license) {
 		this.license = license;
 	}
 

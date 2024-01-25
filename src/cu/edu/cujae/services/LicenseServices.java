@@ -46,6 +46,25 @@ public ArrayList<AuxiliaryDTO> get_license_all() throws SQLException, ClassNotFo
     connection.close();
     return lodgings;
 }
- 
+public String select_license_by_id(int id) throws SQLException {
+    String aux;
+    java.sql.Connection connection = ServicesLocator.getConexion();
+    String sql = "SELECT license.name " +
+    "FROM license " +
+    "WHERE license.id = ?;";
+    PreparedStatement statement = connection.prepareStatement(sql);
+    statement.setInt(1, id);
+    ResultSet resultSet = statement.executeQuery();
+    if (resultSet.next()) {
+        aux = resultSet.getString("name");
+    } else {
+        aux = null; // o cualquier valor predeterminado
+    }
+    resultSet.close();
+    statement.close();
+
+    return aux;
+}
+
     
 }

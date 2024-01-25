@@ -18,7 +18,7 @@ public class TouristAux {
     
     public TouristAux(TouristDTO tourist) throws ClassNotFoundException, SQLException {
     	
-        setpassport(tourist.getID());
+        setPassport(tourist.getID());
         setName(tourist.getName());
         setLastName1(tourist.getLastName1());
         setLastName2(tourist.getLastName2());
@@ -36,11 +36,11 @@ public class TouristAux {
 		this.country = country;
 	}
 
-	public String getpassport() {
+	public String getPassport() {
         return passport;
     }
 
-    public void setpassport(String passport) {
+    public void setPassport(String passport) {
         this.passport = passport;
     }
 

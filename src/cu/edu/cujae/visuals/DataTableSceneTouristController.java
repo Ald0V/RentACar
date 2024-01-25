@@ -221,7 +221,7 @@ public class DataTableSceneTouristController {
                 
                 // Carga los datos
                 
-	            txtPassportAdd.setText(newValue.getpassport()); 
+	            txtPassportAdd.setText(newValue.getPassport()); 
 	            txtNameAdd.setText(newValue.getName());
 	            txtLastName1Add.setText(newValue.getLastName1());
 	            txtLastName2Add.setText(newValue.getLastName2());
@@ -555,10 +555,10 @@ public class DataTableSceneTouristController {
             TouristAux deleteTourist = singleTourist.get(0);
             
             int dialogButton = JOptionPane.YES_NO_OPTION;
-            int dialogResult = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres eliminar el turista con ID " + deleteTourist.getpassport() + "?", "Confirmación", dialogButton);
+            int dialogResult = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres eliminar el turista con ID " + deleteTourist.getPassport() + "?", "Confirmación", dialogButton);
             if(dialogResult == JOptionPane.YES_OPTION){
                 singleTourist.forEach(allTourists::remove);
-                ServicesLocator.getTouristServices().delete_car(deleteTourist.getpassport());
+                ServicesLocator.getTouristServices().delete_car(deleteTourist.getPassport());
             }
         } else {
             JOptionPane.showMessageDialog(null, "Solo se puede eliminar un turista a la vez");

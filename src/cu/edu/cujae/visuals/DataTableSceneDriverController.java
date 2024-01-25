@@ -11,6 +11,8 @@ import cu.edu.cujae.dto.CarDTO;
 import cu.edu.cujae.dto.DriverDTO;
 import cu.edu.cujae.dto.TouristDTO;
 import cu.edu.cujae.services.ServicesLocator;
+import cu.edu.cujae.utils.CarAux;
+import cu.edu.cujae.utils.DriverAux;
 import cu.edu.cujae.utils.TouristAux;
 import cu.edu.cujae.utils.Validator;
 import javafx.collections.FXCollections;
@@ -52,7 +54,7 @@ public class DataTableSceneDriverController {
     private AnchorPane addParametersScenePane;
     
     @FXML
-    private TableView<DriverDTO> driverTable;
+    private TableView<DriverAux> driverTable;
     
     @FXML
     private TextField search;
@@ -80,22 +82,22 @@ public class DataTableSceneDriverController {
 //0ºººººººººººººººº0 
     
     @FXML
-    private TableColumn<DriverDTO, String> colAddAddress;
+    private TableColumn<DriverAux, String> colAddAddress;
 
     @FXML
-    private TableColumn<DriverDTO, String> colAddID;
+    private TableColumn<DriverAux, String> colAddID;
 
     @FXML
-    private TableColumn<DriverDTO, String> colAddLastName1;
+    private TableColumn<DriverAux, String> colAddLastName1;
 
     @FXML
-    private TableColumn<DriverDTO, String> colAddLastName2;
+    private TableColumn<DriverAux, String> colAddLastName2;
 
     @FXML
-    private TableColumn<DriverDTO, String> colAddLicense;
+    private TableColumn<DriverAux, String> colAddLicense;
 
     @FXML
-    private TableColumn<DriverDTO, String> colAddName;
+    private TableColumn<DriverAux, String> colAddName;
  
 //*****************    
 //*   ADD PANE    *
@@ -141,7 +143,7 @@ public class DataTableSceneDriverController {
 	public void driverTableChargeData()throws ClassNotFoundException, SQLException {
 		// Configurar cellValueFactory para cada columna
 	    colAddAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-	    colAddID.setCellValueFactory(new PropertyValueFactory<>("iD"));
+	    colAddID.setCellValueFactory(new PropertyValueFactory<>("ID"));
 	    colAddLastName1.setCellValueFactory(new PropertyValueFactory<>("lastName1"));
 	    colAddLastName2.setCellValueFactory(new PropertyValueFactory<>("lastName2"));
 	    colAddLicense.setCellValueFactory(new PropertyValueFactory<>("category"));
@@ -153,9 +155,15 @@ public class DataTableSceneDriverController {
 
 
 	    // Obtener la lista de conductores
-	    ArrayList<DriverDTO> list = ServicesLocator.getDriverServices().get_driver_all();		
-	    ObservableList<DriverDTO> driversList = FXCollections.observableArrayList();
-	    driversList.addAll(list);
+	    ArrayList<DriverDTO> list = ServicesLocator.getDriverServices().get_driver_all();	
+	    ArrayList<DriverAux> listaux = new ArrayList<DriverAux>();
+	    
+	    for (DriverDTO a : list) {
+			listaux.add(new DriverAux(a));
+		}
+	    
+	    ObservableList<DriverAux> driversList = FXCollections.observableArrayList();
+	    driversList.addAll(listaux);
 //	    
 //	    // Establecer los elementos de la tabla
 	    driverTable.setItems(driversList);
@@ -184,7 +192,7 @@ public class DataTableSceneDriverController {
                 txtLastName1Add.setText(newValue.getLastName1());
                 txtLastName2Add.setText(newValue.getLastName2());
                 txtAddressAdd.setText(newValue.getAddress());
-//                cmboxLicenseAdd.setValue(newValue.getCategory());
+                cmboxLicenseAdd.setValue(newValue.getCategory());
 
 	        } else {
                 // Desactiva los botones cuando no hay ninguna fila seleccionada
@@ -311,8 +319,8 @@ public class DataTableSceneDriverController {
 
 
 	public void insertDriver(ActionEvent event) throws ClassNotFoundException, SQLException {
-		lblErrorCI.setVisible(true);
-		lblErrorEmpty.setVisible(true);
+		lblErrorCI.setVisible(false);
+		lblErrorEmpty.setVisible(false);
 		if(txtAddressAdd.getText() != "" && txtIDAdd.getText() != "" && txtLastName1Add.getText() != "" && txtLastName2Add.getText() != "" && txtNameAdd.getText() != "" && cmboxLicenseAdd.getValue() != "") {
 			if(val.isIDCorrect(txtIDAdd.getText())) {
 				String name = txtNameAdd.getText();
@@ -354,8 +362,8 @@ public class DataTableSceneDriverController {
 	}
 	
 	public void modifyDriver(ActionEvent event) throws ClassNotFoundException, SQLException {
-		lblErrorCI.setVisible(true);
-		lblErrorEmpty.setVisible(true);
+		lblErrorCI.setVisible(false);
+		lblErrorEmpty.setVisible(false);
 		if(txtAddressAdd.getText() != "" && txtIDAdd.getText() != "" && txtLastName1Add.getText() != "" && txtLastName2Add.getText() != "" && txtNameAdd.getText() != "" && cmboxLicenseAdd.getValue() != "") {
 			if(val.isIDCorrect(txtIDAdd.getText())) {
 				String name = txtNameAdd.getText();
@@ -381,7 +389,7 @@ public class DataTableSceneDriverController {
 						driverTableChargeData();
 					} catch (ClassNotFoundException | SQLException e) {
 						e.printStackTrace();
-					}
+					}							qqqqqqqqqqqqqqqqqqqqqqqqq																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																															Q
 					
 					JOptionPane.showMessageDialog(null, "El conductor ha sido modificado con éxito");
 					
@@ -400,12 +408,12 @@ public class DataTableSceneDriverController {
     
 	
 	public void deleteDriver(ActionEvent event) throws ClassNotFoundException, SQLException {
-	    ObservableList<DriverDTO> allDrivers, singleDriver;
+	    ObservableList<DriverAux> allDrivers, singleDriver;
 	    allDrivers = driverTable.getItems();
 	    singleDriver = driverTable.getSelectionModel().getSelectedItems();
 
 	    if (singleDriver.size() == 1) {
-	        DriverDTO deleteDriver = singleDriver.get(0);
+	    	DriverAux deleteDriver = singleDriver.get(0);
 	        
 	        int dialogButton = JOptionPane.YES_NO_OPTION;
 	        int dialogResult = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres eliminar el conductor con ID " + deleteDriver.getID() + "?", "Confirmación", dialogButton);
