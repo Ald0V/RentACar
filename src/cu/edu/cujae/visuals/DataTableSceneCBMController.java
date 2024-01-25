@@ -160,7 +160,7 @@ public class DataTableSceneCBMController {
 		colCountries.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
 		
 	    bttnDeleteCountry.setDisable(true);
-        bttnUpdateCountry.setDisable(true);
+        bttnUpdateCountry.setVisible(false);
 		
 	    ArrayList<AuxiliaryDTO> list = ServicesLocator.getCountryServices().get_country_all();
 	    ArrayList<String> namesList = new ArrayList<String>();
@@ -177,7 +177,7 @@ public class DataTableSceneCBMController {
 	        if (newValue != null) {
                 // Activa los botones cuando se selecciona una fila
 	        	bttnDeleteCountry.setDisable(false);
-	        	bttnUpdateCountry.setDisable(false);
+//	        	bttnUpdateCountry.setDisable(false);
                 
                 // Carga los datos
                 txtCountry.setText(newValue);
@@ -186,7 +186,7 @@ public class DataTableSceneCBMController {
 	        }else {
                 // Desactiva los botones cuando no hay ninguna fila seleccionada
 	    	    bttnDeleteCountry.setDisable(true);
-	            bttnUpdateCountry.setDisable(true);
+//	            bttnUpdateCountry.setDisable(true);
 
             }
 	    });      
@@ -198,7 +198,7 @@ public class DataTableSceneCBMController {
 		
 	    
 	    bttnDeleteBrand.setDisable(true);
-        bttnUpdateBrand.setDisable(true);
+        bttnUpdateBrand.setVisible(false);
 		
 		ArrayList<AuxiliaryDTO> list = ServicesLocator.getBrandServices().get_brand_all();
 	    ArrayList<String> namesList = new ArrayList<String>();
@@ -214,7 +214,7 @@ public class DataTableSceneCBMController {
 	        if (newValue != null) {
                 // Activa los botones cuando se selecciona una fila
 	        	bttnDeleteBrand.setDisable(false);
-	            bttnUpdateBrand.setDisable(false);
+//	            bttnUpdateBrand.setDisable(false);
                 
                 // Carga los datos
 	            txtBrand.setText(newValue);
@@ -223,7 +223,7 @@ public class DataTableSceneCBMController {
 	        }else {
                 // Desactiva los botones cuando no hay ninguna fila seleccionada
 	        	bttnDeleteBrand.setDisable(true);
-	            bttnUpdateBrand.setDisable(true);
+//	            bttnUpdateBrand.setDisable(true);
 
             }
 	    });      
@@ -236,7 +236,7 @@ public class DataTableSceneCBMController {
 		colModels.setCellValueFactory(new PropertyValueFactory<>("name"));
 
 	    bttnDeleteModel.setDisable(true);
-	    bttnUpdateModel.setDisable(true);
+	    bttnUpdateModel.setVisible(false);
 
 	    ArrayList<ModelDTO> list = ServicesLocator.getModelServices().get_model_all();
 	    ObservableList<ModelDTO> modelList = FXCollections.observableArrayList();
@@ -256,7 +256,7 @@ public class DataTableSceneCBMController {
 	        if (newValue != null) {
 	            // Activa los botones cuando se selecciona una fila
 	            bttnDeleteModel.setDisable(false);
-	            bttnUpdateModel.setDisable(false);
+//	            bttnUpdateModel.setDisable(false);
 
 	            // Carga los datos
 	            String modelName = newValue.getName();
@@ -274,7 +274,7 @@ public class DataTableSceneCBMController {
 	        } else {
 	            // Desactiva los botones cuando no hay ninguna fila seleccionada
 	            bttnDeleteModel.setDisable(true);
-	            bttnUpdateModel.setDisable(true);
+//	            bttnUpdateModel.setDisable(true);
 	        }
 	    });
 	}
@@ -367,56 +367,59 @@ public class DataTableSceneCBMController {
 	}
 	
 	public void updateCountry(ActionEvent event) throws ClassNotFoundException, SQLException{
-		lblErrorCountry.setVisible(false);
-		if(txtCountry.getText() != "") {
-			String name = txtCountry.getText();
-//			ServicesLocator.getCountryServices().update_country(name);
-			txtCountry.setText("");
-			try {
-				countryTableChargeData();
-			} catch (ClassNotFoundException | SQLException e) {
-				e.printStackTrace();
-			}
-			
-			JOptionPane.showMessageDialog(null, "El país ha sido modificado con éxito");
-		}else
-			lblErrorCountry.setVisible(true);
+//		lblErrorCountry.setVisible(false);
+//		if(txtCountry.getText() != "") {
+//			String name = txtCountry.getText();
+////			ServicesLocator.getCountryServices().update_country(name);
+//			txtCountry.setText("");
+//			try {
+//				countryTableChargeData();
+//			} catch (ClassNotFoundException | SQLException e) {
+//				e.printStackTrace();
+//			}
+//			
+//			JOptionPane.showMessageDialog(null, "El país ha sido modificado con éxito");
+//		}else
+//			lblErrorCountry.setVisible(true);
 	}
 	
 	public void updateBrand(ActionEvent event) throws ClassNotFoundException, SQLException{
-		lblErrorBrand.setVisible(false);
-		if(txtBrand.getText() != "") {
-			String name = txtBrand.getText();
-//			ServicesLocator.getBrandServices().update_brand(name);
-			txtBrand.setText("");
-			try {
-				brandTableChargeData();
-			} catch (ClassNotFoundException | SQLException e) {
-				e.printStackTrace();
-			}
-			
-			JOptionPane.showMessageDialog(null, "La marca ha sido modificada con éxito");
-		}else
-			lblErrorBrand.setVisible(true);
+//	    lblErrorBrand.setVisible(false);
+//	    if(txtBrand.getText() != "") {
+//	        String name = txtBrand.getText();
+//	        int selectedIndex = brandTable.getSelectionModel().getSelectedIndex() + 4;
+//	        System.out.print(selectedIndex);// Obtener el índice de la fila seleccionada
+//	        ServicesLocator.getBrandServices().update_brand(selectedIndex, name);
+//	        txtBrand.setText("");
+//	        try {
+//	            brandTableChargeData();
+//	        } catch (ClassNotFoundException | SQLException e) {
+//	            e.printStackTrace();
+//	        }
+//
+//	        JOptionPane.showMessageDialog(null, "La marca ha sido modificada con éxito");
+//	    } else
+//	        lblErrorBrand.setVisible(true);
 	}
+
 	
 	public void updateModel(ActionEvent event) throws ClassNotFoundException, SQLException{
-		lblErrorModel.setVisible(false);
-		if(cmboxBrands.getValue() != "" && txtModel.getText() != "") {
-			int brand = cmboxBrands.getSelectionModel().getSelectedIndex() + 1;
-			String model = txtModel.getText();
-//			ServicesLocator.getModelServices().update_model(brand, model);
-			cmboxBrands.setValue("");
-			txtModel.setText("");
-			try {
-				modelTableChargeData();
-			} catch (ClassNotFoundException | SQLException e) {
-				e.printStackTrace();
-			}
-			
-			JOptionPane.showMessageDialog(null, "El modelo ha sido modificado con éxito");
-		}else
-			lblErrorModel.setVisible(true);
+//		lblErrorModel.setVisible(false);
+//		if(cmboxBrands.getValue() != "" && txtModel.getText() != "") {
+//			int brand = cmboxBrands.getSelectionModel().getSelectedIndex() + 1;
+//			String model = txtModel.getText();
+////			ServicesLocator.getModelServices().update_model(brand, model);
+//			cmboxBrands.setValue("");
+//			txtModel.setText("");
+//			try {
+//				modelTableChargeData();
+//			} catch (ClassNotFoundException | SQLException e) {
+//				e.printStackTrace();
+//			}
+//			
+//			JOptionPane.showMessageDialog(null, "El modelo ha sido modificado con éxito");
+//		}else
+//			lblErrorModel.setVisible(true);
 	}
 	
 	public void deleteCountry(ActionEvent event) throws ClassNotFoundException, SQLException {

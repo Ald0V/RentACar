@@ -1,7 +1,7 @@
 package cu.edu.cujae.dto;
 
 public class UserDTO {
-	private String id;
+	private int id;
     private String username;
     private String email;
     private String password;
@@ -10,7 +10,7 @@ public class UserDTO {
     public UserDTO() {
     }
 
-	public UserDTO(String id, String username, String email, String password, String rol) {
+	public UserDTO(int id, String username, String email, String password, String rol) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -19,11 +19,11 @@ public class UserDTO {
 		this.rol = rol;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -59,4 +59,3 @@ public class UserDTO {
 		this.rol = rol;
 	}
 }
-  

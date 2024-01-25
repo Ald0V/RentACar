@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import cu.edu.cujae.dto.DriverDTO;
 import cu.edu.cujae.dto.TouristDTO;
@@ -72,4 +73,57 @@ public class DriverServices {
 		return lodgings;
 	}
 	
+	public DriverDTO find_driver(String id) throws SQLException{
+		DriverDTO d = null;
+		String function = "{?=call get_driver_by_dni(?)}";
+		java.sql.Connection connection = ServicesLocator.getConexion();
+		connection.setAutoCommit(false);
+		CallableStatement preparedFunction = connection.prepareCall(function);
+		preparedFunction.registerOutParameter(1, java.sql.Types.OTHER);
+		preparedFunction.setString(2, id);
+		preparedFunction.execute();
+		ResultSet result = (ResultSet) preparedFunction.getObject(1);
+		if(result.next())
+		d = getData(result);
+		result.close();
+		preparedFunction.close();
+		connection.close();
+		return d;
+	}
+
+	private DriverDTO getData(ResultSet result) throws SQLException{
+		String id = result.getString(1);
+		String name= result.getString(2);
+		String lastName1 = result.getString(3);
+		String lastName2 = result.getString(4);
+		int category = result.getInt(5);
+		String address = result.getString(6);
+		
+        return new DriverDTO(id, name, lastName1, lastName2, category, address);
+    }
+
+	public  LinkedList<DriverDTO> findDriver(String brand) throws SQLException{
+		LinkedList<DriverDTO> List = new LinkedList<DriverDTO>();
+        java.sql.Connection connection = ServicesLocator.getConexion();
+        String sql = "SELECT driver.*" +
+        "FROM driver";
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setString(1, brand);
+		statement.execute();
+		ResultSet resultSet = statement.executeQuery();
+		while (resultSet.next()) {
+			DriverDTO c = new DriverDTO(resultSet.getString("id"),
+								  resultSet.getString("name"),
+								  resultSet.getString("lastname1"),
+								  resultSet.getString("lastname2"),
+								  resultSet.getInt("category"),
+								  resultSet.getString("address"));
+
+			List.add(c);
+		}
+		resultSet.close();
+		statement.close();
+		
+		return List;
+	}
 }

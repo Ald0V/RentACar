@@ -74,5 +74,33 @@ public class CarServices {
 		return lodgings;
 	}
 	
+	public CarDTO findCar(String plate) throws SQLException{
+		CarDTO c = null;
+		String function = "{?=call get_car_by_plate(?)}";
+		java.sql.Connection connection = ServicesLocator.getConexion();
+		connection.setAutoCommit(false);
+		CallableStatement preparedFunction = connection.prepareCall(function);
+		preparedFunction.registerOutParameter(1, java.sql.Types.OTHER);
+		preparedFunction.setString(2, plate);
+		preparedFunction.execute();
+		ResultSet result = (ResultSet) preparedFunction.getObject(1);
+		if(result.next())
+		c = getData(result);
+		result.close();
+		preparedFunction.close();
+		connection.close();
+		return c;
+	}
+
+	private CarDTO getData(ResultSet result) throws SQLException{
+		String plate = result.getString(1);
+		int brand = result.getInt(2);
+		int model = result.getInt(3);
+        int cantKm = result.getInt(4);
+		String color = result.getString(5);
+		int situation = result.getInt(6);
+        return new CarDTO(plate, brand, model, cantKm, color, situation );
+    }
+	
 	
 }

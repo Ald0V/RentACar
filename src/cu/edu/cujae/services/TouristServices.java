@@ -77,4 +77,34 @@ public class TouristServices {
 		return lodgings;
 	}
 	
+	public TouristDTO findTourist(String passport) throws SQLException{
+		TouristDTO t = null;
+		String function = "{?=call get_tourist_by_passport(?)}";
+		java.sql.Connection connection = ServicesLocator.getConexion();
+		connection.setAutoCommit(false);
+		CallableStatement preparedFunction = connection.prepareCall(function);
+		preparedFunction.registerOutParameter(1, java.sql.Types.OTHER);
+		preparedFunction.setString(2, passport);
+		preparedFunction.execute();
+		ResultSet result = (ResultSet) preparedFunction.getObject(1);
+		if(result.next())
+		t = getData(result);
+		result.close();
+		preparedFunction.close();
+		connection.close();
+		return t;
+	}
+
+	private TouristDTO getData(ResultSet result) throws SQLException{
+		String id = result.getString(1);
+		String name= result.getString(2);
+		String lastName1 = result.getString(3);
+		String lastName2 = result.getString(4);
+		int age = result.getInt(5);
+		String sex = result.getString(6);
+		String contact = result.getString(7);
+		int country = result.getInt(8) ;
+        return new TouristDTO(id, name, lastName1, lastName2, age, sex, contact, country);
+    }
+	
 }
