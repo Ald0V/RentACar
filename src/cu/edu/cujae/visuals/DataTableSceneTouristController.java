@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import cu.edu.cujae.dto.AuxiliaryDTO;
+import cu.edu.cujae.dto.CarDTO;
+import cu.edu.cujae.utils.CarAux;
 import cu.edu.cujae.utils.TouristAux;
 import cu.edu.cujae.utils.Validator;
 import cu.edu.cujae.dto.TouristDTO;
@@ -55,7 +57,7 @@ public class DataTableSceneTouristController {
     private TextField search;
     
     @FXML
-    private TableView<TouristDTO> touristTable;
+    private TableView<TouristAux> touristTable;
 	
     @FXML
     private Label lblName;
@@ -103,28 +105,28 @@ public class DataTableSceneTouristController {
     
     
     @FXML
-    private TableColumn<TouristDTO, Integer> colAddAge;
+    private TableColumn<TouristAux, Integer> colAddAge;
 
     @FXML
-    private TableColumn<TouristDTO, String> colAddCountry;
+    private TableColumn<TouristAux, String> colAddCountry;
 
     @FXML
-    private TableColumn<TouristDTO, String> colAddLastName1;
+    private TableColumn<TouristAux, String> colAddLastName1;
 
     @FXML
-    private TableColumn<TouristDTO, String> colAddLastName2;
+    private TableColumn<TouristAux, String> colAddLastName2;
 
     @FXML
-    private TableColumn<TouristDTO, String> colAddName;
+    private TableColumn<TouristAux, String> colAddName;
 
     @FXML
-    private TableColumn<TouristDTO, String> colAddPassport;
+    private TableColumn<TouristAux, String> colAddPassport;
 
     @FXML
-    private TableColumn<TouristDTO, String> colAddSex;
+    private TableColumn<TouristAux, String> colAddSex;
     
     @FXML
-    private TableColumn<TouristDTO, String> colAddPhone;
+    private TableColumn<TouristAux, String> colAddPhone;
   
 //*****************    
 //*   ADD PANE    *
@@ -178,23 +180,29 @@ public class DataTableSceneTouristController {
 	@SuppressWarnings("unchecked")
 	private void touristTableChargeData() throws ClassNotFoundException, SQLException {	
 	    // Configurar cellValueFactory para cada columna
-		colAddPassport.setCellValueFactory(new PropertyValueFactory<>("Pasaporte"));
-		colAddName.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
-		colAddLastName1.setCellValueFactory(new PropertyValueFactory<>("Primer apellido"));
-		colAddLastName2.setCellValueFactory(new PropertyValueFactory<>("Segundo apellido"));
-		colAddAge.setCellValueFactory(new PropertyValueFactory<>("Edad"));
-		colAddSex.setCellValueFactory(new PropertyValueFactory<>("Género"));
-		colAddPhone.setCellValueFactory(new PropertyValueFactory<>("Teléfono"));
-	    colAddCountry.setCellValueFactory(new PropertyValueFactory<>("País"));
+		colAddPassport.setCellValueFactory(new PropertyValueFactory<>("passport"));
+		colAddName.setCellValueFactory(new PropertyValueFactory<>("name"));
+		colAddLastName1.setCellValueFactory(new PropertyValueFactory<>("lastName1"));
+		colAddLastName2.setCellValueFactory(new PropertyValueFactory<>("lastName2"));
+		colAddAge.setCellValueFactory(new PropertyValueFactory<>("age"));
+		colAddSex.setCellValueFactory(new PropertyValueFactory<>("sex"));
+		colAddPhone.setCellValueFactory(new PropertyValueFactory<>("contact"));
+	    colAddCountry.setCellValueFactory(new PropertyValueFactory<>("country"));
 	    
 		 // Desactiva los botones al inicio
         bttnDelete.setDisable(true);
         bttnModify.setDisable(true);
 
 	    // Obtener la lista de turistas
-	    ArrayList<TouristDTO> list = ServicesLocator.getTouristServices().get_tourist_all();		
-	    ObservableList<TouristDTO> touristList = FXCollections.observableArrayList();
-	    touristList.addAll(list);
+	    ArrayList<TouristDTO> list = ServicesLocator.getTouristServices().get_tourist_all();
+	    ArrayList<TouristAux> listaux = new ArrayList<TouristAux>();
+	    
+	    for (TouristDTO a : list) {
+			listaux.add(new TouristAux(a));
+		}
+	    
+	    ObservableList<TouristAux> touristList = FXCollections.observableArrayList();
+	    touristList.addAll(listaux);
 	    
 	    // Establecer los elementos de la tabla
 	    touristTable.setItems(touristList);
@@ -205,6 +213,7 @@ public class DataTableSceneTouristController {
 	    touristTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 	        if (newValue != null) {
                 // Activa los botones cuando se selecciona una fila
+	        	bttnAdd.setDisable(true);
                 bttnDelete.setDisable(false);
                 bttnModify.setDisable(false);
                 bttnModifyTourist.setVisible(true);
@@ -212,14 +221,14 @@ public class DataTableSceneTouristController {
                 
                 // Carga los datos
                 
-	            txtPassportAdd.setText(newValue.getID()); 
+	            txtPassportAdd.setText(newValue.getpassport()); 
 	            txtNameAdd.setText(newValue.getName());
 	            txtLastName1Add.setText(newValue.getLastName1());
 	            txtLastName2Add.setText(newValue.getLastName2());
 	            txtAgeAdd.setText(String.valueOf(newValue.getAge()));
 	            cmboxSexAdd.setValue(newValue.getSex());
 	            txtPhoneAdd.setText(newValue.getContact());
-//	            cmboxCountryAdd.setValue(newValue.getCountry());
+	            cmboxCountryAdd.setValue(newValue.getCountry());
                 
 	        }else {
                 // Desactiva los botones cuando no hay ninguna fila seleccionada
@@ -291,7 +300,7 @@ public class DataTableSceneTouristController {
 			addScenePane.setVisible(true);
 			addParametersScenePane.setVisible(true);
 			tableScenePane.setVisible(true);
-	        ObservableList<String> list = FXCollections.observableArrayList("Hombre", "Mujer");
+	        ObservableList<String> list = FXCollections.observableArrayList("M", "F");
 	        cmboxSexAdd.setItems(list);
 	        
 	        
@@ -328,7 +337,7 @@ public class DataTableSceneTouristController {
 			bttnAddTourist.setVisible(true);
 			bttnModifyTourist.setVisible(false);
 			
-	        ObservableList<String> list = FXCollections.observableArrayList("Hombre", "Mujer");
+	        ObservableList<String> list = FXCollections.observableArrayList("M", "F");
 	        cmboxSexAdd.setItems(list);
 	        
 	        
@@ -421,7 +430,7 @@ public class DataTableSceneTouristController {
 
 					try {
 						
-						if(selectedIndex != 0) {
+						if(!txtCountryAdd.isVisible()) {
 							
 							ServicesLocator.getTouristServices().insert_tourist(passport, name, lastName1, lastName2, age, sex, contact, selectedIndex);
 							
@@ -447,12 +456,15 @@ public class DataTableSceneTouristController {
 						} catch (ClassNotFoundException | SQLException e) {
 							e.printStackTrace();
 						}
+						
+						JOptionPane.showMessageDialog(null, "El turista ha sido modificado con éxito");
+						
 					}
 					catch(Exception e) {
 						JOptionPane.showMessageDialog(null, e.getMessage());
 					}
 
-				}else if(val.isPassportCorrect(txtPassportAdd.getText()) != false) {
+				}else if(val.isPassportCorrect(txtPassportAdd.getText()) == false) {
 					lblErrorPassport.setVisible(true);
 				}else
 					lblErrorPhone.setVisible(true);		
@@ -487,7 +499,7 @@ public class DataTableSceneTouristController {
 
 					try {
 						
-						if(selectedIndex != 0) {
+						if(!txtCountryAdd.isVisible()) {
 							
 							ServicesLocator.getTouristServices().update_tourist(passport, name, lastName1, lastName2, age, sex, contact, selectedIndex);
 							
@@ -514,12 +526,17 @@ public class DataTableSceneTouristController {
 						} catch (ClassNotFoundException | SQLException e) {
 							e.printStackTrace();
 						}
+						
+						JOptionPane.showMessageDialog(null, "El turista ha sido modificado con éxito");
+						
 					}
 					catch(Exception e) {
 						JOptionPane.showMessageDialog(null, e.getMessage());
 					}
+					
+					
 
-				}else if(val.isPassportCorrect(txtPassportAdd.getText()) != false) {
+				}else if(val.isPassportCorrect(txtPassportAdd.getText()) == false) {
 					lblErrorPassport.setVisible(true);
 				}else
 					lblErrorPhone.setVisible(true);		
@@ -530,19 +547,24 @@ public class DataTableSceneTouristController {
 	}
     
     public void deleteTourist(ActionEvent event) throws ClassNotFoundException, SQLException {
-        ObservableList<TouristDTO> allTourists, singleTourist;
+        ObservableList<TouristAux> allTourists, singleTourist;
         allTourists = touristTable.getItems();
         singleTourist = touristTable.getSelectionModel().getSelectedItems();
-        
 
         if (singleTourist.size() == 1) {
-            singleTourist.forEach(allTourists::remove);
-            TouristDTO deleteTourist = singleTourist.get(0);
-            ServicesLocator.getTouristServices().delete_car(deleteTourist.getID());
+            TouristAux deleteTourist = singleTourist.get(0);
+            
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres eliminar el turista con ID " + deleteTourist.getpassport() + "?", "Confirmación", dialogButton);
+            if(dialogResult == JOptionPane.YES_OPTION){
+                singleTourist.forEach(allTourists::remove);
+                ServicesLocator.getTouristServices().delete_car(deleteTourist.getpassport());
+            }
         } else {
-        	JOptionPane.showMessageDialog(null, "Solo se puede eliminar un turista a la vez");
+            JOptionPane.showMessageDialog(null, "Solo se puede eliminar un turista a la vez");
         }
     }
+
 
     
 }

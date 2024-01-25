@@ -41,9 +41,14 @@ public  class Validator {
 		return edad >= 18 && edad <= 60;
 	}
 	
-    public boolean isPassportCorrect(String str) {
+    public boolean isIDCorrect(String str) {
         return str.matches("\\d{11}");
     }
+    
+    public boolean isPassportCorrect(String str) {
+        return str.matches("[\\dA-Za-z]{1,11}");
+    }
+
 	
     public boolean isPhoneCorrect(String str) {
         return str.matches("[\\d+\\-\\)\\(]{1,15}");

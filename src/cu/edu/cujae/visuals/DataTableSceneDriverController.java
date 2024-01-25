@@ -265,8 +265,8 @@ public class DataTableSceneDriverController {
 			ObservableList<String> list = FXCollections.observableArrayList("B", "C", "D", "E");
 	        cmboxLicenseAdd.setItems(list);
 	        
-			lblErrorCI.setVisible(true);
-			lblErrorEmpty.setVisible(true);
+			lblErrorCI.setVisible(false);
+			lblErrorEmpty.setVisible(false);
 			
 		}else if(event.getSource() == bttnAdd){
 			
@@ -286,8 +286,8 @@ public class DataTableSceneDriverController {
 			ObservableList<String> list = FXCollections.observableArrayList("B", "C", "D", "E");
 	        cmboxLicenseAdd.setItems(list);
 	        
-			lblErrorCI.setVisible(true);
-			lblErrorEmpty.setVisible(true);
+			lblErrorCI.setVisible(false);
+			lblErrorEmpty.setVisible(false);
 			
 		}
 	}
@@ -313,7 +313,7 @@ public class DataTableSceneDriverController {
 		lblErrorCI.setVisible(true);
 		lblErrorEmpty.setVisible(true);
 		if(txtAddressAdd.getText() != "" && txtIDAdd.getText() != "" && txtLastName1Add.getText() != "" && txtLastName2Add.getText() != "" && txtNameAdd.getText() != "" && cmboxLicenseAdd.getValue() != "") {
-			if(val.isPassportCorrect(txtIDAdd.getText())) {
+			if(val.isIDCorrect(txtIDAdd.getText())) {
 				String name = txtNameAdd.getText();
 				String lastName1 = txtLastName1Add.getText();
 				String lastName2 = txtLastName2Add.getText();
@@ -353,7 +353,7 @@ public class DataTableSceneDriverController {
 		lblErrorCI.setVisible(true);
 		lblErrorEmpty.setVisible(true);
 		if(txtAddressAdd.getText() != "" && txtIDAdd.getText() != "" && txtLastName1Add.getText() != "" && txtLastName2Add.getText() != "" && txtNameAdd.getText() != "" && cmboxLicenseAdd.getValue() != "") {
-			if(val.isPassportCorrect(txtIDAdd.getText())) {
+			if(val.isIDCorrect(txtIDAdd.getText())) {
 				String name = txtNameAdd.getText();
 				String lastName1 = txtLastName1Add.getText();
 				String lastName2 = txtLastName2Add.getText();

@@ -1,42 +1,31 @@
 package cu.edu.cujae.utils;
 
+import java.sql.SQLException;
+
+import cu.edu.cujae.dto.TouristDTO;
+import cu.edu.cujae.services.ServicesLocator;
+
 public class TouristAux {
 	
 	private String passport;
     private String name;
     private String lastName1;
     private String lastName2;
-    private int cantRentalCars;
-    private float rentalTotalValue;
     private String country;
+	private int age;
+    private String sex;
+    private String contact;
     
-    public TouristAux(String passport, String name, String lastName1, String lastName2, int cantRentalCars,
-    		float rentalTotalValue, String country) {
+    public TouristAux(TouristDTO tourist) throws ClassNotFoundException, SQLException {
     	
-		super();
-		this.passport = passport;
-		this.name = name;
-		this.lastName1 = lastName1;
-		this.lastName2 = lastName2;
-		this.cantRentalCars = cantRentalCars;
-		this.rentalTotalValue = rentalTotalValue;
-		this.country = country;
-	}
-
-	public double getRentalTotalValue() {
-		return rentalTotalValue;
-	}
-
-	public void setRentalTotalValue(float rentalTotalValue) {
-		this.rentalTotalValue = rentalTotalValue;
-	}
-    
-    public int getCantRentalCars() {
-		return cantRentalCars;
-	}
-
-	public void setCantRentalCars(int cantRentalCars) {
-		this.cantRentalCars = cantRentalCars;
+        setpassport(tourist.getID());
+        setName(tourist.getName());
+        setLastName1(tourist.getLastName1());
+        setLastName2(tourist.getLastName2());
+        setAge(tourist.getAge());
+        setSex(tourist.getSex());
+        setContact(tourist.getContact());
+		setCountry(ServicesLocator.getCountryServices().get_country_by_id(tourist.getCountry()));
 	}
 
 	public String getCountry() {
@@ -77,6 +66,30 @@ public class TouristAux {
 
 	public void setLastName2(String lastName2) {
 		this.lastName2 = lastName2;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	public String getContact() {
+		return contact;
+	}
+
+	public void setContact(String contact) {
+		this.contact = contact;
 	}	
 	
 }
