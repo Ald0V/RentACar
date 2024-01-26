@@ -12,16 +12,35 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX"/>
-	<classpathentry kind="lib" path="lib/commons-beanutils-1.7.jar"/>
-	<classpathentry kind="lib" path="lib/commons-codec-1.3.jar"/>
-	<classpathentry kind="lib" path="lib/commons-collections-2.1.jar"/>
-	<classpathentry kind="lib" path="lib/commons-digester-1.7.jar"/>
-	<classpathentry kind="lib" path="lib/commons-logging-1.0.2.jar"/>
 	<classpathentry kind="lib" path="lib/fontawesomefx-8.2.jar"/>
-	<classpathentry kind="lib" path="lib/iReport.jar"/>
-	<classpathentry kind="lib" path="lib/itext-1.3.1.jar"/>
-	<classpathentry kind="lib" path="lib/jasperreports-3.0.0.jar"/>
-	<classpathentry kind="lib" path="lib/jasperreports-extensions-1.3.1.jar"/>
-	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/jasper/jasperreports-6.3.1/jasperreports-6.3.1.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/miglayout15-swing.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/postgresql-42.6.0.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/jasper/commons-beanutils-1.9.4.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/jasper/commons-collections-3.2.2.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/jasper/commons-collections4-4.2.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/jasper/commons-digester-2.1.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/jasper/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/jasper/ecj-3.21.0.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/jasper/jackson-annotations-2.14.1.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/jasper/jackson-core-2.14.1.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/jasper/jackson-databind-2.14.1.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/jasper/jackson-dataformat-xml-2.14.1.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/jasper/jasperreports-6.20.6.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/jasper/jcommon-1.0.23.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/jasper/jfreechart-1.0.19.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/jasper/openpdf-1.3.30.jaspersoft.3.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/jasper/stax2-api-4.2.1.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/jasper/woodstox-core-6.4.0.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/libs/commons-collections4-4.4.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/libs/commons-digester-2.1.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/libs/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/libs/jasperreports-3.0.0.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/libs/jasperreports-6.21.0.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/libs/jasperreports-extensions-1.3.1.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/libs/postgresql-8.4-702.jdbc3.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/libs/postgresql-8.4-702.jdbc4.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/libs/postgresql-9.0-801.jdbc3.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/DataBaseProject/libs/postgresql-9.0-801.jdbc4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

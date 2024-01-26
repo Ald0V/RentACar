@@ -464,7 +464,7 @@ public class DataTableSceneTouristController {
 						}else {
 							
 							ServicesLocator.getCountryServices().insert_country(countrytxt);
-							ServicesLocator.getTouristServices().insert_tourist(passport, name, lastName1, lastName2, age, sex, contact, cmboxCountryAdd.getItems().size() + 1);
+							ServicesLocator.getTouristServices().insert_tourist(passport, name, lastName1, lastName2, age, sex, contact, cmboxCountryAdd.getItems().size() - 1);
 						}
 						
 				

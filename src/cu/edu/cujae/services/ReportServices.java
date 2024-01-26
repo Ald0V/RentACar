@@ -27,7 +27,7 @@ public class ReportServices {
   }
 
     public  void CargarReporte_1(){
-      try {   
+      /*try {   
             final File file = new File(new File("").getAbsolutePath() + "/src/New folder/Report1.jrxml");
             final JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
             final JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null,myConnection);
@@ -38,14 +38,14 @@ public class ReportServices {
   } catch (Exception e2) {
     e2.printStackTrace(); 
     //JOptionPane.showMessageDialog(null, "Error"+e2,"Error",JOptionPane.ERROR_MESSAGE);
-  }
-    /*try {
+  }*/
+    try {
       JasperPrint print = JasperFillManager.fillReport("D:\\Proyectos\\Java\\Final Project Repository\\RentACar\\src\\reports\\Report1.jasper", null, myConnection);
       JasperViewer view = new JasperViewer(print, false);
       view.setVisible(true);
     } catch (JRException e2) {
       e2.printStackTrace();
-    }*/
+    }
   }
 
     public  void CargarReporte_2(){

@@ -373,6 +373,7 @@ public class DataTableSceneDriverController {
 					try {
 						driverTableChargeData();
 					} catch (ClassNotFoundException | SQLException e) {
+						Validator.formatError(e);
 						e.printStackTrace();
 					}
 					
