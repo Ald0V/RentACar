@@ -687,7 +687,7 @@ public class MainSceneController {
         ComboBox<String> aux;
         
 		aux = reportsController.getCmboxRol();
-		ObservableList<String> list = FXCollections.observableArrayList("Administrador", "Trabajador", "Visitante");
+		ObservableList<String> list = FXCollections.observableArrayList("administrador", "trabajador", "visitante");
 		aux.setItems(list);
 		
 		reportsController.initializeUserTable();

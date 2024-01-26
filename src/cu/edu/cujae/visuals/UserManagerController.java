@@ -42,7 +42,7 @@ public class UserManagerController {
     @FXML
     private ComboBox<String> cmboxRol;
     
-    ObservableList<String> list = FXCollections.observableArrayList("Administrador", "Trabajador", "Visitante");
+    ObservableList<String> list = FXCollections.observableArrayList("administrador", "trabajador", "visitante");
 
     @FXML
     private AnchorPane mainScenePane;
@@ -74,11 +74,13 @@ public class UserManagerController {
 	private Scene scene;
 	private Parent root;
 	
+	UserDTO aux = new UserDTO(0, "dummy", "gmail.com", "postgres", "visitante");
+	
 	
 	private void userTableChargeData() throws ClassNotFoundException, SQLException{
-		colEmail.setCellValueFactory(new PropertyValueFactory<>("Correo"));
-		colRol.setCellValueFactory(new PropertyValueFactory<>("Rol"));
-		colUsername.setCellValueFactory(new PropertyValueFactory<>("Usuario"));
+		colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+		colRol.setCellValueFactory(new PropertyValueFactory<>("rol"));
+		colUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
 		
 		bttnDelete.setDisable(true);
 		bttnModify.setDisable(true);
@@ -87,10 +89,26 @@ public class UserManagerController {
 		ObservableList<UserDTO> userList = FXCollections.observableArrayList();
 		userList.addAll(list);
 		
+//		for (UserDTO user : list) {
+//		    System.out.println("ID: " + user.getId());
+//		    System.out.println("Username: " + user.getUsername());
+//		    System.out.println("Email: " + user.getEmail());
+//		    System.out.println("Password: " + user.getPassword());
+//		    System.out.println("Rol: " + user.getRol());
+//		    System.out.println("-------------------");
+//		}
+
+		
 		usersTable.setItems(userList);
 		
 		usersTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 	        if (newValue != null) {
+	        	
+	        	aux.setEmail(newValue.getEmail());
+	        	aux.setId(newValue.getId());
+	        	aux.setPassword(newValue.getPassword());
+	        	aux.setRol(newValue.getRol());
+	        	aux.setUsername(newValue.getUsername());
 	        	
 	    		bttnDelete.setDisable(false);
 	    		bttnModify.setDisable(false);
@@ -156,30 +174,35 @@ public class UserManagerController {
 		stage.close();
 	}
 	
-	public void deleteUser(ActionEvent event) {
-		ObservableList<UserDTO> allUsers, singleUsers;
-		allUsers = usersTable.getItems();
-		singleUsers = usersTable.getSelectionModel().getSelectedItems();
+	public void deleteUser(ActionEvent event) throws ClassNotFoundException, SQLException {
+	    ObservableList<UserDTO> allUsers, singleUsers;
+	    allUsers = usersTable.getItems();
+	    singleUsers = usersTable.getSelectionModel().getSelectedItems();
 
-
-		if (singleUsers.size() == 1) {
-			singleUsers.forEach(allUsers::remove);
-			UserDTO deleteUsers= singleUsers.get(0);
-//			ServicesLocator.getUserServices().delete_users(deleteUsers.getId());
-		} else {
-			JOptionPane.showMessageDialog(null, "Solo se puede eliminar un país a la vez");
-		}
-		
+	    if (singleUsers.size() == 1) {
+	        UserDTO deleteUser = singleUsers.get(0);
+	        
+	        Object[] options = {"Sí", "No"};
+	        int dialogResult = JOptionPane.showOptionDialog(null, "¿Estás seguro de que quieres eliminar el usuario " + deleteUser.getUsername() + "?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+	        if(dialogResult == JOptionPane.YES_OPTION){
+	            singleUsers.forEach(allUsers::remove);
+	            ServicesLocator.getUserServices().delete_user(deleteUser.getId());
+	        }
+	    } else {
+	        JOptionPane.showMessageDialog(null, "Solo se puede eliminar un usuario a la vez");
+	    }
 	}
+
 	
     public void modifyUser(ActionEvent event) throws ClassNotFoundException, SQLException {
 		lblErrorEmpty.setVisible(false);
 		if(cmboxRol.getValue() != "") {
 			String rol = (String) cmboxRol.getValue();
 			
-//			Esto va a ser cambiado por Brenda
-			ServicesLocator.getUserServices().update_user(rol, rol, rol, rol);
-//			Esto va a ser cambiado por Brenda
+
+			ServicesLocator.getUserServices().update_user(aux.getId(), aux.getUsername(), aux.getEmail(), aux.getPassword(), rol);
+
+			JOptionPane.showMessageDialog(null, "El usuario ha sido modificado con éxito");
 			
 			cmboxRol.setValue("");
 			try {

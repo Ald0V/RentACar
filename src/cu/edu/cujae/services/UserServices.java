@@ -25,38 +25,43 @@ public class UserServices {
 	}
 	
 	
-	public void update_user(String username, String email, String password, String rol) 
-			throws SQLException, ClassNotFoundException{
-		String query = "SELECT update_user(?,?,?,?)";
-		java.sql.Connection connection = ServicesLocator.getConexion();
-		PreparedStatement preparedStatement = connection.prepareStatement(query);
-		preparedStatement.setString(1, username);
-        preparedStatement.setString(2, email);
-        preparedStatement.setString(3, password);
-        preparedStatement.setString(4, rol);
-		preparedStatement.execute();
-		preparedStatement.close();
-		connection.close();
-	}
+    public void update_user(int id, String username, String email, String password, String rol) 
+            throws SQLException, ClassNotFoundException{
+        String query = "select update_user(?,?,?,?,?)";
+        java.sql.Connection connection = ServicesLocator.getConexion();
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, id);
+        preparedStatement.setString(2, username);
+        preparedStatement.setString(3, email);
+        preparedStatement.setString(4, password);
+        preparedStatement.setString(5, rol);
+        preparedStatement.execute();
+        preparedStatement.close();
+        connection.close();
+    }
+
+
+
 	
 	
 	public ArrayList<UserDTO> get_user_all() throws SQLException, ClassNotFoundException{
-		ArrayList<UserDTO> lodgings = new ArrayList<UserDTO>();
-		String function = "{?= call get_user_all()}";
-		java.sql.Connection connection = ServicesLocator.getConexion();
-		connection.setAutoCommit(false);
-		CallableStatement preparedFunction = connection.prepareCall(function);
-		preparedFunction.registerOutParameter(1, java.sql.Types.OTHER);
-		preparedFunction.execute();
-		ResultSet rs = (ResultSet) preparedFunction.getObject(1);
-		while (rs.next()){
-			lodgings.add(new UserDTO(rs.getInt(1), rs.getString(1),rs.getString(1),rs.getString(1),rs.getString(1)));
-		}
-		rs.close();
-		preparedFunction.close();
-		connection.close();
-		return lodgings;
+	    ArrayList<UserDTO> lodgings = new ArrayList<UserDTO>();
+	    String function = "{?= call get_user_all()}";
+	    java.sql.Connection connection = ServicesLocator.getConexion();
+	    connection.setAutoCommit(false);
+	    CallableStatement preparedFunction = connection.prepareCall(function);
+	    preparedFunction.registerOutParameter(1, java.sql.Types.OTHER);
+	    preparedFunction.execute();
+	    ResultSet rs = (ResultSet) preparedFunction.getObject(1);
+	    while (rs.next()){
+	        lodgings.add(new UserDTO(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)));
+	    }
+	    rs.close();
+	    preparedFunction.close();
+	    connection.close();
+	    return lodgings;
 	}
+
 	
 	public UserDTO findUser(String name) throws SQLException{
 		UserDTO u = null;
