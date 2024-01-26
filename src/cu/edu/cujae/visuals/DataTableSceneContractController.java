@@ -698,7 +698,7 @@ public class DataTableSceneContractController {
     		if(val.validateDate(pickdateStartAdd.getValue(), pickdateEndDate.getValue())) {
 
     			String car = (String) cmboxCarAdd.getValue();
-    			int payMethod = cmboxPayMethodAdd.getSelectionModel().getSelectedIndex() + 1;
+    			int payMethod = cmboxPayMethodAdd.getSelectionModel().getSelectedIndex() + 4;
     			String tourist = (String) cmboxTouristAdd.getValue();
     			String driver = (String) cmboxDriverAdd.getValue();
     			LocalDate startDate = pickdateStartAdd.getValue();
@@ -722,6 +722,7 @@ public class DataTableSceneContractController {
     				JOptionPane.showMessageDialog(null, "El contrato ha sido modificado con éxito");
     				
     			} catch (Exception e) {
+    				e.printStackTrace();
     				JOptionPane.showMessageDialog(null, e.getMessage());
     			}
 
