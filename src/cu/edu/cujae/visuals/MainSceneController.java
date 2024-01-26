@@ -91,10 +91,28 @@ public class MainSceneController {
 	private Scene scene;
 	private Parent root;
 	
+	String rolAux;
+	
 	public void logout(ActionEvent event) {
 		
 		stage = (Stage)mainScenePane.getScene().getWindow(); 
 		stage.close();
+	}
+	
+	public void initializeAdminORWorkerORVisitor (String rol) {
+		if(rol.equalsIgnoreCase("administrador")) {
+			rolAux = "administrador";
+			adminVBox.setVisible(true);
+			mainVBox.setVisible(false);
+		}else if(rol.equalsIgnoreCase("trabajador")){
+			rolAux = "trabajador";
+			adminVBox.setVisible(false);
+		    mainVBox.setVisible(true);
+		}else if(rol.equalsIgnoreCase("visitante")) {
+			rolAux = "visitante";
+			adminVBox.setVisible(false);
+		    mainVBox.setVisible(true);
+		}
 	}
 	
 	public void openTourist(ActionEvent event) throws IOException{
@@ -106,6 +124,7 @@ public class MainSceneController {
 		dataTableSceneController.displayName("Turistas");
 		
 	    dataTableSceneController.initializeTouristTable();
+	    dataTableSceneController.initializeAdminORWorkerORVisitor(rolAux);
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);

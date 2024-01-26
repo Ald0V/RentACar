@@ -1,7 +1,11 @@
 package cu.edu.cujae.visuals;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
+import cu.edu.cujae.dto.UserDTO;
+import cu.edu.cujae.services.ServicesLocator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -85,16 +89,18 @@ public class LoginSceneController {
     private Label lblSignIn;
     
     private String errorMessage = "";
+    
+    UserDTO aux = new UserDTO(0, "dummy", "gmail.com", "postgres", "visitante");
 
 
 	
-	public void login(ActionEvent event) throws IOException {
+	public void login(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
 		
 		errorMessage = "";
 		
 		/*Lo de abajo es temporal para acceder a lo visual mas rapido*/
-		txtUsername.setText(USERNAME);
-		pfPassword.setText(PASSWORD);
+//		txtUsername.setText(USERNAME);
+//		pfPassword.setText(PASSWORD);
 		/*Lo de arriba es temporal para acceder a lo visual mas rapido*/
 
 		if(isFieldFilled() && isValid()) {
@@ -108,6 +114,8 @@ public class LoginSceneController {
 			//		root = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
 			Stage stageMain = new Stage();
 			
+			MainSceneController mainSceneController = loader.getController();
+			mainSceneController.initializeAdminORWorkerORVisitor(aux.getRol());
 
 			scene = new Scene(root);
 			
@@ -168,29 +176,36 @@ public class LoginSceneController {
 		return isFilled;	
 	}
 	
-	private boolean isValid() {
-		boolean valid = true;
-		String username = txtUsername.getText();
-		String password = pfPassword.getText();
-		
-		if(!username.equals(USERNAME)) {
-			valid = false;
-			errorMessage = "El nombre de usuario es incorrecto";
-		}
-		
-		if(!password.equals(PASSWORD)) {
-			valid = false;
-			if(errorMessage.isEmpty()) {
-			errorMessage = "La contrase\u00f1a es incorrecta";
-			}else {
-				errorMessage += "\nLa contrase\u00f1a es incorrecta";
-			}
-		}
-		
-		lblUserError.setText(errorMessage);
-		
-		return valid;
+	private boolean isValid() throws ClassNotFoundException, SQLException {
+	    boolean valid = false;
+	    String errorMessage = "";
+	    String username = txtUsername.getText();
+	    String password = pfPassword.getText();
+
+	    ArrayList<UserDTO> users = ServicesLocator.getUserServices().get_user_all();
+
+	    for (UserDTO user : users) {
+	        if (user.getUsername().equals(username)) {
+	            if (user.getPassword().equals(password)) {
+	                valid = true;
+	                aux.setRol(user.getRol());
+	                break;
+	            } else {
+	                errorMessage = "La contrase\u00f1a es incorrecta";
+	                break;
+	            }
+	        }
+	    }
+
+	    if (!valid && errorMessage.isEmpty()) {
+	        errorMessage = "El usuario introducido no existe";
+	    }
+
+	    lblUserError.setText(errorMessage);
+
+	    return valid;
 	}
+
 	
 	@FXML
     void switchForm(MouseEvent event) {
