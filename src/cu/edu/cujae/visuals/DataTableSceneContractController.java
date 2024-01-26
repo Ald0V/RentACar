@@ -818,7 +818,7 @@ public class DataTableSceneContractController {
 		
 	}
 	
-    public void insertCar(ActionEvent event) throws SQLException {
+    public void insertCar(ActionEvent event) throws SQLException, ClassNotFoundException {
 		lblErrorPlate.setVisible(false);
 		lblErrorEmpty.setVisible(false);
 
@@ -826,25 +826,17 @@ public class DataTableSceneContractController {
 			if(val.ValidatePlate(txtPlateAdd.getText())) {
 				String color = txtColorAdd.getText();
 				String plate = txtPlateAdd.getText();
-				int itemBrand = cmboxBrandAdd.getSelectionModel().getSelectedIndex() + 5;
+				int itemBrand = ServicesLocator.getBrandServices().get_brand_by_name(cmboxBrandAdd.getValue());
 				
 				int itemSituation = cmboxCarStatusAdd.getSelectionModel().getSelectedIndex() + 4;
-				String brand = (String)cmboxBrandAdd.getValue();
 				
-				int codeModel = cmboxModelAdd.getSelectionModel().getSelectedIndex();
+				ModelDTO auxiliar = ServicesLocator.getModelServices().get_model_by_name(cmboxModelAdd.getValue());
 				
-				LinkedList<ModelDTO> models;
-				System.out.println(brand);
-				models = ServicesLocator.getModelServices().select_model_by_brand(brand);
-				ArrayList<Integer> codeList = new ArrayList<Integer>();
-		        for (ModelDTO modelaux : models) {
-		        	codeList.add(modelaux.getId());
-		        }
-		        int modelSelection = codeList.get(codeModel);
+				int codeModel = auxiliar.getId();
 		        
 				
 				try {
-                    ServicesLocator.getCarServices().insert_car(plate, itemBrand, modelSelection, 0, color, itemSituation);
+                    ServicesLocator.getCarServices().insert_car(plate, itemBrand, codeModel, 0, color, itemSituation);
 
 					txtColorAdd.setText("");
 					txtPlateAdd.setText("");

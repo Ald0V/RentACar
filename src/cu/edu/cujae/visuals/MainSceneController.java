@@ -334,7 +334,7 @@ public class MainSceneController {
 		DataTableSceneReportsController reportsController = loader.getController();
 		
 		reportsController.getBttnReportTourists().setDisable(true);
-		reportsController.getTableReportsTouristsPane().setVisible(true);
+//		reportsController.getTableReportsTouristsPane().setVisible(true);
 		reportsController.initializeDate();
 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -372,7 +372,7 @@ public class MainSceneController {
 		DataTableSceneReportsController reportsController = loader.getController();
 		
 		reportsController.getBttnReportCar().setDisable(true);
-		reportsController.getTableReportsCarPane().setVisible(true);
+//		reportsController.getTableReportsCarPane().setVisible(true);
 		reportsController.initializeDate();
 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -410,7 +410,7 @@ public class MainSceneController {
 		DataTableSceneReportsController reportsController = loader.getController();
 		
 		reportsController.getBttnReportContract().setDisable(true);
-		reportsController.getTableReportsContractPane().setVisible(true);
+//		reportsController.getTableReportsContractPane().setVisible(true);
 		reportsController.initializeDate();
 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -448,7 +448,7 @@ public class MainSceneController {
 		DataTableSceneReportsController reportsController = loader.getController();
 		
 		reportsController.getBttnReportDrivers().setDisable(true);
-		reportsController.getTableReportsDriverPane().setVisible(true);
+//		reportsController.getTableReportsDriverPane().setVisible(true);
 		reportsController.initializeDate();
 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -486,7 +486,7 @@ public class MainSceneController {
 		DataTableSceneReportsController reportsController = loader.getController();
 		
 		reportsController.getBttnTourists().setDisable(true);
-		reportsController.getTableTouristsPane().setVisible(true);
+//		reportsController.getTableTouristsPane().setVisible(true);
 		reportsController.initializeDate();
 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -524,7 +524,7 @@ public class MainSceneController {
 		DataTableSceneReportsController reportsController = loader.getController();
 		
 		reportsController.getBttnCarSituation().setDisable(true);
-		reportsController.getTableCarSituationPane().setVisible(true);
+//		reportsController.getTableCarSituationPane().setVisible(true);
 		reportsController.initializeDate();
 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -562,7 +562,7 @@ public class MainSceneController {
 		DataTableSceneReportsController reportsController = loader.getController();
 		
 		reportsController.getBttnModelBrand().setDisable(true);
-		reportsController.getTableModelBrandPane().setVisible(true);
+//		reportsController.getTableModelBrandPane().setVisible(true);
 		reportsController.initializeDate();
 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -600,7 +600,7 @@ public class MainSceneController {
 		DataTableSceneReportsController reportsController = loader.getController();
 		
 		reportsController.getBttnCountry().setDisable(true);
-		reportsController.getTableCountryPane().setVisible(true);
+//		reportsController.getTableCountryPane().setVisible(true);
 		reportsController.initializeDate();
 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -638,7 +638,7 @@ public class MainSceneController {
 		DataTableSceneReportsController reportsController = loader.getController();
 		
 		reportsController.getBttnImports().setDisable(true);
-		reportsController.getTableImportsPane().setVisible(true);
+//		reportsController.getTableImportsPane().setVisible(true);
 		reportsController.initializeDate();
 
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
