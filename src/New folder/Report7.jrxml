@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.3.final using JasperReports Library version 6.20.3-415f9428cffdb6805c6f85bbb29ebaf18813a2ab  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Report2" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7a5c9b49-9dc5-422a-ac69-e92cf61ef530">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PRUEBA_LOCAL"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="plsql">
+		<![CDATA[SELECT 
+    brand.name AS marca,
+    model.name AS modelo,
+    COUNT(contract.car_plate) AS cantidad_carros,
+    (contract.end_date - contract.start_date) AS cantidad_dias_alquilados,
+    SUM(CASE WHEN pay_method.name = 'tarjeta de crédito' THEN contract.value ELSE 0 END) AS ingresos_tarjetas_credito,
+    SUM(CASE WHEN pay_method.name = 'cheque' THEN contract.value ELSE 0 END) AS ingresos_cheques,
+    SUM(CASE WHEN pay_method.name = 'efectivo' THEN contract.value ELSE 0 END) AS ingresos_efectivo,
+SUM(contract.value) AS total_ingresos
+FROM 
+    car
+    INNER JOIN contract  ON contract.car_plate = car.plate
+    INNER JOIN model ON car.model_id = model.id
+    INNER JOIN brand ON model.brand_id = brand.id
+    INNER JOIN pay_method ON contract.pay_method_id = pay_method.id
+GROUP BY 
+    brand.name, model.name, contract.end_date, contract.start_date;]]>
+	</queryString>
+	<field name="marca" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="marca"/>
+		<property name="com.jaspersoft.studio.field.label" value="marca"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="brand"/>
+	</field>
+	<field name="modelo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="modelo"/>
+		<property name="com.jaspersoft.studio.field.label" value="modelo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="model"/>
+	</field>
+	<field name="cantidad_carros" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="cantidad_carros"/>
+		<property name="com.jaspersoft.studio.field.label" value="cantidad_carros"/>
+	</field>
+	<field name="cantidad_dias_alquilados" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="cantidad_dias_alquilados"/>
+		<property name="com.jaspersoft.studio.field.label" value="cantidad_dias_alquilados"/>
+	</field>
+	<field name="ingresos_tarjetas_credito" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="ingresos_tarjetas_credito"/>
+		<property name="com.jaspersoft.studio.field.label" value="ingresos_tarjetas_credito"/>
+	</field>
+	<field name="ingresos_cheques" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="ingresos_cheques"/>
+		<property name="com.jaspersoft.studio.field.label" value="ingresos_cheques"/>
+	</field>
+	<field name="ingresos_efectivo" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="ingresos_efectivo"/>
+		<property name="com.jaspersoft.studio.field.label" value="ingresos_efectivo"/>
+	</field>
+	<field name="total_ingresos" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="total_ingresos"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_ingresos"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="721" height="66" backcolor="#000000" uuid="d8d9e644-3a32-491d-97cb-a277aff17133"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="510" height="66" uuid="27d8f6ee-f0a9-44f6-a160-1763c3b00f30"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font size="37" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Contratos por marcas y modelos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="370" y="37" width="316" height="29" uuid="cfa21334-0634-4605-9ea7-aca4981f67e4"/>
+					<textElement textAlignment="Right">
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Rent a Car]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="70" width="721" height="32" forecolor="#000000" backcolor="#CC0000" uuid="b0c895f6-6dbd-477d-9858-9ad66af087e1"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="553" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="a33fce3b-20c1-4696-873a-fe134d1e7d88"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="80" height="26" uuid="5a3148b4-ad25-4018-a0e2-c61a3e9597d5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fc388b0e-0902-40ec-a0f8-ed0d0680a956"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="0" width="100" height="26" uuid="97f841ae-a310-4a57-8402-c870675c6336">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9a6405f8-1dbc-4a95-a0da-3bf627458095"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Modelo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="0" width="100" height="26" uuid="da4817af-bf55-421a-b434-72d094bf161c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="00b75595-2601-46e8-a796-7c9e0be2779e"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Cantidad carros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="90" height="26" uuid="e3447c5d-c995-4332-9b73-08dd2ae112e8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="598bcadf-2c99-4e7f-be5f-dc7c851966fa"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Días Alquilados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="0" width="140" height="26" uuid="209ac468-6639-4d6e-968a-2c69969fde78">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="82d520fd-0fc9-41ea-85a9-b9688c9bcad6"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Ingresos Tarjetas Crédito]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="510" y="0" width="100" height="26" uuid="6dea2b9f-38c4-4f66-8410-29c1114edf19">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2160988f-9cc7-4ee4-ad17-3a1df37ef76b"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Ingresos Cheques]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="610" y="0" width="100" height="26" uuid="10e600e2-46ee-45cd-be74-7782d19c2671">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d852868b-72a2-4e0b-a2d2-4bb9d8340f6f"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Ingresos Efectivo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="710" y="0" width="87" height="26" uuid="d5f6cd35-a4d0-4085-94cf-da9518e16ad1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c3b9078d-1ea0-4932-9539-e439f3b21724"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Total Ingresos]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="34a2ae4b-4055-476b-8676-d499f6af510b"/>
+				<textField>
+					<reportElement x="0" y="0" width="80" height="18" uuid="e510a55f-8c92-4450-82ce-06d378aec79d">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fc388b0e-0902-40ec-a0f8-ed0d0680a956"/>
+					</reportElement>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{marca}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="80" y="0" width="100" height="18" uuid="ae4bde4d-9e84-4c05-95b5-2dbfd87340fa">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9a6405f8-1dbc-4a95-a0da-3bf627458095"/>
+					</reportElement>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{modelo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="180" y="0" width="100" height="18" uuid="39cedf29-fb48-40b6-b64f-094b7006efed">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="00b75595-2601-46e8-a796-7c9e0be2779e"/>
+					</reportElement>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{cantidad_carros}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="280" y="0" width="90" height="18" uuid="96bfad7d-b233-442a-bca1-95b6662e66f6">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="598bcadf-2c99-4e7f-be5f-dc7c851966fa"/>
+					</reportElement>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{cantidad_dias_alquilados}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="370" y="0" width="140" height="18" uuid="69006540-5b22-40bd-821e-652bc94c79b3">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="82d520fd-0fc9-41ea-85a9-b9688c9bcad6"/>
+					</reportElement>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{ingresos_tarjetas_credito}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="510" y="0" width="100" height="18" uuid="cb5ddf28-0f8f-4e8b-b3e1-673d97b59183">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2160988f-9cc7-4ee4-ad17-3a1df37ef76b"/>
+					</reportElement>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{ingresos_cheques}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="610" y="0" width="100" height="18" uuid="85e504ce-ae3b-4acd-bfaf-682cc6335624">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d852868b-72a2-4e0b-a2d2-4bb9d8340f6f"/>
+					</reportElement>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{ingresos_efectivo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="710" y="0" width="87" height="18" uuid="9cbbf1c8-080b-48c9-9cad-9ff4fb2f73ba">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c3b9078d-1ea0-4932-9539-e439f3b21724"/>
+					</reportElement>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{total_ingresos}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="4" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="501ac6c4-e9d4-43cb-ba6b-7f2f44394cf3"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="ffb10ec8-0371-4545-8eaa-96d62ad3cec0"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="b5521ea6-5f36-4864-856f-58d0bcd011f2"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="e625ea3c-1741-4cfe-81cf-fbbdd00162c8"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="0c9f7e91-d3f5-47f9-82b7-0b2b3a43a5d6"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

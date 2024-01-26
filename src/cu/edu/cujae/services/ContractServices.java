@@ -55,33 +55,54 @@ public class ContractServices {
 	}
     }
 
-    public void contract_open(String plate, LocalDate start_date, String passport,LocalDate end_date, int pay_method, String dni) throws SQLException, ClassNotFoundException{
+    public void contract_open(String plate, LocalDate start_date, String passport, LocalDate end_date, int pay_method, String dni) throws SQLException, ClassNotFoundException {
         String query = "SELECT business_contract_open(?,?,?,?,?,?)";
-		java.sql.Connection connection = ServicesLocator.getConexion();
-		PreparedStatement preparedStatement = connection.prepareStatement(query);
-		preparedStatement.setString(1, plate);
-        preparedStatement.setDate(2, (java.sql.Date) new Date(start_date.toEpochDay()));
+        java.sql.Connection connection = ServicesLocator.getConexion();
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, plate);
+        preparedStatement.setDate(2, java.sql.Date.valueOf(start_date));
         preparedStatement.setString(3, passport);
-        preparedStatement.setDate(4, (java.sql.Date) new Date(end_date.toEpochDay()));
+        preparedStatement.setDate(4, java.sql.Date.valueOf(end_date));
         preparedStatement.setInt(5, pay_method);
         preparedStatement.setString(6, dni);
-		preparedStatement.execute();
-		preparedStatement.close();
-		connection.close();
+        preparedStatement.execute();
+        preparedStatement.close();
+        connection.close();
+    }
+    
+    public void update_contract(String plate, LocalDate start_date, String passport, LocalDate end_date, int start_km, LocalDate delivery_date, int end_km, int pay_method, String dni) throws SQLException, ClassNotFoundException {
+        String query = "SELECT update_contract(?,?,?,?,?,?,?,?,?)";
+        java.sql.Connection connection = ServicesLocator.getConexion();
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, plate);
+        preparedStatement.setDate(2, java.sql.Date.valueOf(start_date));
+        preparedStatement.setString(3, passport);
+        preparedStatement.setDate(4, java.sql.Date.valueOf(end_date));
+        preparedStatement.setInt(5, start_km);
+        preparedStatement.setDate(6, java.sql.Date.valueOf(delivery_date));
+        preparedStatement.setInt(7, end_km);
+        preparedStatement.setInt(8, pay_method);
+        preparedStatement.setString(9, dni);
+        preparedStatement.execute();
+        preparedStatement.close();
+        connection.close();
     }
 
-    public void contract_close(String plate, LocalDate start_date, LocalDate delivery_date, int end_km) throws SQLException, ClassNotFoundException{
-        String query = "SELECT business_contract_open(?,?,?,?,?,?)";
-		java.sql.Connection connection = ServicesLocator.getConexion();
-		PreparedStatement preparedStatement = connection.prepareStatement(query);
-		preparedStatement.setString(1, plate);
-        preparedStatement.setDate(2, (java.sql.Date) new Date(start_date.toEpochDay()));
-        preparedStatement.setDate(3, (java.sql.Date) new Date(delivery_date.toEpochDay()));
+
+
+    public void contract_close(String plate, LocalDate start_date, LocalDate delivery_date, int end_km) throws SQLException, ClassNotFoundException {
+        String query = "SELECT business_contract_close(?,?,?,?)";
+        java.sql.Connection connection = ServicesLocator.getConexion();
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, plate);
+        preparedStatement.setDate(2, java.sql.Date.valueOf(start_date));
+        preparedStatement.setDate(3, java.sql.Date.valueOf(delivery_date));
         preparedStatement.setInt(4, end_km);
-		preparedStatement.execute();
-		preparedStatement.close();
-		connection.close();
+        preparedStatement.execute();
+        preparedStatement.close();
+        connection.close();
     }
+
 
     public ArrayList<ContractDTO> selectAllContract() throws SQLException, ClassNotFoundException {
         ArrayList<ContractDTO> lodgings = new ArrayList<ContractDTO>();
@@ -93,8 +114,8 @@ public class ContractServices {
         preparedFunction.execute();
         ResultSet rs = (ResultSet) preparedFunction.getObject(1);
         while (rs.next()){
-            Date date6 = rs.getDate(6);
-            LocalDate localDate6 = (date6 != null) ? date6.toInstant().atZone(ZoneId.systemDefault()).toLocalDate() : null;
+            java.sql.Date date6 = rs.getDate(6);
+            LocalDate localDate6 = (date6 != null) ? date6.toLocalDate() : null;
 
             lodgings.add(new ContractDTO(rs.getString(1), rs.getDate(2).toLocalDate(), rs.getString(3), rs.getDate(4).toLocalDate(), rs.getInt(5), localDate6, rs.getInt(7), rs.getInt(8), rs.getString(9), rs.getFloat(10)));
         }
@@ -103,6 +124,7 @@ public class ContractServices {
         connection.close();
         return lodgings;
     }
+
 
 
 

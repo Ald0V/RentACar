@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.3.final using JasperReports Library version 6.20.3-415f9428cffdb6805c6f85bbb29ebaf18813a2ab  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Report2" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7a5c9b49-9dc5-422a-ac69-e92cf61ef530">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PRUEBA_LOCAL"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="plsql">
+		<![CDATA[SELECT 
+    country.name AS país,
+    brand.name AS marca,
+    model.name AS modelo,
+    SUM(contract.end_date - contract.start_date) AS dias_alquilados,
+    SUM(contract.delivery_date - contract.end_date) AS dias_prorroga,
+    SUM(CASE WHEN pay_method.name = 'efectivo' THEN contract.value ELSE 0 END) AS valor_total_efectivo,
+    SUM(contract.value) AS valor_total_general
+FROM 
+    COUNTRY
+    INNER JOIN tourist ON country.id = tourist.country_id
+    INNER JOIN contract ON tourist.passport = contract.tourist_passport
+    INNER JOIN car  ON car.plate = contract.car_plate
+    INNER JOIN model ON car.model_id = model.id
+    INNER JOIN brand ON model.brand_id = brand.id
+    INNER JOIN pay_method ON contract.pay_method_id = pay_method.id
+GROUP BY 
+   country.name, brand.name, model.name;]]>
+	</queryString>
+	<field name="país" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="país"/>
+		<property name="com.jaspersoft.studio.field.label" value="país"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="country"/>
+	</field>
+	<field name="marca" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="marca"/>
+		<property name="com.jaspersoft.studio.field.label" value="marca"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="brand"/>
+	</field>
+	<field name="modelo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="modelo"/>
+		<property name="com.jaspersoft.studio.field.label" value="modelo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="model"/>
+	</field>
+	<field name="dias_alquilados" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="dias_alquilados"/>
+		<property name="com.jaspersoft.studio.field.label" value="dias_alquilados"/>
+	</field>
+	<field name="dias_prorroga" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="dias_prorroga"/>
+		<property name="com.jaspersoft.studio.field.label" value="dias_prorroga"/>
+	</field>
+	<field name="valor_total_efectivo" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="valor_total_efectivo"/>
+		<property name="com.jaspersoft.studio.field.label" value="valor_total_efectivo"/>
+	</field>
+	<field name="valor_total_general" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="valor_total_general"/>
+		<property name="com.jaspersoft.studio.field.label" value="valor_total_general"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="721" height="66" backcolor="#000000" uuid="d8d9e644-3a32-491d-97cb-a277aff17133"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="27d8f6ee-f0a9-44f6-a160-1763c3b00f30"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font size="43" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Contratos por países]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="370" y="37" width="316" height="29" uuid="cfa21334-0634-4605-9ea7-aca4981f67e4"/>
+					<textElement textAlignment="Right">
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Rent a Car]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="70" width="721" height="32" forecolor="#000000" backcolor="#CC0000" uuid="b0c895f6-6dbd-477d-9858-9ad66af087e1"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="553" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="a33fce3b-20c1-4696-873a-fe134d1e7d88"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="80" height="18" uuid="140d6ac7-a81a-440f-adfe-bea9105e1164">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="945568d3-5e29-47b9-a032-fab7ea31a8bd"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Lucida Bright" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[País]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="0" width="80" height="18" uuid="dcfb3933-bf44-4fcb-9a97-a38d421c517f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="91532923-a5a1-4b1a-b7af-9048c743e042"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Lucida Bright" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="0" width="100" height="18" uuid="7d967dcf-a89e-4bd4-9760-49d3898f0924">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4d77ed0a-d32f-4dea-8d82-9de3f62a399e"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Lucida Bright" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Modelo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="0" width="100" height="18" uuid="f925fd19-cc53-43af-9c4b-39de35f4a5f0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="92a6c402-2010-42d1-8191-aa0ccefee616"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Lucida Bright" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Días alquilados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="0" width="150" height="18" uuid="c35108cc-8900-45b1-9874-b9f451d46b43">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="592d2621-abb2-45b8-b5ba-50732a135e53"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Lucida Bright" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Días de prórroga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="530" y="0" width="120" height="18" uuid="71702866-123b-4b75-b442-5d7fe1720698">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="acebcb0e-5f34-4918-9de5-6398305bcab7"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Lucida Bright" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor total en efectivo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="657" y="0" width="100" height="26" uuid="9601a1dd-fa12-44b9-881c-dee67ea4f409">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fa067821-ac59-4c1a-ae3d-cddf0ef03ecc"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lucida Bright" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor total general]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="34a2ae4b-4055-476b-8676-d499f6af510b"/>
+				<textField>
+					<reportElement x="0" y="1" width="80" height="30" uuid="07bab602-f535-4f70-baca-e8ffdca7a4df">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="945568d3-5e29-47b9-a032-fab7ea31a8bd"/>
+					</reportElement>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{país}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="80" y="1" width="80" height="30" uuid="9392e2c4-bb5e-40d0-85ed-ed1ac445249d">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="91532923-a5a1-4b1a-b7af-9048c743e042"/>
+					</reportElement>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{marca}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="160" y="1" width="100" height="30" uuid="64fb0a4b-4e18-4d38-a433-b9e0990c0398">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4d77ed0a-d32f-4dea-8d82-9de3f62a399e"/>
+					</reportElement>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{modelo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="260" y="1" width="100" height="30" uuid="3c8e9a6c-2c59-4e9b-af77-2d7b306f0923">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="92a6c402-2010-42d1-8191-aa0ccefee616"/>
+					</reportElement>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dias_alquilados}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="360" y="1" width="150" height="30" uuid="de06b523-9d1d-466f-91f1-ccdd3db2d4b6">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="592d2621-abb2-45b8-b5ba-50732a135e53"/>
+					</reportElement>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dias_prorroga}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="530" y="-1" width="120" height="20" uuid="8f0d16b3-5387-4582-8bce-dd2396bae7de">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="acebcb0e-5f34-4918-9de5-6398305bcab7"/>
+					</reportElement>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{valor_total_efectivo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="660" y="1" width="100" height="38" uuid="0f2a15ee-3aaa-4660-9060-9cd21e069900">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fa067821-ac59-4c1a-ae3d-cddf0ef03ecc"/>
+					</reportElement>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{valor_total_general}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="4" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="501ac6c4-e9d4-43cb-ba6b-7f2f44394cf3"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="ffb10ec8-0371-4545-8eaa-96d62ad3cec0"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="b5521ea6-5f36-4864-856f-58d0bcd011f2"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="e625ea3c-1741-4cfe-81cf-fbbdd00162c8"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="0c9f7e91-d3f5-47f9-82b7-0b2b3a43a5d6"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

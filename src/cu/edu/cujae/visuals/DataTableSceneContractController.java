@@ -296,6 +296,19 @@ public class DataTableSceneContractController {
 	
 	Validator val = new Validator();
 	
+	String plate = "ABC123";
+	LocalDate startDate = LocalDate.of(2024, 1, 1);
+	String passport = "123456789";
+	LocalDate endDate = LocalDate.of(2024, 12, 31);
+	int startKm = 0;
+	LocalDate deliveryDate = LocalDate.of(2024, 12, 31);
+	int endKm = 10000;
+	int payMethod = 1; // Asumiendo que 1 es un método de pago válido
+	String driver = "John Doe";
+	float value = 1000.0f;
+	
+	ContractDTO aux = new ContractDTO(plate, startDate, passport, endDate, startKm, deliveryDate, endKm, payMethod, driver, value);
+	
 	@SuppressWarnings("unchecked")
 	private void contractTableChargeData()throws ClassNotFoundException, SQLException {
 		 // Configurar cellValueFactory para cada columna
@@ -371,8 +384,33 @@ public class DataTableSceneContractController {
 	    contractTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 	        if (newValue != null) {
                 // Activa los botones cuando se selecciona una fila
+	        	aux.setDeliveryDate(newValue.getDeliveryDate());
+	        	aux.setDriver(newValue.getDriver());
+	        	aux.setEndDate(newValue.getEndDate());
+	        	aux.setEndKm(newValue.getEndKm());
+	        	aux.setPassport(newValue.getPassport());
+	        	aux.setPayMethod(newValue.getPayMethod());
+	        	aux.setPlate(newValue.getPlate());
+	        	aux.setStartDate(newValue.getStartDate());
+	        	aux.setStartKm(newValue.getStartKm());
+	        	aux.setValue(newValue.getValue());
+
+
+
+	        	
+	        	if(aux.getDeliveryDate() != null)
+	        		bttnCloseContract.setVisible(false);
+	        	else
+	        		bttnCloseContract.setVisible(true);
+
+	        	
 	        	bttnAdd.setDisable(true);
-                bttnModify.setDisable(false);
+	        	
+	        	if(aux.getDeliveryDate() != null)
+	        		bttnModify.setDisable(true);
+	        	else 
+	        		bttnModify.setDisable(false);
+                
                 bttnModifyContract.setVisible(true);
                 bttnAddContract.setVisible(false);
 	        	
@@ -443,10 +481,13 @@ public class DataTableSceneContractController {
 		lblName.setText(table);
 	}
 	
+	
 	public void switchForm(ActionEvent event) {
 		
 		if(event.getSource() == bttnModify) {
 			
+
+
 			bttnAdd.setDisable(true);
 			bttnModify.setDisable(true);
 			addScenePane.setVisible(true);
@@ -456,7 +497,6 @@ public class DataTableSceneContractController {
 			
 			bttnAddContract.setVisible(false);
 			bttnModifyContract.setVisible(true);
-			bttnCloseContract.setVisible(true);
 			
 			tableScenePane.setMaxHeight(382);
 			contractTable.setMaxHeight(286);
@@ -474,7 +514,6 @@ public class DataTableSceneContractController {
 			
 			bttnAddContract.setVisible(true);
 			bttnModifyContract.setVisible(false);
-			bttnCloseContract.setVisible(false);
 			
 			tableScenePane.setMaxHeight(382);
 			contractTable.setMaxHeight(286);
@@ -610,7 +649,7 @@ public class DataTableSceneContractController {
 			if(val.validateDate(pickdateStartAdd.getValue(), pickdateEndDate.getValue())) {
 				
 				String car = (String) cmboxCarAdd.getValue();
-				int payMethod = cmboxPayMethodAdd.getSelectionModel().getSelectedIndex() + 1;
+				int payMethod = cmboxPayMethodAdd.getSelectionModel().getSelectedIndex() + 4;
 				String tourist = cmboxTouristAdd.getValue();
 				String driver = (String) cmboxDriverAdd.getValue();
 				LocalDate startDate = pickdateStartAdd.getValue();
@@ -647,16 +686,7 @@ public class DataTableSceneContractController {
     
     public void modifyContract(ActionEvent event) throws ClassNotFoundException, SQLException {
     	
-    	contractTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-    	    if (newSelection != null) {
-    	        ContractDTO selectedContract = contractTable.getSelectionModel().getSelectedItem();
-    	        if (selectedContract.getDeliveryDate() != null) {
-    	            bttnProrrogaAcept.setVisible(false);
-    	        } else {
-    	            bttnProrrogaAcept.setVisible(true);
-    	        }
-    	    }
-    	});
+
 
     	lblErrorEmpty.setVisible(false);
     	lblErrorDate.setVisible(false);
@@ -672,7 +702,7 @@ public class DataTableSceneContractController {
     			LocalDate endDate = pickdateEndDate.getValue();
 
     			try {
-    				//					ServicesLocator.getContractsServices().update_contract(car, tourist, startDate, endDate, null, payMethod, driver);
+    				ServicesLocator.getContractsServices().update_contract(car, startDate, tourist, endDate, aux.getStartKm(), aux.getDeliveryDate(), aux.getEndKm(), payMethod, driver);
 
     				cmboxCarAdd.setValue("");
     				cmboxPayMethodAdd.setValue("");
@@ -881,6 +911,7 @@ public class DataTableSceneContractController {
 				Object[] options = {"Sí", "No"};
 				int dialogResult = JOptionPane.showOptionDialog(null, "¿Estás seguro de que quieres cerrar el contrato para el carro con placa " + plate + "?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 				if(dialogResult == JOptionPane.YES_OPTION){
+
 					ServicesLocator.getContractsServices().contract_close(plate, startDate, delivery, km);
 					JOptionPane.showMessageDialog(null, "El contrato ha sido cerrado con éxito");
 					addParametersScenePane.setVisible(true);

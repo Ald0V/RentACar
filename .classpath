@@ -22,5 +22,6 @@
 	<classpathentry kind="lib" path="lib/itext-1.3.1.jar"/>
 	<classpathentry kind="lib" path="lib/jasperreports-3.0.0.jar"/>
 	<classpathentry kind="lib" path="lib/jasperreports-extensions-1.3.1.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/2do semestre/Base de datos/Curso CUJAE 2023-2024/Trabajo/!!!!JASPER/jasper/jasperreports-6.3.1/jasperreports-6.3.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

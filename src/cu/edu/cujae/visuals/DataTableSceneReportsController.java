@@ -24,6 +24,7 @@ import cu.edu.cujae.utils.DriverAux;
 import cu.edu.cujae.utils.CarAux;
 import cu.edu.cujae.utils.ContractAux;
 import cu.edu.cujae.utils.TouristAux;
+import cu.edu.cujae.services.ReportServices;
 import cu.edu.cujae.utils.BadTouristAux;
 import cu.edu.cujae.utils.CarStatusAux;
 import cu.edu.cujae.utils.ModelBrandAux;
@@ -477,7 +478,8 @@ public class DataTableSceneReportsController {
     void switchForm(ActionEvent event) {
     	
     	if(event.getSource() == bttnTourists) {
-    		tableTouristsPane.setVisible(true);
+    		//tableTouristsPane.setVisible(true);
+    		ReportServices.reports.CargarReporte_5();
     		
     		bttnTourists.setDisable(true);
     		bttnReportTourists.setDisable(false);
@@ -499,7 +501,8 @@ public class DataTableSceneReportsController {
     		tableCountryPane.setVisible(false);
     	}
     	else if(event.getSource() == bttnCarSituation) {
-    		tableCarSituationPane.setVisible(true);
+    		//tableCarSituationPane.setVisible(true);
+    		ReportServices.reports.CargarReporte_6();
     		
     		bttnCarSituation.setDisable(true);
     		bttnReportTourists.setDisable(false);
@@ -521,7 +524,8 @@ public class DataTableSceneReportsController {
     		tableCountryPane.setVisible(false);
     	}
     	else if(event.getSource() == bttnModelBrand) {
-    		tableModelBrandPane.setVisible(true);
+    		//tableModelBrandPane.setVisible(true);
+    		ReportServices.reports.CargarReporte_7();
     		
     		bttnModelBrand.setDisable(true);
     		bttnReportTourists.setDisable(false);
@@ -543,7 +547,8 @@ public class DataTableSceneReportsController {
     		tableCountryPane.setVisible(false);
     	}
     	else if(event.getSource() == bttnCountry) {
-    		tableCountryPane.setVisible(true);
+    		//tableCountryPane.setVisible(true);
+    		ReportServices.reports.CargarReporte_8();
     		
     		bttnCountry.setDisable(true);
     		bttnReportTourists.setDisable(false);
@@ -565,7 +570,8 @@ public class DataTableSceneReportsController {
     		tableModelBrandPane.setVisible(false);
     	}
     	else if(event.getSource() == bttnImport) {
-    		tableImportsPane.setVisible(true);
+    		//tableImportsPane.setVisible(true);
+    		ReportServices.reports.CargarReporte_9();
     		
     		bttnImport.setDisable(true);
     		bttnReportTourists.setDisable(false);
@@ -587,7 +593,8 @@ public class DataTableSceneReportsController {
     		tableModelBrandPane.setVisible(false);
     	}
     	else if(event.getSource() == bttnReportTourists) {
-    		tableReportsTouristsPane.setVisible(true);
+    		//tableReportsTouristsPane.setVisible(true);
+    		ReportServices.reports.CargarReporte_1();
     		
     		bttnReportTourists.setDisable(true);
     		bttnImport.setDisable(false);
@@ -609,7 +616,8 @@ public class DataTableSceneReportsController {
     		tableCountryPane.setVisible(false);
     	}
     	else if(event.getSource() == bttnReportCar) {
-    		tableReportsCarPane.setVisible(true);
+    		//tableReportsCarPane.setVisible(true);
+    		ReportServices.reports.CargarReporte_2();
     		
     		bttnReportCar.setDisable(true);
     		bttnReportTourists.setDisable(false);
@@ -631,7 +639,8 @@ public class DataTableSceneReportsController {
     		tableCountryPane.setVisible(false);
     	}
     	else if(event.getSource() == bttnReportContract) {
-    		tableReportsContractPane.setVisible(true);
+    		//tableReportsContractPane.setVisible(true);
+    		ReportServices.reports.CargarReporte_3();
     		
     		bttnReportContract.setDisable(true);
     		bttnReportCar.setDisable(false);
@@ -653,7 +662,8 @@ public class DataTableSceneReportsController {
     		tableCountryPane.setVisible(false);
     	}
     	else if(event.getSource() == bttnReportDrivers) {
-    		tableReportsDriverPane.setVisible(true);
+    		//tableReportsDriverPane.setVisible(true);
+    		ReportServices.reports.CargarReporte_4();
     		
     		bttnReportDrivers.setDisable(true);
     		bttnReportContract.setDisable(false);
