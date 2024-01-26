@@ -100,18 +100,20 @@ public class MainSceneController {
 	}
 	
 	public void initializeAdminORWorkerORVisitor (String rol) {
-		if(rol.equalsIgnoreCase("administrador")) {
-			rolAux = "administrador";
-			adminVBox.setVisible(true);
-			mainVBox.setVisible(false);
-		}else if(rol.equalsIgnoreCase("trabajador")){
+
+		//		if(rol.equalsIgnoreCase("administrador")) {
+		if(rol.equalsIgnoreCase("trabajador")){
 			rolAux = "trabajador";
 			adminVBox.setVisible(false);
-		    mainVBox.setVisible(true);
+			mainVBox.setVisible(true);
 		}else if(rol.equalsIgnoreCase("visitante")) {
 			rolAux = "visitante";
 			adminVBox.setVisible(false);
-		    mainVBox.setVisible(true);
+			mainVBox.setVisible(true);
+		}else {
+			rolAux = "administrador";
+			adminVBox.setVisible(true);
+			mainVBox.setVisible(false);
 		}
 	}
 	
@@ -162,6 +164,7 @@ public class MainSceneController {
 		dataTableSceneController.displayName("Carros");
 		
 		dataTableSceneController.initializeCarTable();
+		dataTableSceneController.initializeAdminORWorkerORVisitor(rolAux);
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
@@ -199,6 +202,7 @@ public class MainSceneController {
 		dataTableSceneController.displayName("Contratos");
 		
 		dataTableSceneController.initializeContractTable();
+		dataTableSceneController.initializeAdminORWorkerORVisitor(rolAux);
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
@@ -236,6 +240,7 @@ public class MainSceneController {
 		dataTableSceneController.displayName("Chofers");
 		
 		dataTableSceneController.initializeDriverTable();
+		dataTableSceneController.initializeAdminORWorkerORVisitor(rolAux);
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);

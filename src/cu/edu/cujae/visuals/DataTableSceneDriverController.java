@@ -139,6 +139,24 @@ public class DataTableSceneDriverController {
 	
 	Validator val = new Validator();
 	
+	String rolAux;
+	
+	public void initializeAdminORWorkerORVisitor (String rol) {
+		if(rol.equalsIgnoreCase("administrador")) {
+			rolAux = "administrador";
+			notVisitorVBox.setVisible(true);
+			visitorVBox.setVisible(false);
+		}else if(rol.equalsIgnoreCase("trabajador")){
+			rolAux = "trabajador";
+			notVisitorVBox.setVisible(true);
+			visitorVBox.setVisible(false);
+		}else if(rol.equalsIgnoreCase("visitante")) {
+			rolAux = "visitante";
+			visitorVBox.setVisible(true);
+			notVisitorVBox.setVisible(false);
+		}
+	}
+	
 	@SuppressWarnings("unchecked")
 	public void driverTableChargeData()throws ClassNotFoundException, SQLException {
 		// Configurar cellValueFactory para cada columna
@@ -224,6 +242,9 @@ public class DataTableSceneDriverController {
 		root = loader.load();
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+		MainSceneController mainSceneController = loader.getController();
+		mainSceneController.initializeAdminORWorkerORVisitor(rolAux);
 		
 		root.setOnMousePressed((MouseEvent e) ->{
 			x = e.getSceneX();

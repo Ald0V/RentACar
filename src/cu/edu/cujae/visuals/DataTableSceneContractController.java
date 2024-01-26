@@ -296,6 +296,24 @@ public class DataTableSceneContractController {
 	
 	Validator val = new Validator();
 	
+	String rolAux;
+	
+	public void initializeAdminORWorkerORVisitor (String rol) {
+		if(rol.equalsIgnoreCase("administrador")) {
+			rolAux = "administrador";
+			notVisitorVBox.setVisible(true);
+			visitorVBox.setVisible(false);
+		}else if(rol.equalsIgnoreCase("trabajador")){
+			rolAux = "trabajador";
+			notVisitorVBox.setVisible(true);
+			visitorVBox.setVisible(false);
+		}else if(rol.equalsIgnoreCase("visitante")) {
+			rolAux = "visitante";
+			visitorVBox.setVisible(true);
+			notVisitorVBox.setVisible(false);
+		}
+	}
+	
 	String plate = "ABC123";
 	LocalDate startDate = LocalDate.of(2024, 1, 1);
 	String passport = "123456789";
@@ -454,6 +472,9 @@ public class DataTableSceneContractController {
 		root = loader.load();
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+		MainSceneController mainSceneController = loader.getController();
+		mainSceneController.initializeAdminORWorkerORVisitor(rolAux);
 		
 		root.setOnMousePressed((MouseEvent e) ->{
 			x = e.getSceneX();

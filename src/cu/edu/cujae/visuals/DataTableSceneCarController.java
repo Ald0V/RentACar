@@ -141,8 +141,25 @@ public class DataTableSceneCarController {
 	
 	private int km;
 	
-
+    String rolAux;
+	
 	Validator val = new Validator();
+	
+	public void initializeAdminORWorkerORVisitor (String rol) {
+		if(rol.equalsIgnoreCase("administrador")) {
+			rolAux = "administrador";
+			notVisitorVBox.setVisible(true);
+			visitorVBox.setVisible(false);
+		}else if(rol.equalsIgnoreCase("trabajador")){
+			rolAux = "trabajador";
+			notVisitorVBox.setVisible(true);
+			visitorVBox.setVisible(false);
+		}else if(rol.equalsIgnoreCase("visitante")) {
+			rolAux = "visitante";
+			visitorVBox.setVisible(true);
+			notVisitorVBox.setVisible(false);
+		}
+	}
 
 
 	@SuppressWarnings("unchecked")
@@ -286,6 +303,9 @@ public class DataTableSceneCarController {
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("MainScene.fxml"));
 		root = loader.load();
+		
+		MainSceneController mainSceneController = loader.getController();
+		mainSceneController.initializeAdminORWorkerORVisitor(rolAux);
 				
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
