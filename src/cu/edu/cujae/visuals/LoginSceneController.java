@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import cu.edu.cujae.dto.UserDTO;
 import cu.edu.cujae.services.ServicesLocator;
 import javafx.event.ActionEvent;
@@ -97,12 +99,11 @@ public class LoginSceneController {
 	public void login(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
 		
 		errorMessage = "";
-		
-		/*Lo de abajo es temporal para acceder a lo visual mas rapido*/
-//		txtUsername.setText(USERNAME);
-//		pfPassword.setText(PASSWORD);
-		/*Lo de arriba es temporal para acceder a lo visual mas rapido*/
 
+		/*Lo de abajo es temporal para acceder a lo visual mas rapido*/
+		//		txtUsername.setText(USERNAME);
+		//		pfPassword.setText(PASSWORD);
+		/*Lo de arriba es temporal para acceder a lo visual mas rapido*/
 		if(isFieldFilled() && isValid()) {
 			((Node) event.getSource()).getScene().getWindow().hide();
 
@@ -110,35 +111,35 @@ public class LoginSceneController {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("MainScene.fxml"));
 			root = loader.load();		
 
-			
+
 			//		root = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
 			Stage stageMain = new Stage();
-			
+
 			MainSceneController mainSceneController = loader.getController();
 			mainSceneController.initializeAdminORWorkerORVisitor(aux.getRol());
 
 			scene = new Scene(root);
-			
+
 			root.setOnMousePressed((MouseEvent e) ->{
 				x = e.getSceneX();
 				y = e.getSceneY();
 			});
-			
+
 			root.setOnMouseDragged((MouseEvent e) ->{
 				stageMain.setX(e.getScreenX() - x);
 				stageMain.setY(e.getScreenY() - y);
-				
+
 				stageMain.setOpacity(.9);
 			});
-			
+
 			root.setOnMouseReleased((MouseEvent e) ->{
 				stageMain.setOpacity(1);
 			});
-			
+
 			Image image = new Image("/resources/Rental_car_login.png");
-		    
+
 			stageMain.getIcons().add(image);
-			
+
 			stageMain.setScene(scene);
 			stageMain.centerOnScreen();
 			stageMain.initStyle(StageStyle.UNDECORATED);
@@ -146,7 +147,60 @@ public class LoginSceneController {
 			stageMain.show();
 		}
 	}
+			
 	
+	public void login2(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
+		if(txtUsername1.getText().isEmpty() || pfPassword1.getText().isEmpty() || pfCheckPassword1.getText().isEmpty() || txtEmail.getText().isEmpty()) {
+		    JOptionPane.showMessageDialog(null, "Por favor, rellena todos los campos.");
+		} else if(!txtEmail.getText().endsWith(".com")) {
+		    JOptionPane.showMessageDialog(null, "El correo electrónico debe terminar con '.com'.");
+		} else if(!pfPassword1.getText().equals(pfCheckPassword1.getText())) {
+		    JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.");
+		} else {
+		    ServicesLocator.getUserServices().insert_user(txtUsername1.getText(), txtEmail.getText(), pfCheckPassword1.getText(), "visitante");
+		    
+		    ((Node) event.getSource()).getScene().getWindow().hide();
+
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("MainScene.fxml"));
+			root = loader.load();		
+
+
+			//		root = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
+			Stage stageMain = new Stage();
+
+			MainSceneController mainSceneController = loader.getController();
+			mainSceneController.initializeAdminORWorkerORVisitor(aux.getRol());
+
+			scene = new Scene(root);
+
+			root.setOnMousePressed((MouseEvent e) ->{
+				x = e.getSceneX();
+				y = e.getSceneY();
+			});
+
+			root.setOnMouseDragged((MouseEvent e) ->{
+				stageMain.setX(e.getScreenX() - x);
+				stageMain.setY(e.getScreenY() - y);
+
+				stageMain.setOpacity(.9);
+			});
+
+			root.setOnMouseReleased((MouseEvent e) ->{
+				stageMain.setOpacity(1);
+			});
+
+			Image image = new Image("/resources/Rental_car_login.png");
+
+			stageMain.getIcons().add(image);
+
+			stageMain.setScene(scene);
+			stageMain.centerOnScreen();
+			stageMain.initStyle(StageStyle.UNDECORATED);
+			stageMain.setResizable(false);
+			stageMain.show();
+		}
+	}
 	public void logout(MouseEvent event) {
 		stage = (Stage)loginScenePane.getScene().getWindow(); 
 		stage.close();

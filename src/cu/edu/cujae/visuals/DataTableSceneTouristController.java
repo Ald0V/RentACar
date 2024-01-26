@@ -42,6 +42,12 @@ public class DataTableSceneTouristController {
 	private double y = 0;
 	
 	@FXML
+    private ImageView imgSearch;
+    
+    @FXML
+    private ImageView imgCancelSearch;
+	
+	@FXML
 	private AnchorPane mainScenePane;
 	
 	@FXML
@@ -584,6 +590,30 @@ public class DataTableSceneTouristController {
             JOptionPane.showMessageDialog(null, "Solo se puede eliminar un turista a la vez");
         }
     }
+    
+	public void searchUser(ActionEvent event) throws ClassNotFoundException, SQLException{
+	    if(imgSearch.isVisible()) {
+	        if(!search.getText().isEmpty()) {
+	            touristTable.getItems().clear();
+	            TouristDTO touristAux = ServicesLocator.getTouristServices().findTourist(search.getText());
+	            if(touristAux != null) {
+	            	TouristAux tourist = new TouristAux(touristAux);
+	                touristTable.getItems().add(tourist);
+	            } else {
+	                // Mostrar un mensaje al usuario cuando no se encuentra el coche
+	                JOptionPane.showMessageDialog(null, "No se encontró ningún turista: " + search.getText());
+	            }
+	            imgSearch.setVisible(false);
+	            imgCancelSearch.setVisible(true);
+	        }
+	    } else {
+	    	touristTable.getItems().clear();
+	        touristTableChargeData();
+	        search.setText("");
+	        imgSearch.setVisible(true);
+	        imgCancelSearch.setVisible(false);
+	    }
+	}
 
 
     

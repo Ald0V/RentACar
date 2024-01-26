@@ -23,7 +23,8 @@
             <Button layoutX="26.0" layoutY="350.0" mnemonicParsing="false" onAction="#login" prefHeight="30.0" prefWidth="270.0" styleClass="button2" stylesheets="@application.css" text="Iniciar" textFill="WHITE">
                <font>
                   <Font size="18.0" />
-               </font></Button>
+               </font>
+            </Button>
             <HBox layoutX="31.0" layoutY="93.0" prefHeight="44.0" prefWidth="261.0" style="-fx-background-color: #ffffff;" styleClass="border" stylesheets="@application.css">
                <children>
                   <Pane prefHeight="44.0" prefWidth="47.0" style="-fx-background-color: #ffffff;" styleClass="right-side-border" stylesheets="@application.css">
@@ -70,7 +71,7 @@
       </Label>
       <AnchorPane fx:id="AnchorPaneData1" layoutX="368.0" layoutY="54.0" opacity="0.98" prefHeight="404.0" prefWidth="322.0" style="-fx-background-color: #393051; -fx-background-radius: 5;" visible="false">
          <children>
-            <Button layoutX="26.0" layoutY="350.0" mnemonicParsing="false" onAction="#login" prefHeight="30.0" prefWidth="270.0" styleClass="button2" stylesheets="@application.css" text="Iniciar" textFill="WHITE">
+            <Button layoutX="26.0" layoutY="350.0" mnemonicParsing="false" onAction="#login2" prefHeight="30.0" prefWidth="270.0" styleClass="button2" stylesheets="@application.css" text="Iniciar" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

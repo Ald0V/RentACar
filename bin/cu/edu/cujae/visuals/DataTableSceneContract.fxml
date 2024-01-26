@@ -178,7 +178,6 @@
                               <TableColumn fx:id="colAddTotalImport" prefWidth="99.2000732421875" text="Importe final" />
                           </columns>
                         </TableView>
-                        <TextField fx:id="search" layoutX="14.0" layoutY="21.0" prefHeight="30.0" prefWidth="250.0" promptText="Search" />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="addParametersScenePane" layoutY="406.0" prefHeight="220.0" prefWidth="1030.0" stylesheets="@application.css" visible="false">

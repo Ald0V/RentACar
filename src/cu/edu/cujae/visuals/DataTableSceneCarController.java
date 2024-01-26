@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import cu.edu.cujae.dto.AuxiliaryDTO;
 import cu.edu.cujae.dto.CarDTO;
 import cu.edu.cujae.dto.ModelDTO;
+import cu.edu.cujae.dto.UserDTO;
 import cu.edu.cujae.services.ServicesLocator;
 import cu.edu.cujae.utils.CarAux;
 import cu.edu.cujae.utils.Validator;
@@ -32,6 +33,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -41,6 +43,12 @@ public class DataTableSceneCarController {
 	
 	private double x = 0;
 	private double y = 0;
+	
+    @FXML
+    private ImageView imgSearch;
+    
+    @FXML
+    private ImageView imgCancelSearch;
 	
 	@FXML
 	private AnchorPane mainScenePane;
@@ -565,6 +573,30 @@ public class DataTableSceneCarController {
 	        }
 	    } else {
 	        JOptionPane.showMessageDialog(null, "Solo se puede eliminar un carro a la vez");
+	    }
+	}
+	
+	public void searchUser(ActionEvent event) throws ClassNotFoundException, SQLException{
+	    if(imgSearch.isVisible()) {
+	        if(!search.getText().isEmpty()) {
+	            carTable.getItems().clear();
+	            CarDTO carAux = ServicesLocator.getCarServices().findCar(search.getText());
+	            if(carAux != null) {
+	                CarAux car = new CarAux(carAux);
+	                carTable.getItems().add(car);
+	            } else {
+	                // Mostrar un mensaje al usuario cuando no se encuentra el coche
+	                JOptionPane.showMessageDialog(null, "No se encontró el coche: " + search.getText());
+	            }
+	            imgSearch.setVisible(false);
+	            imgCancelSearch.setVisible(true);
+	        }
+	    } else {
+	        carTable.getItems().clear();
+	        carTableChargeData();
+	        search.setText("");
+	        imgSearch.setVisible(true);
+	        imgCancelSearch.setVisible(false);
 	    }
 	}
 

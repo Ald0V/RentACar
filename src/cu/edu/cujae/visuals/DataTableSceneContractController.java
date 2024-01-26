@@ -80,9 +80,6 @@ public class DataTableSceneContractController {
     
     @FXML
     private TableView<ContractDTO> contractTable;
-    
-    @FXML
-    private TextField search;
 	
     @FXML
     private Label lblName;

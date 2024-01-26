@@ -34,12 +34,19 @@ import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.ComboBox;
 
 public class DataTableSceneDriverController {
 	
 	private double x = 0;
 	private double y = 0;
+
+	@FXML
+	private ImageView imgSearch;
+
+	@FXML
+	private ImageView imgCancelSearch;
 	
 	@FXML
 	private AnchorPane mainScenePane;
@@ -444,6 +451,30 @@ public class DataTableSceneDriverController {
 	        }
 	    } else {
 	        JOptionPane.showMessageDialog(null, "Solo se puede eliminar un conductor a la vez");
+	    }
+	}
+	
+	public void searchUser(ActionEvent event) throws ClassNotFoundException, SQLException{
+	    if(imgSearch.isVisible()) {
+	        if(!search.getText().isEmpty()) {
+	            driverTable.getItems().clear();
+	            DriverDTO driverAux = ServicesLocator.getDriverServices().find_driver(search.getText());
+	            if(driverAux != null) {
+	            	DriverAux driver = new DriverAux(driverAux);
+	                driverTable.getItems().add(driver);
+	            } else {
+	                // Mostrar un mensaje al usuario cuando no se encuentra el coche
+	                JOptionPane.showMessageDialog(null, "No se encontró el coche: " + search.getText());
+	            }
+	            imgSearch.setVisible(false);
+	            imgCancelSearch.setVisible(true);
+	        }
+	    } else {
+	    	driverTable.getItems().clear();
+	        driverTableChargeData();
+	        search.setText("");
+	        imgSearch.setVisible(true);
+	        imgCancelSearch.setVisible(false);
 	    }
 	}
 
