@@ -11,6 +11,7 @@ import cu.edu.cujae.dto.DriverDTO;
 import cu.edu.cujae.dto.ModelDTO;
 import cu.edu.cujae.dto.TouristDTO;
 import cu.edu.cujae.services.ServicesLocator;
+import cu.edu.cujae.utils.ModelBrandAux;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -69,10 +70,10 @@ public class DataTableSceneCBMController {
 	private TableColumn<String, String> colCountries;
 
 	@FXML
-	private TableColumn<ModelDTO, String> colModels;
+	private TableColumn<ModelBrandAux, String> colModels;
 
 	@FXML
-	private TableColumn<ModelDTO, String> colBrandsModels;
+	private TableColumn<ModelBrandAux, String> colBrandsModels;
 
 	@FXML
 	private AnchorPane countryPane;
@@ -84,7 +85,7 @@ public class DataTableSceneCBMController {
 	private AnchorPane modelPane;
 
 	@FXML
-	private TableView<ModelDTO> modelTable;
+	private TableView<ModelBrandAux> modelTable;
 
 	@FXML
 	private TextField txtBrand;
@@ -153,6 +154,7 @@ public class DataTableSceneCBMController {
 		return modelPane;
 	}
 	
+	String auxModelB;
 	
 	@SuppressWarnings("unchecked")
 	private void countryTableChargeData() throws ClassNotFoundException, SQLException {
@@ -233,16 +235,21 @@ public class DataTableSceneCBMController {
 	private void modelTableChargeData() throws ClassNotFoundException, SQLException {
 	    // Asegúrate de que ModelDTO tiene un método getBrand() que devuelve el nombre de la marca
 		colBrandsModels.setCellValueFactory(new PropertyValueFactory<>("brand"));
-		colModels.setCellValueFactory(new PropertyValueFactory<>("name"));
+		colModels.setCellValueFactory(new PropertyValueFactory<>("model"));
 
 	    bttnDeleteModel.setDisable(true);
 	    bttnUpdateModel.setVisible(false);
 
 	    ArrayList<ModelDTO> list = ServicesLocator.getModelServices().get_model_all();
-	    ObservableList<ModelDTO> modelList = FXCollections.observableArrayList();
-	    modelList.addAll(list);
+	    ObservableList<ModelBrandAux> modelList = FXCollections.observableArrayList();
+
+	    for(ModelDTO modelDTO : list) {
+	        ModelBrandAux modelBrandAux = new ModelBrandAux(modelDTO);
+	        modelList.add(modelBrandAux);
+	    }
 
 	    modelTable.setItems(modelList);
+
 
 	    ArrayList<AuxiliaryDTO> auxiliaryList = ServicesLocator.getBrandServices().get_brand_all();
 	    ArrayList<String> namesList3 = new ArrayList<String>();
@@ -256,19 +263,12 @@ public class DataTableSceneCBMController {
 	        if (newValue != null) {
 	            // Activa los botones cuando se selecciona una fila
 	            bttnDeleteModel.setDisable(false);
+	            auxModelB = newValue.getBrand();
 //	            bttnUpdateModel.setDisable(false);
 
 	            // Carga los datos
-	            String modelName = newValue.getName();
-	            try {
-					cmboxBrands.setValue(ServicesLocator.getBrandServices().get_brand_by_id(newValue.getBrand()));
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+	            String modelName = newValue.getModel();
+	            cmboxBrands.setValue(newValue.getBrand());
 	            txtModel.setText(modelName);
 
 	        } else {
@@ -349,8 +349,9 @@ public class DataTableSceneCBMController {
 		lblErrorModel.setVisible(false);
 		modelTable.getSelectionModel().clearSelection(); // Deselecciona la fila primero
 		if(cmboxBrands.getValue() != "" && txtModel.getText() != "") {
-			int brand = cmboxBrands.getSelectionModel().getSelectedIndex() + 4;
+			
 			String model = txtModel.getText();
+			int brand = ServicesLocator.getBrandServices().get_brand_by_name(cmboxBrands.getValue());
 			ServicesLocator.getModelServices().insert_model(model, brand);
 			cmboxBrands.setValue("");
 			txtModel.setText("");
@@ -463,18 +464,18 @@ public class DataTableSceneCBMController {
 
 	
 	public void deleteModel(ActionEvent event) throws ClassNotFoundException, SQLException {
-	    ObservableList<ModelDTO> allModels, singleModels;
+	    ObservableList<ModelBrandAux> allModels, singleModels;
 	    allModels = modelTable.getItems();
 	    singleModels = modelTable.getSelectionModel().getSelectedItems();
 
 	    if (singleModels.size() == 1) {
-	    	ModelDTO deleteModel = singleModels.get(0);
+	    	ModelBrandAux deleteModel = singleModels.get(0);
 	        
 	        Object[] options = {"Sí", "No"};
 	        int dialogResult = JOptionPane.showOptionDialog(null, "¿Estás seguro de que quieres eliminar el modelo " + deleteModel + "?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 	        if(dialogResult == JOptionPane.YES_OPTION){
 	            singleModels.forEach(allModels::remove);
-	            ServicesLocator.getModelServices().delete_model(deleteModel.getName());
+	            ServicesLocator.getModelServices().delete_model(deleteModel.getModel());
 	        }
 	    } else {
 	        JOptionPane.showMessageDialog(null, "Solo se puede eliminar un modelo a la vez");

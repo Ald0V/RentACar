@@ -430,7 +430,7 @@ public class DataTableSceneCarController {
 		carTable.setMaxHeight(554);
 	}
 	
-	public void insertCar(ActionEvent event) throws SQLException {
+	public void insertCar(ActionEvent event) throws SQLException, ClassNotFoundException {
 		lblErrorPlate.setVisible(false);
 		lblErrorEmpty.setVisible(false);
 
@@ -438,26 +438,18 @@ public class DataTableSceneCarController {
 			if(val.ValidatePlate(txtPlateAdd.getText())) {
 				String color = txtColorAdd.getText();
 				String plate = txtPlateAdd.getText();
-				int itemBrand = cmboxBrandAdd.getSelectionModel().getSelectedIndex() + 5;
+				int itemBrand = ServicesLocator.getBrandServices().get_brand_by_name(cmboxBrandAdd.getValue());
 				
 				int itemSituation = cmboxCarStatusAdd.getSelectionModel().getSelectedIndex() + 4;
-				String brand = (String)cmboxBrandAdd.getValue();
 				
-				int codeModel = cmboxModelAdd.getSelectionModel().getSelectedIndex();
+				ModelDTO auxiliar = ServicesLocator.getModelServices().get_model_by_name(cmboxModelAdd.getValue());
 				
-				LinkedList<ModelDTO> models;
-				System.out.println(brand);
-				models = ServicesLocator.getModelServices().select_model_by_brand(brand);
-				ArrayList<Integer> codeList = new ArrayList<Integer>();
-		        for (ModelDTO modelaux : models) {
-		        	codeList.add(modelaux.getId());
-		        }
-		        int modelSelection = codeList.get(codeModel);
+				int codeModel = auxiliar.getId();
 		        
 				
 				try {
-					System.out.println(itemSituation);
-                    ServicesLocator.getCarServices().insert_car(plate, itemBrand, modelSelection, 0, color, itemSituation);
+					
+                    ServicesLocator.getCarServices().insert_car(plate, itemBrand, codeModel, 0, color, itemSituation);
 
 					txtColorAdd.setText("");
 					txtPlateAdd.setText("");
@@ -487,7 +479,7 @@ public class DataTableSceneCarController {
 
 	}
 	
-	public void modifyCar(ActionEvent event) throws SQLException {
+	public void modifyCar(ActionEvent event) throws SQLException, ClassNotFoundException {
 		lblErrorPlate.setVisible(false);
 		lblErrorEmpty.setVisible(false);
 
@@ -500,23 +492,13 @@ public class DataTableSceneCarController {
 //				int itenModel = cmboxModelAdd.getSelectionModel().getSelectedIndex() + 1;
 				String color = txtColorAdd.getText();
 				String plate = txtPlateAdd.getText();
-				int itemBrand = cmboxBrandAdd.getSelectionModel().getSelectedIndex() + 5;
+				int itemBrand = ServicesLocator.getBrandServices().get_brand_by_name(cmboxBrandAdd.getValue());
+				
 				int itemSituation = cmboxCarStatusAdd.getSelectionModel().getSelectedIndex() + 4;
-				System.out.println(cmboxCarStatusAdd.getSelectionModel().getSelectedIndex());
-				String brand = (String)cmboxBrandAdd.getValue();
 				
-				int codeModel = cmboxModelAdd.getSelectionModel().getSelectedIndex();
+				ModelDTO auxiliar = ServicesLocator.getModelServices().get_model_by_name(cmboxModelAdd.getValue());
 				
-				LinkedList<ModelDTO> models;
-				System.out.println(brand);
-				models = ServicesLocator.getModelServices().select_model_by_brand(brand);
-				ArrayList<Integer> codeList = new ArrayList<Integer>();
-		        for (ModelDTO modelaux : models) {
-		        	codeList.add(modelaux.getId());
-		        }
-		        int modelSelection = codeList.get(codeModel);
-		        
-		        System.out.print(codeModel);;
+				int codeModel = auxiliar.getId();
 				
 				try {
 					
@@ -527,7 +509,7 @@ public class DataTableSceneCarController {
 //					cmboxBrandAdd.setValue("");
 //					cmboxCarStatusAdd.setValue("");
 //					cmboxModelAdd.setValue("");
-					ServicesLocator.getCarServices().update_car(plate, itemBrand, modelSelection, km, color, itemSituation);
+					ServicesLocator.getCarServices().update_car(plate, itemBrand, codeModel, km, color, itemSituation);
 
 					txtColorAdd.setText("");
 					txtPlateAdd.setText("");

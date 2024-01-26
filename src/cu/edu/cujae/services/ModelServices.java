@@ -96,6 +96,30 @@ public String get_model_by_id (int id)throws SQLException, ClassNotFoundExceptio
     
 }
 
+public ModelDTO get_model_by_name(String name) throws SQLException, ClassNotFoundException {
+    ModelDTO model = null;
+
+    String function = "{?= call get_model_by_name(?)}";
+    java.sql.Connection connection = ServicesLocator.getConexion();
+    connection.setAutoCommit(false);
+    CallableStatement preparedFunction = connection.prepareCall(function);
+    preparedFunction.registerOutParameter(1, java.sql.Types.OTHER);
+    preparedFunction.setString(2, name);
+    preparedFunction.execute();
+    ResultSet rs = (ResultSet) preparedFunction.getObject(1);
+    while (rs.next()){
+        int id = rs.getInt(1);
+        int brandId = rs.getInt(2);
+        model = new ModelDTO(brandId, id, name);
+    }
+    rs.close();
+    preparedFunction.close();
+    connection.close();
+
+    return model;
+}
+
+
 public void update_model(int brand, int id, String name) 
 	      throws SQLException, ClassNotFoundException{
 	    String query = "SELECT update_model(?, ?, ?)";
