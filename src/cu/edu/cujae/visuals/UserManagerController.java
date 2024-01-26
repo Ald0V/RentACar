@@ -24,6 +24,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -74,6 +75,12 @@ public class UserManagerController {
 	private Scene scene;
 	private Parent root;
 	
+    @FXML
+    private ImageView imgSearch;
+    
+    @FXML
+    private ImageView imgCancelSearch;
+	
 	UserDTO aux = new UserDTO(0, "dummy", "gmail.com", "postgres", "visitante");
 	
 	
@@ -102,16 +109,23 @@ public class UserManagerController {
 		usersTable.setItems(userList);
 		
 		usersTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-	        if (newValue != null) {
+			if (newValue != null) {
+
+				aux.setEmail(newValue.getEmail());
+				aux.setId(newValue.getId());
+				aux.setPassword(newValue.getPassword());
+				aux.setRol(newValue.getRol());
+				aux.setUsername(newValue.getUsername());
+
+				if(newValue.getRol().equalsIgnoreCase("administrador")) {
+					bttnDelete.setDisable(true);
+					bttnModify.setDisable(true);
+				}else {
+					bttnDelete.setDisable(false);
+					bttnModify.setDisable(false);
+
+				}
 	        	
-	        	aux.setEmail(newValue.getEmail());
-	        	aux.setId(newValue.getId());
-	        	aux.setPassword(newValue.getPassword());
-	        	aux.setRol(newValue.getRol());
-	        	aux.setUsername(newValue.getUsername());
-	        	
-	    		bttnDelete.setDisable(false);
-	    		bttnModify.setDisable(false);
 	    		
 	    		cmboxRol.setValue(newValue.getRol());
 	        	
@@ -214,4 +228,25 @@ public class UserManagerController {
 			lblErrorEmpty.setVisible(true);
 		
 	}
+    
+    public void searchUser(ActionEvent event) throws ClassNotFoundException, SQLException{
+    	if(imgSearch.isVisible()) {
+    		if(search.getText() != "") {
+    			usersTable.getItems().clear();
+    			UserDTO usuario = ServicesLocator.getUserServices().findUser(search.getText());
+    			usersTable.getItems().add(usuario);
+    			imgSearch.setVisible(false);
+    			imgCancelSearch.setVisible(true);
+    		}
+    	}else {
+    		usersTable.getItems().clear();
+    		userTableChargeData();
+    		search.setText("");
+    		imgSearch.setVisible(true);
+    		imgCancelSearch.setVisible(false);
+    	}
+
+    }
+
+  
 }
