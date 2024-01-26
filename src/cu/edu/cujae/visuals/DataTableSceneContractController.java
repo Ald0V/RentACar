@@ -406,12 +406,15 @@ public class DataTableSceneContractController {
 	        	
 	        	bttnAdd.setDisable(true);
 	        	
-	        	if(aux.getDeliveryDate() != null)
+	        	if(aux.getDeliveryDate() != null) {
 	        		bttnModify.setDisable(true);
-	        	else 
+	        	    bttnModifyContract.setVisible(false);
+	        	}
+	        	else {
 	        		bttnModify.setDisable(false);
-                
-                bttnModifyContract.setVisible(true);
+	        		bttnModifyContract.setVisible(true);
+	        	}
+	        	
                 bttnAddContract.setVisible(false);
 	        	
                 cmboxTouristAdd.setValue(newValue.getPassport());
@@ -702,7 +705,7 @@ public class DataTableSceneContractController {
     			LocalDate endDate = pickdateEndDate.getValue();
 
     			try {
-    				ServicesLocator.getContractsServices().update_contract(car, startDate, tourist, endDate, aux.getStartKm(), aux.getDeliveryDate(), aux.getEndKm(), payMethod, driver);
+    				ServicesLocator.getContractsServices().update_contract(car, startDate, tourist, endDate, payMethod, driver);
 
     				cmboxCarAdd.setValue("");
     				cmboxPayMethodAdd.setValue("");

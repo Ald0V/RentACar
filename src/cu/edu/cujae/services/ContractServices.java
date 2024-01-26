@@ -70,19 +70,16 @@ public class ContractServices {
         connection.close();
     }
     
-    public void update_contract(String plate, LocalDate start_date, String passport, LocalDate end_date, int start_km, LocalDate delivery_date, int end_km, int pay_method, String dni) throws SQLException, ClassNotFoundException {
-        String query = "SELECT update_contract(?,?,?,?,?,?,?,?,?)";
+    public void update_contract(String plate, LocalDate start_date, String passport, LocalDate end_date, int pay_method, String dni) throws SQLException, ClassNotFoundException {
+        String query = "SELECT update_contract(?,?,?,?,?,?)";
         java.sql.Connection connection = ServicesLocator.getConexion();
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setString(1, plate);
         preparedStatement.setDate(2, java.sql.Date.valueOf(start_date));
         preparedStatement.setString(3, passport);
         preparedStatement.setDate(4, java.sql.Date.valueOf(end_date));
-        preparedStatement.setInt(5, start_km);
-        preparedStatement.setDate(6, java.sql.Date.valueOf(delivery_date));
-        preparedStatement.setInt(7, end_km);
-        preparedStatement.setInt(8, pay_method);
-        preparedStatement.setString(9, dni);
+        preparedStatement.setInt(5, pay_method);
+        preparedStatement.setString(6, dni);
         preparedStatement.execute();
         preparedStatement.close();
         connection.close();
